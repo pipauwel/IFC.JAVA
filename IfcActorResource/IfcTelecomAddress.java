@@ -10,6 +10,5 @@ package buildingsmart.ifc
 		private string PagerNumber;
 		private string[] ElectronicMailAddresses;
 		private string WWWHomePageURL;
-		private string[] MessagingIDs;
 	}
 }

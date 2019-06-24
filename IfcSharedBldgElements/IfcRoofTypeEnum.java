@@ -18,7 +18,6 @@ package buildingsmart.ifc
 		PAVILION_ROOF,
 		DOME_ROOF,
 		FREEFORM,
-		USERDEFINED,
 		NOTDEFINED,
 	}
 }

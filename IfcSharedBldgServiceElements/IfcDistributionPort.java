@@ -6,7 +6,5 @@ package buildingsmart.ifc
 	public class IfcDistributionPort extends IfcPort
 	{
 		private IfcFlowDirectionEnum FlowDirection;
-		private IfcDistributionPortTypeEnum PredefinedType;
-		private IfcDistributionSystemEnum SystemType;
 	}
 }

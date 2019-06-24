@@ -8,7 +8,7 @@ package buildingsmart.ifc
 		private IfcCurve BasisCurve;
 		private IfcTrimmingSelect[] Trim1;
 		private IfcTrimmingSelect[] Trim2;
-		private bool SenseAgreement;
+		private BOOLEAN SenseAgreement;
 		private IfcTrimmingPreference MasterRepresentation;
 	}
 }

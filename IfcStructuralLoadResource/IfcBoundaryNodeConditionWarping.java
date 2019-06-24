@@ -5,6 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcBoundaryNodeConditionWarping extends IfcBoundaryNodeCondition
 	{
-		private IfcWarpingStiffnessSelect WarpingStiffness;
+		private double WarpingStiffness;
 	}
 }

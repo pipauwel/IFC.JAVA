@@ -9,12 +9,10 @@ package buildingsmart.ifc
 		private string Description;
 		private IfcAppliedValueSelect AppliedValue;
 		private IfcMeasureWithUnit UnitBasis;
-		private string ApplicableDate;
-		private string FixedUntilDate;
-		private string Category;
-		private string Condition;
-		private IfcArithmeticOperatorEnum ArithmeticOperator;
-		private IfcAppliedValue[] Components;
-		private IfcExternalReferenceRelationship[] HasExternalReference;
+		private IfcDateTimeSelect ApplicableDate;
+		private IfcDateTimeSelect FixedUntilDate;
+		private IfcReferencesValueDocument[] ValuesReferenced;
+		private IfcAppliedValueRelationship[] ValueOfComponents;
+		private IfcAppliedValueRelationship[] IsComponentIn;
 	}
 }

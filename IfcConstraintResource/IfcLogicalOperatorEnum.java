@@ -7,8 +7,5 @@ package buildingsmart.ifc
 	{
 		LOGICALAND,
 		LOGICALOR,
-		LOGICALXOR,
-		LOGICALNOTAND,
-		LOGICALNOTOR,
 	}
 }

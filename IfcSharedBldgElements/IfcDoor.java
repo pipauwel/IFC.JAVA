@@ -7,8 +7,5 @@ package buildingsmart.ifc
 	{
 		private IfcLengthMeasure OverallHeight;
 		private IfcLengthMeasure OverallWidth;
-		private IfcDoorTypeEnum PredefinedType;
-		private IfcDoorTypeOperationEnum OperationType;
-		private string UserDefinedOperationType;
 	}
 }

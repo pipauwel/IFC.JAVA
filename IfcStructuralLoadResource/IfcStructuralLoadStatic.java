@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcStructuralLoadStatic extends IfcStructuralLoadOrResult
+	public class IfcStructuralLoadStatic extends IfcStructuralLoad
 	{
 	}
 }

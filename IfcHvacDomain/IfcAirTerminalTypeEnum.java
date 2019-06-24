@@ -5,10 +5,13 @@ package buildingsmart.ifc
 {
 	public enum IfcAirTerminalTypeEnum
 	{
-		DIFFUSER,
 		GRILLE,
-		LOUVRE,
 		REGISTER,
+		DIFFUSER,
+		EYEBALL,
+		IRIS,
+		LINEARGRILLE,
+		LINEARDIFFUSER,
 		USERDEFINED,
 		NOTDEFINED,
 	}

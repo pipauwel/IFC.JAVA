@@ -5,7 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcDirection extends IfcGeometricRepresentationItem
 	{
-		private double[] DirectionRatios;
+		private REAL[] DirectionRatios;
 		private int Dim;
 	}
 }

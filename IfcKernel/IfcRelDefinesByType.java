@@ -5,7 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcRelDefinesByType extends IfcRelDefines
 	{
-		private IfcObject[] RelatedObjects;
 		private IfcTypeObject RelatingType;
 	}
 }

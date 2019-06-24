@@ -6,6 +6,5 @@ package buildingsmart.ifc
 	public class IfcPerformanceHistory extends IfcControl
 	{
 		private string LifeCyclePhase;
-		private IfcPerformanceHistoryTypeEnum PredefinedType;
 	}
 }

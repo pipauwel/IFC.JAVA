@@ -5,6 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcRelAssignsToProduct extends IfcRelAssigns
 	{
-		private IfcProductSelect RelatingProduct;
+		private IfcProduct RelatingProduct;
 	}
 }

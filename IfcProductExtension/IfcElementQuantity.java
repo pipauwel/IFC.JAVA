@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcElementQuantity extends IfcQuantitySet
+	public class IfcElementQuantity extends IfcPropertySetDefinition
 	{
 		private string MethodOfMeasurement;
 		private IfcPhysicalQuantity[] Quantities;

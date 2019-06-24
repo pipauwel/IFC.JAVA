@@ -5,10 +5,10 @@ package buildingsmart.ifc
 {
 	public enum IfcTendonTypeEnum
 	{
-		BAR,
-		COATED,
 		STRAND,
 		WIRE,
+		BAR,
+		COATED,
 		USERDEFINED,
 		NOTDEFINED,
 	}

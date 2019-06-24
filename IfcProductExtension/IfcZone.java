@@ -3,8 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcZone extends IfcSystem
+	public class IfcZone extends IfcGroup
 	{
-		private string LongName;
 	}
 }

@@ -5,10 +5,10 @@ package buildingsmart.ifc
 {
 	public class IfcInventory extends IfcGroup
 	{
-		private IfcInventoryTypeEnum PredefinedType;
+		private IfcInventoryTypeEnum InventoryType;
 		private IfcActorSelect Jurisdiction;
 		private IfcPerson[] ResponsiblePersons;
-		private string LastUpdateDate;
+		private IfcCalendarDate LastUpdateDate;
 		private IfcCostValue CurrentValue;
 		private IfcCostValue OriginalValue;
 	}

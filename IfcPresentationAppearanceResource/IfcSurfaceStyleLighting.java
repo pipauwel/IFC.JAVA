@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcSurfaceStyleLighting extends IfcPresentationItem
+	public class IfcSurfaceStyleLighting extends IfcBase
 	{
 		private IfcColourRgb DiffuseTransmissionColour;
 		private IfcColourRgb DiffuseReflectionColour;

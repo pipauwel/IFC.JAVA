@@ -8,5 +8,6 @@ package buildingsmart.ifc
 		private IfcPlane BasisSurface;
 		private IfcCurve OuterBoundary;
 		private IfcCurve[] InnerBoundaries;
+		private int Dim;
 	}
 }

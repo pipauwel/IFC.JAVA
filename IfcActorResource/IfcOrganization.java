@@ -5,7 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcOrganization extends IfcBase
 	{
-		private string Identification;
+		private string Id;
 		private string Name;
 		private string Description;
 		private IfcActorRole[] Roles;

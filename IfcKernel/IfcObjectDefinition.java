@@ -6,11 +6,8 @@ package buildingsmart.ifc
 	public class IfcObjectDefinition extends IfcRoot
 	{
 		private IfcRelAssigns[] HasAssignments;
-		private IfcRelNests[] Nests;
-		private IfcRelNests[] IsNestedBy;
-		private IfcRelDeclares[] HasContext;
-		private IfcRelAggregates[] IsDecomposedBy;
-		private IfcRelAggregates[] Decomposes;
+		private IfcRelDecomposes[] IsDecomposedBy;
+		private IfcRelDecomposes[] Decomposes;
 		private IfcRelAssociates[] HasAssociations;
 	}
 }

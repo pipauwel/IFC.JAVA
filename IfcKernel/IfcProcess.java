@@ -5,10 +5,8 @@ package buildingsmart.ifc
 {
 	public class IfcProcess extends IfcObject
 	{
-		private string Identification;
-		private string LongDescription;
-		private IfcRelSequence[] IsPredecessorTo;
-		private IfcRelSequence[] IsSuccessorFrom;
 		private IfcRelAssignsToProcess[] OperatesOn;
+		private IfcRelSequence[] IsSuccessorFrom;
+		private IfcRelSequence[] IsPredecessorTo;
 	}
 }

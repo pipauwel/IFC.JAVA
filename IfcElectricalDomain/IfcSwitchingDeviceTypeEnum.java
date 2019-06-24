@@ -6,11 +6,7 @@ package buildingsmart.ifc
 	public enum IfcSwitchingDeviceTypeEnum
 	{
 		CONTACTOR,
-		DIMMERSWITCH,
 		EMERGENCYSTOP,
-		KEYPAD,
-		MOMENTARYSWITCH,
-		SELECTORSWITCH,
 		STARTER,
 		SWITCHDISCONNECTOR,
 		TOGGLESWITCH,

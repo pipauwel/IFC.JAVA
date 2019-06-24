@@ -8,7 +8,6 @@ package buildingsmart.ifc
 		private IfcGridAxis[] UAxes;
 		private IfcGridAxis[] VAxes;
 		private IfcGridAxis[] WAxes;
-		private IfcGridTypeEnum PredefinedType;
 		private IfcRelContainedInSpatialStructure[] ContainedInStructure;
 	}
 }

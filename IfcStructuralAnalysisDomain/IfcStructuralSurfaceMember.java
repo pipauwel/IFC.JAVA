@@ -5,7 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcStructuralSurfaceMember extends IfcStructuralMember
 	{
-		private IfcStructuralSurfaceMemberTypeEnum PredefinedType;
+		private IfcStructuralSurfaceTypeEnum PredefinedType;
 		private IfcLengthMeasure Thickness;
 	}
 }

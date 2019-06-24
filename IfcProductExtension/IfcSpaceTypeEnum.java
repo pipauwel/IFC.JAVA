@@ -5,11 +5,6 @@ package buildingsmart.ifc
 {
 	public enum IfcSpaceTypeEnum
 	{
-		SPACE,
-		PARKING,
-		GFA,
-		INTERNAL,
-		EXTERNAL,
 		USERDEFINED,
 		NOTDEFINED,
 	}

@@ -5,8 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcDocumentReference extends IfcExternalReference
 	{
-		private string Description;
-		private IfcDocumentInformation ReferencedDocument;
-		private IfcRelAssociatesDocument[] DocumentRefForObjects;
+		private IfcDocumentInformation[] ReferenceToDocument;
 	}
 }

@@ -5,6 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcRamp extends IfcBuildingElement
 	{
-		private IfcRampTypeEnum PredefinedType;
+		private IfcRampTypeEnum ShapeType;
 	}
 }

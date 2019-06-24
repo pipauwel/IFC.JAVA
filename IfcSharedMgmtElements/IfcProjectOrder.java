@@ -5,8 +5,8 @@ package buildingsmart.ifc
 {
 	public class IfcProjectOrder extends IfcControl
 	{
+		private string ID;
 		private IfcProjectOrderTypeEnum PredefinedType;
 		private string Status;
-		private string LongDescription;
 	}
 }

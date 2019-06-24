@@ -5,9 +5,9 @@ package buildingsmart.ifc
 {
 	public class IfcCartesianTransformationOperator3DnonUniform extends IfcCartesianTransformationOperator3D
 	{
-		private double Scale2;
-		private double Scale3;
-		private double Scl2;
-		private double Scl3;
+		private REAL Scale2;
+		private REAL Scale3;
+		private REAL Scl2;
+		private REAL Scl3;
 	}
 }

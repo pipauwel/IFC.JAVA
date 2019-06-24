@@ -6,7 +6,7 @@ package buildingsmart.ifc
 	public class IfcHalfSpaceSolid extends IfcGeometricRepresentationItem
 	{
 		private IfcSurface BaseSurface;
-		private bool AgreementFlag;
+		private BOOLEAN AgreementFlag;
 		private int Dim;
 	}
 }

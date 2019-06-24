@@ -10,6 +10,5 @@ package buildingsmart.ifc
 		private string Expression;
 		private IfcUnit DefiningUnit;
 		private IfcUnit DefinedUnit;
-		private IfcCurveInterpolationEnum CurveInterpolation;
 	}
 }

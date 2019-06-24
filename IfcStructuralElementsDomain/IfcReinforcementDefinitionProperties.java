@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcReinforcementDefinitionProperties extends IfcPreDefinedPropertySet
+	public class IfcReinforcementDefinitionProperties extends IfcPropertySetDefinition
 	{
 		private string DefinitionType;
 		private IfcSectionReinforcementProperties[] ReinforcementSectionDefinitions;

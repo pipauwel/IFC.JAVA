@@ -10,5 +10,6 @@ package buildingsmart.ifc
 		private IfcLengthMeasure WallThickness;
 		private IfcLengthMeasure Girth;
 		private IfcLengthMeasure InternalFilletRadius;
+		private IfcLengthMeasure CentreOfGravityInX;
 	}
 }

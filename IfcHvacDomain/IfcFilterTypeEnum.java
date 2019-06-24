@@ -6,7 +6,6 @@ package buildingsmart.ifc
 	public enum IfcFilterTypeEnum
 	{
 		AIRPARTICLEFILTER,
-		COMPRESSEDAIRFILTER,
 		ODORFILTER,
 		OILFILTER,
 		STRAINER,

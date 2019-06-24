@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcTextStyleForDefinedFont extends IfcPresentationItem
+	public class IfcTextStyleForDefinedFont extends IfcBase
 	{
 		private IfcColour Colour;
 		private IfcColour BackgroundColour;

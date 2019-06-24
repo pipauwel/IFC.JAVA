@@ -5,13 +5,10 @@ package buildingsmart.ifc
 {
 	public enum IfcTankTypeEnum
 	{
-		BASIN,
-		BREAKPRESSURE,
+		PREFORMED,
+		SECTIONAL,
 		EXPANSION,
-		FEEDANDEXPANSION,
 		PRESSUREVESSEL,
-		STORAGE,
-		VESSEL,
 		USERDEFINED,
 		NOTDEFINED,
 	}

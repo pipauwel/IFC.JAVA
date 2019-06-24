@@ -5,9 +5,8 @@ package buildingsmart.ifc
 {
 	public class IfcTextStyle extends IfcPresentationStyle
 	{
-		private IfcTextStyleForDefinedFont TextCharacterAppearance;
-		private IfcTextStyleTextModel TextStyle;
+		private IfcCharacterStyleSelect TextCharacterAppearance;
+		private IfcTextStyleSelect TextStyle;
 		private IfcTextFontSelect TextFontStyle;
-		private bool ModelOrDraughting;
 	}
 }

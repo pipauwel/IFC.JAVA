@@ -5,7 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcRelNests extends IfcRelDecomposes
 	{
-		private IfcObjectDefinition RelatingObject;
-		private IfcObjectDefinition[] RelatedObjects;
 	}
 }

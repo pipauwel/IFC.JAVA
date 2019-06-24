@@ -6,8 +6,8 @@ package buildingsmart.ifc
 	public class IfcCompositeCurve extends IfcBoundedCurve
 	{
 		private IfcCompositeCurveSegment[] Segments;
-		private int SelfIntersect;
-		private int NSegments;
-		private int ClosedCurve;
+		private LOGICAL SelfIntersect;
+		private INTEGER NSegments;
+		private LOGICAL ClosedCurve;
 	}
 }

@@ -7,7 +7,5 @@ package buildingsmart.ifc
 	{
 		private IfcProfileTypeEnum ProfileType;
 		private string ProfileName;
-		private IfcExternalReferenceRelationship[] HasExternalReference;
-		private IfcProfileProperties[] HasProperties;
 	}
 }

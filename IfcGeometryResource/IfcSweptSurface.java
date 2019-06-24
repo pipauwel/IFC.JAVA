@@ -7,5 +7,6 @@ package buildingsmart.ifc
 	{
 		private IfcProfileDef SweptCurve;
 		private IfcAxis2Placement3D Position;
+		private int Dim;
 	}
 }

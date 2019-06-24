@@ -5,6 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcConstructionMaterialResource extends IfcConstructionResource
 	{
-		private IfcConstructionMaterialResourceTypeEnum PredefinedType;
+		private IfcActorSelect[] Suppliers;
+		private double UsageRatio;
 	}
 }

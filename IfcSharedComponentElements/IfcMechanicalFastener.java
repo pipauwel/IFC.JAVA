@@ -3,10 +3,9 @@
 
 package buildingsmart.ifc
 {
-	public class IfcMechanicalFastener extends IfcElementComponent
+	public class IfcMechanicalFastener extends IfcFastener
 	{
 		private IfcLengthMeasure NominalDiameter;
 		private IfcLengthMeasure NominalLength;
-		private IfcMechanicalFastenerTypeEnum PredefinedType;
 	}
 }

@@ -3,16 +3,12 @@
 
 package buildingsmart.ifc
 {
-	public class IfcClassification extends IfcExternalInformation
+	public class IfcClassification extends IfcBase
 	{
 		private string Source;
 		private string Edition;
-		private string EditionDate;
+		private IfcCalendarDate EditionDate;
 		private string Name;
-		private string Description;
-		private string Location;
-		private string[] ReferenceTokens;
-		private IfcRelAssociatesClassification[] ClassificationForObjects;
-		private IfcClassificationReference[] HasReferences;
+		private IfcClassificationItem[] Contains;
 	}
 }

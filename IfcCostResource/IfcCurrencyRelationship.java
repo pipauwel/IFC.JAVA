@@ -3,12 +3,12 @@
 
 package buildingsmart.ifc
 {
-	public class IfcCurrencyRelationship extends IfcResourceLevelRelationship
+	public class IfcCurrencyRelationship extends IfcBase
 	{
 		private IfcMonetaryUnit RelatingMonetaryUnit;
 		private IfcMonetaryUnit RelatedMonetaryUnit;
 		private IfcRatioMeasure ExchangeRate;
-		private string RateDateTime;
+		private IfcDateAndTime RateDateTime;
 		private IfcLibraryInformation RateSource;
 	}
 }

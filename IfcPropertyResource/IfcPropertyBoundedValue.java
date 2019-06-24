@@ -8,6 +8,5 @@ package buildingsmart.ifc
 		private IfcValue UpperBoundValue;
 		private IfcValue LowerBoundValue;
 		private IfcUnit Unit;
-		private IfcValue SetPointValue;
 	}
 }

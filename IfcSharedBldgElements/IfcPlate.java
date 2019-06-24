@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcPlate extends IfcBuildingElement
 	{
-		private IfcPlateTypeEnum PredefinedType;
 	}
 }

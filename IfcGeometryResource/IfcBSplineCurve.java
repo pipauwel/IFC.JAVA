@@ -5,12 +5,12 @@ package buildingsmart.ifc
 {
 	public class IfcBSplineCurve extends IfcBoundedCurve
 	{
-		private int Degree;
+		private INTEGER Degree;
 		private IfcCartesianPoint[] ControlPointsList;
 		private IfcBSplineCurveForm CurveForm;
-		private int ClosedCurve;
-		private int SelfIntersect;
-		private int UpperIndexOnControlPoints;
+		private LOGICAL ClosedCurve;
+		private LOGICAL SelfIntersect;
 		private IfcCartesianPoint ControlPoints;
+		private INTEGER UpperIndexOnControlPoints;
 	}
 }

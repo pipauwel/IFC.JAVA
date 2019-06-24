@@ -5,6 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcDistributionControlElement extends IfcDistributionElement
 	{
+		private string ControlElementId;
 		private IfcRelFlowControlElements[] AssignedToFlowElement;
 	}
 }

@@ -5,10 +5,8 @@ package buildingsmart.ifc
 {
 	public enum IfcCableSegmentTypeEnum
 	{
-		BUSBARSEGMENT,
 		CABLESEGMENT,
 		CONDUCTORSEGMENT,
-		CORESEGMENT,
 		USERDEFINED,
 		NOTDEFINED,
 	}

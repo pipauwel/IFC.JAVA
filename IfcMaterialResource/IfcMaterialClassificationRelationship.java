@@ -5,7 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcMaterialClassificationRelationship extends IfcBase
 	{
-		private IfcClassificationSelect[] MaterialClassifications;
+		private IfcClassificationNotationSelect[] MaterialClassifications;
 		private IfcMaterial ClassifiedMaterial;
 	}
 }

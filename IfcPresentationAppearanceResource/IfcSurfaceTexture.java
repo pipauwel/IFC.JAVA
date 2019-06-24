@@ -3,14 +3,11 @@
 
 package buildingsmart.ifc
 {
-	public class IfcSurfaceTexture extends IfcPresentationItem
+	public class IfcSurfaceTexture extends IfcBase
 	{
-		private bool RepeatS;
-		private bool RepeatT;
-		private string Mode;
+		private BOOLEAN RepeatS;
+		private BOOLEAN RepeatT;
+		private IfcSurfaceTextureEnum TextureType;
 		private IfcCartesianTransformationOperator2D TextureTransform;
-		private string[] Parameter;
-		private IfcTextureCoordinate[] IsMappedBy;
-		private IfcSurfaceStyleWithTextures[] UsedInStyles;
 	}
 }

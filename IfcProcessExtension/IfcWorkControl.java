@@ -5,12 +5,15 @@ package buildingsmart.ifc
 {
 	public class IfcWorkControl extends IfcControl
 	{
-		private string CreationDate;
+		private string Identifier;
+		private IfcDateTimeSelect CreationDate;
 		private IfcPerson[] Creators;
 		private string Purpose;
-		private string Duration;
-		private string TotalFloat;
-		private string StartTime;
-		private string FinishTime;
+		private double Duration;
+		private double TotalFloat;
+		private IfcDateTimeSelect StartTime;
+		private IfcDateTimeSelect FinishTime;
+		private IfcWorkControlTypeEnum WorkControlType;
+		private string UserDefinedControlType;
 	}
 }

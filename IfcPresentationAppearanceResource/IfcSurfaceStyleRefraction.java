@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcSurfaceStyleRefraction extends IfcPresentationItem
+	public class IfcSurfaceStyleRefraction extends IfcBase
 	{
 		private double RefractionIndex;
 		private double DispersionFactor;

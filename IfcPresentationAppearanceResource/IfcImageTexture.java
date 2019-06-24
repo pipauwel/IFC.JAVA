@@ -5,6 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcImageTexture extends IfcSurfaceTexture
 	{
-		private string URLReference;
+		private string UrlReference;
 	}
 }

@@ -5,10 +5,9 @@ package buildingsmart.ifc
 {
 	public class IfcStairFlight extends IfcBuildingElement
 	{
-		private int NumberOfRisers;
-		private int NumberOfTreads;
+		private INTEGER NumberOfRiser;
+		private INTEGER NumberOfTreads;
 		private IfcLengthMeasure RiserHeight;
 		private IfcLengthMeasure TreadLength;
-		private IfcStairFlightTypeEnum PredefinedType;
 	}
 }

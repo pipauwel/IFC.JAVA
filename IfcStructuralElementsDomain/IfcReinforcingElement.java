@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcReinforcingElement extends IfcElementComponent
+	public class IfcReinforcingElement extends IfcBuildingElementComponent
 	{
 		private string SteelGrade;
 	}

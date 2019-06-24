@@ -5,7 +5,6 @@ package buildingsmart.ifc
 {
 	public enum IfcPipeSegmentTypeEnum
 	{
-		CULVERT,
 		FLEXIBLESEGMENT,
 		RIGIDSEGMENT,
 		GUTTER,

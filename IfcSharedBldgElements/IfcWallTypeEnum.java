@@ -5,15 +5,11 @@ package buildingsmart.ifc
 {
 	public enum IfcWallTypeEnum
 	{
-		MOVABLE,
-		PARAPET,
-		PARTITIONING,
-		PLUMBINGWALL,
-		SHEAR,
-		SOLIDWALL,
 		STANDARD,
 		POLYGONAL,
+		SHEAR,
 		ELEMENTEDWALL,
+		PLUMBINGWALL,
 		USERDEFINED,
 		NOTDEFINED,
 	}

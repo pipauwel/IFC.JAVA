@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcPropertyEnumeration extends IfcPropertyAbstraction
+	public class IfcPropertyEnumeration extends IfcBase
 	{
 		private string Name;
 		private IfcValue[] EnumerationValues;

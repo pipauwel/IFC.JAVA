@@ -8,8 +8,8 @@ package buildingsmart.ifc
 		private IfcDirection Axis1;
 		private IfcDirection Axis2;
 		private IfcCartesianPoint LocalOrigin;
-		private double Scale;
-		private double Scl;
+		private REAL Scale;
+		private REAL Scl;
 		private int Dim;
 	}
 }

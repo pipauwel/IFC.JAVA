@@ -5,9 +5,13 @@ package buildingsmart.ifc
 {
 	public class IfcCostSchedule extends IfcControl
 	{
-		private IfcCostScheduleTypeEnum PredefinedType;
+		private IfcActorSelect SubmittedBy;
+		private IfcActorSelect PreparedBy;
+		private IfcDateTimeSelect SubmittedOn;
 		private string Status;
-		private string SubmittedOn;
-		private string UpdateDate;
+		private IfcActorSelect[] TargetUsers;
+		private IfcDateTimeSelect UpdateDate;
+		private string ID;
+		private IfcCostScheduleTypeEnum PredefinedType;
 	}
 }

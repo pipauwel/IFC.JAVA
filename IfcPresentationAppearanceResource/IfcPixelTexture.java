@@ -8,6 +8,6 @@ package buildingsmart.ifc
 		private int Width;
 		private int Height;
 		private int ColourComponents;
-		private byte[][] Pixel;
+		private BINARY (32)[] Pixel;
 	}
 }

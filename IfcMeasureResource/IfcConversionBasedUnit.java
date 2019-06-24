@@ -7,6 +7,5 @@ package buildingsmart.ifc
 	{
 		private string Name;
 		private IfcMeasureWithUnit ConversionFactor;
-		private IfcExternalReferenceRelationship[] HasExternalReference;
 	}
 }

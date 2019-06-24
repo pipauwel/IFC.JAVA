@@ -5,9 +5,6 @@ package buildingsmart.ifc
 {
 	public enum IfcPileTypeEnum
 	{
-		BORED,
-		DRIVEN,
-		JETGROUTING,
 		COHESION,
 		FRICTION,
 		SUPPORT,

@@ -5,7 +5,6 @@ package buildingsmart.ifc
 {
 	public enum IfcFootingTypeEnum
 	{
-		CAISSON_FOUNDATION,
 		FOOTING_BEAM,
 		PAD_FOOTING,
 		PILE_CAP,

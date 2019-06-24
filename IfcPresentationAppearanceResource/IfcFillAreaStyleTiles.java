@@ -5,8 +5,8 @@ package buildingsmart.ifc
 {
 	public class IfcFillAreaStyleTiles extends IfcGeometricRepresentationItem
 	{
-		private IfcVector[] TilingPattern;
-		private IfcStyledItem[] Tiles;
+		private IfcOneDirectionRepeatFactor TilingPattern;
+		private IfcFillAreaStyleTileShapeSelect[] Tiles;
 		private IfcRatioMeasure TilingScale;
 	}
 }

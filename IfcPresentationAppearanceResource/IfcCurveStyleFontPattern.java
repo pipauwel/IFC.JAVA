@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcCurveStyleFontPattern extends IfcPresentationItem
+	public class IfcCurveStyleFontPattern extends IfcBase
 	{
 		private double VisibleSegmentLength;
 		private IfcLengthMeasure InvisibleSegmentLength;

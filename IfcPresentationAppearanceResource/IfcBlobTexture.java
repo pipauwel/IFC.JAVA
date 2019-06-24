@@ -6,6 +6,6 @@ package buildingsmart.ifc
 	public class IfcBlobTexture extends IfcSurfaceTexture
 	{
 		private string RasterFormat;
-		private byte[] RasterCode;
+		private BOOLEAN RasterCode;
 	}
 }

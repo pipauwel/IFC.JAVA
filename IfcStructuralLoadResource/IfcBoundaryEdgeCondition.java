@@ -5,11 +5,11 @@ package buildingsmart.ifc
 {
 	public class IfcBoundaryEdgeCondition extends IfcBoundaryCondition
 	{
-		private IfcModulusOfTranslationalSubgradeReactionSelect TranslationalStiffnessByLengthX;
-		private IfcModulusOfTranslationalSubgradeReactionSelect TranslationalStiffnessByLengthY;
-		private IfcModulusOfTranslationalSubgradeReactionSelect TranslationalStiffnessByLengthZ;
-		private IfcModulusOfRotationalSubgradeReactionSelect RotationalStiffnessByLengthX;
-		private IfcModulusOfRotationalSubgradeReactionSelect RotationalStiffnessByLengthY;
-		private IfcModulusOfRotationalSubgradeReactionSelect RotationalStiffnessByLengthZ;
+		private double LinearStiffnessByLengthX;
+		private double LinearStiffnessByLengthY;
+		private double LinearStiffnessByLengthZ;
+		private double RotationalStiffnessByLengthX;
+		private double RotationalStiffnessByLengthY;
+		private double RotationalStiffnessByLengthZ;
 	}
 }

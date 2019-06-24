@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcColumn extends IfcBuildingElement
 	{
-		private IfcColumnTypeEnum PredefinedType;
 	}
 }

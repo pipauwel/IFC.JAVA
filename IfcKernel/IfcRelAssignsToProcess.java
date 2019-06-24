@@ -5,7 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcRelAssignsToProcess extends IfcRelAssigns
 	{
-		private IfcProcessSelect RelatingProcess;
+		private IfcProcess RelatingProcess;
 		private IfcMeasureWithUnit QuantityInProcess;
 	}
 }

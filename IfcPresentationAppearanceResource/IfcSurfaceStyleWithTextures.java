@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcSurfaceStyleWithTextures extends IfcPresentationItem
+	public class IfcSurfaceStyleWithTextures extends IfcBase
 	{
 		private IfcSurfaceTexture[] Textures;
 	}

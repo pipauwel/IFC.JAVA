@@ -6,8 +6,7 @@ package buildingsmart.ifc
 	public class IfcExternalReference extends IfcBase
 	{
 		private string Location;
-		private string Identification;
+		private string ItemReference;
 		private string Name;
-		private IfcExternalReferenceRelationship[] ExternalReferenceForResources;
 	}
 }

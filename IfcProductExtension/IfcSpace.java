@@ -5,7 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcSpace extends IfcSpatialStructureElement
 	{
-		private IfcSpaceTypeEnum PredefinedType;
+		private IfcInternalOrExternalEnum InteriorOrExteriorSpace;
 		private double ElevationWithFlooring;
 		private IfcRelCoversSpaces[] HasCoverings;
 		private IfcRelSpaceBoundary[] BoundedBy;

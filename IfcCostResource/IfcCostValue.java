@@ -5,5 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcCostValue extends IfcAppliedValue
 	{
+		private string CostType;
+		private string Condition;
 	}
 }

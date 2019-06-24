@@ -5,18 +5,14 @@ package buildingsmart.ifc
 {
 	public class IfcApproval extends IfcBase
 	{
-		private string Identifier;
-		private string Name;
 		private string Description;
-		private string TimeOfApproval;
-		private string Status;
-		private string Level;
-		private string Qualifier;
-		private IfcActorSelect RequestingApproval;
-		private IfcActorSelect GivingApproval;
-		private IfcExternalReferenceRelationship[] HasExternalReferences;
-		private IfcRelAssociatesApproval[] ApprovedObjects;
-		private IfcResourceApprovalRelationship[] ApprovedResources;
+		private IfcDateTimeSelect ApprovalDateTime;
+		private string ApprovalStatus;
+		private string ApprovalLevel;
+		private string ApprovalQualifier;
+		private string Name;
+		private string Identifier;
+		private IfcApprovalActorRelationship[] Actors;
 		private IfcApprovalRelationship[] IsRelatedWith;
 		private IfcApprovalRelationship[] Relates;
 	}

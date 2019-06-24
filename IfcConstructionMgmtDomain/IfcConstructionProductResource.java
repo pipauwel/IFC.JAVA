@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcConstructionProductResource extends IfcConstructionResource
 	{
-		private IfcConstructionProductResourceTypeEnum PredefinedType;
 	}
 }

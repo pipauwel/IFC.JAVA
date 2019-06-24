@@ -5,6 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcLaborResource extends IfcConstructionResource
 	{
-		private IfcLaborResourceTypeEnum PredefinedType;
+		private string SkillSet;
 	}
 }

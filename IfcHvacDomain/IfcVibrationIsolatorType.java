@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcVibrationIsolatorType extends IfcElementComponentType
+	public class IfcVibrationIsolatorType extends IfcDiscreteAccessoryType
 	{
 		private IfcVibrationIsolatorTypeEnum PredefinedType;
 	}

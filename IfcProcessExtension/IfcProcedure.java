@@ -5,6 +5,8 @@ package buildingsmart.ifc
 {
 	public class IfcProcedure extends IfcProcess
 	{
-		private IfcProcedureTypeEnum PredefinedType;
+		private string ProcedureID;
+		private IfcProcedureTypeEnum ProcedureType;
+		private string UserDefinedProcedureType;
 	}
 }

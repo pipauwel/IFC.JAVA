@@ -5,7 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcStructuralCurveMember extends IfcStructuralMember
 	{
-		private IfcStructuralCurveMemberTypeEnum PredefinedType;
-		private IfcDirection Axis;
+		private IfcStructuralCurveTypeEnum PredefinedType;
 	}
 }

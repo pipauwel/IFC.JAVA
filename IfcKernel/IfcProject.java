@@ -3,7 +3,11 @@
 
 package buildingsmart.ifc
 {
-	public class IfcProject extends IfcContext
+	public class IfcProject extends IfcObject
 	{
+		private string LongName;
+		private string Phase;
+		private IfcRepresentationContext[] RepresentationContexts;
+		private IfcUnitAssignment UnitsInContext;
 	}
 }

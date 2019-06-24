@@ -5,8 +5,9 @@ package buildingsmart.ifc
 {
 	public class IfcConstructionResource extends IfcResource
 	{
-		private IfcResourceTime Usage;
-		private IfcAppliedValue[] BaseCosts;
-		private IfcPhysicalQuantity BaseQuantity;
+		private string ResourceIdentifier;
+		private string ResourceGroup;
+		private IfcResourceConsumptionEnum ResourceConsumption;
+		private IfcMeasureWithUnit BaseQuantity;
 	}
 }

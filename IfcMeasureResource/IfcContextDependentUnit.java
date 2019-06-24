@@ -6,6 +6,5 @@ package buildingsmart.ifc
 	public class IfcContextDependentUnit extends IfcNamedUnit
 	{
 		private string Name;
-		private IfcExternalReferenceRelationship[] HasExternalReference;
 	}
 }

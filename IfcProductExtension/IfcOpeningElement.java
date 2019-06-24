@@ -5,7 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcOpeningElement extends IfcFeatureElementSubtraction
 	{
-		private IfcOpeningElementTypeEnum PredefinedType;
 		private IfcRelFillsElement[] HasFillings;
 	}
 }

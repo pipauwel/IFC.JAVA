@@ -5,6 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcSubContractResource extends IfcConstructionResource
 	{
-		private IfcSubContractResourceTypeEnum PredefinedType;
+		private IfcActorSelect SubContractor;
+		private string JobDescription;
 	}
 }

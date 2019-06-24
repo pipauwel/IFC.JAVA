@@ -5,7 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcControl extends IfcObject
 	{
-		private string Identification;
 		private IfcRelAssignsToControl[] Controls;
 	}
 }

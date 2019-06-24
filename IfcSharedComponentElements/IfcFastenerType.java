@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcFastenerType extends IfcElementComponentType
 	{
-		private IfcFastenerTypeEnum PredefinedType;
 	}
 }

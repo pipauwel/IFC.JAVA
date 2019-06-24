@@ -7,7 +7,7 @@ package buildingsmart.ifc
 	{
 		private IfcAnalysisTheoryTypeEnum TheoryType;
 		private IfcStructuralLoadGroup ResultForLoadGroup;
-		private bool IsLinear;
+		private BOOLEAN IsLinear;
 		private IfcStructuralAnalysisModel[] ResultGroupFor;
 	}
 }

@@ -3,11 +3,10 @@
 
 package buildingsmart.ifc
 {
-	public class IfcMaterialLayerSet extends IfcMaterialDefinition
+	public class IfcMaterialLayerSet extends IfcBase
 	{
 		private IfcMaterialLayer[] MaterialLayers;
 		private string LayerSetName;
-		private string Description;
 		private double TotalThickness;
 	}
 }

@@ -5,8 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcCostItem extends IfcControl
 	{
-		private IfcCostItemTypeEnum PredefinedType;
-		private IfcCostValue[] CostValues;
-		private IfcPhysicalQuantity[] CostQuantities;
 	}
 }

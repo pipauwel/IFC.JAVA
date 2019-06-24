@@ -12,6 +12,6 @@ package buildingsmart.ifc
 		private IfcAxis2Placement WorldCoordinateSystem;
 		private int CoordinateSpaceDimension;
 		private IfcDirection TrueNorth;
-		private double Precision;
+		private REAL Precision;
 	}
 }

@@ -7,6 +7,6 @@ package buildingsmart.ifc
 	{
 		private string ApplicableOccurrence;
 		private IfcPropertySetDefinition[] HasPropertySets;
-		private IfcRelDefinesByType[] Types;
+		private IfcRelDefinesByType[] ObjectTypeOf;
 	}
 }

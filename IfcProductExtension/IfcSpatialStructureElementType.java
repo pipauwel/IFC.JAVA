@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcSpatialStructureElementType extends IfcSpatialElementType
+	public class IfcSpatialStructureElementType extends IfcElementType
 	{
 	}
 }

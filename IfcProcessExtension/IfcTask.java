@@ -5,11 +5,10 @@ package buildingsmart.ifc
 {
 	public class IfcTask extends IfcProcess
 	{
+		private string TaskId;
 		private string Status;
 		private string WorkMethod;
-		private bool IsMilestone;
-		private int Priority;
-		private IfcTaskTime TaskTime;
-		private IfcTaskTypeEnum PredefinedType;
+		private BOOLEAN IsMilestone;
+		private INTEGER Priority;
 	}
 }

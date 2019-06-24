@@ -7,7 +7,6 @@ package buildingsmart.ifc
 	{
 		POINTSOURCE,
 		DIRECTIONSOURCE,
-		SECURITYLIGHTING,
 		USERDEFINED,
 		NOTDEFINED,
 	}

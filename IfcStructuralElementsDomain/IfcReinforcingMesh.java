@@ -13,6 +13,5 @@ package buildingsmart.ifc
 		private double TransverseBarCrossSectionArea;
 		private IfcLengthMeasure LongitudinalBarSpacing;
 		private IfcLengthMeasure TransverseBarSpacing;
-		private IfcReinforcingMeshTypeEnum PredefinedType;
 	}
 }

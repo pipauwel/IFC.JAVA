@@ -7,6 +7,5 @@ package buildingsmart.ifc
 	{
 		private IfcRepresentationMap[] RepresentationMaps;
 		private string Tag;
-		private IfcRelAssignsToProduct[] ReferencedBy;
 	}
 }

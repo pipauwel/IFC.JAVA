@@ -5,9 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcLibraryReference extends IfcExternalReference
 	{
-		private string Description;
-		private IfcIdentifier Language;
-		private IfcLibraryInformation ReferencedLibrary;
-		private IfcRelAssociatesLibrary[] LibraryRefForObjects;
+		private IfcLibraryInformation[] ReferenceIntoLibrary;
 	}
 }

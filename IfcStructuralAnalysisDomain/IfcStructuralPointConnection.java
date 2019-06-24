@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcStructuralPointConnection extends IfcStructuralConnection
 	{
-		private IfcAxis2Placement3D ConditionCoordinateSystem;
 	}
 }

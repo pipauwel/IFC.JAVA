@@ -5,6 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcRelAssociatesClassification extends IfcRelAssociates
 	{
-		private IfcClassificationSelect RelatingClassification;
+		private IfcClassificationNotationSelect RelatingClassification;
 	}
 }

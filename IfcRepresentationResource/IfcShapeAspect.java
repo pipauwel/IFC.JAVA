@@ -8,7 +8,7 @@ package buildingsmart.ifc
 		private IfcShapeModel[] ShapeRepresentations;
 		private string Name;
 		private string Description;
-		private int ProductDefinitional;
-		private IfcProductRepresentationSelect PartOfProductDefinitionShape;
+		private LOGICAL ProductDefinitional;
+		private IfcProductDefinitionShape PartOfProductDefinitionShape;
 	}
 }

@@ -10,9 +10,13 @@ package buildingsmart.ifc
 		private IfcConstraintEnum ConstraintGrade;
 		private string ConstraintSource;
 		private IfcActorSelect CreatingActor;
-		private string CreationTime;
+		private IfcDateTimeSelect CreationTime;
 		private string UserDefinedGrade;
-		private IfcExternalReferenceRelationship[] HasExternalReferences;
-		private IfcResourceConstraintRelationship[] PropertiesForConstraint;
+		private IfcConstraintClassificationRelationship[] ClassifiedAs;
+		private IfcConstraintRelationship[] RelatesConstraints;
+		private IfcConstraintRelationship[] IsRelatedWith;
+		private IfcPropertyConstraintRelationship[] PropertiesForConstraint;
+		private IfcConstraintAggregationRelationship[] Aggregates;
+		private IfcConstraintAggregationRelationship[] IsAggregatedIn;
 	}
 }

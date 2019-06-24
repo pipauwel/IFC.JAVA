@@ -3,7 +3,8 @@
 
 package buildingsmart.ifc
 {
-	public class IfcStructuralLinearAction extends IfcStructuralCurveAction
+	public class IfcStructuralLinearAction extends IfcStructuralAction
 	{
+		private IfcProjectedOrTrueLengthEnum ProjectedOrTrue;
 	}
 }

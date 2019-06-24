@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcDistributionChamberElement extends IfcDistributionFlowElement
 	{
-		private IfcDistributionChamberElementTypeEnum PredefinedType;
 	}
 }

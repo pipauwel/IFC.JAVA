@@ -7,9 +7,7 @@ package buildingsmart.ifc
 	{
 		BEAM,
 		JOIST,
-		HOLLOWCORE,
 		LINTEL,
-		SPANDREL,
 		T_BEAM,
 		USERDEFINED,
 		NOTDEFINED,

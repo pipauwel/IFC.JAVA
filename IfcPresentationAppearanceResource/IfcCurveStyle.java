@@ -8,6 +8,5 @@ package buildingsmart.ifc
 		private IfcCurveFontOrScaledCurveFontSelect CurveFont;
 		private IfcSizeSelect CurveWidth;
 		private IfcColour CurveColour;
-		private bool ModelOrDraughting;
 	}
 }

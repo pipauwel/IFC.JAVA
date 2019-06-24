@@ -12,5 +12,6 @@ package buildingsmart.ifc
 		private IfcLengthMeasure FilletRadius;
 		private IfcLengthMeasure EdgeRadius;
 		private double FlangeSlope;
+		private IfcLengthMeasure CentreOfGravityInX;
 	}
 }

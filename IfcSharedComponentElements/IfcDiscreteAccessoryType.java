@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcDiscreteAccessoryType extends IfcElementComponentType
 	{
-		private IfcDiscreteAccessoryTypeEnum PredefinedType;
 	}
 }

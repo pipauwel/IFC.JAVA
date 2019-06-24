@@ -5,8 +5,8 @@ package buildingsmart.ifc
 {
 	public class IfcObjective extends IfcConstraint
 	{
-		private IfcConstraint[] BenchmarkValues;
-		private IfcLogicalOperatorEnum LogicalAggregator;
+		private IfcMetric BenchmarkValues;
+		private IfcMetric ResultValues;
 		private IfcObjectiveEnum ObjectiveQualifier;
 		private string UserDefinedQualifier;
 	}

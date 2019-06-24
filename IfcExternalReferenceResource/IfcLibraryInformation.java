@@ -3,15 +3,12 @@
 
 package buildingsmart.ifc
 {
-	public class IfcLibraryInformation extends IfcExternalInformation
+	public class IfcLibraryInformation extends IfcBase
 	{
 		private string Name;
 		private string Version;
-		private IfcActorSelect Publisher;
-		private string VersionDate;
-		private string Location;
-		private string Description;
-		private IfcRelAssociatesLibrary[] LibraryInfoForObjects;
-		private IfcLibraryReference[] HasLibraryReferences;
+		private IfcOrganization Publisher;
+		private IfcCalendarDate VersionDate;
+		private IfcLibraryReference[] LibraryReference;
 	}
 }

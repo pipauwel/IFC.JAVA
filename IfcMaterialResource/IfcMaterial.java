@@ -3,13 +3,10 @@
 
 package buildingsmart.ifc
 {
-	public class IfcMaterial extends IfcMaterialDefinition
+	public class IfcMaterial extends IfcBase
 	{
 		private string Name;
-		private string Description;
-		private string Category;
 		private IfcMaterialDefinitionRepresentation[] HasRepresentation;
-		private IfcMaterialRelationship[] IsRelatedWith;
-		private IfcMaterialRelationship[] RelatesTo;
+		private IfcMaterialClassificationRelationship[] ClassifiedAs;
 	}
 }

@@ -7,6 +7,6 @@ package buildingsmart.ifc
 	{
 		private IfcStructuralLoad AppliedLoad;
 		private IfcGlobalOrLocalEnum GlobalOrLocal;
-		private IfcRelConnectsStructuralActivity[] AssignedToStructuralItem;
+		private IfcRelConnectsStructuralActivity AssignedToStructuralItem;
 	}
 }

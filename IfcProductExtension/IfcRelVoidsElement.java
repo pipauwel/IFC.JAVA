@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcRelVoidsElement extends IfcRelDecomposes
+	public class IfcRelVoidsElement extends IfcRelConnects
 	{
 		private IfcElement RelatingBuildingElement;
 		private IfcFeatureElementSubtraction RelatedOpeningElement;

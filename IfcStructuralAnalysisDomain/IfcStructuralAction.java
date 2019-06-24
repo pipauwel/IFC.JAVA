@@ -5,6 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcStructuralAction extends IfcStructuralActivity
 	{
-		private bool DestabilizingLoad;
+		private BOOLEAN DestabilizingLoad;
+		private IfcStructuralReaction CausedBy;
 	}
 }

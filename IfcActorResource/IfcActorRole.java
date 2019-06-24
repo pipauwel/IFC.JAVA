@@ -8,6 +8,5 @@ package buildingsmart.ifc
 		private IfcRoleEnum Role;
 		private string UserDefinedRole;
 		private string Description;
-		private IfcExternalReferenceRelationship[] HasExternalReference;
 	}
 }

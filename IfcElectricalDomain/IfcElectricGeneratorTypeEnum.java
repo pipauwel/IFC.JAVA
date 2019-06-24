@@ -5,9 +5,6 @@ package buildingsmart.ifc
 {
 	public enum IfcElectricGeneratorTypeEnum
 	{
-		CHP,
-		ENGINEGENERATOR,
-		STANDALONE,
 		USERDEFINED,
 		NOTDEFINED,
 	}

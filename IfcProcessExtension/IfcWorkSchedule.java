@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcWorkSchedule extends IfcWorkControl
 	{
-		private IfcWorkScheduleTypeEnum PredefinedType;
 	}
 }

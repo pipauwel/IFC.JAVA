@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcTextStyleTextModel extends IfcPresentationItem
+	public class IfcTextStyleTextModel extends IfcBase
 	{
 		private IfcSizeSelect TextIndent;
 		private string TextAlign;

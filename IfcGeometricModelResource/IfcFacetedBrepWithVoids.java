@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcFacetedBrepWithVoids extends IfcFacetedBrep
+	public class IfcFacetedBrepWithVoids extends IfcManifoldSolidBrep
 	{
 		private IfcClosedShell[] Voids;
 	}

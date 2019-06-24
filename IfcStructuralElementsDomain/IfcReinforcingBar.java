@@ -8,7 +8,7 @@ package buildingsmart.ifc
 		private IfcLengthMeasure NominalDiameter;
 		private double CrossSectionArea;
 		private IfcLengthMeasure BarLength;
-		private IfcReinforcingBarTypeEnum PredefinedType;
+		private IfcReinforcingBarRoleEnum BarRole;
 		private IfcReinforcingBarSurfaceEnum BarSurface;
 	}
 }

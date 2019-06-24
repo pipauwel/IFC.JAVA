@@ -3,12 +3,11 @@
 
 package buildingsmart.ifc
 {
-	public class IfcMaterialLayerSetUsage extends IfcMaterialUsageDefinition
+	public class IfcMaterialLayerSetUsage extends IfcBase
 	{
 		private IfcMaterialLayerSet ForLayerSet;
 		private IfcLayerSetDirectionEnum LayerSetDirection;
 		private IfcDirectionSenseEnum DirectionSense;
 		private double OffsetFromReferenceLine;
-		private IfcLengthMeasure ReferenceExtent;
 	}
 }

@@ -5,7 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcRelDefinesByProperties extends IfcRelDefines
 	{
-		private IfcObjectDefinition[] RelatedObjects;
-		private IfcPropertySetDefinitionSelect RelatingPropertyDefinition;
+		private IfcPropertySetDefinition RelatingPropertyDefinition;
 	}
 }

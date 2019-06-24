@@ -9,6 +9,7 @@ package buildingsmart.ifc
 		MODIFIED,
 		ADDED,
 		DELETED,
-		NOTDEFINED,
+		MODIFIEDADDED,
+		MODIFIEDDELETED,
 	}
 }

@@ -9,6 +9,5 @@ package buildingsmart.ifc
 		private IfcAxis2Placement3D OrientationOf2DPlane;
 		private IfcStructuralLoadGroup[] LoadedBy;
 		private IfcStructuralResultGroup[] HasResults;
-		private IfcObjectPlacement SharedPlacement;
 	}
 }

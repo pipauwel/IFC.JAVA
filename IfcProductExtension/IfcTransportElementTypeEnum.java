@@ -8,8 +8,6 @@ package buildingsmart.ifc
 		ELEVATOR,
 		ESCALATOR,
 		MOVINGWALKWAY,
-		CRANEWAY,
-		LIFTINGGEAR,
 		USERDEFINED,
 		NOTDEFINED,
 	}

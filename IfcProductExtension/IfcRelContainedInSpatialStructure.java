@@ -6,6 +6,6 @@ package buildingsmart.ifc
 	public class IfcRelContainedInSpatialStructure extends IfcRelConnects
 	{
 		private IfcProduct[] RelatedElements;
-		private IfcSpatialElement RelatingStructure;
+		private IfcSpatialStructureElement RelatingStructure;
 	}
 }

@@ -5,11 +5,10 @@ package buildingsmart.ifc
 {
 	public class IfcTable extends IfcBase
 	{
-		private string Name;
+		private STRING Name;
 		private IfcTableRow[] Rows;
-		private IfcTableColumn[] Columns;
-		private int NumberOfCellsInRow;
-		private int NumberOfHeadings;
-		private int NumberOfDataRows;
+		private INTEGER NumberOfCellsInRow;
+		private INTEGER NumberOfHeadings;
+		private INTEGER NumberOfDataRows;
 	}
 }

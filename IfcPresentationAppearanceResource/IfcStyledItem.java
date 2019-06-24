@@ -6,7 +6,7 @@ package buildingsmart.ifc
 	public class IfcStyledItem extends IfcRepresentationItem
 	{
 		private IfcRepresentationItem Item;
-		private IfcStyleAssignmentSelect[] Styles;
+		private IfcPresentationStyleAssignment[] Styles;
 		private string Name;
 	}
 }

@@ -14,5 +14,6 @@ package buildingsmart.ifc
 		private IfcLengthMeasure WebEdgeRadius;
 		private double WebSlope;
 		private double FlangeSlope;
+		private IfcLengthMeasure CentreOfGravityInY;
 	}
 }

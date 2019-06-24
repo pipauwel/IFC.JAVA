@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcCrewResource extends IfcConstructionResource
 	{
-		private IfcCrewResourceTypeEnum PredefinedType;
 	}
 }

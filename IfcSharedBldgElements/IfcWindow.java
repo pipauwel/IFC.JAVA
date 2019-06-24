@@ -7,8 +7,5 @@ package buildingsmart.ifc
 	{
 		private IfcLengthMeasure OverallHeight;
 		private IfcLengthMeasure OverallWidth;
-		private IfcWindowTypeEnum PredefinedType;
-		private IfcWindowTypePartitioningEnum PartitioningType;
-		private string UserDefinedPartitioningType;
 	}
 }

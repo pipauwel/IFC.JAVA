@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcCurveStyleFontAndScaling extends IfcPresentationItem
+	public class IfcCurveStyleFontAndScaling extends IfcBase
 	{
 		private string Name;
 		private IfcCurveStyleFontSelect CurveFont;

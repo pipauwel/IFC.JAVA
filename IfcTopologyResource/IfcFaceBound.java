@@ -6,6 +6,6 @@ package buildingsmart.ifc
 	public class IfcFaceBound extends IfcTopologicalRepresentationItem
 	{
 		private IfcLoop Bound;
-		private bool Orientation;
+		private BOOLEAN Orientation;
 	}
 }

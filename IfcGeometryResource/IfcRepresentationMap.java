@@ -7,7 +7,6 @@ package buildingsmart.ifc
 	{
 		private IfcAxis2Placement MappingOrigin;
 		private IfcRepresentation MappedRepresentation;
-		private IfcShapeAspect[] HasShapeAspects;
 		private IfcMappedItem[] MapUsage;
 	}
 }

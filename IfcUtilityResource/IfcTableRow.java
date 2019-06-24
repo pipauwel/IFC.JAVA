@@ -6,6 +6,7 @@ package buildingsmart.ifc
 	public class IfcTableRow extends IfcBase
 	{
 		private IfcValue[] RowCells;
-		private bool IsHeading;
+		private BOOLEAN IsHeading;
+		private IfcTable OfTable;
 	}
 }

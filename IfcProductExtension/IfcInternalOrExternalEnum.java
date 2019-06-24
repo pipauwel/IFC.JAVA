@@ -7,9 +7,6 @@ package buildingsmart.ifc
 	{
 		INTERNAL,
 		EXTERNAL,
-		EXTERNAL_EARTH,
-		EXTERNAL_WATER,
-		EXTERNAL_FIRE,
 		NOTDEFINED,
 	}
 }

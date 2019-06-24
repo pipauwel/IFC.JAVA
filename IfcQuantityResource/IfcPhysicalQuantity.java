@@ -7,7 +7,6 @@ package buildingsmart.ifc
 	{
 		private string Name;
 		private string Description;
-		private IfcExternalReferenceRelationship[] HasExternalReferences;
 		private IfcPhysicalComplexQuantity[] PartOfComplex;
 	}
 }

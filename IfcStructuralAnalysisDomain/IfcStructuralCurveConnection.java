@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcStructuralCurveConnection extends IfcStructuralConnection
 	{
-		private IfcDirection Axis;
 	}
 }

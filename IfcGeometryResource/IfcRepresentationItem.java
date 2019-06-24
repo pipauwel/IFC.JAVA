@@ -5,7 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcRepresentationItem extends IfcBase
 	{
-		private IfcPresentationLayerAssignment[] LayerAssignment;
+		private IfcPresentationLayerAssignment[] LayerAssignments;
 		private IfcStyledItem[] StyledByItem;
 	}
 }

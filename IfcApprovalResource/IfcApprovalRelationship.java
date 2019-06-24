@@ -3,9 +3,11 @@
 
 package buildingsmart.ifc
 {
-	public class IfcApprovalRelationship extends IfcResourceLevelRelationship
+	public class IfcApprovalRelationship extends IfcBase
 	{
+		private IfcApproval RelatedApproval;
 		private IfcApproval RelatingApproval;
-		private IfcApproval[] RelatedApprovals;
+		private string Description;
+		private string Name;
 	}
 }

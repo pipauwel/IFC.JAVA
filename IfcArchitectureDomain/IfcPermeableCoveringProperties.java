@@ -3,7 +3,7 @@
 
 package buildingsmart.ifc
 {
-	public class IfcPermeableCoveringProperties extends IfcPreDefinedPropertySet
+	public class IfcPermeableCoveringProperties extends IfcPropertySetDefinition
 	{
 		private IfcPermeableCoveringOperationEnum OperationType;
 		private IfcWindowPanelPositionEnum PanelPosition;

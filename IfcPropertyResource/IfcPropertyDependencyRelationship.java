@@ -3,10 +3,12 @@
 
 package buildingsmart.ifc
 {
-	public class IfcPropertyDependencyRelationship extends IfcResourceLevelRelationship
+	public class IfcPropertyDependencyRelationship extends IfcBase
 	{
 		private IfcProperty DependingProperty;
 		private IfcProperty DependantProperty;
+		private string Name;
+		private string Description;
 		private string Expression;
 	}
 }

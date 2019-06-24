@@ -8,6 +8,5 @@ package buildingsmart.ifc
 		private IfcBenchmarkEnum Benchmark;
 		private string ValueSource;
 		private IfcMetricValueSelect DataValue;
-		private IfcReference ReferencePath;
 	}
 }

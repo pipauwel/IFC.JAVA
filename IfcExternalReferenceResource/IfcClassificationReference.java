@@ -5,10 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcClassificationReference extends IfcExternalReference
 	{
-		private IfcClassificationReferenceSelect ReferencedSource;
-		private string Description;
-		private string Sort;
-		private IfcRelAssociatesClassification[] ClassificationRefForObjects;
-		private IfcClassificationReference[] HasReferences;
+		private IfcClassification ReferencedSource;
 	}
 }

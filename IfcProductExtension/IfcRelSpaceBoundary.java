@@ -5,7 +5,7 @@ package buildingsmart.ifc
 {
 	public class IfcRelSpaceBoundary extends IfcRelConnects
 	{
-		private IfcSpaceBoundarySelect RelatingSpace;
+		private IfcSpace RelatingSpace;
 		private IfcElement RelatedBuildingElement;
 		private IfcConnectionGeometry ConnectionGeometry;
 		private IfcPhysicalOrVirtualEnum PhysicalOrVirtualBoundary;

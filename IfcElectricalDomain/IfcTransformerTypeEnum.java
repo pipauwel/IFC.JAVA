@@ -7,8 +7,6 @@ package buildingsmart.ifc
 	{
 		CURRENT,
 		FREQUENCY,
-		INVERTER,
-		RECTIFIER,
 		VOLTAGE,
 		USERDEFINED,
 		NOTDEFINED,

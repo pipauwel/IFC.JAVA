@@ -10,7 +10,5 @@ package buildingsmart.ifc
 		private IfcLengthMeasure WebThickness;
 		private IfcLengthMeasure FlangeThickness;
 		private IfcLengthMeasure FilletRadius;
-		private IfcLengthMeasure FlangeEdgeRadius;
-		private double FlangeSlope;
 	}
 }

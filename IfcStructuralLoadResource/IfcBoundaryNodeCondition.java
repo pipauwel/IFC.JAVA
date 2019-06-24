@@ -5,11 +5,11 @@ package buildingsmart.ifc
 {
 	public class IfcBoundaryNodeCondition extends IfcBoundaryCondition
 	{
-		private IfcTranslationalStiffnessSelect TranslationalStiffnessX;
-		private IfcTranslationalStiffnessSelect TranslationalStiffnessY;
-		private IfcTranslationalStiffnessSelect TranslationalStiffnessZ;
-		private IfcRotationalStiffnessSelect RotationalStiffnessX;
-		private IfcRotationalStiffnessSelect RotationalStiffnessY;
-		private IfcRotationalStiffnessSelect RotationalStiffnessZ;
+		private double LinearStiffnessX;
+		private double LinearStiffnessY;
+		private double LinearStiffnessZ;
+		private double RotationalStiffnessX;
+		private double RotationalStiffnessY;
+		private double RotationalStiffnessZ;
 	}
 }

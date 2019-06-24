@@ -5,6 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcRelAssociates extends IfcRelationship
 	{
-		private IfcDefinitionSelect[] RelatedObjects;
+		private IfcRoot[] RelatedObjects;
 	}
 }

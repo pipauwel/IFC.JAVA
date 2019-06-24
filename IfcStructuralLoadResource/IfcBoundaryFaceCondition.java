@@ -5,8 +5,8 @@ package buildingsmart.ifc
 {
 	public class IfcBoundaryFaceCondition extends IfcBoundaryCondition
 	{
-		private IfcModulusOfSubgradeReactionSelect TranslationalStiffnessByAreaX;
-		private IfcModulusOfSubgradeReactionSelect TranslationalStiffnessByAreaY;
-		private IfcModulusOfSubgradeReactionSelect TranslationalStiffnessByAreaZ;
+		private double LinearStiffnessByAreaX;
+		private double LinearStiffnessByAreaY;
+		private double LinearStiffnessByAreaZ;
 	}
 }

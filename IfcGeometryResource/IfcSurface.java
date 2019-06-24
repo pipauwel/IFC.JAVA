@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcSurface extends IfcGeometricRepresentationItem
 	{
-		private int Dim;
 	}
 }

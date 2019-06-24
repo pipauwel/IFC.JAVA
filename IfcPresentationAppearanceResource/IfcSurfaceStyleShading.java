@@ -3,9 +3,8 @@
 
 package buildingsmart.ifc
 {
-	public class IfcSurfaceStyleShading extends IfcPresentationItem
+	public class IfcSurfaceStyleShading extends IfcBase
 	{
 		private IfcColourRgb SurfaceColour;
-		private IfcRatioMeasure Transparency;
 	}
 }

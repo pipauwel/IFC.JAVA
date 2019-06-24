@@ -3,19 +3,11 @@
 
 package buildingsmart.ifc
 {
-	public class IfcAsymmetricIShapeProfileDef extends IfcParameterizedProfileDef
+	public class IfcAsymmetricIShapeProfileDef extends IfcIShapeProfileDef
 	{
-		private IfcLengthMeasure BottomFlangeWidth;
-		private IfcLengthMeasure OverallDepth;
-		private IfcLengthMeasure WebThickness;
-		private IfcLengthMeasure BottomFlangeThickness;
-		private IfcLengthMeasure BottomFlangeFilletRadius;
 		private IfcLengthMeasure TopFlangeWidth;
 		private IfcLengthMeasure TopFlangeThickness;
 		private IfcLengthMeasure TopFlangeFilletRadius;
-		private IfcLengthMeasure BottomFlangeEdgeRadius;
-		private double BottomFlangeSlope;
-		private IfcLengthMeasure TopFlangeEdgeRadius;
-		private double TopFlangeSlope;
+		private IfcLengthMeasure CentreOfGravityInY;
 	}
 }

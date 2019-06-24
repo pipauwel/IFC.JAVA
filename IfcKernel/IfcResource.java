@@ -5,8 +5,6 @@ package buildingsmart.ifc
 {
 	public class IfcResource extends IfcObject
 	{
-		private string Identification;
-		private string LongDescription;
 		private IfcRelAssignsToResource[] ResourceOf;
 	}
 }

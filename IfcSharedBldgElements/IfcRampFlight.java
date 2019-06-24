@@ -5,6 +5,5 @@ package buildingsmart.ifc
 {
 	public class IfcRampFlight extends IfcBuildingElement
 	{
-		private IfcRampFlightTypeEnum PredefinedType;
 	}
 }

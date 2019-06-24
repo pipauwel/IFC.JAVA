@@ -6,7 +6,7 @@ package buildingsmart.ifc
 	public class IfcOrientedEdge extends IfcEdge
 	{
 		private IfcEdge EdgeElement;
-		private bool Orientation;
+		private BOOLEAN Orientation;
 		private IfcVertex EdgeStart;
 		private IfcVertex EdgeEnd;
 	}

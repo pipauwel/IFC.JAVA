@@ -6,9 +6,6 @@ package buildingsmart.ifc
 	public class IfcObject extends IfcObjectDefinition
 	{
 		private string ObjectType;
-		private IfcRelDefinesByObject[] IsDeclaredBy;
-		private IfcRelDefinesByObject[] Declares;
-		private IfcRelDefinesByType[] IsTypedBy;
-		private IfcRelDefinesByProperties[] IsDefinedBy;
+		private IfcRelDefines[] IsDefinedBy;
 	}
 }

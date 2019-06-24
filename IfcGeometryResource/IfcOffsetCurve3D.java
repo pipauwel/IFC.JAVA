@@ -7,7 +7,7 @@ package buildingsmart.ifc
 	{
 		private IfcCurve BasisCurve;
 		private double Distance;
-		private int SelfIntersect;
+		private LOGICAL SelfIntersect;
 		private IfcDirection RefDirection;
 	}
 }

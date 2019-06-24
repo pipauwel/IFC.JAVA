@@ -6,7 +6,6 @@ package buildingsmart.ifc
 	public enum IfcColumnTypeEnum
 	{
 		COLUMN,
-		PILASTER,
 		USERDEFINED,
 		NOTDEFINED,
 	}

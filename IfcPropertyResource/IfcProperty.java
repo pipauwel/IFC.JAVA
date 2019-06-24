@@ -3,15 +3,12 @@
 
 package buildingsmart.ifc
 {
-	public class IfcProperty extends IfcPropertyAbstraction
+	public class IfcProperty extends IfcBase
 	{
 		private string Name;
 		private string Description;
-		private IfcPropertySet[] PartOfPset;
 		private IfcPropertyDependencyRelationship[] PropertyForDependance;
 		private IfcPropertyDependencyRelationship[] PropertyDependsOn;
 		private IfcComplexProperty[] PartOfComplex;
-		private IfcResourceConstraintRelationship[] HasConstraints;
-		private IfcResourceApprovalRelationship[] HasApprovals;
 	}
 }
