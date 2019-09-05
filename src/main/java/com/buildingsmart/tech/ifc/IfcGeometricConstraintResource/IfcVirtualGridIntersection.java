@@ -1,0 +1,60 @@
+// This file was automatically generated from IFCDOC at https://technical.buildingsmart.org/.
+// Very slight modifications were made to made content align with ifcXML reference examples.
+// Use this class library to create IFC-compliant (web) applications with XML and JSON data.
+// Author: Pieter Pauwels, Eindhoven University of Technology
+
+package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+@Guid("f63d89d0-3786-4462-861e-92b27070fde7")
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class IfcVirtualGridIntersection implements IfcGridPlacementDirectionSelect
+{
+	@Description("Two grid axes which intersects at exactly one intersection (see also informal proposition at IfcGrid). If attribute OffsetDistances is omitted, the intersection defines the placement or ref direction of a grid placement directly. If OffsetDistances are given, the intersection is defined by the offset curves to the grid axes.")
+	@Required()
+	@MinLength(2)
+	@MaxLength(2)
+	@Guid("f48a97d0-61c3-4c40-99c4-36a4506a6ffc")
+	private List<com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcGridAxis> intersectingAxes = new ArrayList<com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcGridAxis>();
+
+	@JacksonXmlProperty(isAttribute=true, localName = "OffsetDistances")
+	@Description("Offset distances to the grid axes. If given, it defines virtual offset curves to the grid axes. The intersection of the offset curves specify the virtual grid intersection.")
+	@Required()
+	@MinLength(2)
+	@MaxLength(3)
+	@Guid("97ec914d-8dfe-4ce4-ad64-add422bb66ce")
+	private List<Double> offsetDistances = new ArrayList<Double>();
+
+
+	public IfcVirtualGridIntersection()
+	{
+	}
+
+	public IfcVirtualGridIntersection(com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcGridAxis[] intersectingAxes, Double[] offsetDistances)
+	{
+		this.intersectingAxes = new ArrayList<>(Arrays.asList(intersectingAxes));
+		this.offsetDistances = new ArrayList<>(Arrays.asList(offsetDistances));
+	}
+
+	public List<com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcGridAxis> getIntersectingAxes() {
+		return this.intersectingAxes;
+	}
+
+	public List<Double> getOffsetDistances() {
+		return this.offsetDistances;
+	}
+
+
+}
+

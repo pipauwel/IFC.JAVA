@@ -1,0 +1,60 @@
+// This file was automatically generated from IFCDOC at https://technical.buildingsmart.org/.
+// Very slight modifications were made to made content align with ifcXML reference examples.
+// Use this class library to create IFC-compliant (web) applications with XML and JSON data.
+// Author: Pieter Pauwels, Eindhoven University of Technology
+
+package com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource;
+
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+@Guid("4ab54421-83da-48e9-9931-2e0f8051029b")
+@JsonIgnoreProperties(ignoreUnknown=true)
+public class IfcTextLiteralWithExtent extends IfcTextLiteral
+{
+	@JacksonXmlProperty(isAttribute=false, localName = "Extent")
+	@Description("The extent in the x and y direction of the text literal.")
+	@Required()
+	@Guid("2f249a57-152d-4616-af5b-ba3c4b2d9f54")
+	private com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPlanarExtent extent;
+
+	@JacksonXmlProperty(isAttribute=true, localName = "BoxAlignment")
+	@Description("The alignment of the text literal relative to its position.")
+	@Required()
+	@Guid("10d84bed-12f2-4bf3-8e3c-5e87145f7132")
+	private com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcBoxAlignment boxAlignment;
+
+
+	public IfcTextLiteralWithExtent()
+	{
+	}
+
+	public IfcTextLiteralWithExtent(String literal, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement placement, com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcTextPath path, com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPlanarExtent extent, com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcBoxAlignment boxAlignment)
+	{
+		super(literal, placement, path);
+		this.extent = extent;
+		this.boxAlignment = boxAlignment;
+	}
+
+	public com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPlanarExtent getExtent() {
+		return this.extent;
+	}
+
+	public void setExtent(com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPlanarExtent extent) {
+		this.extent = extent;
+	}
+
+	public com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcBoxAlignment getBoxAlignment() {
+		return this.boxAlignment;
+	}
+
+	public void setBoxAlignment(com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcBoxAlignment boxAlignment) {
+		this.boxAlignment = boxAlignment;
+	}
+
+
+}
+
