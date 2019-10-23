@@ -8,10 +8,14 @@ package com.buildingsmart.tech.ifc.IfcProductExtension;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("061ba193-076d-4292-a0ce-c96d7aba692e")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes( { @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcProductExtension.IfcSite.class, name = "IfcSite"), @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuilding.class, name = "IfcBuilding"), @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingStorey.class, name = "IfcBuildingStorey")})
 public abstract class IfcSpatialStructureElement extends IfcSpatialElement
 {
 	@JacksonXmlProperty(isAttribute=true, localName = "CompositionType")

@@ -11,10 +11,14 @@ import java.util.Set;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("a77e2e44-45fd-486d-8869-116757040301")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes( @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialStructureElement.class, name = "IfcSpatialStructureElement"))
 public abstract class IfcSpatialElement extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct
 {
 	@JacksonXmlProperty(isAttribute=true, localName = "LongName")

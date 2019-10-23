@@ -12,10 +12,14 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.MinLength;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("2ef4dae0-8e0d-4c3e-a179-bf7d2f279492")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes( @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcKernel.IfcProject.class, name = "IfcProject"))
 public abstract class IfcContext extends IfcObjectDefinition
 {
 	@JacksonXmlProperty(isAttribute=true, localName = "ObjectType")

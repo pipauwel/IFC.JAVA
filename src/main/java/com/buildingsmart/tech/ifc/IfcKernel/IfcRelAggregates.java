@@ -15,6 +15,10 @@ import com.buildingsmart.tech.annotations.MinLength;
 import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("28ae0ad8-279b-405d-9aaf-cdf69a4da9d9")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -30,6 +34,9 @@ public class IfcRelAggregates extends IfcRelDecomposes
 	@Required()
 	@MinLength(1)
 	@Guid("625f25d1-b298-4499-9dab-89400c65d801")
+	@JacksonXmlProperty(isAttribute=false, localName = "IfcObjectDefinition")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedObjects")
+	//@JacksonXmlElementWrapper(useWrapping = false)
 	private Set<com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition> relatedObjects = new HashSet<com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition>();
 
 

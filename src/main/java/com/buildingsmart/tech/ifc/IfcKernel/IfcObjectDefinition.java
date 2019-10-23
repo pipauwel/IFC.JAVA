@@ -13,10 +13,14 @@ import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.MaxLength;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("40ee8a1b-c5dc-4107-8d14-cb784713b9e5")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes( { @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcKernel.IfcObject.class, name = "IfcObject"),  @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcKernel.IfcContext.class, name = "IfcContext")})
 public abstract class IfcObjectDefinition extends IfcRoot implements IfcDefinitionSelect
 {
 	@Description("Reference to the relationship objects, that assign (by an association relationship) other subtypes of IfcObject to this object instance. Examples are the association to products, processes, controls, resources or groups.")
