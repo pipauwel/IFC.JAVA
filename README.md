@@ -113,3 +113,10 @@ Sample data files (XML, JSON) can be found in the [Examples](examples/) folder. 
   }
 }
 ```
+
+## Contact
+Please contact Pieter Pauwels (TU Eindhoven - p.pauwels@tue.nl) for further information, suggestions, questions, or anything related to this project.
+
+Feel free to make Git Issues with particular features you would like to have included.
+
+Feel free to extend the IFC schema by making additional subclasses where relevant. If you do so, please do this in a separate branch, so that your suggestions can be tracked.
