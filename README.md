@@ -15,4 +15,5 @@ This work is in progress. Code is likely unstable and not entirely user-friendel
 
 Serialisation and deserialisation is done using the Jackson package; and it is therefore out of the box. This code can be seen in the IO/IfcParser.java class. 
 
-
+## Results
+Sample data files (XML, JSON) can be found at https://github.com/pipauwel/IFC.JAVA/tree/master/src/main/resources.
