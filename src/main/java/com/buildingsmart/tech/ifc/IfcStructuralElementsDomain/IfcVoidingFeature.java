@@ -5,19 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementSubtraction;
 
 @Guid("76ade710-1f8c-4677-9f36-a21e6d4c7476")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcVoidingFeature extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementSubtraction
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Qualifies the feature regarding its shape and configuration relative to the voided element.")
 	@Guid("fff2ddf2-413b-4847-8afd-9e3ed847b801")
-	private com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcVoidingFeatureTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcVoidingFeatureTypeEnum predefinedType;
 
 
 	public IfcVoidingFeature()
@@ -29,11 +44,11 @@ public class IfcVoidingFeature extends com.buildingsmart.tech.ifc.IfcProductExte
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcVoidingFeatureTypeEnum getPredefinedType() {
+	public IfcVoidingFeatureTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcVoidingFeatureTypeEnum predefinedType) {
+	public void setPredefinedType(IfcVoidingFeatureTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

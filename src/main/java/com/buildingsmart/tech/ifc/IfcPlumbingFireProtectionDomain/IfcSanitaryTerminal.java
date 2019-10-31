@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminal;
 
 @Guid("3aeeb853-9edd-40a5-a6e2-a836653ac710")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSanitaryTerminal extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminal
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("c07c360f-6347-43e0-96b7-758b6c8b635a")
-	private com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcSanitaryTerminalTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcSanitaryTerminalTypeEnum predefinedType;
 
 
 	public IfcSanitaryTerminal()
@@ -27,11 +43,11 @@ public class IfcSanitaryTerminal extends com.buildingsmart.tech.ifc.IfcSharedBld
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcSanitaryTerminalTypeEnum getPredefinedType() {
+	public IfcSanitaryTerminalTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcSanitaryTerminalTypeEnum predefinedType) {
+	public void setPredefinedType(IfcSanitaryTerminalTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

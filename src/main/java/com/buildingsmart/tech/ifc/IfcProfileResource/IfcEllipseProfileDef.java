@@ -5,53 +5,69 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcParameterizedProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 
 @Guid("e019e0b0-86e1-4188-85b1-4d934b9a1046")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcEllipseProfileDef extends IfcParameterizedProfileDef
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "SemiAxis1")
 	@Description("The first radius of the ellipse. It is measured along the direction of Position.P[1].")
 	@Required()
 	@Guid("0b55b950-eb03-41c2-94a3-3c86f780417f")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure semiAxis1;
+	@JacksonXmlProperty(isAttribute=false, localName = "SemiAxis1")
+	private IfcPositiveLengthMeasure semiAxis1;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "SemiAxis2")
 	@Description("The second radius of the ellipse. It is measured along the direction of Position.P[2].")
 	@Required()
 	@Guid("1b240401-6d34-4234-bb82-3aa3883e0508")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure semiAxis2;
+	@JacksonXmlProperty(isAttribute=false, localName = "SemiAxis2")
+	private IfcPositiveLengthMeasure semiAxis2;
 
 
 	public IfcEllipseProfileDef()
 	{
 	}
 
-	public IfcEllipseProfileDef(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum profileType, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure semiAxis1, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure semiAxis2)
+	public IfcEllipseProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure semiAxis1, IfcPositiveLengthMeasure semiAxis2)
 	{
 		super(profileType);
 		this.semiAxis1 = semiAxis1;
 		this.semiAxis2 = semiAxis2;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getSemiAxis1() {
+	public IfcPositiveLengthMeasure getSemiAxis1() {
 		return this.semiAxis1;
 	}
 
-	public void setSemiAxis1(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure semiAxis1) {
+	public void setSemiAxis1(IfcPositiveLengthMeasure semiAxis1) {
 		this.semiAxis1 = semiAxis1;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getSemiAxis2() {
+	public IfcPositiveLengthMeasure getSemiAxis2() {
 		return this.semiAxis2;
 	}
 
-	public void setSemiAxis2(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure semiAxis2) {
+	public void setSemiAxis2(IfcPositiveLengthMeasure semiAxis2) {
 		this.semiAxis2 = semiAxis2;
 	}
 

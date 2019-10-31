@@ -5,15 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcArbitraryClosedProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
 
 @Guid("ebffea85-6601-4032-8540-a094ef46f7cb")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -21,22 +33,24 @@ public class IfcArbitraryProfileDefWithVoids extends IfcArbitraryClosedProfileDe
 {
 	@Description("Set of bounded curves, defining the inner boundaries of the arbitrary profile.")
 	@Required()
-	@MinLength(1)
 	@Guid("f5a968fa-e9ba-423c-9752-52657d57b5bc")
-	private Set<com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve> innerCurves = new HashSet<com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcCurve")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "InnerCurves")
+	private Set<IfcCurve> innerCurves;
 
 
 	public IfcArbitraryProfileDefWithVoids()
 	{
 	}
 
-	public IfcArbitraryProfileDefWithVoids(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum profileType, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve outerCurve, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve[] innerCurves)
+	public IfcArbitraryProfileDefWithVoids(IfcProfileTypeEnum profileType, IfcCurve outerCurve, IfcCurve[] innerCurves)
 	{
 		super(profileType, outerCurve);
 		this.innerCurves = new HashSet<>(Arrays.asList(innerCurves));
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve> getInnerCurves() {
+	public Set<IfcCurve> getInnerCurves() {
 		return this.innerCurves;
 	}
 

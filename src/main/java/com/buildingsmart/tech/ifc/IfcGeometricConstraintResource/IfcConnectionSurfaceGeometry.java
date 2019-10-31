@@ -5,10 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface;
 
 @Guid("2e3f9a00-22e8-4d1e-9473-28fab150a1fa")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -17,35 +33,37 @@ public class IfcConnectionSurfaceGeometry extends IfcConnectionGeometry
 	@Description("Surface at which related object is aligned at the relating element, given in the LCS of the relating element.")
 	@Required()
 	@Guid("314adc40-553a-4304-9635-524cc52d9f2b")
-	private com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface surfaceOnRelatingElement;
+	@JacksonXmlProperty(isAttribute=true, localName = "SurfaceOnRelatingElement")
+	private IfcSurfaceOrFaceSurface surfaceOnRelatingElement;
 
 	@Description("Surface at which the relating element is aligned at the related element, given in the LCS of the related element. If the information is omitted, then the origin of the related element is used.")
 	@Guid("799673ed-96e5-416c-9b59-e0b232546f8e")
-	private com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface surfaceOnRelatedElement;
+	@JacksonXmlProperty(isAttribute=true, localName = "SurfaceOnRelatedElement")
+	private IfcSurfaceOrFaceSurface surfaceOnRelatedElement;
 
 
 	public IfcConnectionSurfaceGeometry()
 	{
 	}
 
-	public IfcConnectionSurfaceGeometry(com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface surfaceOnRelatingElement)
+	public IfcConnectionSurfaceGeometry(IfcSurfaceOrFaceSurface surfaceOnRelatingElement)
 	{
 		this.surfaceOnRelatingElement = surfaceOnRelatingElement;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface getSurfaceOnRelatingElement() {
+	public IfcSurfaceOrFaceSurface getSurfaceOnRelatingElement() {
 		return this.surfaceOnRelatingElement;
 	}
 
-	public void setSurfaceOnRelatingElement(com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface surfaceOnRelatingElement) {
+	public void setSurfaceOnRelatingElement(IfcSurfaceOrFaceSurface surfaceOnRelatingElement) {
 		this.surfaceOnRelatingElement = surfaceOnRelatingElement;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface getSurfaceOnRelatedElement() {
+	public IfcSurfaceOrFaceSurface getSurfaceOnRelatedElement() {
 		return this.surfaceOnRelatedElement;
 	}
 
-	public void setSurfaceOnRelatedElement(com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface surfaceOnRelatedElement) {
+	public void setSurfaceOnRelatedElement(IfcSurfaceOrFaceSurface surfaceOnRelatedElement) {
 		this.surfaceOnRelatedElement = surfaceOnRelatedElement;
 	}
 

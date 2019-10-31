@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowControllerType;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSwitchingDeviceTypeEnum;
 
 @Guid("041abe9f-f73b-471c-859c-c577d975198c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSwitchingDeviceType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowControllerType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("<p>Identifies the predefined types of switch from which the type required may be set.</p>")
 	@Required()
 	@Guid("582dead0-78cd-4f9d-8d9b-509da170be57")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSwitchingDeviceTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcSwitchingDeviceTypeEnum predefinedType;
 
 
 	public IfcSwitchingDeviceType()
 	{
 	}
 
-	public IfcSwitchingDeviceType(String globalId, com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSwitchingDeviceTypeEnum predefinedType)
+	public IfcSwitchingDeviceType(String globalId, IfcSwitchingDeviceTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSwitchingDeviceTypeEnum getPredefinedType() {
+	public IfcSwitchingDeviceTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSwitchingDeviceTypeEnum predefinedType) {
+	public void setPredefinedType(IfcSwitchingDeviceTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

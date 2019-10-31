@@ -5,63 +5,79 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcParameterizedProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 
 @Guid("c5e6f97d-9889-46a6-bcbb-63e9cbb0b1c4")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcTShapeProfileDef extends IfcParameterizedProfileDef
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "Depth")
 	@Description("Web lengths, see illustration above (= h).")
 	@Required()
 	@Guid("ba4784da-d4b1-4f22-a835-28f21fb95c57")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure depth;
+	@JacksonXmlProperty(isAttribute=false, localName = "Depth")
+	private IfcPositiveLengthMeasure depth;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "FlangeWidth")
 	@Description("Flange lengths, see illustration above (= b).")
 	@Required()
 	@Guid("6ed7052b-c662-42bc-a3fa-7e12a958e215")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure flangeWidth;
+	@JacksonXmlProperty(isAttribute=false, localName = "FlangeWidth")
+	private IfcPositiveLengthMeasure flangeWidth;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "WebThickness")
 	@Description("Constant wall thickness of web (= ts).")
 	@Required()
 	@Guid("e0f4c060-66bc-4d98-acca-d3b51e211075")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure webThickness;
+	@JacksonXmlProperty(isAttribute=false, localName = "WebThickness")
+	private IfcPositiveLengthMeasure webThickness;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "FlangeThickness")
 	@Description("Constant wall thickness of flange (= tg).")
 	@Required()
 	@Guid("df89c02a-ade3-42be-bfae-01bf68430794")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure flangeThickness;
+	@JacksonXmlProperty(isAttribute=false, localName = "FlangeThickness")
+	private IfcPositiveLengthMeasure flangeThickness;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "FilletRadius")
 	@Description("Fillet radius according the above illustration (= r1).")
 	@Guid("1594be10-83da-4e4b-9659-4f3415565953")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure filletRadius;
+	@JacksonXmlProperty(isAttribute=false, localName = "FilletRadius")
+	private IfcNonNegativeLengthMeasure filletRadius;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "FlangeEdgeRadius")
 	@Description("Edge radius according the above illustration (= r2).")
 	@Guid("23604099-5595-4772-b498-58cf6d21ba2c")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure flangeEdgeRadius;
+	@JacksonXmlProperty(isAttribute=false, localName = "FlangeEdgeRadius")
+	private IfcNonNegativeLengthMeasure flangeEdgeRadius;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "WebEdgeRadius")
 	@Description("Edge radius according the above illustration (= r3).")
 	@Guid("55533e11-7b3e-42ed-97af-eec943eb0c3e")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure webEdgeRadius;
+	@JacksonXmlProperty(isAttribute=false, localName = "WebEdgeRadius")
+	private IfcNonNegativeLengthMeasure webEdgeRadius;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "WebSlope")
 	@Description("Slope of flange of the profile.")
 	@Guid("00b0c529-097f-4762-b409-70a3fac704e0")
+	@JacksonXmlProperty(isAttribute=true, localName = "WebSlope")
 	private double webSlope;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "FlangeSlope")
 	@Description("Slope of web of the profile.")
 	@Guid("c048d2db-273d-41a9-b441-b903590d3eac")
+	@JacksonXmlProperty(isAttribute=true, localName = "FlangeSlope")
 	private double flangeSlope;
 
 
@@ -69,7 +85,7 @@ public class IfcTShapeProfileDef extends IfcParameterizedProfileDef
 	{
 	}
 
-	public IfcTShapeProfileDef(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum profileType, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure depth, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure flangeWidth, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure webThickness, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure flangeThickness)
+	public IfcTShapeProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure depth, IfcPositiveLengthMeasure flangeWidth, IfcPositiveLengthMeasure webThickness, IfcPositiveLengthMeasure flangeThickness)
 	{
 		super(profileType);
 		this.depth = depth;
@@ -78,59 +94,59 @@ public class IfcTShapeProfileDef extends IfcParameterizedProfileDef
 		this.flangeThickness = flangeThickness;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getDepth() {
+	public IfcPositiveLengthMeasure getDepth() {
 		return this.depth;
 	}
 
-	public void setDepth(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure depth) {
+	public void setDepth(IfcPositiveLengthMeasure depth) {
 		this.depth = depth;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getFlangeWidth() {
+	public IfcPositiveLengthMeasure getFlangeWidth() {
 		return this.flangeWidth;
 	}
 
-	public void setFlangeWidth(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure flangeWidth) {
+	public void setFlangeWidth(IfcPositiveLengthMeasure flangeWidth) {
 		this.flangeWidth = flangeWidth;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getWebThickness() {
+	public IfcPositiveLengthMeasure getWebThickness() {
 		return this.webThickness;
 	}
 
-	public void setWebThickness(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure webThickness) {
+	public void setWebThickness(IfcPositiveLengthMeasure webThickness) {
 		this.webThickness = webThickness;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getFlangeThickness() {
+	public IfcPositiveLengthMeasure getFlangeThickness() {
 		return this.flangeThickness;
 	}
 
-	public void setFlangeThickness(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure flangeThickness) {
+	public void setFlangeThickness(IfcPositiveLengthMeasure flangeThickness) {
 		this.flangeThickness = flangeThickness;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure getFilletRadius() {
+	public IfcNonNegativeLengthMeasure getFilletRadius() {
 		return this.filletRadius;
 	}
 
-	public void setFilletRadius(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure filletRadius) {
+	public void setFilletRadius(IfcNonNegativeLengthMeasure filletRadius) {
 		this.filletRadius = filletRadius;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure getFlangeEdgeRadius() {
+	public IfcNonNegativeLengthMeasure getFlangeEdgeRadius() {
 		return this.flangeEdgeRadius;
 	}
 
-	public void setFlangeEdgeRadius(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure flangeEdgeRadius) {
+	public void setFlangeEdgeRadius(IfcNonNegativeLengthMeasure flangeEdgeRadius) {
 		this.flangeEdgeRadius = flangeEdgeRadius;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure getWebEdgeRadius() {
+	public IfcNonNegativeLengthMeasure getWebEdgeRadius() {
 		return this.webEdgeRadius;
 	}
 
-	public void setWebEdgeRadius(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure webEdgeRadius) {
+	public void setWebEdgeRadius(IfcNonNegativeLengthMeasure webEdgeRadius) {
 		this.webEdgeRadius = webEdgeRadius;
 	}
 

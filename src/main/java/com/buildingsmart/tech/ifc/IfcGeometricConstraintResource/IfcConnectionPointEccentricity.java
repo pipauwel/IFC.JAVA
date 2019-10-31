@@ -5,28 +5,43 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionPointGeometry;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcPointOrVertexPoint;
 
 @Guid("bdf3901b-3ab4-45b6-805b-4eebca105729")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcConnectionPointEccentricity extends IfcConnectionPointGeometry
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "EccentricityInX")
 	@Description("Distance in x direction between the two points (or vertex points) engaged in the point connection.")
 	@Guid("586cac5a-095b-42a4-a024-90f9d85b537b")
+	@JacksonXmlProperty(isAttribute=true, localName = "EccentricityInX")
 	private double eccentricityInX;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "EccentricityInY")
 	@Description("Distance in y direction between the two points (or vertex points) engaged in the point connection.")
 	@Guid("b5d160c7-662e-48ac-ad93-31fc6a900f18")
+	@JacksonXmlProperty(isAttribute=true, localName = "EccentricityInY")
 	private double eccentricityInY;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "EccentricityInZ")
 	@Description("Distance in z direction between the two points (or vertex points) engaged in the point connection.")
 	@Guid("1d14a083-6900-4deb-9417-32886a4b34b5")
+	@JacksonXmlProperty(isAttribute=true, localName = "EccentricityInZ")
 	private double eccentricityInZ;
 
 
@@ -34,7 +49,7 @@ public class IfcConnectionPointEccentricity extends IfcConnectionPointGeometry
 	{
 	}
 
-	public IfcConnectionPointEccentricity(com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcPointOrVertexPoint pointOnRelatingElement)
+	public IfcConnectionPointEccentricity(IfcPointOrVertexPoint pointOnRelatingElement)
 	{
 		super(pointOnRelatingElement);
 	}

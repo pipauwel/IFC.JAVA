@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowController;
 
 @Guid("ddf82f58-8d9d-4781-b90f-d27aca153c7f")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSwitchingDevice extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowController
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("d917d4c1-a6ef-4baa-b21a-f1e0ed809df5")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSwitchingDeviceTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcSwitchingDeviceTypeEnum predefinedType;
 
 
 	public IfcSwitchingDevice()
@@ -27,11 +43,11 @@ public class IfcSwitchingDevice extends com.buildingsmart.tech.ifc.IfcSharedBldg
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSwitchingDeviceTypeEnum getPredefinedType() {
+	public IfcSwitchingDeviceTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSwitchingDeviceTypeEnum predefinedType) {
+	public void setPredefinedType(IfcSwitchingDeviceTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

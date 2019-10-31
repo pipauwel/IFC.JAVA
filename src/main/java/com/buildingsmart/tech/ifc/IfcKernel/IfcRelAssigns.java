@@ -5,52 +5,72 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToActor;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToControl;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToGroup;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToProcess;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToProduct;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToResource;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelationship;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
 
 @Guid("458cc135-db13-40d6-ab1b-64ba222632fe")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcRelAssignsToActor.class, name = "IfcRelAssignsToActor"), @JsonSubTypes.Type(value = IfcRelAssignsToControl.class, name = "IfcRelAssignsToControl"), @JsonSubTypes.Type(value = IfcRelAssignsToGroup.class, name = "IfcRelAssignsToGroup"), @JsonSubTypes.Type(value = IfcRelAssignsToProcess.class, name = "IfcRelAssignsToProcess"), @JsonSubTypes.Type(value = IfcRelAssignsToProduct.class, name = "IfcRelAssignsToProduct"), @JsonSubTypes.Type(value = IfcRelAssignsToResource.class, name = "IfcRelAssignsToResource")})
 public abstract class IfcRelAssigns extends IfcRelationship
 {
 	@Description("Related objects, which are assigned to a single object. The type of the single (or relating) object is defined in the subtypes of IfcRelAssigns.")
 	@Required()
-	@MinLength(1)
 	@Guid("15095ee6-ca54-435a-ada1-6296bedeafc5")
-	private Set<com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition> relatedObjects = new HashSet<com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcObjectDefinition")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedObjects")
+	private Set<IfcObjectDefinition> relatedObjects;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "RelatedObjectsType")
 	@Description("Particular type of the assignment relationship. It can constrain the applicable object types, used within the role of <em>RelatedObjects</em>.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute is deprecated and shall no longer be used. A NIL value should always be assigned.</blockquote>")
 	@Guid("7dd9a03b-e83d-4bde-a7cc-99502633620b")
-	private com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum relatedObjectsType;
+	@JacksonXmlProperty(isAttribute=true, localName = "RelatedObjectsType")
+	private IfcObjectTypeEnum relatedObjectsType;
 
 
 	public IfcRelAssigns()
 	{
 	}
 
-	public IfcRelAssigns(String globalId, com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition[] relatedObjects)
+	public IfcRelAssigns(String globalId, IfcObjectDefinition[] relatedObjects)
 	{
 		super(globalId);
 		this.relatedObjects = new HashSet<>(Arrays.asList(relatedObjects));
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition> getRelatedObjects() {
+	public Set<IfcObjectDefinition> getRelatedObjects() {
 		return this.relatedObjects;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum getRelatedObjectsType() {
+	public IfcObjectTypeEnum getRelatedObjectsType() {
 		return this.relatedObjectsType;
 	}
 
-	public void setRelatedObjectsType(com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum relatedObjectsType) {
+	public void setRelatedObjectsType(IfcObjectTypeEnum relatedObjectsType) {
 		this.relatedObjectsType = relatedObjectsType;
 	}
 

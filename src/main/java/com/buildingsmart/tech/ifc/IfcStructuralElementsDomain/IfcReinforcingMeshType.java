@@ -6,123 +6,137 @@
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcReinforcingElementType;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcReinforcingMeshTypeEnum;
 
 @Guid("c55468d2-4e66-449a-9e37-6795ea684389")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcReinforcingMeshType extends IfcReinforcingElementType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Subtype of reinforcing mesh.")
 	@Required()
 	@Guid("1d8cc34d-0aa9-4d31-a830-2eb84e3f8fff")
-	private com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcReinforcingMeshTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcReinforcingMeshTypeEnum predefinedType;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "MeshLength")
 	@Description("The overall length of the mesh measured in its longitudinal direction.")
 	@Guid("133716eb-0efc-4894-8d25-7843e0a0f8dc")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure meshLength;
+	@JacksonXmlProperty(isAttribute=false, localName = "MeshLength")
+	private IfcPositiveLengthMeasure meshLength;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "MeshWidth")
 	@Description("The overall width of the mesh measured in its transversal direction.")
 	@Guid("c19b7ecf-89bc-4ce5-88df-1fc9e119b605")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure meshWidth;
+	@JacksonXmlProperty(isAttribute=false, localName = "MeshWidth")
+	private IfcPositiveLengthMeasure meshWidth;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "LongitudinalBarNominalDiameter")
 	@Description("The nominal diameter denoting the cross-section size of the longitudinal bars.")
 	@Guid("f333ae8d-a4a1-429f-914c-edb1c105285b")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure longitudinalBarNominalDiameter;
+	@JacksonXmlProperty(isAttribute=false, localName = "LongitudinalBarNominalDiameter")
+	private IfcPositiveLengthMeasure longitudinalBarNominalDiameter;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "TransverseBarNominalDiameter")
 	@Description("The nominal diameter denoting the cross-section size of the transverse bars.")
 	@Guid("826e5734-3a0d-4205-9848-53f04a6c1c81")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure transverseBarNominalDiameter;
+	@JacksonXmlProperty(isAttribute=false, localName = "TransverseBarNominalDiameter")
+	private IfcPositiveLengthMeasure transverseBarNominalDiameter;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "LongitudinalBarCrossSectionArea")
 	@Description("The effective cross-section area of the longitudinal bars of the mesh.")
 	@Guid("f5d91a39-9728-42f4-8ec2-5154cb02bb08")
+	@JacksonXmlProperty(isAttribute=true, localName = "LongitudinalBarCrossSectionArea")
 	private double longitudinalBarCrossSectionArea;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "TransverseBarCrossSectionArea")
 	@Description("The effective cross-section area of the transverse bars of the mesh.")
 	@Guid("39ee07ed-b714-4671-83ba-eda0b707228a")
+	@JacksonXmlProperty(isAttribute=true, localName = "TransverseBarCrossSectionArea")
 	private double transverseBarCrossSectionArea;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "LongitudinalBarSpacing")
 	@Description("The spacing between the longitudinal bars.  Note: an even distribution of bars is presumed; other cases are handled by classification or property sets.")
 	@Guid("42e0b783-0ae3-4e97-8452-01815b38f23e")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure longitudinalBarSpacing;
+	@JacksonXmlProperty(isAttribute=false, localName = "LongitudinalBarSpacing")
+	private IfcPositiveLengthMeasure longitudinalBarSpacing;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "TransverseBarSpacing")
 	@Description("The spacing between the transverse bars.  Note: an even distribution of bars is presumed; other cases are handled by classification or property sets.")
 	@Guid("ccd835af-8460-41f9-86ce-c93355671a77")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure transverseBarSpacing;
+	@JacksonXmlProperty(isAttribute=false, localName = "TransverseBarSpacing")
+	private IfcPositiveLengthMeasure transverseBarSpacing;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "BendingShapeCode")
 	@Description("If this mesh type is bent rather than planar, this attribute provides a shape code per a standard like ACI 315, ISO 3766, or a similar standard.  It is presumed that a single standard for defining the mesh bending is used throughout the project and that this standard is referenced from the <em>IfcProject</em> object through the <em>IfcDocumentReference</em> mechanism.")
 	@Guid("3b0b1b32-71f7-4e23-b4a5-8003eef3d2cc")
+	@JacksonXmlProperty(isAttribute=true, localName = "BendingShapeCode")
 	private String bendingShapeCode;
 
 	@Description("If this mesh type is bent rather than planar, this attribute provides bending shape parameters. Their meaning is defined by the bending shape code and the respective standard.")
-	@MinLength(1)
 	@Guid("996282cb-f70e-4996-baa7-7b247054cd4e")
-	private List<com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcBendingParameterSelect> bendingParameters = new ArrayList<com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcBendingParameterSelect>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcBendingParameterSelect")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "BendingParameters")
+	private List<IfcBendingParameterSelect> bendingParameters;
 
 
 	public IfcReinforcingMeshType()
 	{
 	}
 
-	public IfcReinforcingMeshType(String globalId, com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcReinforcingMeshTypeEnum predefinedType)
+	public IfcReinforcingMeshType(String globalId, IfcReinforcingMeshTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcReinforcingMeshTypeEnum getPredefinedType() {
+	public IfcReinforcingMeshTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcReinforcingMeshTypeEnum predefinedType) {
+	public void setPredefinedType(IfcReinforcingMeshTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getMeshLength() {
+	public IfcPositiveLengthMeasure getMeshLength() {
 		return this.meshLength;
 	}
 
-	public void setMeshLength(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure meshLength) {
+	public void setMeshLength(IfcPositiveLengthMeasure meshLength) {
 		this.meshLength = meshLength;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getMeshWidth() {
+	public IfcPositiveLengthMeasure getMeshWidth() {
 		return this.meshWidth;
 	}
 
-	public void setMeshWidth(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure meshWidth) {
+	public void setMeshWidth(IfcPositiveLengthMeasure meshWidth) {
 		this.meshWidth = meshWidth;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getLongitudinalBarNominalDiameter() {
+	public IfcPositiveLengthMeasure getLongitudinalBarNominalDiameter() {
 		return this.longitudinalBarNominalDiameter;
 	}
 
-	public void setLongitudinalBarNominalDiameter(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure longitudinalBarNominalDiameter) {
+	public void setLongitudinalBarNominalDiameter(IfcPositiveLengthMeasure longitudinalBarNominalDiameter) {
 		this.longitudinalBarNominalDiameter = longitudinalBarNominalDiameter;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getTransverseBarNominalDiameter() {
+	public IfcPositiveLengthMeasure getTransverseBarNominalDiameter() {
 		return this.transverseBarNominalDiameter;
 	}
 
-	public void setTransverseBarNominalDiameter(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure transverseBarNominalDiameter) {
+	public void setTransverseBarNominalDiameter(IfcPositiveLengthMeasure transverseBarNominalDiameter) {
 		this.transverseBarNominalDiameter = transverseBarNominalDiameter;
 	}
 
@@ -142,19 +156,19 @@ public class IfcReinforcingMeshType extends IfcReinforcingElementType
 		this.transverseBarCrossSectionArea = transverseBarCrossSectionArea;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getLongitudinalBarSpacing() {
+	public IfcPositiveLengthMeasure getLongitudinalBarSpacing() {
 		return this.longitudinalBarSpacing;
 	}
 
-	public void setLongitudinalBarSpacing(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure longitudinalBarSpacing) {
+	public void setLongitudinalBarSpacing(IfcPositiveLengthMeasure longitudinalBarSpacing) {
 		this.longitudinalBarSpacing = longitudinalBarSpacing;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getTransverseBarSpacing() {
+	public IfcPositiveLengthMeasure getTransverseBarSpacing() {
 		return this.transverseBarSpacing;
 	}
 
-	public void setTransverseBarSpacing(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure transverseBarSpacing) {
+	public void setTransverseBarSpacing(IfcPositiveLengthMeasure transverseBarSpacing) {
 		this.transverseBarSpacing = transverseBarSpacing;
 	}
 
@@ -166,7 +180,7 @@ public class IfcReinforcingMeshType extends IfcReinforcingElementType
 		this.bendingShapeCode = bendingShapeCode;
 	}
 
-	public List<com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcBendingParameterSelect> getBendingParameters() {
+	public List<IfcBendingParameterSelect> getBendingParameters() {
 		return this.bendingParameters;
 	}
 

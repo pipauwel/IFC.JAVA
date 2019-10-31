@@ -5,38 +5,55 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralReaction;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGlobalOrLocalEnum;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveActivityTypeEnum;
 
 @Guid("d85746e9-e456-40b1-9f23-87262b226375")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcStructuralCurveReaction extends IfcStructuralReaction
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Type of reaction according to its distribution of load values.")
 	@Required()
 	@Guid("090260b8-a1fe-4aec-889e-d8fd90137b39")
-	private com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveActivityTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcStructuralCurveActivityTypeEnum predefinedType;
 
 
 	public IfcStructuralCurveReaction()
 	{
 	}
 
-	public IfcStructuralCurveReaction(String globalId, com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad appliedLoad, com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGlobalOrLocalEnum globalOrLocal, com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveActivityTypeEnum predefinedType)
+	public IfcStructuralCurveReaction(String globalId, IfcStructuralLoad appliedLoad, IfcGlobalOrLocalEnum globalOrLocal, IfcStructuralCurveActivityTypeEnum predefinedType)
 	{
 		super(globalId, appliedLoad, globalOrLocal);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveActivityTypeEnum getPredefinedType() {
+	public IfcStructuralCurveActivityTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveActivityTypeEnum predefinedType) {
+	public void setPredefinedType(IfcStructuralCurveActivityTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

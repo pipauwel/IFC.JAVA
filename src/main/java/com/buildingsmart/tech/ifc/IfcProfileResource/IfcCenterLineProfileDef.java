@@ -5,38 +5,55 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcArbitraryOpenProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBoundedCurve;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 
 @Guid("7c8824b5-eca4-4977-8631-71274a016d0c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCenterLineProfileDef extends IfcArbitraryOpenProfileDef
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "Thickness")
 	@Description("Constant thickness applied along the center line.")
 	@Required()
 	@Guid("ec8fae2b-5051-4d07-80f8-bdf8fd902345")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure thickness;
+	@JacksonXmlProperty(isAttribute=false, localName = "Thickness")
+	private IfcPositiveLengthMeasure thickness;
 
 
 	public IfcCenterLineProfileDef()
 	{
 	}
 
-	public IfcCenterLineProfileDef(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum profileType, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBoundedCurve curve, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure thickness)
+	public IfcCenterLineProfileDef(IfcProfileTypeEnum profileType, IfcBoundedCurve curve, IfcPositiveLengthMeasure thickness)
 	{
 		super(profileType, curve);
 		this.thickness = thickness;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getThickness() {
+	public IfcPositiveLengthMeasure getThickness() {
 		return this.thickness;
 	}
 
-	public void setThickness(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure thickness) {
+	public void setThickness(IfcPositiveLengthMeasure thickness) {
 		this.thickness = thickness;
 	}
 

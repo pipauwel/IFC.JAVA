@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowMovingDevice;
 
 @Guid("da626cac-98fb-4f4c-8d4a-c8c4bac3a68d")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPump extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowMovingDevice
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("f3a4f34f-67bd-4977-b1ac-23f5004f8536")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcPumpTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcPumpTypeEnum predefinedType;
 
 
 	public IfcPump()
@@ -27,11 +43,11 @@ public class IfcPump extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElem
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcPumpTypeEnum getPredefinedType() {
+	public IfcPumpTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcPumpTypeEnum predefinedType) {
+	public void setPredefinedType(IfcPumpTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

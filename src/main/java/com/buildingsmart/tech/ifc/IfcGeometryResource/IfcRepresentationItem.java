@@ -5,40 +5,60 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcMappedItem;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcStyledItem;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcTopologicalRepresentationItem;
 
 @Guid("e783d84d-d19b-4cf7-a863-f851642523f8")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcGeometricRepresentationItem.class, name = "IfcGeometricRepresentationItem"), @JsonSubTypes.Type(value = IfcMappedItem.class, name = "IfcMappedItem"), @JsonSubTypes.Type(value = IfcStyledItem.class, name = "IfcStyledItem"), @JsonSubTypes.Type(value = IfcTopologicalRepresentationItem.class, name = "IfcTopologicalRepresentationItem")})
 public abstract class IfcRepresentationItem implements com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLayeredItem
 {
 	@Description("Assignment of the representation item to a single or multiple layer(s). The <em>LayerAssignments</em> can override a <em>LayerAssignments</em> of the <em>IfcRepresentation</em> it is used  within the list of <em>Items</em>.  <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; The inverse attribute <em>LayerAssignments</em> has been added.</blockquote>   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The inverse attribute <em>LayerAssignment</em> has  been restricted to max 1. Upward compatibility for file based exchange is guaranteed. </blockquote>")
-	@MaxLength(1)
 	@Guid("dfe686aa-bc7f-4a2e-a98a-a1bff75b1212")
-	private Set<com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcPresentationLayerAssignment> layerAssignment = new HashSet<com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcPresentationLayerAssignment>();
-
-	@JacksonXmlProperty(isAttribute=false, localName = "StyledByItem")
-	@Description("Reference to the <em>IfcStyledItem</em> that provides presentation information to the representation, e.g. a curve style, including colour and thickness to a geometric curve.    <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; The inverse attribute <em>StyledByItem</em> has been added.</blockquote>")
 	@MaxLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcPresentationLayerAssignment")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "LayerAssignment")
+	private Set<IfcPresentationLayerAssignment> layerAssignment;
+
+	@Description("Reference to the <em>IfcStyledItem</em> that provides presentation information to the representation, e.g. a curve style, including colour and thickness to a geometric curve.    <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; The inverse attribute <em>StyledByItem</em> has been added.</blockquote>")
 	@Guid("77b7e734-9703-41d6-82ec-f7dcfb179cba")
-	private Set<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcStyledItem> styledByItem = new HashSet<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcStyledItem>();
+	@MaxLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcStyledItem")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "StyledByItem")
+	private Set<IfcStyledItem> styledByItem;
 
 
 	public IfcRepresentationItem()
 	{
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcPresentationLayerAssignment> getLayerAssignment() {
+	public Set<IfcPresentationLayerAssignment> getLayerAssignment() {
 		return this.layerAssignment;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcStyledItem> getStyledByItem() {
+	public Set<IfcStyledItem> getStyledByItem() {
 		return this.styledByItem;
 	}
 

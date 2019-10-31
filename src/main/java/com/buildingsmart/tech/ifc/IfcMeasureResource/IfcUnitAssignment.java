@@ -5,15 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcMeasureResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit;
 
 @Guid("cdb8d8f7-b0f6-4fc4-a97e-cc6ff85a83f6")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -21,21 +31,23 @@ public class IfcUnitAssignment
 {
 	@Description("Units to be included within a unit assignment.")
 	@Required()
-	@MinLength(1)
 	@Guid("41282efe-7993-4329-a53b-a25bface8606")
-	private Set<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit> units = new HashSet<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcUnit")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Units")
+	private Set<IfcUnit> units;
 
 
 	public IfcUnitAssignment()
 	{
 	}
 
-	public IfcUnitAssignment(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit[] units)
+	public IfcUnitAssignment(IfcUnit[] units)
 	{
 		this.units = new HashSet<>(Arrays.asList(units));
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit> getUnits() {
+	public Set<IfcUnit> getUnits() {
 		return this.units;
 	}
 

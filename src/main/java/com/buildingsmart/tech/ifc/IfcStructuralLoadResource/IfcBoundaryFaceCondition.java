@@ -5,9 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralLoadResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.*;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryCondition;
 
 @Guid("fa24f0f1-91ba-46b3-a264-4ec1679a4bce")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -15,42 +31,45 @@ public class IfcBoundaryFaceCondition extends IfcBoundaryCondition
 {
 	@Description("Translational stiffness value in x-direction of the coordinate system defined by the instance which uses this resource object.")
 	@Guid("b7942964-9b3c-4b44-8aae-8d04af7422d0")
-	private com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaX;
+	@JacksonXmlProperty(isAttribute=true, localName = "TranslationalStiffnessByAreaX")
+	private IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaX;
 
 	@Description("Translational stiffness value in y-direction of the coordinate system defined by the instance which uses this resource object.")
 	@Guid("3a0404bd-fe3b-4cc4-af92-314dbf0e7499")
-	private com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaY;
+	@JacksonXmlProperty(isAttribute=true, localName = "TranslationalStiffnessByAreaY")
+	private IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaY;
 
 	@Description("Translational stiffness value in z-direction of the coordinate system defined by the instance which uses this resource object.")
 	@Guid("d13259d4-20ba-49b3-a4fa-a2d7071ac628")
-	private com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaZ;
+	@JacksonXmlProperty(isAttribute=true, localName = "TranslationalStiffnessByAreaZ")
+	private IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaZ;
 
 
 	public IfcBoundaryFaceCondition()
 	{
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect getTranslationalStiffnessByAreaX() {
+	public IfcModulusOfSubgradeReactionSelect getTranslationalStiffnessByAreaX() {
 		return this.translationalStiffnessByAreaX;
 	}
 
-	public void setTranslationalStiffnessByAreaX(com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaX) {
+	public void setTranslationalStiffnessByAreaX(IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaX) {
 		this.translationalStiffnessByAreaX = translationalStiffnessByAreaX;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect getTranslationalStiffnessByAreaY() {
+	public IfcModulusOfSubgradeReactionSelect getTranslationalStiffnessByAreaY() {
 		return this.translationalStiffnessByAreaY;
 	}
 
-	public void setTranslationalStiffnessByAreaY(com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaY) {
+	public void setTranslationalStiffnessByAreaY(IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaY) {
 		this.translationalStiffnessByAreaY = translationalStiffnessByAreaY;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect getTranslationalStiffnessByAreaZ() {
+	public IfcModulusOfSubgradeReactionSelect getTranslationalStiffnessByAreaZ() {
 		return this.translationalStiffnessByAreaZ;
 	}
 
-	public void setTranslationalStiffnessByAreaZ(com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaZ) {
+	public void setTranslationalStiffnessByAreaZ(IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaZ) {
 		this.translationalStiffnessByAreaZ = translationalStiffnessByAreaZ;
 	}
 

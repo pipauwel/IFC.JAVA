@@ -5,19 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcProcessExtension;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcProcess;
 
 @Guid("0cce4f12-90b1-4e02-a09b-0dab4f9a731c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcProcedure extends com.buildingsmart.tech.ifc.IfcKernel.IfcProcess
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Identifies the predefined types of a procedure from which       the type required may be set.")
 	@Guid("3f02d565-aa4a-4a70-9763-24f2ee9e0e79")
-	private com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcProcedureTypeEnum predefinedType;
 
 
 	public IfcProcedure()
@@ -29,11 +44,11 @@ public class IfcProcedure extends com.buildingsmart.tech.ifc.IfcKernel.IfcProces
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum getPredefinedType() {
+	public IfcProcedureTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum predefinedType) {
+	public void setPredefinedType(IfcProcedureTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

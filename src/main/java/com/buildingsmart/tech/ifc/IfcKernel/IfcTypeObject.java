@@ -5,34 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.MinLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProcess;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProduct;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeResource;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
 
 @Guid("1d05673d-0b58-4733-862e-d6626abd1efb")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcTypeProcess.class, name = "IfcTypeProcess"), @JsonSubTypes.Type(value = IfcTypeProduct.class, name = "IfcTypeProduct"), @JsonSubTypes.Type(value = IfcTypeResource.class, name = "IfcTypeResource")})
 public class IfcTypeObject extends IfcObjectDefinition
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "ApplicableOccurrence")
 	@Description("The attribute optionally defines the data type of the occurrence object, to which the assigned type object can relate. If not present, no instruction is given to which occurrence object the type object is applicable. The following conventions are used:  <ul>    <li>The IFC entity name of the applicable occurrence using the IFC naming convention, CamelCase with IFC prefix</li>    <li>It can be optionally followed by the predefined type after the separator \"/\" (forward slash), using uppercase</li>    <li>If one type object is applicable to many occurrence objects, then those occurrence object names should be separate by comma \",\" forming a comma separated string.  </ul>  <blockquote class=\"example\">    EXAMPLE  Refering to a furniture as applicable occurrence entity would be expressed as 'IfcFurnishingElement', refering to a brace as applicable entity would be expressed as 'IfcMember/BRACE', refering to a wall and wall standard case would be expressed as 'IfcWall, IfcWallStandardCase'.  </blockquote>")
 	@Guid("e324aef5-b4aa-4e62-86f1-0c332beee624")
+	@JacksonXmlProperty(isAttribute=true, localName = "ApplicableOccurrence")
 	private String applicableOccurrence;
 
 	@Description("Set <strike>list</strike> of unique property sets, that are associated with the object type and are common to all object occurrences referring to this object type.  <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; The attribute aggregate type has been changed from LIST to SET.</blockquote>")
-	@MinLength(1)
 	@Guid("2513ab6d-af8f-4320-b951-1ce016a15208")
-	private Set<com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition> hasPropertySets = new HashSet<com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcPropertySetDefinition")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasPropertySets")
+	private Set<IfcPropertySetDefinition> hasPropertySets;
 
 	@Description("Reference to the relationship IfcRelDefinedByType and thus to those occurrence objects, which are defined by this type.")
-	@MaxLength(1)
 	@Guid("b9f6a3c9-d5d6-4a7a-8d44-116f467fda32")
-	private Set<com.buildingsmart.tech.ifc.IfcKernel.IfcRelDefinesByType> types = new HashSet<com.buildingsmart.tech.ifc.IfcKernel.IfcRelDefinesByType>();
+	@MaxLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDefinesByType")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Types")
+	private Set<IfcRelDefinesByType> types;
 
 
 	public IfcTypeObject()
@@ -52,11 +71,11 @@ public class IfcTypeObject extends IfcObjectDefinition
 		this.applicableOccurrence = applicableOccurrence;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition> getHasPropertySets() {
+	public Set<IfcPropertySetDefinition> getHasPropertySets() {
 		return this.hasPropertySets;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcKernel.IfcRelDefinesByType> getTypes() {
+	public Set<IfcRelDefinesByType> getTypes() {
 		return this.types;
 	}
 

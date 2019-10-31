@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice;
 
 @Guid("509208ea-e863-454b-9bd2-3fdf0c7dbac6")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSolarDevice extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("08401fee-143c-4a4a-8600-3460e518aefe")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSolarDeviceTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcSolarDeviceTypeEnum predefinedType;
 
 
 	public IfcSolarDevice()
@@ -27,11 +43,11 @@ public class IfcSolarDevice extends com.buildingsmart.tech.ifc.IfcSharedBldgServ
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSolarDeviceTypeEnum getPredefinedType() {
+	public IfcSolarDeviceTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSolarDeviceTypeEnum predefinedType) {
+	public void setPredefinedType(IfcSolarDeviceTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

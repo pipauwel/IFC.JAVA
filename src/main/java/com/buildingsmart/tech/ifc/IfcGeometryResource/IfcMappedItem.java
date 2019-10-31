@@ -5,52 +5,68 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationMap;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator;
 
 @Guid("ffc10785-4b8a-40de-a1a6-87a49ef4ff7f")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMappedItem extends IfcRepresentationItem
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "MappingSource")
 	@Description("A representation map that is the source of the mapped item. It can be seen as a block (or cell or marco) definition.")
 	@Required()
 	@Guid("cd257a83-e226-4903-80bc-2796c5527e23")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationMap mappingSource;
+	@JacksonXmlProperty(isAttribute=false, localName = "MappingSource")
+	private IfcRepresentationMap mappingSource;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "MappingTarget")
 	@Description("A representation item that is the target onto which the mapping source is mapped. It is constraint to be a Cartesian transformation operator.")
 	@Required()
 	@Guid("4720b58a-30bb-4228-b4e7-431660ea2b25")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator mappingTarget;
+	@JacksonXmlProperty(isAttribute=false, localName = "MappingTarget")
+	private IfcCartesianTransformationOperator mappingTarget;
 
 
 	public IfcMappedItem()
 	{
 	}
 
-	public IfcMappedItem(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationMap mappingSource, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator mappingTarget)
+	public IfcMappedItem(IfcRepresentationMap mappingSource, IfcCartesianTransformationOperator mappingTarget)
 	{
 		this.mappingSource = mappingSource;
 		this.mappingTarget = mappingTarget;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationMap getMappingSource() {
+	public IfcRepresentationMap getMappingSource() {
 		return this.mappingSource;
 	}
 
-	public void setMappingSource(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationMap mappingSource) {
+	public void setMappingSource(IfcRepresentationMap mappingSource) {
 		this.mappingSource = mappingSource;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator getMappingTarget() {
+	public IfcCartesianTransformationOperator getMappingTarget() {
 		return this.mappingTarget;
 	}
 
-	public void setMappingTarget(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator mappingTarget) {
+	public void setMappingTarget(IfcCartesianTransformationOperator mappingTarget) {
 		this.mappingTarget = mappingTarget;
 	}
 

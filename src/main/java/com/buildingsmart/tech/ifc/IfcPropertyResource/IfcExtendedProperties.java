@@ -5,43 +5,59 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.*;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProperties;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileProperties;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyAbstraction;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
 
 @Guid("6eefdfa8-0f42-440b-a927-ddd04185cfd4")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcMaterialProperties.class, name = "IfcMaterialProperties"), @JsonSubTypes.Type(value = IfcProfileProperties.class, name = "IfcProfileProperties")})
 public abstract class IfcExtendedProperties extends IfcPropertyAbstraction
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	@Description("The name given to the set of properties.")
 	@Guid("35758c6c-417b-4785-ac0b-fd61a613f9db")
+	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	@Description("Description for the set of properties.")
 	@Guid("ca07af86-dd02-4eae-98a1-854664b54a87")
+	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
 	@Description("The set of properties provided for this extended property collection.")
 	@Required()
-	@MinLength(1)
 	@Guid("1ed043fe-54d5-4e63-bd45-c1cb8c066dd3")
-	private Set<com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty> properties = new HashSet<com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcProperty")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Properties")
+	private Set<IfcProperty> properties;
 
 
 	public IfcExtendedProperties()
 	{
 	}
 
-	public IfcExtendedProperties(com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty[] properties)
+	public IfcExtendedProperties(IfcProperty[] properties)
 	{
 		this.properties = new HashSet<>(Arrays.asList(properties));
 	}
@@ -62,7 +78,7 @@ public abstract class IfcExtendedProperties extends IfcPropertyAbstraction
 		this.description = description;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty> getProperties() {
+	public Set<IfcProperty> getProperties() {
 		return this.properties;
 	}
 

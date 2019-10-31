@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcProcessExtension;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProcess;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum;
 
 @Guid("a91157ae-e871-49c4-bbff-a0b9224d6a3a")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcProcedureType extends com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProcess
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Identifies the predefined types of a procedure from which       the type required may be set.")
 	@Required()
 	@Guid("d373b84f-93fb-46fc-be52-d46907ae3f8b")
-	private com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcProcedureTypeEnum predefinedType;
 
 
 	public IfcProcedureType()
 	{
 	}
 
-	public IfcProcedureType(String globalId, com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum predefinedType)
+	public IfcProcedureType(String globalId, IfcProcedureTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum getPredefinedType() {
+	public IfcProcedureTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum predefinedType) {
+	public void setPredefinedType(IfcProcedureTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

@@ -5,18 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCompositeCurveSegment;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcTransitionCode;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
 
 @Guid("73dcb7dc-33d9-44b6-9ff1-1c8ded7c722d")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcReparametrisedCompositeCurveSegment extends IfcCompositeCurveSegment
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "ParamLength")
 	@Required()
 	@Guid("c5577010-d8c0-41e0-b393-c30f401114a2")
+	@JacksonXmlProperty(isAttribute=true, localName = "ParamLength")
 	private double paramLength;
 
 
@@ -24,7 +40,7 @@ public class IfcReparametrisedCompositeCurveSegment extends IfcCompositeCurveSeg
 	{
 	}
 
-	public IfcReparametrisedCompositeCurveSegment(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcTransitionCode transition, Boolean sameSense, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve parentCurve, double paramLength)
+	public IfcReparametrisedCompositeCurveSegment(IfcTransitionCode transition, Boolean sameSense, IfcCurve parentCurve, double paramLength)
 	{
 		super(transition, sameSense, parentCurve);
 		this.paramLength = paramLength;

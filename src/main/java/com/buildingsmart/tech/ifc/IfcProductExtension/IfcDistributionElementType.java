@@ -5,11 +5,31 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionControlElementType;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionFlowElementType;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementType;
 
 @Guid("a3c22542-e292-4a9f-85b8-a09d92d82f58")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcDistributionControlElementType.class, name = "IfcDistributionControlElementType"), @JsonSubTypes.Type(value = IfcDistributionFlowElementType.class, name = "IfcDistributionFlowElementType")})
 public class IfcDistributionElementType extends IfcElementType
 {
 

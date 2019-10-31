@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminalType;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeaterTypeEnum;
 
 @Guid("0f52a5c7-5f1e-4406-8e80-801782467a1a")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSpaceHeaterType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminalType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Enumeration of possible types of space heater (e.g., baseboard heater, convector, radiator, etc.).")
 	@Required()
 	@Guid("915dafb4-e6bb-46b2-a828-3c83619c9bab")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeaterTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcSpaceHeaterTypeEnum predefinedType;
 
 
 	public IfcSpaceHeaterType()
 	{
 	}
 
-	public IfcSpaceHeaterType(String globalId, com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeaterTypeEnum predefinedType)
+	public IfcSpaceHeaterType(String globalId, IfcSpaceHeaterTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeaterTypeEnum getPredefinedType() {
+	public IfcSpaceHeaterTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeaterTypeEnum predefinedType) {
+	public void setPredefinedType(IfcSpaceHeaterTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

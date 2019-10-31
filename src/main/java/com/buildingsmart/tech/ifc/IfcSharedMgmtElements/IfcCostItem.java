@@ -6,32 +6,49 @@
 package com.buildingsmart.tech.ifc.IfcSharedMgmtElements;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedMgmtElements.*;
+import com.buildingsmart.tech.ifc.IfcCostResource.*;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcControl;
 
 @Guid("78610aed-e656-483f-b7d3-8fc99b2c0312")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCostItem extends com.buildingsmart.tech.ifc.IfcKernel.IfcControl
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Predefined generic type for a cost item that is specified in an enumeration. There may be a property set given specificly for the predefined types.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added.</blockquote>")
 	@Guid("b88a8628-6b2a-4c45-b51b-a20cbe67368c")
-	private com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcCostItemTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcCostItemTypeEnum predefinedType;
 
 	@Description("Component costs for which the total cost for the cost item is calculated, and then multiplied by the total <em>CostQuantities</em> if provided.      If <em>CostQuantities</em> is provided then values indicate unit costs, otherwise values indicate total costs.    For calculation purposes, the cost values may be directly added unless they have qualifications.  Cost values with qualifications (e.g. <em>IfcCostValue.ApplicableDate</em>, <em>IfcCostValue.FixedUntilDate</em>) should be excluded from such calculation if they do not apply.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added.</blockquote>")
-	@MinLength(1)
 	@Guid("11b6d699-057d-44f9-b352-cffd41ba1269")
-	private List<com.buildingsmart.tech.ifc.IfcCostResource.IfcCostValue> costValues = new ArrayList<com.buildingsmart.tech.ifc.IfcCostResource.IfcCostValue>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcCostValue")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "CostValues")
+	private List<IfcCostValue> costValues;
 
 	@Description("Component quantities of the same type for which the total quantity for the cost item is calculated as the sum.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added.</blockquote>")
-	@MinLength(1)
 	@Guid("b7296c99-1454-49d0-a548-09ac41553f78")
-	private List<com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalQuantity> costQuantities = new ArrayList<com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalQuantity>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcPhysicalQuantity")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "CostQuantities")
+	private List<IfcPhysicalQuantity> costQuantities;
 
 
 	public IfcCostItem()
@@ -43,19 +60,19 @@ public class IfcCostItem extends com.buildingsmart.tech.ifc.IfcKernel.IfcControl
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcCostItemTypeEnum getPredefinedType() {
+	public IfcCostItemTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcCostItemTypeEnum predefinedType) {
+	public void setPredefinedType(IfcCostItemTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 
-	public List<com.buildingsmart.tech.ifc.IfcCostResource.IfcCostValue> getCostValues() {
+	public List<IfcCostValue> getCostValues() {
 		return this.costValues;
 	}
 
-	public List<com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalQuantity> getCostQuantities() {
+	public List<IfcPhysicalQuantity> getCostQuantities() {
 		return this.costQuantities;
 	}
 

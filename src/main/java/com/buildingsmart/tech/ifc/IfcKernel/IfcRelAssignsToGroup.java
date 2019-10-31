@@ -5,38 +5,57 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToGroupByFactor;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssigns;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcGroup;
 
 @Guid("20dee03b-bfd0-4795-923f-4619fc628b6c")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcRelAssignsToGroupByFactor.class, name = "IfcRelAssignsToGroupByFactor"))
 public class IfcRelAssignsToGroup extends IfcRelAssigns
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingGroup")
 	@Description("Reference to group that contains all assigned group members.")
 	@Required()
 	@Guid("1f95caf1-2cb2-4b4d-aaf4-d03e95cb784b")
-	private com.buildingsmart.tech.ifc.IfcKernel.IfcGroup relatingGroup;
+	@JacksonXmlProperty(isAttribute=false, localName = "RelatingGroup")
+	private IfcGroup relatingGroup;
 
 
 	public IfcRelAssignsToGroup()
 	{
 	}
 
-	public IfcRelAssignsToGroup(String globalId, com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition[] relatedObjects, com.buildingsmart.tech.ifc.IfcKernel.IfcGroup relatingGroup)
+	public IfcRelAssignsToGroup(String globalId, IfcObjectDefinition[] relatedObjects, IfcGroup relatingGroup)
 	{
 		super(globalId, relatedObjects);
 		this.relatingGroup = relatingGroup;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcKernel.IfcGroup getRelatingGroup() {
+	public IfcGroup getRelatingGroup() {
 		return this.relatingGroup;
 	}
 
-	public void setRelatingGroup(com.buildingsmart.tech.ifc.IfcKernel.IfcGroup relatingGroup) {
+	public void setRelatingGroup(IfcGroup relatingGroup) {
 		this.relatingGroup = relatingGroup;
 	}
 

@@ -5,8 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBooleanResult;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBooleanOperator;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBooleanOperand;
 
 @Guid("a6eb852d-2266-484e-b385-16dab2770609")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -17,7 +35,7 @@ public class IfcBooleanClippingResult extends IfcBooleanResult
 	{
 	}
 
-	public IfcBooleanClippingResult(com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBooleanOperator _operator, com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBooleanOperand firstOperand, com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBooleanOperand secondOperand)
+	public IfcBooleanClippingResult(IfcBooleanOperator _operator, IfcBooleanOperand firstOperand, IfcBooleanOperand secondOperand)
 	{
 		super(_operator, firstOperand, secondOperand);
 	}

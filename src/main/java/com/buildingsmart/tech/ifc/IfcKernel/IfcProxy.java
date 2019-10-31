@@ -5,25 +5,40 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum;
 
 @Guid("71ecd3f4-0c37-4779-a722-9dddefe6a6bf")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcProxy extends IfcProduct
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "ProxyType")
 	@Description("High level (and only) semantic meaning attached to the IfcProxy, defining the basic construct type behind the Proxy, e.g. Product or Process.")
 	@Required()
 	@Guid("7c83d5c4-1b38-400e-8d64-cbbcb8893211")
-	private com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum proxyType;
+	@JacksonXmlProperty(isAttribute=true, localName = "ProxyType")
+	private IfcObjectTypeEnum proxyType;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Tag")
 	@Description("The tag (or label) identifier at the particular instance of a product, e.g. the serial number, or the position number. It is the identifier at the occurrence level.")
 	@Guid("d45cbd31-dd92-4820-9238-63d0fd345dc6")
+	@JacksonXmlProperty(isAttribute=true, localName = "Tag")
 	private String tag;
 
 
@@ -31,17 +46,17 @@ public class IfcProxy extends IfcProduct
 	{
 	}
 
-	public IfcProxy(String globalId, com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum proxyType)
+	public IfcProxy(String globalId, IfcObjectTypeEnum proxyType)
 	{
 		super(globalId);
 		this.proxyType = proxyType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum getProxyType() {
+	public IfcObjectTypeEnum getProxyType() {
 		return this.proxyType;
 	}
 
-	public void setProxyType(com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum proxyType) {
+	public void setProxyType(IfcObjectTypeEnum proxyType) {
 		this.proxyType = proxyType;
 	}
 

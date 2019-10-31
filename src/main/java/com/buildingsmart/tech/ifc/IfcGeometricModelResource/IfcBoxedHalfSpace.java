@@ -5,38 +5,54 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcHalfSpaceSolid;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBoundingBox;
 
 @Guid("6d52ef81-4176-4ab5-a2d3-39b86c31c378")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcBoxedHalfSpace extends IfcHalfSpaceSolid
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "Enclosure")
 	@Description("The box which bounds the resulting solid of the Boolean operation involving the half space solid for computational purposes only.")
 	@Required()
 	@Guid("1dfdfca3-ec6b-45af-8bdf-d2bdffe279bc")
-	private com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBoundingBox enclosure;
+	@JacksonXmlProperty(isAttribute=false, localName = "Enclosure")
+	private IfcBoundingBox enclosure;
 
 
 	public IfcBoxedHalfSpace()
 	{
 	}
 
-	public IfcBoxedHalfSpace(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface baseSurface, Boolean agreementFlag, com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBoundingBox enclosure)
+	public IfcBoxedHalfSpace(IfcSurface baseSurface, Boolean agreementFlag, IfcBoundingBox enclosure)
 	{
 		super(baseSurface, agreementFlag);
 		this.enclosure = enclosure;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBoundingBox getEnclosure() {
+	public IfcBoundingBox getEnclosure() {
 		return this.enclosure;
 	}
 
-	public void setEnclosure(com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBoundingBox enclosure) {
+	public void setEnclosure(IfcBoundingBox enclosure) {
 		this.enclosure = enclosure;
 	}
 

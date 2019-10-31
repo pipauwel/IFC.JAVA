@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionControlElement;
 
 @Guid("a8488154-175e-4eda-b9b6-157a9fa9cafe")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcProtectiveDeviceTrippingUnit extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionControlElement
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("6801c27d-267c-44ff-a462-840addfa2cc5")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcProtectiveDeviceTrippingUnitTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcProtectiveDeviceTrippingUnitTypeEnum predefinedType;
 
 
 	public IfcProtectiveDeviceTrippingUnit()
@@ -27,11 +43,11 @@ public class IfcProtectiveDeviceTrippingUnit extends com.buildingsmart.tech.ifc.
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcProtectiveDeviceTrippingUnitTypeEnum getPredefinedType() {
+	public IfcProtectiveDeviceTrippingUnitTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcProtectiveDeviceTrippingUnitTypeEnum predefinedType) {
+	public void setPredefinedType(IfcProtectiveDeviceTrippingUnitTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

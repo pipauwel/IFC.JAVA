@@ -5,25 +5,38 @@
 
 package com.buildingsmart.tech.ifc.IfcQuantityResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalSimpleQuantity;
 
 @Guid("4e958bba-84fa-45d3-bf26-9b6b72632919")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcQuantityLength extends IfcPhysicalSimpleQuantity
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "LengthValue")
 	@Description("Length measure value of this quantity.")
 	@Required()
 	@Guid("7f243ac1-2a97-4752-b2e2-8f8b9d39d18a")
+	@JacksonXmlProperty(isAttribute=true, localName = "LengthValue")
 	private double lengthValue;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Formula")
 	@Description("A formula by which the quantity has been calculated. It can be assigned in addition to the actual value of the quantity. Formulas could be mathematic calculations (like width x height), database links, or a combination. The formula is for informational purposes only.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  Attribute added to the end of the attribute list.</blockquote>")
 	@Guid("d6cebea3-47f2-41f9-a065-db12dc729cd4")
+	@JacksonXmlProperty(isAttribute=true, localName = "Formula")
 	private String formula;
 
 

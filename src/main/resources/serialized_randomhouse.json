@@ -1,0 +1,85 @@
+{
+  "Class" : "IfcProject",
+  "globalId" : "3oUsrKbqD0wh41n0gL1Hqn",
+  "ownerHistory" : {
+    "owningUser" : {
+      "thePerson" : {
+        "givenName" : "pipauwel",
+        "middleNames" : [ "Test", "Me" ]
+      },
+      "theOrganization" : {
+        "name" : "This is the organisation"
+      }
+    },
+    "owningApplication" : {
+      "applicationDeveloper" : {
+        "name" : "Autodesk Revit 2019 (ENU)"
+      },
+      "version" : "2019",
+      "applicationFullName" : "Autodesk Revit 2019 (ENU)",
+      "applicationIdentifier" : "Revit"
+    },
+    "lastModifiedDate" : 0,
+    "creationDate" : 1570561985
+  },
+  "name" : "0001",
+  "isDecomposedBy" : [ {
+    "globalId" : "3FNdo3HPD8IRkUvWf0t9M_",
+    "relatedObjects" : [ {
+      "Class" : "IfcSite",
+      "globalId" : "3kIOd66qr36u4qFBFSUffO",
+      "name" : "The Other Surface:295175",
+      "isDecomposedBy" : [ {
+        "globalId" : "0q7WH1A$f3GQXtVXZUIa3w",
+        "ownerHistory" : {
+          "lastModifiedDate" : 0,
+          "creationDate" : 0
+        },
+        "relatedObjects" : [ {
+          "Class" : "IfcBuilding",
+          "globalId" : "3oUsrKbqD0wh41n0gL1Hqm",
+          "isDecomposedBy" : [ {
+            "globalId" : "0bEVwXRmbBleAvzFSJirAn",
+            "relatedObjects" : [ {
+              "Class" : "IfcBuildingStorey",
+              "globalId" : "3oUsrKbqD0wh41n0fg_kZk",
+              "name" : "Level 2",
+              "longName" : "Level 2",
+              "compositionType" : "ELEMENT",
+              "elevation" : 4000.0
+            }, {
+              "Class" : "IfcBuildingStorey",
+              "globalId" : "3oUsrKbqD0wh41n0fg_kEY",
+              "name" : "Level 1",
+              "longName" : "Level 1",
+              "compositionType" : "ELEMENT",
+              "elevation" : 0.0
+            } ]
+          } ],
+          "compositionType" : "ELEMENT",
+          "elevationOfRefHeight" : 0.0,
+          "elevationOfTerrain" : 0.0,
+          "buildingAddress" : {
+            "Class" : "IfcPostalAddress",
+            "region" : "Boston",
+            "country" : "MA"
+          }
+        } ]
+      } ],
+      "compositionType" : "ELEMENT",
+      "refLatitude" : 181933,
+      "refLongitude" : 263333,
+      "refElevation" : 10.0
+    }, {
+      "Class" : "IfcSite",
+      "globalId" : "3kIOd66qr36u4qFBFSUfRi",
+      "name" : "Surface:295172",
+      "compositionType" : "ELEMENT",
+      "refLatitude" : 181945,
+      "refLongitude" : 263305,
+      "refElevation" : 0.0
+    } ]
+  } ],
+  "longName" : "Project Name",
+  "phase" : "Project Status"
+}

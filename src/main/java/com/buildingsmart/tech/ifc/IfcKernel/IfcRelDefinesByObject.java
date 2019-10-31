@@ -5,16 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelDefines;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
 
 @Guid("51ba0123-164c-4caf-8ba8-61e9906b07c0")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -22,37 +32,39 @@ public class IfcRelDefinesByObject extends IfcRelDefines
 {
 	@Description("Objects being part of an object occurrence decomposition, acting as the \"reflecting parts\" in the relationship.")
 	@Required()
-	@MinLength(1)
 	@Guid("b81537b0-1b16-446d-9317-86a93844053b")
-	private Set<com.buildingsmart.tech.ifc.IfcKernel.IfcObject> relatedObjects = new HashSet<com.buildingsmart.tech.ifc.IfcKernel.IfcObject>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcObject")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedObjects")
+	private Set<IfcObject> relatedObjects;
 
-	@JsonIgnore
 	@Description("Object being part of an object type decomposition, acting as the \"declaring part\" in the relationship.")
 	@Required()
 	@Guid("e0f7bc77-e70c-4ecd-a3f4-9b587acb6df1")
-	private com.buildingsmart.tech.ifc.IfcKernel.IfcObject relatingObject;
+	@JsonIgnore
+	private IfcObject relatingObject;
 
 
 	public IfcRelDefinesByObject()
 	{
 	}
 
-	public IfcRelDefinesByObject(String globalId, com.buildingsmart.tech.ifc.IfcKernel.IfcObject[] relatedObjects, com.buildingsmart.tech.ifc.IfcKernel.IfcObject relatingObject)
+	public IfcRelDefinesByObject(String globalId, IfcObject[] relatedObjects, IfcObject relatingObject)
 	{
 		super(globalId);
 		this.relatedObjects = new HashSet<>(Arrays.asList(relatedObjects));
 		this.relatingObject = relatingObject;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcKernel.IfcObject> getRelatedObjects() {
+	public Set<IfcObject> getRelatedObjects() {
 		return this.relatedObjects;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcKernel.IfcObject getRelatingObject() {
+	public IfcObject getRelatingObject() {
 		return this.relatingObject;
 	}
 
-	public void setRelatingObject(com.buildingsmart.tech.ifc.IfcKernel.IfcObject relatingObject) {
+	public void setRelatingObject(IfcObject relatingObject) {
 		this.relatingObject = relatingObject;
 	}
 

@@ -5,37 +5,54 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcClosedShell;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcOpenShell;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcTopologicalRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace;
 
 @Guid("00739840-0188-4605-bb14-19851c954616")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcClosedShell.class, name = "IfcClosedShell"), @JsonSubTypes.Type(value = IfcOpenShell.class, name = "IfcOpenShell")})
 public class IfcConnectedFaceSet extends IfcTopologicalRepresentationItem
 {
 	@Description("The set of faces arcwise connected along common edges or vertices.")
 	@Required()
-	@MinLength(1)
 	@Guid("1fabb589-8fee-4286-8be7-1f8643ec33b7")
-	private Set<com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace> cfsFaces = new HashSet<com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcFace")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "CfsFaces")
+	private Set<IfcFace> cfsFaces;
 
 
 	public IfcConnectedFaceSet()
 	{
 	}
 
-	public IfcConnectedFaceSet(com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace[] cfsFaces)
+	public IfcConnectedFaceSet(IfcFace[] cfsFaces)
 	{
 		this.cfsFaces = new HashSet<>(Arrays.asList(cfsFaces));
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace> getCfsFaces() {
+	public Set<IfcFace> getCfsFaces() {
 		return this.cfsFaces;
 	}
 

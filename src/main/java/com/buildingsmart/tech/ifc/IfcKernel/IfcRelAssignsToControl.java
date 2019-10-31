@@ -5,38 +5,54 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssigns;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcControl;
 
 @Guid("142af641-3046-4e25-8652-dbf0d05c61da")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelAssignsToControl extends IfcRelAssigns
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingControl")
 	@Description("Reference to the <em>IfcControl</em> that applies a control upon objects.")
 	@Required()
 	@Guid("e7033623-d7b9-406d-8aae-46c7501560e6")
-	private com.buildingsmart.tech.ifc.IfcKernel.IfcControl relatingControl;
+	@JacksonXmlProperty(isAttribute=false, localName = "RelatingControl")
+	private IfcControl relatingControl;
 
 
 	public IfcRelAssignsToControl()
 	{
 	}
 
-	public IfcRelAssignsToControl(String globalId, com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition[] relatedObjects, com.buildingsmart.tech.ifc.IfcKernel.IfcControl relatingControl)
+	public IfcRelAssignsToControl(String globalId, IfcObjectDefinition[] relatedObjects, IfcControl relatingControl)
 	{
 		super(globalId, relatedObjects);
 		this.relatingControl = relatingControl;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcKernel.IfcControl getRelatingControl() {
+	public IfcControl getRelatingControl() {
 		return this.relatingControl;
 	}
 
-	public void setRelatingControl(com.buildingsmart.tech.ifc.IfcKernel.IfcControl relatingControl) {
+	public void setRelatingControl(IfcControl relatingControl) {
 		this.relatingControl = relatingControl;
 	}
 

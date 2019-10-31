@@ -5,17 +5,37 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcProjectionElement;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElement;
 
 @Guid("818c820c-139e-4825-96bc-6c16e6f606d4")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcProjectionElement.class, name = "IfcProjectionElement"))
 public abstract class IfcFeatureElementAddition extends IfcFeatureElement
 {
 	@Description("Reference to the <em>IfcRelProjectsElement</em> relationship that uses this <em>IfcFeatureElementAddition</em> to create a volume addition at an element. The <em>IfcFeatureElementAddition</em> can only be used to create a single addition at a single element using Boolean addition operation.")
 	@Guid("916482f1-a6fe-4d2a-86b0-8f9c6796f946")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelProjectsElement projectsElements;
+	@JacksonXmlProperty(isAttribute=false, localName = "ProjectsElements")
+	private IfcRelProjectsElement projectsElements;
 
 
 	public IfcFeatureElementAddition()
@@ -27,11 +47,11 @@ public abstract class IfcFeatureElementAddition extends IfcFeatureElement
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelProjectsElement getProjectsElements() {
+	public IfcRelProjectsElement getProjectsElements() {
 		return this.projectsElements;
 	}
 
-	public void setProjectsElements(com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelProjectsElement projectsElements) {
+	public void setProjectsElements(IfcRelProjectsElement projectsElements) {
 		this.projectsElements = projectsElements;
 	}
 

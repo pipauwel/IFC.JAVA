@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminalType;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLampTypeEnum;
 
 @Guid("c73600ec-1ac8-4862-9271-cd7396feb1e0")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcLampType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminalType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("<p>Identifies the predefined types of lamp from which the type required may be set.</p>")
 	@Required()
 	@Guid("8a60938a-faf1-4906-8b2e-b859b0b6b395")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLampTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcLampTypeEnum predefinedType;
 
 
 	public IfcLampType()
 	{
 	}
 
-	public IfcLampType(String globalId, com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLampTypeEnum predefinedType)
+	public IfcLampType(String globalId, IfcLampTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLampTypeEnum getPredefinedType() {
+	public IfcLampTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLampTypeEnum predefinedType) {
+	public void setPredefinedType(IfcLampTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

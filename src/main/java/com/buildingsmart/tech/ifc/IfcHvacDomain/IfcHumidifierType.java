@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDeviceType;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcHumidifierTypeEnum;
 
 @Guid("f1983b1d-26af-43f3-ba7a-06e90feb52c8")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcHumidifierType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDeviceType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Defines the type of humidifier.")
 	@Required()
 	@Guid("db14e4f6-f176-4771-81a6-cda2bc555751")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcHumidifierTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcHumidifierTypeEnum predefinedType;
 
 
 	public IfcHumidifierType()
 	{
 	}
 
-	public IfcHumidifierType(String globalId, com.buildingsmart.tech.ifc.IfcHvacDomain.IfcHumidifierTypeEnum predefinedType)
+	public IfcHumidifierType(String globalId, IfcHumidifierTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcHumidifierTypeEnum getPredefinedType() {
+	public IfcHumidifierTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcHumidifierTypeEnum predefinedType) {
+	public void setPredefinedType(IfcHumidifierTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElementType;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcFootingTypeEnum;
 
 @Guid("82272f47-5c4e-4c73-a82a-c5167bd15f6c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcFootingType extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElementType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Subtype of footing.")
 	@Required()
 	@Guid("c19fa949-829d-4996-b812-7b15f623d57c")
-	private com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcFootingTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcFootingTypeEnum predefinedType;
 
 
 	public IfcFootingType()
 	{
 	}
 
-	public IfcFootingType(String globalId, com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcFootingTypeEnum predefinedType)
+	public IfcFootingType(String globalId, IfcFootingTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcFootingTypeEnum getPredefinedType() {
+	public IfcFootingTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcFootingTypeEnum predefinedType) {
+	public void setPredefinedType(IfcFootingTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

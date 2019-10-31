@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDeviceType;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoilTypeEnum;
 
 @Guid("8eddad0b-39d9-48df-b854-7ff316225c5a")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCoilType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDeviceType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Defines typical types of coils (e.g., Cooling, Heating, etc.)")
 	@Required()
 	@Guid("f6e3036c-6fcd-410a-8c52-1f404f3bb682")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoilTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcCoilTypeEnum predefinedType;
 
 
 	public IfcCoilType()
 	{
 	}
 
-	public IfcCoilType(String globalId, com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoilTypeEnum predefinedType)
+	public IfcCoilType(String globalId, IfcCoilTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoilTypeEnum getPredefinedType() {
+	public IfcCoilTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoilTypeEnum predefinedType) {
+	public void setPredefinedType(IfcCoilTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

@@ -5,30 +5,45 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialLayer;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcLayerSetDirectionEnum;
 
 @Guid("7b1a1c54-e0c2-488f-9134-36f48e15796a")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterialLayerWithOffsets extends IfcMaterialLayer
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "OffsetDirection")
 	@Description("Orientation of the offset; shall be perpendicular to the parent layer set direction.")
 	@Required()
 	@Guid("87429902-c8f3-4468-9d63-93f270258877")
-	private com.buildingsmart.tech.ifc.IfcMaterialResource.IfcLayerSetDirectionEnum offsetDirection;
+	@JacksonXmlProperty(isAttribute=true, localName = "OffsetDirection")
+	private IfcLayerSetDirectionEnum offsetDirection;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "OffsetValues")
 	@Description("The numerical value of layer offset, in the direction of the axis assigned by the attribute <em>OffsetDirection</em>. The <em>OffsetValues[1]</em> identifies the offset from the lower position along the axis direction (normally the start of the standard extrusion), the <em>OffsetValues[2]</em> identifies the offset from the upper position along the axis direction (normally the end of the standard extrusion).")
 	@Required()
+	@Guid("2461922a-f119-43ed-a1ef-ca1607b59b2b")
 	@MinLength(1)
 	@MaxLength(2)
-	@Guid("2461922a-f119-43ed-a1ef-ca1607b59b2b")
+	@JacksonXmlProperty(isAttribute = false, localName = "Double")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "OffsetValues")
 	private Double[] offsetValues;
 
 
@@ -36,18 +51,18 @@ public class IfcMaterialLayerWithOffsets extends IfcMaterialLayer
 	{
 	}
 
-	public IfcMaterialLayerWithOffsets(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure layerThickness, com.buildingsmart.tech.ifc.IfcMaterialResource.IfcLayerSetDirectionEnum offsetDirection, Double[] offsetValues)
+	public IfcMaterialLayerWithOffsets(IfcNonNegativeLengthMeasure layerThickness, IfcLayerSetDirectionEnum offsetDirection, Double[] offsetValues)
 	{
 		super(layerThickness);
 		this.offsetDirection = offsetDirection;
 		this.offsetValues = offsetValues;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMaterialResource.IfcLayerSetDirectionEnum getOffsetDirection() {
+	public IfcLayerSetDirectionEnum getOffsetDirection() {
 		return this.offsetDirection;
 	}
 
-	public void setOffsetDirection(com.buildingsmart.tech.ifc.IfcMaterialResource.IfcLayerSetDirectionEnum offsetDirection) {
+	public void setOffsetDirection(IfcLayerSetDirectionEnum offsetDirection) {
 		this.offsetDirection = offsetDirection;
 	}
 

@@ -5,75 +5,95 @@
 
 package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcIrregularTimeSeries;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcRegularTimeSeries;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTimeSeriesDataTypeEnum;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcDataOriginEnum;
 
 @Guid("4aa23b8c-0acf-4202-9d27-29abd09009e1")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcIrregularTimeSeries.class, name = "IfcIrregularTimeSeries"), @JsonSubTypes.Type(value = IfcRegularTimeSeries.class, name = "IfcRegularTimeSeries")})
 public abstract class IfcTimeSeries implements com.buildingsmart.tech.ifc.IfcConstraintResource.IfcMetricValueSelect, com.buildingsmart.tech.ifc.IfcPropertyResource.IfcObjectReferenceSelect, com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	@Description("An unique name for the time series.")
 	@Required()
 	@Guid("a8259487-25da-4b34-a81c-5e5f921f8b44")
+	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	@Description("A text description of the data that the series represents.")
 	@Guid("35b2fdcb-dd9d-4659-9a9f-88ed103cc7e3")
+	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "StartTime")
 	@Description("The start time of a time series.")
 	@Required()
 	@Guid("40888137-c7f3-46ce-b025-d7d141d70954")
+	@JacksonXmlProperty(isAttribute=true, localName = "StartTime")
 	private String startTime;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "EndTime")
 	@Description("The end time of a time series.")
 	@Required()
 	@Guid("a0c55cac-3a6b-4188-b40e-86a1b8d8551e")
+	@JacksonXmlProperty(isAttribute=true, localName = "EndTime")
 	private String endTime;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "TimeSeriesDataType")
 	@Description("The time series data type.")
 	@Required()
 	@Guid("fe4ee506-c00b-4343-867f-0bfe2de83742")
-	private com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTimeSeriesDataTypeEnum timeSeriesDataType;
+	@JacksonXmlProperty(isAttribute=true, localName = "TimeSeriesDataType")
+	private IfcTimeSeriesDataTypeEnum timeSeriesDataType;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "DataOrigin")
 	@Description("The origin of a time series data.")
 	@Required()
 	@Guid("a066d6e2-e023-4c82-b13b-62af49f161e6")
-	private com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcDataOriginEnum dataOrigin;
+	@JacksonXmlProperty(isAttribute=true, localName = "DataOrigin")
+	private IfcDataOriginEnum dataOrigin;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedDataOrigin")
 	@Description("Value of the data origin if DataOrigin attribute is USERDEFINED.")
 	@Guid("0be8d17c-c445-42b4-9a22-47e1c851745e")
+	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedDataOrigin")
 	private String userDefinedDataOrigin;
 
 	@Description("The unit to be assigned to all values within the time series. Note that mixing units is not allowed. If the value is not given, the global unit for the type of <em>IfcValue</em>, as defined at <em>IfcProject.UnitsInContext</em> is used.")
 	@Guid("4cef5985-267c-417d-82ae-8c303b8c59e2")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit unit;
+	@JacksonXmlProperty(isAttribute=true, localName = "Unit")
+	private IfcUnit unit;
 
 	@Description("Reference to an external reference, e.g. library, classification, or document information, that is associated to the IfcTimeSeries.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE New inverse attribute.</blockquote>")
-	@MinLength(1)
 	@Guid("65b0ae8e-3556-403a-86d8-6f15485a4e36")
-	private Set<com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship> hasExternalReference = new HashSet<com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcExternalReferenceRelationship")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasExternalReference")
+	private Set<IfcExternalReferenceRelationship> hasExternalReference;
 
 
 	public IfcTimeSeries()
 	{
 	}
 
-	public IfcTimeSeries(String name, String startTime, String endTime, com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTimeSeriesDataTypeEnum timeSeriesDataType, com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcDataOriginEnum dataOrigin)
+	public IfcTimeSeries(String name, String startTime, String endTime, IfcTimeSeriesDataTypeEnum timeSeriesDataType, IfcDataOriginEnum dataOrigin)
 	{
 		this.name = name;
 		this.startTime = startTime;
@@ -114,19 +134,19 @@ public abstract class IfcTimeSeries implements com.buildingsmart.tech.ifc.IfcCon
 		this.endTime = endTime;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTimeSeriesDataTypeEnum getTimeSeriesDataType() {
+	public IfcTimeSeriesDataTypeEnum getTimeSeriesDataType() {
 		return this.timeSeriesDataType;
 	}
 
-	public void setTimeSeriesDataType(com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTimeSeriesDataTypeEnum timeSeriesDataType) {
+	public void setTimeSeriesDataType(IfcTimeSeriesDataTypeEnum timeSeriesDataType) {
 		this.timeSeriesDataType = timeSeriesDataType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcDataOriginEnum getDataOrigin() {
+	public IfcDataOriginEnum getDataOrigin() {
 		return this.dataOrigin;
 	}
 
-	public void setDataOrigin(com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcDataOriginEnum dataOrigin) {
+	public void setDataOrigin(IfcDataOriginEnum dataOrigin) {
 		this.dataOrigin = dataOrigin;
 	}
 
@@ -138,15 +158,15 @@ public abstract class IfcTimeSeries implements com.buildingsmart.tech.ifc.IfcCon
 		this.userDefinedDataOrigin = userDefinedDataOrigin;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit getUnit() {
+	public IfcUnit getUnit() {
 		return this.unit;
 	}
 
-	public void setUnit(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit unit) {
+	public void setUnit(IfcUnit unit) {
 		this.unit = unit;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship> getHasExternalReference() {
+	public Set<IfcExternalReferenceRelationship> getHasExternalReference() {
 		return this.hasExternalReference;
 	}
 

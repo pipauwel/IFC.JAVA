@@ -7,48 +7,63 @@ package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcIndexedPolygonalFaceWithVoids;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedItem;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
 
 @Guid("d254b777-e1d5-480f-a356-6496977d5a4a")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcIndexedPolygonalFaceWithVoids.class, name = "IfcIndexedPolygonalFaceWithVoids"))
 public class IfcIndexedPolygonalFace extends IfcTessellatedItem
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "CoordIndex")
 	@Description("One-dimensional list with the indices for the three or more points, that define the vertices of the outer loop. If the tessellated face set is closed, indicated by <em>SELF\\IfcTessellatedFaceSet.Closed</em>, then the points, defining the outer loop, shall connect counter clockwise, as seen from the outside of the body, so that the resulting normal will point outwards.  <blockquote class=\"note\">NOTE&nbsp; The coordinates of the vertices are provided by the indexed list of <em>SELF\\IfcTessellatedFaceSet.Coordinates.CoordList</em>. If the  <em>SELF\\IfcTessellatedFaceSet.PnIndex</em> is provided, the indices point into it, otherwise directly into the <em>IfcCartesianPointList3D</em>.</blockquote>")
 	@Required()
-	@MinLength(3)
 	@Guid("e98eb6ec-1d91-49a2-848d-43f835c2b769")
-	private List<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger> coordIndex = new ArrayList<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger>();
+	@MinLength(3)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "CoordIndex")
+	private List<IfcPositiveInteger> coordIndex;
 
 	@Description("Reference to the <em>IfcPolygonalFaceSet</em> for which this face is associated.")
-	@MinLength(1)
 	@Guid("539ffe91-454c-4cc6-a6ee-03a20eaf9166")
-	private Set<com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcPolygonalFaceSet> toFaceSet = new HashSet<com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcPolygonalFaceSet>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcPolygonalFaceSet")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "ToFaceSet")
+	private Set<IfcPolygonalFaceSet> toFaceSet;
 
 
 	public IfcIndexedPolygonalFace()
 	{
 	}
 
-	public IfcIndexedPolygonalFace(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger[] coordIndex)
+	public IfcIndexedPolygonalFace(IfcPositiveInteger[] coordIndex)
 	{
 		this.coordIndex = new ArrayList<>(Arrays.asList(coordIndex));
 	}
 
-	public List<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger> getCoordIndex() {
+	public List<IfcPositiveInteger> getCoordIndex() {
 		return this.coordIndex;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcPolygonalFaceSet> getToFaceSet() {
+	public Set<IfcPolygonalFaceSet> getToFaceSet() {
 		return this.toFaceSet;
 	}
 

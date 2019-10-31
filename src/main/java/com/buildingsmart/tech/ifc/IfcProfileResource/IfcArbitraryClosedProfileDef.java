@@ -5,38 +5,57 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcArbitraryProfileDefWithVoids;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
 
 @Guid("b6ccca8d-998a-47ed-beac-ef1b44ee5681")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcArbitraryProfileDefWithVoids.class, name = "IfcArbitraryProfileDefWithVoids"))
 public class IfcArbitraryClosedProfileDef extends IfcProfileDef
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "OuterCurve")
 	@Description("Bounded curve, defining the outer boundaries of the arbitrary profile.")
 	@Required()
 	@Guid("e5eb7078-ed29-401a-9e78-e38beec339ff")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve outerCurve;
+	@JacksonXmlProperty(isAttribute=false, localName = "OuterCurve")
+	private IfcCurve outerCurve;
 
 
 	public IfcArbitraryClosedProfileDef()
 	{
 	}
 
-	public IfcArbitraryClosedProfileDef(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum profileType, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve outerCurve)
+	public IfcArbitraryClosedProfileDef(IfcProfileTypeEnum profileType, IfcCurve outerCurve)
 	{
 		super(profileType);
 		this.outerCurve = outerCurve;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve getOuterCurve() {
+	public IfcCurve getOuterCurve() {
 		return this.outerCurve;
 	}
 
-	public void setOuterCurve(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve outerCurve) {
+	public void setOuterCurve(IfcCurve outerCurve) {
 		this.outerCurve = outerCurve;
 	}
 

@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowControllerType;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirTerminalBoxTypeEnum;
 
 @Guid("bc242f20-3f8e-4532-91aa-3cc02ab65da4")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcAirTerminalBoxType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowControllerType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("The air terminal box type.")
 	@Required()
 	@Guid("c02b5e63-acde-4c6c-8b33-c2027b182472")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirTerminalBoxTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcAirTerminalBoxTypeEnum predefinedType;
 
 
 	public IfcAirTerminalBoxType()
 	{
 	}
 
-	public IfcAirTerminalBoxType(String globalId, com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirTerminalBoxTypeEnum predefinedType)
+	public IfcAirTerminalBoxType(String globalId, IfcAirTerminalBoxTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirTerminalBoxTypeEnum getPredefinedType() {
+	public IfcAirTerminalBoxTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirTerminalBoxTypeEnum predefinedType) {
+	public void setPredefinedType(IfcAirTerminalBoxTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

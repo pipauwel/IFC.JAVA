@@ -5,38 +5,54 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcProductRepresentation;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentation;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial;
 
 @Guid("482a3c86-3ce0-47c4-936b-b783f9502b01")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterialDefinitionRepresentation extends IfcProductRepresentation
 {
-	@JsonIgnore
 	@Description("Reference to the material to which the representation applies.")
 	@Required()
 	@Guid("895fdfda-1b9b-4597-baa7-e6f4ebda24e9")
-	private com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial representedMaterial;
+	@JsonIgnore
+	private IfcMaterial representedMaterial;
 
 
 	public IfcMaterialDefinitionRepresentation()
 	{
 	}
 
-	public IfcMaterialDefinitionRepresentation(com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentation[] representations, com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial representedMaterial)
+	public IfcMaterialDefinitionRepresentation(IfcRepresentation[] representations, IfcMaterial representedMaterial)
 	{
 		super(representations);
 		this.representedMaterial = representedMaterial;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial getRepresentedMaterial() {
+	public IfcMaterial getRepresentedMaterial() {
 		return this.representedMaterial;
 	}
 
-	public void setRepresentedMaterial(com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial representedMaterial) {
+	public void setRepresentedMaterial(IfcMaterial representedMaterial) {
 		this.representedMaterial = representedMaterial;
 	}
 

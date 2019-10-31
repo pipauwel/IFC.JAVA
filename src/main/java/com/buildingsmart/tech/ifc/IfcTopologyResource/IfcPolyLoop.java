@@ -7,13 +7,24 @@ package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcLoop;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 
 @Guid("606bfe59-169d-4543-89a1-60d81d609835")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -21,21 +32,23 @@ public class IfcPolyLoop extends IfcLoop
 {
 	@Description("List of points defining the loop. There are no repeated points in the list.")
 	@Required()
-	@MinLength(3)
 	@Guid("5e26e14f-8764-4e28-93e9-b88049eac2d2")
-	private List<com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint> polygon = new ArrayList<com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint>();
+	@MinLength(3)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcCartesianPoint")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Polygon")
+	private List<IfcCartesianPoint> polygon;
 
 
 	public IfcPolyLoop()
 	{
 	}
 
-	public IfcPolyLoop(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint[] polygon)
+	public IfcPolyLoop(IfcCartesianPoint[] polygon)
 	{
 		this.polygon = new ArrayList<>(Arrays.asList(polygon));
 	}
 
-	public List<com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint> getPolygon() {
+	public List<IfcCartesianPoint> getPolygon() {
 		return this.polygon;
 	}
 

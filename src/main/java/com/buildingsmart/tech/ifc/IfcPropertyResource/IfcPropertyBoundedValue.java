@@ -5,9 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcSimpleProperty;
 
 @Guid("8e5675b7-1eab-4355-967e-bd85ba01ab9d")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -15,19 +31,23 @@ public class IfcPropertyBoundedValue extends IfcSimpleProperty
 {
 	@Description("Upper bound value for the interval defining the property value. If the value is not given, it indicates an open bound (all values to be greater than or equal to <em>LowerBoundValue</em>).")
 	@Guid("28c3b4b3-6d57-4edb-be6d-3ab7531478c1")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue upperBoundValue;
+	@JacksonXmlProperty(isAttribute=true, localName = "UpperBoundValue")
+	private IfcValue upperBoundValue;
 
 	@Description("Lower bound value for the interval defining the property value. If the value is not given, it indicates an open bound (all values to be lower than or equal to <em>UpperBoundValue</em>).")
 	@Guid("8511d45b-6a0b-497c-ba87-ff8eb107d34f")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue lowerBoundValue;
+	@JacksonXmlProperty(isAttribute=true, localName = "LowerBoundValue")
+	private IfcValue lowerBoundValue;
 
 	@Description("Unit for the upper and lower bound values, if not given, the default value for the measure type is used as defined by the global unit assignment at <em>IfcProject.UnitInContext</em>. The applicable unit is then selected by the underlying TYPE of the <em>UpperBoundValue</em>, <em>LowerBoundValue</em>, and <em>SetPointValue</em>)")
 	@Guid("efcd98c4-2c73-40ff-a47a-51ee91f65800")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit unit;
+	@JacksonXmlProperty(isAttribute=true, localName = "Unit")
+	private IfcUnit unit;
 
 	@Description("Set point value as typically used for operational value setting.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been added at the end of the attribute list.</blockquote>")
 	@Guid("618fe876-362a-4c92-a92c-7dd103266ac3")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue setPointValue;
+	@JacksonXmlProperty(isAttribute=true, localName = "SetPointValue")
+	private IfcValue setPointValue;
 
 
 	public IfcPropertyBoundedValue()
@@ -39,35 +59,35 @@ public class IfcPropertyBoundedValue extends IfcSimpleProperty
 		super(name);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue getUpperBoundValue() {
+	public IfcValue getUpperBoundValue() {
 		return this.upperBoundValue;
 	}
 
-	public void setUpperBoundValue(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue upperBoundValue) {
+	public void setUpperBoundValue(IfcValue upperBoundValue) {
 		this.upperBoundValue = upperBoundValue;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue getLowerBoundValue() {
+	public IfcValue getLowerBoundValue() {
 		return this.lowerBoundValue;
 	}
 
-	public void setLowerBoundValue(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue lowerBoundValue) {
+	public void setLowerBoundValue(IfcValue lowerBoundValue) {
 		this.lowerBoundValue = lowerBoundValue;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit getUnit() {
+	public IfcUnit getUnit() {
 		return this.unit;
 	}
 
-	public void setUnit(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit unit) {
+	public void setUnit(IfcUnit unit) {
 		this.unit = unit;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue getSetPointValue() {
+	public IfcValue getSetPointValue() {
 		return this.setPointValue;
 	}
 
-	public void setSetPointValue(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue setPointValue) {
+	public void setSetPointValue(IfcValue setPointValue) {
 		this.setPointValue = setPointValue;
 	}
 

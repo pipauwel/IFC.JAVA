@@ -5,44 +5,65 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightSourceSpot;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightSource;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 
 @Guid("32a170a7-e0ba-48c0-9f27-f2a1df1265d0")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcLightSourceSpot.class, name = "IfcLightSourceSpot"))
 public class IfcLightSourcePositional extends IfcLightSource
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "Position")
 	@Description("Definition from ISO/CD 10303-46:1992: The Cartesian point indicates the position of the light source.  Definition from VRML97 - ISO/IEC 14772-1:1997: A Point light node illuminates geometry within radius of its location.")
 	@Required()
 	@Guid("b14f2740-7faa-41bf-b16f-b3811cd24338")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint position;
+	@JacksonXmlProperty(isAttribute=false, localName = "Position")
+	private IfcCartesianPoint position;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Radius")
 	@Description("The maximum distance from the light source for a surface still to be illuminated.  Definition from VRML97 - ISO/IEC 14772-1:1997: A Point light node illuminates geometry within radius of its location.")
 	@Required()
 	@Guid("e32ed7f9-1e64-44f1-890b-6a5b3397c943")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure radius;
+	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
+	private IfcPositiveLengthMeasure radius;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "ConstantAttenuation")
 	@Description("Definition from ISO/CD 10303-46:1992: This real indicates the value of the attenuation in the lighting equation that is constant.")
 	@Required()
 	@Guid("2effff58-264e-4ab4-9648-ba2409c15b7c")
+	@JacksonXmlProperty(isAttribute=true, localName = "ConstantAttenuation")
 	private double constantAttenuation;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "DistanceAttenuation")
 	@Description("Definition from ISO/CD 10303-46:1992: This real indicates the value of the attenuation in the lighting equation that proportional to the distance from the light source.")
 	@Required()
 	@Guid("04cd93af-8e0e-4e24-bfeb-14b008f4908c")
+	@JacksonXmlProperty(isAttribute=true, localName = "DistanceAttenuation")
 	private double distanceAttenuation;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "QuadricAttenuation")
 	@Description("This real indicates the value of the attenuation in the lighting equation that proportional to the square value of the distance from the light source.")
 	@Required()
 	@Guid("1cda05dc-8988-4938-babb-95a4caa843f7")
+	@JacksonXmlProperty(isAttribute=true, localName = "QuadricAttenuation")
 	private double quadricAttenuation;
 
 
@@ -50,7 +71,7 @@ public class IfcLightSourcePositional extends IfcLightSource
 	{
 	}
 
-	public IfcLightSourcePositional(com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb lightColour, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint position, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure radius, double constantAttenuation, double distanceAttenuation, double quadricAttenuation)
+	public IfcLightSourcePositional(IfcColourRgb lightColour, IfcCartesianPoint position, IfcPositiveLengthMeasure radius, double constantAttenuation, double distanceAttenuation, double quadricAttenuation)
 	{
 		super(lightColour);
 		this.position = position;
@@ -60,19 +81,19 @@ public class IfcLightSourcePositional extends IfcLightSource
 		this.quadricAttenuation = quadricAttenuation;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint getPosition() {
+	public IfcCartesianPoint getPosition() {
 		return this.position;
 	}
 
-	public void setPosition(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint position) {
+	public void setPosition(IfcCartesianPoint position) {
 		this.position = position;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getRadius() {
+	public IfcPositiveLengthMeasure getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure radius) {
+	public void setRadius(IfcPositiveLengthMeasure radius) {
 		this.radius = radius;
 	}
 

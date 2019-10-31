@@ -5,54 +5,68 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpace;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCovering;
 
 @Guid("d7038275-a6b7-4293-86c1-f69337a29534")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelCoversSpaces extends com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingSpace")
 	@Description("Relationship to the space object that is covered.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute name has been changed from <em>RelatedSpace</em> to <em>RelatingSpace</em> with upward compatibility for file based exchange.</blockquote>")
 	@Required()
 	@Guid("934695b7-b499-4d39-a698-18b232840eaf")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpace relatingSpace;
+	@JacksonXmlProperty(isAttribute=false, localName = "RelatingSpace")
+	private IfcSpace relatingSpace;
 
 	@Description("Relationship to the set of coverings covering that cover surfaces of this space.")
 	@Required()
-	@MinLength(1)
 	@Guid("18964ad6-f7f4-49e7-b15b-0b72b0b504e5")
-	private Set<com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCovering> relatedCoverings = new HashSet<com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCovering>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcCovering")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedCoverings")
+	private Set<IfcCovering> relatedCoverings;
 
 
 	public IfcRelCoversSpaces()
 	{
 	}
 
-	public IfcRelCoversSpaces(String globalId, com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpace relatingSpace, com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCovering[] relatedCoverings)
+	public IfcRelCoversSpaces(String globalId, IfcSpace relatingSpace, IfcCovering[] relatedCoverings)
 	{
 		super(globalId);
 		this.relatingSpace = relatingSpace;
 		this.relatedCoverings = new HashSet<>(Arrays.asList(relatedCoverings));
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpace getRelatingSpace() {
+	public IfcSpace getRelatingSpace() {
 		return this.relatingSpace;
 	}
 
-	public void setRelatingSpace(com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpace relatingSpace) {
+	public void setRelatingSpace(IfcSpace relatingSpace) {
 		this.relatingSpace = relatingSpace;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCovering> getRelatedCoverings() {
+	public Set<IfcCovering> getRelatedCoverings() {
 		return this.relatedCoverings;
 	}
 

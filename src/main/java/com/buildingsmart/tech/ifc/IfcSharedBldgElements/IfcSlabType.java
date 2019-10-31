@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElementType;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcSlabTypeEnum;
 
 @Guid("c5119b23-0614-4223-839d-d6e3f491a378")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSlabType extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElementType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Identifies the predefined types of a slab element from which the type required may be set.")
 	@Required()
 	@Guid("ce96f799-1e75-4c3d-a10e-ea5f31bda91e")
-	private com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcSlabTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcSlabTypeEnum predefinedType;
 
 
 	public IfcSlabType()
 	{
 	}
 
-	public IfcSlabType(String globalId, com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcSlabTypeEnum predefinedType)
+	public IfcSlabType(String globalId, IfcSlabTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcSlabTypeEnum getPredefinedType() {
+	public IfcSlabTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcSlabTypeEnum predefinedType) {
+	public void setPredefinedType(IfcSlabTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

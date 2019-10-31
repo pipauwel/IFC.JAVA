@@ -5,27 +5,43 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
 
 @Guid("71ff2a67-6250-4d5e-9756-9ffa2c51aec5")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcArcIndex implements IfcSegmentIndexSelect {
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger value;
+	public IfcPositiveInteger value;
 
 	public IfcArcIndex() {
 	}
 
-	public IfcArcIndex(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger value) {
+	public IfcArcIndex(IfcPositiveInteger value) {
 		this();
 		this.value = value;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger getValue() {
+	public IfcPositiveInteger getValue() {
 		return this.value;
 	}
 
-	public void setValue(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger value) {
+	public void setValue(IfcPositiveInteger value) {
 		this.value = value;
 	}
 }

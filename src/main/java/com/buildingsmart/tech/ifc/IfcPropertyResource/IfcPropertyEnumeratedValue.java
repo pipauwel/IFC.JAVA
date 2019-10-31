@@ -6,27 +6,41 @@
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.*;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcSimpleProperty;
 
 @Guid("0d3d63a5-9a73-4f49-a809-6383082c2216")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPropertyEnumeratedValue extends IfcSimpleProperty
 {
 	@Description("Enumeration values, which shall be listed in the referenced <em>IfcPropertyEnumeration</em>, if such a reference is provided.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been made optional with upward compatibility for file based exchange.</blockquote>")
-	@MinLength(1)
 	@Guid("7f2fce6a-1d45-497e-82f3-61ce510951fe")
-	private List<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue> enumerationValues = new ArrayList<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcValue")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "EnumerationValues")
+	private List<IfcValue> enumerationValues;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "EnumerationReference")
 	@Description("Enumeration from which a enumeration value has been selected. The referenced enumeration also establishes the unit of the enumeration value.")
 	@Guid("5fbe4df2-d945-4c3c-8826-2a4f7ca6549e")
-	private com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyEnumeration enumerationReference;
+	@JacksonXmlProperty(isAttribute=false, localName = "EnumerationReference")
+	private IfcPropertyEnumeration enumerationReference;
 
 
 	public IfcPropertyEnumeratedValue()
@@ -38,15 +52,15 @@ public class IfcPropertyEnumeratedValue extends IfcSimpleProperty
 		super(name);
 	}
 
-	public List<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue> getEnumerationValues() {
+	public List<IfcValue> getEnumerationValues() {
 		return this.enumerationValues;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyEnumeration getEnumerationReference() {
+	public IfcPropertyEnumeration getEnumerationReference() {
 		return this.enumerationReference;
 	}
 
-	public void setEnumerationReference(com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyEnumeration enumerationReference) {
+	public void setEnumerationReference(IfcPropertyEnumeration enumerationReference) {
 		this.enumerationReference = enumerationReference;
 	}
 

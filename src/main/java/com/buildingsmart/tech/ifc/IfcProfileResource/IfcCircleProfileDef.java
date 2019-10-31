@@ -5,38 +5,57 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcCircleHollowProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcParameterizedProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 
 @Guid("0f127537-4dfb-420f-bcea-6637237ef8e4")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcCircleHollowProfileDef.class, name = "IfcCircleHollowProfileDef"))
 public class IfcCircleProfileDef extends IfcParameterizedProfileDef
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "Radius")
 	@Description("The radius of the circle.")
 	@Required()
 	@Guid("e32b7f94-4b79-4078-93cc-014e7f4dcc2f")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure radius;
+	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
+	private IfcPositiveLengthMeasure radius;
 
 
 	public IfcCircleProfileDef()
 	{
 	}
 
-	public IfcCircleProfileDef(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum profileType, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure radius)
+	public IfcCircleProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure radius)
 	{
 		super(profileType);
 		this.radius = radius;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getRadius() {
+	public IfcPositiveLengthMeasure getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure radius) {
+	public void setRadius(IfcPositiveLengthMeasure radius) {
 		this.radius = radius;
 	}
 

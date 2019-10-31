@@ -5,19 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.*;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionResource;
 
 @Guid("7a284148-2d7a-4765-b4e6-59fd177792f3")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcConstructionMaterialResource extends IfcConstructionResource
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Defines types of construction material resources.  <blockquote class=\"change-ifc2x4\">IFC4 New attribute.</blockquote>")
 	@Guid("ebc589df-50eb-4ae8-9581-ccadc54d6260")
-	private com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionMaterialResourceTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcConstructionMaterialResourceTypeEnum predefinedType;
 
 
 	public IfcConstructionMaterialResource()
@@ -29,11 +44,11 @@ public class IfcConstructionMaterialResource extends IfcConstructionResource
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionMaterialResourceTypeEnum getPredefinedType() {
+	public IfcConstructionMaterialResourceTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionMaterialResourceTypeEnum predefinedType) {
+	public void setPredefinedType(IfcConstructionMaterialResourceTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

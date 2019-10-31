@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcBuildingControlsDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionControlElement;
 
 @Guid("cfc09c9c-67e9-4354-9a3c-87e3d2f14839")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcUnitaryControlElement extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionControlElement
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("5fd251f6-8d60-4ce4-bc91-5e5791b8cf4a")
-	private com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcUnitaryControlElementTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcUnitaryControlElementTypeEnum predefinedType;
 
 
 	public IfcUnitaryControlElement()
@@ -27,11 +43,11 @@ public class IfcUnitaryControlElement extends com.buildingsmart.tech.ifc.IfcShar
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcUnitaryControlElementTypeEnum getPredefinedType() {
+	public IfcUnitaryControlElementTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcUnitaryControlElementTypeEnum predefinedType) {
+	public void setPredefinedType(IfcUnitaryControlElementTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

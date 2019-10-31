@@ -5,10 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssigns;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcProductSelect;
 
 @Guid("72eec376-bbab-40d5-9342-93108c172713")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -17,24 +34,25 @@ public class IfcRelAssignsToProduct extends IfcRelAssigns
 	@Description("Reference to the product or product type to which the objects are assigned to.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE Datatype expanded to include <em>IfcProduct</em> and <em>IfcTypeProduct</em>.</blockquote>")
 	@Required()
 	@Guid("2daaadb6-2a0e-43bc-8f2b-5cdcdce021dd")
-	private com.buildingsmart.tech.ifc.IfcKernel.IfcProductSelect relatingProduct;
+	@JacksonXmlProperty(isAttribute=true, localName = "RelatingProduct")
+	private IfcProductSelect relatingProduct;
 
 
 	public IfcRelAssignsToProduct()
 	{
 	}
 
-	public IfcRelAssignsToProduct(String globalId, com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition[] relatedObjects, com.buildingsmart.tech.ifc.IfcKernel.IfcProductSelect relatingProduct)
+	public IfcRelAssignsToProduct(String globalId, IfcObjectDefinition[] relatedObjects, IfcProductSelect relatingProduct)
 	{
 		super(globalId, relatedObjects);
 		this.relatingProduct = relatingProduct;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcKernel.IfcProductSelect getRelatingProduct() {
+	public IfcProductSelect getRelatingProduct() {
 		return this.relatingProduct;
 	}
 
-	public void setRelatingProduct(com.buildingsmart.tech.ifc.IfcKernel.IfcProductSelect relatingProduct) {
+	public void setRelatingProduct(IfcProductSelect relatingProduct) {
 		this.relatingProduct = relatingProduct;
 	}
 

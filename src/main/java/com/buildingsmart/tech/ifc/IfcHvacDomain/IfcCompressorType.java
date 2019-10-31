@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowMovingDeviceType;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCompressorTypeEnum;
 
 @Guid("7da5429d-8a3e-4380-bd61-3b719dbfeebd")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCompressorType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowMovingDeviceType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Defines the type of compressor (e.g., hermetic, reciprocating, etc.).")
 	@Required()
 	@Guid("ffbabe3c-9c16-47e1-ac44-bc3c7f0c6e62")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCompressorTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcCompressorTypeEnum predefinedType;
 
 
 	public IfcCompressorType()
 	{
 	}
 
-	public IfcCompressorType(String globalId, com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCompressorTypeEnum predefinedType)
+	public IfcCompressorType(String globalId, IfcCompressorTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCompressorTypeEnum getPredefinedType() {
+	public IfcCompressorTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCompressorTypeEnum predefinedType) {
+	public void setPredefinedType(IfcCompressorTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

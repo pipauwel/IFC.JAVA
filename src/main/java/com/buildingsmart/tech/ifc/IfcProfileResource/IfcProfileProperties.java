@@ -5,38 +5,54 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.*;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcExtendedProperties;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
 
 @Guid("ef3b6c2b-9c21-4445-83a4-2fa1d264bc10")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcProfileProperties extends com.buildingsmart.tech.ifc.IfcPropertyResource.IfcExtendedProperties
 {
-	@JsonIgnore
 	@Description("Profile definition which is qualified by these properties.")
 	@Required()
 	@Guid("4b5b5752-c860-48e3-a79f-0f0c9379c2c9")
-	private com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef profileDefinition;
+	@JsonIgnore
+	private IfcProfileDef profileDefinition;
 
 
 	public IfcProfileProperties()
 	{
 	}
 
-	public IfcProfileProperties(com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty[] properties, com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef profileDefinition)
+	public IfcProfileProperties(IfcProperty[] properties, IfcProfileDef profileDefinition)
 	{
 		super(properties);
 		this.profileDefinition = profileDefinition;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef getProfileDefinition() {
+	public IfcProfileDef getProfileDefinition() {
 		return this.profileDefinition;
 	}
 
-	public void setProfileDefinition(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef profileDefinition) {
+	public void setProfileDefinition(IfcProfileDef profileDefinition) {
 		this.profileDefinition = profileDefinition;
 	}
 

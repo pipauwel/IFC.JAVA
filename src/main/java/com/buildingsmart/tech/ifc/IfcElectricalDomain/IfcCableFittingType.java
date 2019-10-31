@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFittingType;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableFittingTypeEnum;
 
 @Guid("6b600515-6cd1-4099-92e8-b13faa4d285c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCableFittingType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFittingType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("<p>Identifies the predefined types of cable fitting from which the type required may be set.</p>")
 	@Required()
 	@Guid("e45b3f87-bb57-407e-ae06-d5e07c6e2c84")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableFittingTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcCableFittingTypeEnum predefinedType;
 
 
 	public IfcCableFittingType()
 	{
 	}
 
-	public IfcCableFittingType(String globalId, com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableFittingTypeEnum predefinedType)
+	public IfcCableFittingType(String globalId, IfcCableFittingTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableFittingTypeEnum getPredefinedType() {
+	public IfcCableFittingTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableFittingTypeEnum predefinedType) {
+	public void setPredefinedType(IfcCableFittingTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

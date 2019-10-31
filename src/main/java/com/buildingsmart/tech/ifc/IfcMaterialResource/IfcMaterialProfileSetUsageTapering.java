@@ -5,25 +5,40 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSetUsage;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSet;
 
 @Guid("bbddf2c3-cd7d-4357-94ae-dc7c126b2265")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterialProfileSetUsageTapering extends IfcMaterialProfileSetUsage
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "ForProfileEndSet")
 	@Description("The second <em>IfcMaterialProfileSet</em> set to which the usage is applied.")
 	@Required()
 	@Guid("479176ca-3f02-4f72-abfb-0aea05c25f1f")
-	private com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSet forProfileEndSet;
+	@JacksonXmlProperty(isAttribute=false, localName = "ForProfileEndSet")
+	private IfcMaterialProfileSet forProfileEndSet;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "CardinalEndPoint")
 	@Description("Index reference to a significant point in the second section profile. Describes how this section is aligned relative to the axis of the member it is associated with. This parametric specification of profile alignment can be provided redundantly to the explicit alignment defined by ForProfileSet.MaterialProfiles[*].Profile.")
 	@Guid("c2cdcace-fd71-47d0-9de8-7f392c75629a")
+	@JacksonXmlProperty(isAttribute=true, localName = "CardinalEndPoint")
 	private int cardinalEndPoint;
 
 
@@ -31,17 +46,17 @@ public class IfcMaterialProfileSetUsageTapering extends IfcMaterialProfileSetUsa
 	{
 	}
 
-	public IfcMaterialProfileSetUsageTapering(com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSet forProfileSet, com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSet forProfileEndSet)
+	public IfcMaterialProfileSetUsageTapering(IfcMaterialProfileSet forProfileSet, IfcMaterialProfileSet forProfileEndSet)
 	{
 		super(forProfileSet);
 		this.forProfileEndSet = forProfileEndSet;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSet getForProfileEndSet() {
+	public IfcMaterialProfileSet getForProfileEndSet() {
 		return this.forProfileEndSet;
 	}
 
-	public void setForProfileEndSet(com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSet forProfileEndSet) {
+	public void setForProfileEndSet(IfcMaterialProfileSet forProfileEndSet) {
 		this.forProfileEndSet = forProfileEndSet;
 	}
 

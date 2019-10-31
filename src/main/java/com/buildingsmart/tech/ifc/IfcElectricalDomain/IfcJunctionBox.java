@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFitting;
 
 @Guid("15740639-43f5-4ce5-88d8-fe78d6a98f3c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcJunctionBox extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFitting
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("8b9b6ddd-65f0-4293-b930-a9a80d0d7606")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcJunctionBoxTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcJunctionBoxTypeEnum predefinedType;
 
 
 	public IfcJunctionBox()
@@ -27,11 +43,11 @@ public class IfcJunctionBox extends com.buildingsmart.tech.ifc.IfcSharedBldgServ
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcJunctionBoxTypeEnum getPredefinedType() {
+	public IfcJunctionBoxTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcJunctionBoxTypeEnum predefinedType) {
+	public void setPredefinedType(IfcJunctionBoxTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

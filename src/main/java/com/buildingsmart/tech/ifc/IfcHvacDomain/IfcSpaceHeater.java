@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminal;
 
 @Guid("20c6cd7a-bb4c-42ed-8dca-1a4cfdf92797")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSpaceHeater extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminal
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("095307e6-1620-43fd-8170-a341f054d6b9")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeaterTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcSpaceHeaterTypeEnum predefinedType;
 
 
 	public IfcSpaceHeater()
@@ -27,11 +43,11 @@ public class IfcSpaceHeater extends com.buildingsmart.tech.ifc.IfcSharedBldgServ
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeaterTypeEnum getPredefinedType() {
+	public IfcSpaceHeaterTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeaterTypeEnum predefinedType) {
+	public void setPredefinedType(IfcSpaceHeaterTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

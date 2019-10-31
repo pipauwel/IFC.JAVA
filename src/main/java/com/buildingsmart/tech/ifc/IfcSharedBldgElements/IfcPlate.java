@@ -5,19 +5,37 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcPlateStandardCase;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
 
 @Guid("2b32e8c1-898b-46b1-a578-df08e1db3c6b")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcPlateStandardCase.class, name = "IfcPlateStandardCase"))
 public class IfcPlate extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Predefined generic type for a plate that is specified in an enumeration. There may be a property set given specificly for the predefined types.  <blockquote class=\"note\">NOTE&nbsp; The <em>PredefinedType</em> shall only be used, if no <em>IfcPlateType</em> is assigned, providing its own <em>IfcPlateType.PredefinedType</em>.</blockquote>  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added at the end of the entity definition.</blockquote>")
 	@Guid("4b413560-ba7d-4a7c-b5d9-d3bf64f0b896")
-	private com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcPlateTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcPlateTypeEnum predefinedType;
 
 
 	public IfcPlate()
@@ -29,11 +47,11 @@ public class IfcPlate extends com.buildingsmart.tech.ifc.IfcProductExtension.Ifc
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcPlateTypeEnum getPredefinedType() {
+	public IfcPlateTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcPlateTypeEnum predefinedType) {
+	public void setPredefinedType(IfcPlateTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

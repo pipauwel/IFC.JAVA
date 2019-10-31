@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice;
 
 @Guid("c3b0db60-6c85-4fba-9efe-5d2a04a9e3d3")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcAirToAirHeatRecovery extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("8bf12e55-5171-4fd6-be19-5780bdb84f49")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirToAirHeatRecoveryTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcAirToAirHeatRecoveryTypeEnum predefinedType;
 
 
 	public IfcAirToAirHeatRecovery()
@@ -27,11 +43,11 @@ public class IfcAirToAirHeatRecovery extends com.buildingsmart.tech.ifc.IfcShare
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirToAirHeatRecoveryTypeEnum getPredefinedType() {
+	public IfcAirToAirHeatRecoveryTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirToAirHeatRecoveryTypeEnum predefinedType) {
+	public void setPredefinedType(IfcAirToAirHeatRecoveryTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

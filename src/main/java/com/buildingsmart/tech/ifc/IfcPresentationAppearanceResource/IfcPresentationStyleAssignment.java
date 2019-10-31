@@ -5,15 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPresentationStyleSelect;
 
 @Guid("3ca4cc70-a4c3-45fa-8e65-f85288defd8b")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -21,21 +31,23 @@ public class IfcPresentationStyleAssignment implements IfcStyleAssignmentSelect
 {
 	@Description("A set of presentation styles that are assigned to styled items.")
 	@Required()
-	@MinLength(1)
 	@Guid("a2fe78b6-621d-4fb6-9d05-6f1b465dc3c0")
-	private Set<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPresentationStyleSelect> styles = new HashSet<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPresentationStyleSelect>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcPresentationStyleSelect")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Styles")
+	private Set<IfcPresentationStyleSelect> styles;
 
 
 	public IfcPresentationStyleAssignment()
 	{
 	}
 
-	public IfcPresentationStyleAssignment(com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPresentationStyleSelect[] styles)
+	public IfcPresentationStyleAssignment(IfcPresentationStyleSelect[] styles)
 	{
 		this.styles = new HashSet<>(Arrays.asList(styles));
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPresentationStyleSelect> getStyles() {
+	public Set<IfcPresentationStyleSelect> getStyles() {
 		return this.styles;
 	}
 

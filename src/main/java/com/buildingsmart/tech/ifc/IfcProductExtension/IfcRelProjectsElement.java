@@ -5,54 +5,69 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelDecomposes;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementAddition;
 
 @Guid("3a589d07-713f-4a7d-90a7-1b9c3b668e2b")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelProjectsElement extends com.buildingsmart.tech.ifc.IfcKernel.IfcRelDecomposes
 {
-	@JsonIgnore
 	@Description("Element at which a projection is created by the associated <em>IfcProjectionElement</em>.")
 	@Required()
 	@Guid("9ca4732c-313e-419b-91c9-d6570d18f0b8")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatingElement;
+	@JsonIgnore
+	private IfcElement relatingElement;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatedFeatureElement")
 	@Description("Reference to the <em>IfcFeatureElementAddition</em> that defines an addition to the volume of the element, by using a Boolean addition operation. An example is a projection at the associated element.")
 	@Required()
 	@Guid("c95715df-11cc-4fae-8d0b-2e578e90f0ab")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementAddition relatedFeatureElement;
+	@JacksonXmlProperty(isAttribute=false, localName = "RelatedFeatureElement")
+	private IfcFeatureElementAddition relatedFeatureElement;
 
 
 	public IfcRelProjectsElement()
 	{
 	}
 
-	public IfcRelProjectsElement(String globalId, com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatingElement, com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementAddition relatedFeatureElement)
+	public IfcRelProjectsElement(String globalId, IfcElement relatingElement, IfcFeatureElementAddition relatedFeatureElement)
 	{
 		super(globalId);
 		this.relatingElement = relatingElement;
 		this.relatedFeatureElement = relatedFeatureElement;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement getRelatingElement() {
+	public IfcElement getRelatingElement() {
 		return this.relatingElement;
 	}
 
-	public void setRelatingElement(com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatingElement) {
+	public void setRelatingElement(IfcElement relatingElement) {
 		this.relatingElement = relatingElement;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementAddition getRelatedFeatureElement() {
+	public IfcFeatureElementAddition getRelatedFeatureElement() {
 		return this.relatedFeatureElement;
 	}
 
-	public void setRelatedFeatureElement(com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementAddition relatedFeatureElement) {
+	public void setRelatedFeatureElement(IfcFeatureElementAddition relatedFeatureElement) {
 		this.relatedFeatureElement = relatedFeatureElement;
 	}
 

@@ -5,23 +5,40 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuilding;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingStorey;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSite;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpace;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialElement;
 
 @Guid("061ba193-076d-4292-a0ce-c96d7aba692e")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use=JsonTypeInfo.Id.NAME, include=JsonTypeInfo.As.PROPERTY, property = "Class")
-@JsonSubTypes( { @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcProductExtension.IfcSite.class, name = "IfcSite"), @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuilding.class, name = "IfcBuilding"), @JsonSubTypes.Type(value = com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingStorey.class, name = "IfcBuildingStorey")})
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcBuilding.class, name = "IfcBuilding"), @JsonSubTypes.Type(value = IfcBuildingStorey.class, name = "IfcBuildingStorey"), @JsonSubTypes.Type(value = IfcSite.class, name = "IfcSite"), @JsonSubTypes.Type(value = IfcSpace.class, name = "IfcSpace")})
 public abstract class IfcSpatialStructureElement extends IfcSpatialElement
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "CompositionType")
 	@Description("Denotes, whether the predefined spatial structure element represents itself, or an aggregate (complex) or a part (part). The interpretation is given separately for each subtype of spatial structure element. If no <em>CompositionType</em> is asserted, the dafault value 'ELEMENT' applies.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; Attribute made optional.</blockquote>")
 	@Guid("726de67f-b56e-4031-b779-84330e1d0483")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementCompositionEnum compositionType;
+	@JacksonXmlProperty(isAttribute=true, localName = "CompositionType")
+	private IfcElementCompositionEnum compositionType;
 
 
 	public IfcSpatialStructureElement()
@@ -33,11 +50,11 @@ public abstract class IfcSpatialStructureElement extends IfcSpatialElement
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementCompositionEnum getCompositionType() {
+	public IfcElementCompositionEnum getCompositionType() {
 		return this.compositionType;
 	}
 
-	public void setCompositionType(com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementCompositionEnum compositionType) {
+	public void setCompositionType(IfcElementCompositionEnum compositionType) {
 		this.compositionType = compositionType;
 	}
 

@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdge;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcVertex;
 
 @Guid("301f5c35-1bd3-43f4-8839-f47887d4d763")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSubedge extends IfcEdge
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "ParentEdge")
 	@Description("The Edge, or Subedge, which contains the Subedge.")
 	@Required()
 	@Guid("4c3df6a8-223d-4e59-9a81-4540065605bc")
-	private com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdge parentEdge;
+	@JacksonXmlProperty(isAttribute=false, localName = "ParentEdge")
+	private IfcEdge parentEdge;
 
 
 	public IfcSubedge()
 	{
 	}
 
-	public IfcSubedge(com.buildingsmart.tech.ifc.IfcTopologyResource.IfcVertex edgeStart, com.buildingsmart.tech.ifc.IfcTopologyResource.IfcVertex edgeEnd, com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdge parentEdge)
+	public IfcSubedge(IfcVertex edgeStart, IfcVertex edgeEnd, IfcEdge parentEdge)
 	{
 		super(edgeStart, edgeEnd);
 		this.parentEdge = parentEdge;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdge getParentEdge() {
+	public IfcEdge getParentEdge() {
 		return this.parentEdge;
 	}
 
-	public void setParentEdge(com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdge parentEdge) {
+	public void setParentEdge(IfcEdge parentEdge) {
 		this.parentEdge = parentEdge;
 	}
 

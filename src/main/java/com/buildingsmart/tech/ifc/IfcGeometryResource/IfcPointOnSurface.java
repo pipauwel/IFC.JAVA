@@ -5,32 +5,47 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
 
 @Guid("a7b0a4ed-3952-415a-b428-67b95e5273cd")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPointOnSurface extends IfcPoint
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "BasisSurface")
 	@Description("The surface to which the parameter values relate.")
 	@Required()
 	@Guid("3415acd6-19b0-4948-8be2-d4f419ace10a")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface basisSurface;
+	@JacksonXmlProperty(isAttribute=false, localName = "BasisSurface")
+	private IfcSurface basisSurface;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PointParameterU")
 	@Description("The first parameter value of the point location.")
 	@Required()
 	@Guid("62ebc5bd-a118-4934-ba4c-12ee902e0f49")
+	@JacksonXmlProperty(isAttribute=true, localName = "PointParameterU")
 	private double pointParameterU;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PointParameterV")
 	@Description("The second parameter value of the point location.")
 	@Required()
 	@Guid("8e50f05b-a118-43a2-89da-73538af766d3")
+	@JacksonXmlProperty(isAttribute=true, localName = "PointParameterV")
 	private double pointParameterV;
 
 
@@ -38,18 +53,18 @@ public class IfcPointOnSurface extends IfcPoint
 	{
 	}
 
-	public IfcPointOnSurface(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface basisSurface, double pointParameterU, double pointParameterV)
+	public IfcPointOnSurface(IfcSurface basisSurface, double pointParameterU, double pointParameterV)
 	{
 		this.basisSurface = basisSurface;
 		this.pointParameterU = pointParameterU;
 		this.pointParameterV = pointParameterV;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface getBasisSurface() {
+	public IfcSurface getBasisSurface() {
 		return this.basisSurface;
 	}
 
-	public void setBasisSurface(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface basisSurface) {
+	public void setBasisSurface(IfcSurface basisSurface) {
 		this.basisSurface = basisSurface;
 	}
 

@@ -5,23 +5,38 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator3D;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 
 @Guid("283bc76c-8d97-414d-a5ef-96f76f53702f")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCartesianTransformationOperator3DnonUniform extends IfcCartesianTransformationOperator3D
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "Scale2")
 	@Description("The scaling value specified for the transformation along the axis 2. This is normally the y scale factor.")
 	@Guid("a8e81164-ed5f-4e59-a76e-ab0907154bf2")
+	@JacksonXmlProperty(isAttribute=true, localName = "Scale2")
 	private double scale2;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Scale3")
 	@Description("The scaling value specified for the transformation along the axis 3. This is normally the z scale factor.")
 	@Guid("9efce9a5-63f1-44d1-bb62-a02be5a7092f")
+	@JacksonXmlProperty(isAttribute=true, localName = "Scale3")
 	private double scale3;
 
 
@@ -29,7 +44,7 @@ public class IfcCartesianTransformationOperator3DnonUniform extends IfcCartesian
 	{
 	}
 
-	public IfcCartesianTransformationOperator3DnonUniform(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint localOrigin)
+	public IfcCartesianTransformationOperator3DnonUniform(IfcCartesianPoint localOrigin)
 	{
 		super(localOrigin);
 	}

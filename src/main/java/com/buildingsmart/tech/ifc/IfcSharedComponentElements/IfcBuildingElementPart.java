@@ -5,19 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedComponentElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.*;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcElementComponent;
 
 @Guid("a8383055-66b2-4dac-abe1-98562ba38cad")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcBuildingElementPart extends IfcElementComponent
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Subtype of building element part")
 	@Guid("0da05a86-fc94-4001-9141-3943065bd488")
-	private com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcBuildingElementPartTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcBuildingElementPartTypeEnum predefinedType;
 
 
 	public IfcBuildingElementPart()
@@ -29,11 +44,11 @@ public class IfcBuildingElementPart extends IfcElementComponent
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcBuildingElementPartTypeEnum getPredefinedType() {
+	public IfcBuildingElementPartTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcBuildingElementPartTypeEnum predefinedType) {
+	public void setPredefinedType(IfcBuildingElementPartTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

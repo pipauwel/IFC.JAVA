@@ -7,14 +7,27 @@ package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureCoordinate;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceTexture;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureVertex;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace;
 
 @Guid("d3acf0b2-2c3f-4fc7-afb8-e82f32d6fa12")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -22,37 +35,39 @@ public class IfcTextureMap extends IfcTextureCoordinate
 {
 	@Description("List of texture coordinate vertices that are applied to the corresponding points of the polyloop defining a face bound.")
 	@Required()
-	@MinLength(3)
 	@Guid("03815b41-69d3-4f06-8e96-0e5ac53ab8c1")
-	private List<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureVertex> vertices = new ArrayList<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureVertex>();
+	@MinLength(3)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcTextureVertex")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Vertices")
+	private List<IfcTextureVertex> vertices;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "MappedTo")
 	@Description("The face that defines the corresponding list of points along the bounding poly loop of the face outer bound.  <blockquote class=\"note\">NOTE&nbsp; The face may have additional inner loops. The <em>IfcTextureMap</em> and its <em>Vertices</em> only correspond with the coordinates of the <em>IfcPolyloop</em> representing the outer bound.</blockquote>")
 	@Required()
 	@Guid("21dc192f-d35b-4f70-8f37-5c46b77243b4")
-	private com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace mappedTo;
+	@JacksonXmlProperty(isAttribute=false, localName = "MappedTo")
+	private IfcFace mappedTo;
 
 
 	public IfcTextureMap()
 	{
 	}
 
-	public IfcTextureMap(com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceTexture[] maps, com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureVertex[] vertices, com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace mappedTo)
+	public IfcTextureMap(IfcSurfaceTexture[] maps, IfcTextureVertex[] vertices, IfcFace mappedTo)
 	{
 		super(maps);
 		this.vertices = new ArrayList<>(Arrays.asList(vertices));
 		this.mappedTo = mappedTo;
 	}
 
-	public List<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureVertex> getVertices() {
+	public List<IfcTextureVertex> getVertices() {
 		return this.vertices;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace getMappedTo() {
+	public IfcFace getMappedTo() {
 		return this.mappedTo;
 	}
 
-	public void setMappedTo(com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace mappedTo) {
+	public void setMappedTo(IfcFace mappedTo) {
 		this.mappedTo = mappedTo;
 	}
 

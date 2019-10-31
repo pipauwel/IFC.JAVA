@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice;
 
 @Guid("e4ba657e-5119-477a-adcc-96b3366a3658")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCoil extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("4dc322cc-b46e-4816-bd8c-e6ef53a51ed6")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoilTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcCoilTypeEnum predefinedType;
 
 
 	public IfcCoil()
@@ -27,11 +43,11 @@ public class IfcCoil extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElem
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoilTypeEnum getPredefinedType() {
+	public IfcCoilTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoilTypeEnum predefinedType) {
+	public void setPredefinedType(IfcCoilTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

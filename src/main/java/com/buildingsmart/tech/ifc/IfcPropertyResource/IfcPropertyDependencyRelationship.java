@@ -5,31 +5,46 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
 
 @Guid("0b79cf26-1901-47e3-beed-cf836b1c598d")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPropertyDependencyRelationship extends com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "DependingProperty")
 	@Description("The property on which the relationship depends.")
 	@Required()
 	@Guid("2bc09409-74fc-4627-963e-994929eb02e2")
-	private com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty dependingProperty;
+	@JacksonXmlProperty(isAttribute=false, localName = "DependingProperty")
+	private IfcProperty dependingProperty;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "DependantProperty")
 	@Description("The dependant property.")
 	@Required()
 	@Guid("48c40222-f9f1-4e9a-a75d-645311ee5a5b")
-	private com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty dependantProperty;
+	@JacksonXmlProperty(isAttribute=false, localName = "DependantProperty")
+	private IfcProperty dependantProperty;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Expression")
 	@Description("Expression that further describes the nature of the dependency relation.")
 	@Guid("20552976-18c7-4fee-9e72-58d112b61432")
+	@JacksonXmlProperty(isAttribute=true, localName = "Expression")
 	private String expression;
 
 
@@ -37,25 +52,25 @@ public class IfcPropertyDependencyRelationship extends com.buildingsmart.tech.if
 	{
 	}
 
-	public IfcPropertyDependencyRelationship(com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty dependingProperty, com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty dependantProperty)
+	public IfcPropertyDependencyRelationship(IfcProperty dependingProperty, IfcProperty dependantProperty)
 	{
 		this.dependingProperty = dependingProperty;
 		this.dependantProperty = dependantProperty;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty getDependingProperty() {
+	public IfcProperty getDependingProperty() {
 		return this.dependingProperty;
 	}
 
-	public void setDependingProperty(com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty dependingProperty) {
+	public void setDependingProperty(IfcProperty dependingProperty) {
 		this.dependingProperty = dependingProperty;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty getDependantProperty() {
+	public IfcProperty getDependantProperty() {
 		return this.dependantProperty;
 	}
 
-	public void setDependantProperty(com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty dependantProperty) {
+	public void setDependantProperty(IfcProperty dependantProperty) {
 		this.dependantProperty = dependantProperty;
 	}
 

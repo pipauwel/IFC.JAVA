@@ -5,10 +5,23 @@
 
 package com.buildingsmart.tech.ifc.IfcMeasureResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
 
 @Guid("ef3f0882-12e2-4d20-b7bb-0c455f3d1dad")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -17,36 +30,43 @@ public class IfcDimensionalExponents
 	@Description("The power of the length base quantity.")
 	@Required()
 	@Guid("e6e8038f-c561-4d2d-a3bb-e768958c320e")
+	@JacksonXmlProperty(isAttribute=true, localName = "LengthExponent")
 	private long lengthExponent;
 
 	@Description("The power of the mass base quantity.")
 	@Required()
 	@Guid("1c89c3c7-34fe-4d0a-9c68-00bc5b7dcb1a")
+	@JacksonXmlProperty(isAttribute=true, localName = "MassExponent")
 	private long massExponent;
 
 	@Description("The power of the time base quantity.")
 	@Required()
 	@Guid("4cfe7c87-c8df-4693-bfad-aae2cc98d8ae")
+	@JacksonXmlProperty(isAttribute=true, localName = "TimeExponent")
 	private long timeExponent;
 
 	@Description("The power of the electric current base quantity.")
 	@Required()
 	@Guid("3d9b42b9-b568-4afc-bcbf-cfda31e81ca4")
+	@JacksonXmlProperty(isAttribute=true, localName = "ElectricCurrentExponent")
 	private long electricCurrentExponent;
 
 	@Description("The power of the thermodynamic temperature base quantity.")
 	@Required()
 	@Guid("62bd0e1f-76af-4dd8-978e-e61f1877691c")
+	@JacksonXmlProperty(isAttribute=true, localName = "ThermodynamicTemperatureExponent")
 	private long thermodynamicTemperatureExponent;
 
 	@Description("The power of the amount of substance base quantity.")
 	@Required()
 	@Guid("83ed42eb-f403-4a34-8e18-f3f5097b9ec4")
+	@JacksonXmlProperty(isAttribute=true, localName = "AmountOfSubstanceExponent")
 	private long amountOfSubstanceExponent;
 
 	@Description("The power of the luminous intensity base quantity.")
 	@Required()
 	@Guid("e1c165b8-59ba-40d1-9c8a-3e1a4f9dea54")
+	@JacksonXmlProperty(isAttribute=true, localName = "LuminousIntensityExponent")
 	private long luminousIntensityExponent;
 
 

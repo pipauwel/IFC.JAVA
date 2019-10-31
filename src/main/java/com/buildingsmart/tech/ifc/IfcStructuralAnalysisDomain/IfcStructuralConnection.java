@@ -5,28 +5,47 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveConnection;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralPointConnection;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceConnection;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralItem;
 
 @Guid("d4640db1-7b55-4f79-8ba6-05b016369801")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcStructuralCurveConnection.class, name = "IfcStructuralCurveConnection"), @JsonSubTypes.Type(value = IfcStructuralPointConnection.class, name = "IfcStructuralPointConnection"), @JsonSubTypes.Type(value = IfcStructuralSurfaceConnection.class, name = "IfcStructuralSurfaceConnection")})
 public abstract class IfcStructuralConnection extends IfcStructuralItem
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "AppliedCondition")
 	@Description("Optional boundary conditions which define support conditions of this connection object, given in local coordinate directions of the connection object.  If left unspecified, the connection object is assumed to have no supports besides being connected with members.")
 	@Guid("f73c29bd-73af-42d0-ba9a-8654e4da5996")
-	private com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryCondition appliedCondition;
+	@JacksonXmlProperty(isAttribute=false, localName = "AppliedCondition")
+	private IfcBoundaryCondition appliedCondition;
 
 	@Description("References to the IfcRelConnectsStructuralMembers relationship by which structural members can be associated to structural connections.")
-	@MinLength(1)
 	@Guid("e589142e-96a4-4236-be46-02d7d341f21b")
-	private Set<com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcRelConnectsStructuralMember> connectsStructuralMembers = new HashSet<com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcRelConnectsStructuralMember>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelConnectsStructuralMember")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "ConnectsStructuralMembers")
+	private Set<IfcRelConnectsStructuralMember> connectsStructuralMembers;
 
 
 	public IfcStructuralConnection()
@@ -38,15 +57,15 @@ public abstract class IfcStructuralConnection extends IfcStructuralItem
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryCondition getAppliedCondition() {
+	public IfcBoundaryCondition getAppliedCondition() {
 		return this.appliedCondition;
 	}
 
-	public void setAppliedCondition(com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryCondition appliedCondition) {
+	public void setAppliedCondition(IfcBoundaryCondition appliedCondition) {
 		this.appliedCondition = appliedCondition;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcRelConnectsStructuralMember> getConnectsStructuralMembers() {
+	public Set<IfcRelConnectsStructuralMember> getConnectsStructuralMembers() {
 		return this.connectsStructuralMembers;
 	}
 

@@ -5,37 +5,52 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcVertex;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint;
 
 @Guid("77f373d7-e77d-410a-a47e-47b03b73fc39")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcVertexPoint extends IfcVertex implements com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcPointOrVertexPoint
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "VertexGeometry")
 	@Description("The geometric point, which defines the position in geometric space of the vertex.")
 	@Required()
 	@Guid("908edc85-594d-4aa2-bec6-a352ddd90a08")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint vertexGeometry;
+	@JacksonXmlProperty(isAttribute=false, localName = "VertexGeometry")
+	private IfcPoint vertexGeometry;
 
 
 	public IfcVertexPoint()
 	{
 	}
 
-	public IfcVertexPoint(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint vertexGeometry)
+	public IfcVertexPoint(IfcPoint vertexGeometry)
 	{
 		this.vertexGeometry = vertexGeometry;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint getVertexGeometry() {
+	public IfcPoint getVertexGeometry() {
 		return this.vertexGeometry;
 	}
 
-	public void setVertexGeometry(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint vertexGeometry) {
+	public void setVertexGeometry(IfcPoint vertexGeometry) {
 		this.vertexGeometry = vertexGeometry;
 	}
 

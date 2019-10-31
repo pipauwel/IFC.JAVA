@@ -5,38 +5,55 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcRelConnectsStructuralMember;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralMember;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralConnection;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry;
 
 @Guid("a66f70d6-cdc3-47b6-b2a1-9b9c2991e6f5")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelConnectsWithEccentricity extends IfcRelConnectsStructuralMember
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "ConnectionConstraint")
 	@Description("The connection constraint explicitly states the eccentricity between a structural member and a structural connection by means of two topological objects (vertex and vertex, or edge and edge, or face and face).")
 	@Required()
 	@Guid("32bf06cb-d463-43c3-be58-0f7c5d0211e2")
-	private com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry connectionConstraint;
+	@JacksonXmlProperty(isAttribute=false, localName = "ConnectionConstraint")
+	private IfcConnectionGeometry connectionConstraint;
 
 
 	public IfcRelConnectsWithEccentricity()
 	{
 	}
 
-	public IfcRelConnectsWithEccentricity(String globalId, com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralMember relatingStructuralMember, com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralConnection relatedStructuralConnection, com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry connectionConstraint)
+	public IfcRelConnectsWithEccentricity(String globalId, IfcStructuralMember relatingStructuralMember, IfcStructuralConnection relatedStructuralConnection, IfcConnectionGeometry connectionConstraint)
 	{
 		super(globalId, relatingStructuralMember, relatedStructuralConnection);
 		this.connectionConstraint = connectionConstraint;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry getConnectionConstraint() {
+	public IfcConnectionGeometry getConnectionConstraint() {
 		return this.connectionConstraint;
 	}
 
-	public void setConnectionConstraint(com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry connectionConstraint) {
+	public void setConnectionConstraint(IfcConnectionGeometry connectionConstraint) {
 		this.connectionConstraint = connectionConstraint;
 	}
 

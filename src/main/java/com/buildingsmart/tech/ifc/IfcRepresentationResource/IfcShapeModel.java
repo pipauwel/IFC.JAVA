@@ -5,34 +5,54 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeRepresentation;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcTopologyRepresentation;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentation;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentationContext;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
 
 @Guid("96fc3c5f-dd42-4a80-aea3-295fbe743fa9")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcShapeRepresentation.class, name = "IfcShapeRepresentation"), @JsonSubTypes.Type(value = IfcTopologyRepresentation.class, name = "IfcTopologyRepresentation")})
 public abstract class IfcShapeModel extends IfcRepresentation
 {
 	@Description("Reference to the shape aspect, for which it is the shape representation.")
-	@MaxLength(1)
 	@Guid("917251e4-e944-4d8c-adbb-eecf72e4e71c")
-	private Set<com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect> ofShapeAspect = new HashSet<com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect>();
+	@MaxLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcShapeAspect")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "OfShapeAspect")
+	private Set<IfcShapeAspect> ofShapeAspect;
 
 
 	public IfcShapeModel()
 	{
 	}
 
-	public IfcShapeModel(com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentationContext contextOfItems, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem[] items)
+	public IfcShapeModel(IfcRepresentationContext contextOfItems, IfcRepresentationItem[] items)
 	{
 		super(contextOfItems, items);
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect> getOfShapeAspect() {
+	public Set<IfcShapeAspect> getOfShapeAspect() {
 		return this.ofShapeAspect;
 	}
 

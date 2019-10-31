@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowStorageDeviceType;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcTankTypeEnum;
 
 @Guid("540199dc-befa-4477-9a3c-18a376ec1a11")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcTankType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowStorageDeviceType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Defines the type of tank.")
 	@Required()
 	@Guid("5b6ea321-df4c-44d0-b5b1-4fb2fe31c4d5")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcTankTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcTankTypeEnum predefinedType;
 
 
 	public IfcTankType()
 	{
 	}
 
-	public IfcTankType(String globalId, com.buildingsmart.tech.ifc.IfcHvacDomain.IfcTankTypeEnum predefinedType)
+	public IfcTankType(String globalId, IfcTankTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcTankTypeEnum getPredefinedType() {
+	public IfcTankTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcTankTypeEnum predefinedType) {
+	public void setPredefinedType(IfcTankTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

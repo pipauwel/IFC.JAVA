@@ -5,28 +5,42 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralLoadResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoadStatic;
 
 @Guid("2b69ecd6-ac6b-4bbe-b84f-4f4ec62e97ad")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcStructuralLoadPlanarForce extends IfcStructuralLoadStatic
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PlanarForceX")
 	@Description("Planar force value in x-direction.")
 	@Guid("6eb58171-0dcb-41c6-8d57-65ba25daf21f")
+	@JacksonXmlProperty(isAttribute=true, localName = "PlanarForceX")
 	private double planarForceX;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PlanarForceY")
 	@Description("Planar force value in y-direction.")
 	@Guid("b44e2300-fb5e-48e9-be76-dbfc689e30cd")
+	@JacksonXmlProperty(isAttribute=true, localName = "PlanarForceY")
 	private double planarForceY;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PlanarForceZ")
 	@Description("Planar force value in z-direction.")
 	@Guid("9247264a-9686-4133-bd06-98fb14f99e97")
+	@JacksonXmlProperty(isAttribute=true, localName = "PlanarForceZ")
 	private double planarForceZ;
 
 

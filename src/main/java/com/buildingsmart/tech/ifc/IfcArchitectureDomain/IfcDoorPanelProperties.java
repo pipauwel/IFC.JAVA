@@ -5,92 +5,110 @@
 
 package com.buildingsmart.tech.ifc.IfcArchitectureDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcArchitectureDomain.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcPreDefinedPropertySet;
+import com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelOperationEnum;
+import com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelPositionEnum;
 
 @Guid("9cba168e-4c79-497b-9481-9b26b7aa86d4")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcDoorPanelProperties extends com.buildingsmart.tech.ifc.IfcKernel.IfcPreDefinedPropertySet
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PanelDepth")
 	@Description("Depth of the door panel, measured perpendicular to the plane of the door leaf.")
 	@Guid("60db7d64-ad51-4907-abb9-1e37b03e6ef5")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure panelDepth;
+	@JacksonXmlProperty(isAttribute=false, localName = "PanelDepth")
+	private IfcPositiveLengthMeasure panelDepth;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PanelOperation")
 	@Description("The <em>PanelOperation</em> defines the way of operation of that panel. The <em>PanelOperation</em> of the door panel has to correspond with the <em>OperationType</em> of the <em>IfcDoorStyle</em> by which it is referenced.")
 	@Required()
 	@Guid("653eed18-68d7-4612-8bdf-6873cf96ca54")
-	private com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelOperationEnum panelOperation;
+	@JacksonXmlProperty(isAttribute=true, localName = "PanelOperation")
+	private IfcDoorPanelOperationEnum panelOperation;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PanelWidth")
 	@Description("Width of this panel, given as ratio relative to the total clear opening width of the door. If omited, it defaults to 1. A value has to be provided for all doors with <em>OperationType</em>'s at <em>IfcDoorStyle</em> defining a door with more then one panel.")
 	@Guid("5ac6ab35-7be7-4433-9f2a-95d15dfb9753")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure panelWidth;
+	@JacksonXmlProperty(isAttribute=false, localName = "PanelWidth")
+	private IfcNormalisedRatioMeasure panelWidth;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PanelPosition")
 	@Description("Position of this panel within the door. The <em>PanelPosition</em> of the door panel has to correspond with the <em>OperationType</em> of the <em>IfcDoorStyle</em> by which it is referenced.")
 	@Required()
 	@Guid("dc262691-0151-4a09-8981-de18a10127ae")
-	private com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelPositionEnum panelPosition;
+	@JacksonXmlProperty(isAttribute=true, localName = "PanelPosition")
+	private IfcDoorPanelPositionEnum panelPosition;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "ShapeAspectStyle")
 	@Description("Pointer to the shape aspect, if given. The shape aspect reflects the part of the door shape, which represents the door panel.  <blockquote class=\"deprecated\">DEPRECATION&nbsp; The attribute is deprecated and shall no longer be used, i.e. the value shall be NIL ($).</blockquote>")
 	@Guid("4c01c2bd-ea29-4104-bd4f-963e2032e958")
-	private com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect shapeAspectStyle;
+	@JacksonXmlProperty(isAttribute=false, localName = "ShapeAspectStyle")
+	private IfcShapeAspect shapeAspectStyle;
 
 
 	public IfcDoorPanelProperties()
 	{
 	}
 
-	public IfcDoorPanelProperties(String globalId, com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelOperationEnum panelOperation, com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelPositionEnum panelPosition)
+	public IfcDoorPanelProperties(String globalId, IfcDoorPanelOperationEnum panelOperation, IfcDoorPanelPositionEnum panelPosition)
 	{
 		super(globalId);
 		this.panelOperation = panelOperation;
 		this.panelPosition = panelPosition;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getPanelDepth() {
+	public IfcPositiveLengthMeasure getPanelDepth() {
 		return this.panelDepth;
 	}
 
-	public void setPanelDepth(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure panelDepth) {
+	public void setPanelDepth(IfcPositiveLengthMeasure panelDepth) {
 		this.panelDepth = panelDepth;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelOperationEnum getPanelOperation() {
+	public IfcDoorPanelOperationEnum getPanelOperation() {
 		return this.panelOperation;
 	}
 
-	public void setPanelOperation(com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelOperationEnum panelOperation) {
+	public void setPanelOperation(IfcDoorPanelOperationEnum panelOperation) {
 		this.panelOperation = panelOperation;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure getPanelWidth() {
+	public IfcNormalisedRatioMeasure getPanelWidth() {
 		return this.panelWidth;
 	}
 
-	public void setPanelWidth(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure panelWidth) {
+	public void setPanelWidth(IfcNormalisedRatioMeasure panelWidth) {
 		this.panelWidth = panelWidth;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelPositionEnum getPanelPosition() {
+	public IfcDoorPanelPositionEnum getPanelPosition() {
 		return this.panelPosition;
 	}
 
-	public void setPanelPosition(com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelPositionEnum panelPosition) {
+	public void setPanelPosition(IfcDoorPanelPositionEnum panelPosition) {
 		this.panelPosition = panelPosition;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect getShapeAspectStyle() {
+	public IfcShapeAspect getShapeAspectStyle() {
 		return this.shapeAspectStyle;
 	}
 
-	public void setShapeAspectStyle(com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect shapeAspectStyle) {
+	public void setShapeAspectStyle(IfcShapeAspect shapeAspectStyle) {
 		this.shapeAspectStyle = shapeAspectStyle;
 	}
 

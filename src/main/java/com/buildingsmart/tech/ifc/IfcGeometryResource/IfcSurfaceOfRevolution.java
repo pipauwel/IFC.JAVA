@@ -5,42 +5,58 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSweptSurface;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis1Placement;
 
 @Guid("89fd5813-f37e-4602-a4ad-8cdb9bf8869c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSurfaceOfRevolution extends IfcSweptSurface
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "AxisPosition")
 	@Description("A point on the axis of revolution and the direction of the axis of revolution.")
 	@Required()
 	@Guid("f5ca3d78-4e7d-4f00-8f91-e7bad20ebeb5")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis1Placement axisPosition;
+	@JacksonXmlProperty(isAttribute=false, localName = "AxisPosition")
+	private IfcAxis1Placement axisPosition;
 
 
 	public IfcSurfaceOfRevolution()
 	{
 	}
 
-	public IfcSurfaceOfRevolution(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef sweptCurve, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis1Placement axisPosition)
+	public IfcSurfaceOfRevolution(IfcProfileDef sweptCurve, IfcAxis1Placement axisPosition)
 	{
 		super(sweptCurve);
 		this.axisPosition = axisPosition;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis1Placement getAxisPosition() {
+	public IfcAxis1Placement getAxisPosition() {
 		return this.axisPosition;
 	}
 
-	public void setAxisPosition(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis1Placement axisPosition) {
+	public void setAxisPosition(IfcAxis1Placement axisPosition) {
 		this.axisPosition = axisPosition;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcLine getAxisLine() {
+	public IfcLine getAxisLine() {
 		return null;
 	}
 

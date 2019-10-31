@@ -5,28 +5,43 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedMgmtElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedMgmtElements.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcControl;
 
 @Guid("68afab75-4967-4f29-8e43-1f456d2a85d0")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPermit extends com.buildingsmart.tech.ifc.IfcKernel.IfcControl
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Identifies the predefined types of permit that can be granted.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added.</blockquote>")
 	@Guid("0e7d5fb5-5730-488d-81d5-0a45b54a9f9c")
-	private com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcPermitTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcPermitTypeEnum predefinedType;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Status")
 	@Description("The status currently assigned to the permit.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added.</blockquote>")
 	@Guid("1486b92f-8a56-432e-a9b9-a8ef085ead05")
+	@JacksonXmlProperty(isAttribute=true, localName = "Status")
 	private String status;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "LongDescription")
 	@Description("Detailed description of the request.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added.</blockquote>")
 	@Guid("90a8f164-66d0-4aac-bcc6-4b738708490c")
+	@JacksonXmlProperty(isAttribute=true, localName = "LongDescription")
 	private String longDescription;
 
 
@@ -39,11 +54,11 @@ public class IfcPermit extends com.buildingsmart.tech.ifc.IfcKernel.IfcControl
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcPermitTypeEnum getPredefinedType() {
+	public IfcPermitTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcPermitTypeEnum predefinedType) {
+	public void setPredefinedType(IfcPermitTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

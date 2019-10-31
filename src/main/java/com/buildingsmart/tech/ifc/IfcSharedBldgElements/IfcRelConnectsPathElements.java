@@ -7,48 +7,62 @@ package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelConnectsElements;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum;
 
 @Guid("801d751c-7dbf-4a3c-a799-223323377272")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelConnectsPathElements extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelConnectsElements
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "RelatingPriorities")
 	@Description("Overriding priorities at this connection. It overrides the standard priority given at the wall layer provided by <em>IfcMaterialLayer</em>.<em>Priority</em>. The list of <em>RelatingProperties</em> corresponds to the list of <em>IfcMaterialLayerSet</em>.<em>MaterialLayers</em> of the element referenced by <em>RelatingObject</em>.  <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; Data type changed to NUMBER and usage to hold a normalized ratio measure [0..1].  </blockquote>")
 	@Required()
 	@Guid("875ef649-a65e-40cd-970a-b99ead08ca9f")
-	private List<Integer> relatingPriorities = new ArrayList<Integer>();
+	@JacksonXmlProperty(isAttribute = false, localName = "Integer")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatingPriorities")
+	private List<Integer> relatingPriorities;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "RelatedPriorities")
 	@Description("Overriding priorities at this connection. It overrides the standard priority given at the wall layer provided by <em>IfcMaterialLayer</em>.<em>Priority</em>. The list of <em>RelatedProperties</em> corresponds to the list of <em>IfcMaterialLayerSet</em>.<em>MaterialLayers</em> of the element referenced by <em>RelatedObject</em>.  <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; Data type changed to NUMBER and usage to hold a normalized ratio measure [0..1].  </blockquote>")
 	@Required()
 	@Guid("7362235e-2a0d-4f5e-af69-482fd8dacac7")
-	private List<Integer> relatedPriorities = new ArrayList<Integer>();
+	@JacksonXmlProperty(isAttribute = false, localName = "Integer")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedPriorities")
+	private List<Integer> relatedPriorities;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "RelatedConnectionType")
 	@Description("Indication of the connection type in relation to the path of the <em>RelatingObject</em>.")
 	@Required()
 	@Guid("add30ef4-48b3-4bba-9732-f682f23c1293")
-	private com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum relatedConnectionType;
+	@JacksonXmlProperty(isAttribute=true, localName = "RelatedConnectionType")
+	private IfcConnectionTypeEnum relatedConnectionType;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "RelatingConnectionType")
 	@Description("Indication of the connection type in relation to the path of the <em>RelatingObject</em>.")
 	@Required()
 	@Guid("f9db190a-4cfc-4840-9fda-0fbdb3adda53")
-	private com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum relatingConnectionType;
+	@JacksonXmlProperty(isAttribute=true, localName = "RelatingConnectionType")
+	private IfcConnectionTypeEnum relatingConnectionType;
 
 
 	public IfcRelConnectsPathElements()
 	{
 	}
 
-	public IfcRelConnectsPathElements(String globalId, com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatingElement, com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatedElement, Integer[] relatingPriorities, Integer[] relatedPriorities, com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum relatedConnectionType, com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum relatingConnectionType)
+	public IfcRelConnectsPathElements(String globalId, IfcElement relatingElement, IfcElement relatedElement, Integer[] relatingPriorities, Integer[] relatedPriorities, IfcConnectionTypeEnum relatedConnectionType, IfcConnectionTypeEnum relatingConnectionType)
 	{
 		super(globalId, relatingElement, relatedElement);
 		this.relatingPriorities = new ArrayList<>(Arrays.asList(relatingPriorities));
@@ -65,19 +79,19 @@ public class IfcRelConnectsPathElements extends com.buildingsmart.tech.ifc.IfcPr
 		return this.relatedPriorities;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum getRelatedConnectionType() {
+	public IfcConnectionTypeEnum getRelatedConnectionType() {
 		return this.relatedConnectionType;
 	}
 
-	public void setRelatedConnectionType(com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum relatedConnectionType) {
+	public void setRelatedConnectionType(IfcConnectionTypeEnum relatedConnectionType) {
 		this.relatedConnectionType = relatedConnectionType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum getRelatingConnectionType() {
+	public IfcConnectionTypeEnum getRelatingConnectionType() {
 		return this.relatingConnectionType;
 	}
 
-	public void setRelatingConnectionType(com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcConnectionTypeEnum relatingConnectionType) {
+	public void setRelatingConnectionType(IfcConnectionTypeEnum relatingConnectionType) {
 		this.relatingConnectionType = relatingConnectionType;
 	}
 

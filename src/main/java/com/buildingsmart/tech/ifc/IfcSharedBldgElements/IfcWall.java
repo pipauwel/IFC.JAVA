@@ -5,19 +5,38 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcWallElementedCase;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcWallStandardCase;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
 
 @Guid("6cb09e6f-b387-44bc-afcc-563e5b5b5ead")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcWallElementedCase.class, name = "IfcWallElementedCase"), @JsonSubTypes.Type(value = IfcWallStandardCase.class, name = "IfcWallStandardCase")})
 public class IfcWall extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Predefined generic type for a wall that is specified in an enumeration. There may be a property set given specifically for the predefined types.  <blockquote class=\"note\">NOTE&nbsp; The <em>PredefinedType</em> shall only be used, if no <em>IfcWallType</em> is assigned, providing its own <em>IfcWallType.PredefinedType</em>.</blockquote>  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added at the end of the entity definition.</blockquote>")
 	@Guid("a2fe4f73-a12c-42fa-9516-3c0a0d94e105")
-	private com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcWallTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcWallTypeEnum predefinedType;
 
 
 	public IfcWall()
@@ -29,11 +48,11 @@ public class IfcWall extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcB
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcWallTypeEnum getPredefinedType() {
+	public IfcWallTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcWallTypeEnum predefinedType) {
+	public void setPredefinedType(IfcWallTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

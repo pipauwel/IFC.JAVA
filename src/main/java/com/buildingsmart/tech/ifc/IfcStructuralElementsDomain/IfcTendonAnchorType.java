@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.*;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcReinforcingElementType;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcTendonAnchorTypeEnum;
 
 @Guid("6591c79a-0b26-4315-8d59-cd0e5ef03555")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcTendonAnchorType extends IfcReinforcingElementType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Subtype of tendon anchor.")
 	@Required()
 	@Guid("bc3db412-e609-4c5f-8be2-4f8b21f27a08")
-	private com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcTendonAnchorTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcTendonAnchorTypeEnum predefinedType;
 
 
 	public IfcTendonAnchorType()
 	{
 	}
 
-	public IfcTendonAnchorType(String globalId, com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcTendonAnchorTypeEnum predefinedType)
+	public IfcTendonAnchorType(String globalId, IfcTendonAnchorTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcTendonAnchorTypeEnum getPredefinedType() {
+	public IfcTendonAnchorTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcTendonAnchorTypeEnum predefinedType) {
+	public void setPredefinedType(IfcTendonAnchorTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

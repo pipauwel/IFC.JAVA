@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowControllerType;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricTimeControlTypeEnum;
 
 @Guid("2bb86abe-9d7d-49e5-8a0e-89e7617eddf6")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcElectricTimeControlType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowControllerType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("<p>Identifies the predefined types of electrical time control from which the type required may be set.</p>")
 	@Required()
 	@Guid("6390956e-1cd2-4033-9c94-ea41642eeaa8")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricTimeControlTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcElectricTimeControlTypeEnum predefinedType;
 
 
 	public IfcElectricTimeControlType()
 	{
 	}
 
-	public IfcElectricTimeControlType(String globalId, com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricTimeControlTypeEnum predefinedType)
+	public IfcElectricTimeControlType(String globalId, IfcElectricTimeControlTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricTimeControlTypeEnum getPredefinedType() {
+	public IfcElectricTimeControlTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricTimeControlTypeEnum predefinedType) {
+	public void setPredefinedType(IfcElectricTimeControlTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

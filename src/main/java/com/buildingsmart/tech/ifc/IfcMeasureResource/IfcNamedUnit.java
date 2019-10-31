@@ -5,52 +5,72 @@
 
 package com.buildingsmart.tech.ifc.IfcMeasureResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcContextDependentUnit;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcConversionBasedUnit;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcSIUnit;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcDimensionalExponents;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnitEnum;
 
 @Guid("feff0f85-92ea-4f67-8748-661f27621758")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcContextDependentUnit.class, name = "IfcContextDependentUnit"), @JsonSubTypes.Type(value = IfcConversionBasedUnit.class, name = "IfcConversionBasedUnit"), @JsonSubTypes.Type(value = IfcSIUnit.class, name = "IfcSIUnit")})
 public abstract class IfcNamedUnit implements IfcUnit
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "Dimensions")
 	@Description("The dimensional exponents of the SI base units by which the named unit is defined.")
 	@Required()
 	@Guid("55ff10f6-6fd1-45cd-a53c-2707349993cb")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcDimensionalExponents dimensions;
+	@JacksonXmlProperty(isAttribute=false, localName = "Dimensions")
+	private IfcDimensionalExponents dimensions;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "UnitType")
 	@Description("The type of the unit.")
 	@Required()
 	@Guid("9621fcc5-c1bf-463f-9fa4-c55d0fe7849e")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnitEnum unitType;
+	@JacksonXmlProperty(isAttribute=true, localName = "UnitType")
+	private IfcUnitEnum unitType;
 
 
 	public IfcNamedUnit()
 	{
 	}
 
-	public IfcNamedUnit(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcDimensionalExponents dimensions, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnitEnum unitType)
+	public IfcNamedUnit(IfcDimensionalExponents dimensions, IfcUnitEnum unitType)
 	{
 		this.dimensions = dimensions;
 		this.unitType = unitType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcDimensionalExponents getDimensions() {
+	public IfcDimensionalExponents getDimensions() {
 		return this.dimensions;
 	}
 
-	public void setDimensions(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcDimensionalExponents dimensions) {
+	public void setDimensions(IfcDimensionalExponents dimensions) {
 		this.dimensions = dimensions;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnitEnum getUnitType() {
+	public IfcUnitEnum getUnitType() {
 		return this.unitType;
 	}
 
-	public void setUnitType(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnitEnum unitType) {
+	public void setUnitType(IfcUnitEnum unitType) {
 		this.unitType = unitType;
 	}
 

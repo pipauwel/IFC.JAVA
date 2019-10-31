@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowSegment;
 
 @Guid("8f73b81b-667e-4f2e-950f-3ce1fc86dce7")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPipeSegment extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowSegment
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("b5e4efe4-d704-4a26-abca-161eaea57343")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcPipeSegmentTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcPipeSegmentTypeEnum predefinedType;
 
 
 	public IfcPipeSegment()
@@ -27,11 +43,11 @@ public class IfcPipeSegment extends com.buildingsmart.tech.ifc.IfcSharedBldgServ
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcPipeSegmentTypeEnum getPredefinedType() {
+	public IfcPipeSegmentTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcPipeSegmentTypeEnum predefinedType) {
+	public void setPredefinedType(IfcPipeSegmentTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

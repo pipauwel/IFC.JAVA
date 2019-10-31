@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedComponentElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.*;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcElementComponentType;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcDiscreteAccessoryTypeEnum;
 
 @Guid("fdfd0f31-eb16-42ce-a2d2-b2fccafaab2b")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcDiscreteAccessoryType extends IfcElementComponentType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Subtype of discrete accessory")
 	@Required()
 	@Guid("33ce9836-a43e-4601-8cf5-efa4054adb49")
-	private com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcDiscreteAccessoryTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcDiscreteAccessoryTypeEnum predefinedType;
 
 
 	public IfcDiscreteAccessoryType()
 	{
 	}
 
-	public IfcDiscreteAccessoryType(String globalId, com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcDiscreteAccessoryTypeEnum predefinedType)
+	public IfcDiscreteAccessoryType(String globalId, IfcDiscreteAccessoryTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcDiscreteAccessoryTypeEnum getPredefinedType() {
+	public IfcDiscreteAccessoryTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcDiscreteAccessoryTypeEnum predefinedType) {
+	public void setPredefinedType(IfcDiscreteAccessoryTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

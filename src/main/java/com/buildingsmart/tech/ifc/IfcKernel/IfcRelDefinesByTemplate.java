@@ -5,16 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelDefines;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetTemplate;
 
 @Guid("8ee8ef7b-68ac-46bb-8c28-b6f508eeb0ab")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -22,37 +33,39 @@ public class IfcRelDefinesByTemplate extends IfcRelDefines
 {
 	@Description("One or many property sets or quantity sets that obtain their definitions from the single property set template.")
 	@Required()
-	@MinLength(1)
 	@Guid("9ab9894d-523d-414b-a825-be21439de42f")
-	private Set<com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition> relatedPropertySets = new HashSet<com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcPropertySetDefinition")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedPropertySets")
+	private Set<IfcPropertySetDefinition> relatedPropertySets;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingTemplate")
 	@Description("Property set template that provides the common definition of related property sets.")
 	@Required()
 	@Guid("56b4d519-a460-4476-b354-d80dcfeaed64")
-	private com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetTemplate relatingTemplate;
+	@JacksonXmlProperty(isAttribute=false, localName = "RelatingTemplate")
+	private IfcPropertySetTemplate relatingTemplate;
 
 
 	public IfcRelDefinesByTemplate()
 	{
 	}
 
-	public IfcRelDefinesByTemplate(String globalId, com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition[] relatedPropertySets, com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetTemplate relatingTemplate)
+	public IfcRelDefinesByTemplate(String globalId, IfcPropertySetDefinition[] relatedPropertySets, IfcPropertySetTemplate relatingTemplate)
 	{
 		super(globalId);
 		this.relatedPropertySets = new HashSet<>(Arrays.asList(relatedPropertySets));
 		this.relatingTemplate = relatingTemplate;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition> getRelatedPropertySets() {
+	public Set<IfcPropertySetDefinition> getRelatedPropertySets() {
 		return this.relatedPropertySets;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetTemplate getRelatingTemplate() {
+	public IfcPropertySetTemplate getRelatingTemplate() {
 		return this.relatingTemplate;
 	}
 
-	public void setRelatingTemplate(com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetTemplate relatingTemplate) {
+	public void setRelatingTemplate(IfcPropertySetTemplate relatingTemplate) {
 		this.relatingTemplate = relatingTemplate;
 	}
 

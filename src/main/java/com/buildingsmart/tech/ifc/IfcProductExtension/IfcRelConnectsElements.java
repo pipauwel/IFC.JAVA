@@ -5,66 +5,86 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRelConnectsPathElements;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelConnectsWithRealizingElements;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
 
 @Guid("2749c418-fb5d-400d-92ce-0c491a55cbd7")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcRelConnectsPathElements.class, name = "IfcRelConnectsPathElements"), @JsonSubTypes.Type(value = IfcRelConnectsWithRealizingElements.class, name = "IfcRelConnectsWithRealizingElements")})
 public class IfcRelConnectsElements extends com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "ConnectionGeometry")
 	@Description("The geometric shape representation of the connection geometry that is provided in the object coordinate system of the <em>RelatingElement</em> (mandatory) and in the object coordinate system of the <em>RelatedElement</em> (optionally).")
 	@Guid("5b2207fa-16ea-4fe2-900a-652e7e2b521e")
-	private com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry connectionGeometry;
+	@JacksonXmlProperty(isAttribute=false, localName = "ConnectionGeometry")
+	private IfcConnectionGeometry connectionGeometry;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingElement")
 	@Description("Reference to a subtype of <em>IfcElement</em> that is connected by the connection relationship in the role of <em>RelatingElement</em>.")
 	@Required()
 	@Guid("f875bb4c-3105-4b90-a8d1-25dfc10e0f90")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatingElement;
+	@JacksonXmlProperty(isAttribute=false, localName = "RelatingElement")
+	private IfcElement relatingElement;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatedElement")
 	@Description("Reference to a subtype of <em>IfcElement</em> that is connected by the connection relationship in the role of <em>RelatedElement</em>.")
 	@Required()
 	@Guid("eb56d278-f844-4217-8731-9c4cc688940e")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatedElement;
+	@JacksonXmlProperty(isAttribute=false, localName = "RelatedElement")
+	private IfcElement relatedElement;
 
 
 	public IfcRelConnectsElements()
 	{
 	}
 
-	public IfcRelConnectsElements(String globalId, com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatingElement, com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatedElement)
+	public IfcRelConnectsElements(String globalId, IfcElement relatingElement, IfcElement relatedElement)
 	{
 		super(globalId);
 		this.relatingElement = relatingElement;
 		this.relatedElement = relatedElement;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry getConnectionGeometry() {
+	public IfcConnectionGeometry getConnectionGeometry() {
 		return this.connectionGeometry;
 	}
 
-	public void setConnectionGeometry(com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry connectionGeometry) {
+	public void setConnectionGeometry(IfcConnectionGeometry connectionGeometry) {
 		this.connectionGeometry = connectionGeometry;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement getRelatingElement() {
+	public IfcElement getRelatingElement() {
 		return this.relatingElement;
 	}
 
-	public void setRelatingElement(com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatingElement) {
+	public void setRelatingElement(IfcElement relatingElement) {
 		this.relatingElement = relatingElement;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement getRelatedElement() {
+	public IfcElement getRelatedElement() {
 		return this.relatedElement;
 	}
 
-	public void setRelatedElement(com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement relatedElement) {
+	public void setRelatedElement(IfcElement relatedElement) {
 		this.relatedElement = relatedElement;
 	}
 

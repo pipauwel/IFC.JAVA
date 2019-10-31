@@ -5,51 +5,68 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssigns;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcActor;
 
 @Guid("697bb1a2-488c-4282-8300-a66e028db272")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelAssignsToActor extends IfcRelAssigns
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingActor")
 	@Description("Reference to the information about the actor. It comprises the information about the person or organization and its addresses.")
 	@Required()
 	@Guid("0a6c1031-7ef4-4086-943e-b9db2389f495")
-	private com.buildingsmart.tech.ifc.IfcKernel.IfcActor relatingActor;
+	@JacksonXmlProperty(isAttribute=false, localName = "RelatingActor")
+	private IfcActor relatingActor;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "ActingRole")
 	@Description("Role of the actor played within the context of the assignment to the object(s).")
 	@Guid("d77e7175-259c-472c-a440-d1e078f46ec9")
-	private com.buildingsmart.tech.ifc.IfcActorResource.IfcActorRole actingRole;
+	@JacksonXmlProperty(isAttribute=false, localName = "ActingRole")
+	private IfcActorRole actingRole;
 
 
 	public IfcRelAssignsToActor()
 	{
 	}
 
-	public IfcRelAssignsToActor(String globalId, com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition[] relatedObjects, com.buildingsmart.tech.ifc.IfcKernel.IfcActor relatingActor)
+	public IfcRelAssignsToActor(String globalId, IfcObjectDefinition[] relatedObjects, IfcActor relatingActor)
 	{
 		super(globalId, relatedObjects);
 		this.relatingActor = relatingActor;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcKernel.IfcActor getRelatingActor() {
+	public IfcActor getRelatingActor() {
 		return this.relatingActor;
 	}
 
-	public void setRelatingActor(com.buildingsmart.tech.ifc.IfcKernel.IfcActor relatingActor) {
+	public void setRelatingActor(IfcActor relatingActor) {
 		this.relatingActor = relatingActor;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcActorResource.IfcActorRole getActingRole() {
+	public IfcActorRole getActingRole() {
 		return this.actingRole;
 	}
 
-	public void setActingRole(com.buildingsmart.tech.ifc.IfcActorResource.IfcActorRole actingRole) {
+	public void setActingRole(IfcActorRole actingRole) {
 		this.actingRole = actingRole;
 	}
 

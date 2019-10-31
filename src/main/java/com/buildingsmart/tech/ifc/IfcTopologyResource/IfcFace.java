@@ -5,44 +5,63 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceSurface;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcTopologicalRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound;
 
 @Guid("30261543-34bc-4fcc-bd68-c6643fc090c9")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcFaceSurface.class, name = "IfcFaceSurface"))
 public class IfcFace extends IfcTopologicalRepresentationItem
 {
 	@Description("Boundaries of the face.")
 	@Required()
-	@MinLength(1)
 	@Guid("35969d0d-9b89-4823-9320-b7dc72f3ab94")
-	private Set<com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound> bounds = new HashSet<com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcFaceBound")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Bounds")
+	private Set<IfcFaceBound> bounds;
 
 	@Guid("f4c1aa64-ef3e-4267-a0e3-47c4bfc89b38")
-	private Set<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureMap> hasTextureMaps = new HashSet<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureMap>();
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcTextureMap")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasTextureMaps")
+	private Set<IfcTextureMap> hasTextureMaps;
 
 
 	public IfcFace()
 	{
 	}
 
-	public IfcFace(com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound[] bounds)
+	public IfcFace(IfcFaceBound[] bounds)
 	{
 		this.bounds = new HashSet<>(Arrays.asList(bounds));
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound> getBounds() {
+	public Set<IfcFaceBound> getBounds() {
 		return this.bounds;
 	}
 
-	public Set<com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureMap> getHasTextureMaps() {
+	public Set<IfcTextureMap> getHasTextureMaps() {
 		return this.hasTextureMaps;
 	}
 

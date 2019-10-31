@@ -5,38 +5,54 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcParameterizedProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 
 @Guid("9e129693-172e-4ea1-b3bb-cb7763385cb0")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcTrapeziumProfileDef extends IfcParameterizedProfileDef
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "BottomXDim")
 	@Description("The extent of the bottom line measured along the implicit x-axis.")
 	@Required()
 	@Guid("06671d06-7136-4a10-9e6d-0074885e3d3d")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure bottomXDim;
+	@JacksonXmlProperty(isAttribute=false, localName = "BottomXDim")
+	private IfcPositiveLengthMeasure bottomXDim;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "TopXDim")
 	@Description("The extent of the top line measured along the implicit x-axis.")
 	@Required()
 	@Guid("f95d733f-0777-4572-911e-2d21de75244e")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure topXDim;
+	@JacksonXmlProperty(isAttribute=false, localName = "TopXDim")
+	private IfcPositiveLengthMeasure topXDim;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "YDim")
 	@Description("The extent of the distance between the parallel bottom and top lines measured along the implicit y-axis.")
 	@Required()
 	@Guid("9834941e-4f3b-4ab2-b863-4ffde5ecf1db")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure yDim;
+	@JacksonXmlProperty(isAttribute=false, localName = "YDim")
+	private IfcPositiveLengthMeasure yDim;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "TopXOffset")
 	@Description("Offset from the beginning of the top line to the bottom line, measured along the implicit x-axis.")
 	@Required()
 	@Guid("f08d6341-732e-4061-ad6f-2c819465aa62")
+	@JacksonXmlProperty(isAttribute=true, localName = "TopXOffset")
 	private double topXOffset;
 
 
@@ -44,7 +60,7 @@ public class IfcTrapeziumProfileDef extends IfcParameterizedProfileDef
 	{
 	}
 
-	public IfcTrapeziumProfileDef(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum profileType, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure bottomXDim, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure topXDim, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure yDim, double topXOffset)
+	public IfcTrapeziumProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure bottomXDim, IfcPositiveLengthMeasure topXDim, IfcPositiveLengthMeasure yDim, double topXOffset)
 	{
 		super(profileType);
 		this.bottomXDim = bottomXDim;
@@ -53,27 +69,27 @@ public class IfcTrapeziumProfileDef extends IfcParameterizedProfileDef
 		this.topXOffset = topXOffset;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getBottomXDim() {
+	public IfcPositiveLengthMeasure getBottomXDim() {
 		return this.bottomXDim;
 	}
 
-	public void setBottomXDim(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure bottomXDim) {
+	public void setBottomXDim(IfcPositiveLengthMeasure bottomXDim) {
 		this.bottomXDim = bottomXDim;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getTopXDim() {
+	public IfcPositiveLengthMeasure getTopXDim() {
 		return this.topXDim;
 	}
 
-	public void setTopXDim(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure topXDim) {
+	public void setTopXDim(IfcPositiveLengthMeasure topXDim) {
 		this.topXDim = topXDim;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getYDim() {
+	public IfcPositiveLengthMeasure getYDim() {
 		return this.yDim;
 	}
 
-	public void setYDim(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure yDim) {
+	public void setYDim(IfcPositiveLengthMeasure yDim) {
 		this.yDim = yDim;
 	}
 

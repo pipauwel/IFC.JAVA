@@ -5,31 +5,47 @@
 
 package com.buildingsmart.tech.ifc.IfcProcessExtension;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProcess;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTypeEnum;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTriggerTypeEnum;
 
 @Guid("155c5cde-5c7b-4097-ab18-9e8bbd7c4981")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcEventType extends com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProcess
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Identifies the predefined types of an event from which       the type required may be set.")
 	@Required()
 	@Guid("976cded4-c6b7-475a-a751-62ccf9a6c0cd")
-	private com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcEventTypeEnum predefinedType;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "EventTriggerType")
 	@Description("Identifies the predefined types of event trigger from which       the type required may be set.")
 	@Required()
 	@Guid("92939a07-578d-4064-986a-57a451d29ca4")
-	private com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTriggerTypeEnum eventTriggerType;
+	@JacksonXmlProperty(isAttribute=true, localName = "EventTriggerType")
+	private IfcEventTriggerTypeEnum eventTriggerType;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedEventTriggerType")
 	@Description("A user defined event trigger type, the value of which       is asserted when the value of an event trigger type is       declared as USERDEFINED.")
 	@Guid("d36c4da1-e713-4327-8b73-c6657fdca770")
+	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedEventTriggerType")
 	private String userDefinedEventTriggerType;
 
 
@@ -37,26 +53,26 @@ public class IfcEventType extends com.buildingsmart.tech.ifc.IfcKernel.IfcTypePr
 	{
 	}
 
-	public IfcEventType(String globalId, com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTypeEnum predefinedType, com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTriggerTypeEnum eventTriggerType)
+	public IfcEventType(String globalId, IfcEventTypeEnum predefinedType, IfcEventTriggerTypeEnum eventTriggerType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 		this.eventTriggerType = eventTriggerType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTypeEnum getPredefinedType() {
+	public IfcEventTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTypeEnum predefinedType) {
+	public void setPredefinedType(IfcEventTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTriggerTypeEnum getEventTriggerType() {
+	public IfcEventTriggerTypeEnum getEventTriggerType() {
 		return this.eventTriggerType;
 	}
 
-	public void setEventTriggerType(com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventTriggerTypeEnum eventTriggerType) {
+	public void setEventTriggerType(IfcEventTriggerTypeEnum eventTriggerType) {
 		this.eventTriggerType = eventTriggerType;
 	}
 

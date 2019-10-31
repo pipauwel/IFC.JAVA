@@ -5,38 +5,55 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralReaction;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGlobalOrLocalEnum;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceActivityTypeEnum;
 
 @Guid("e9d95f21-bd10-40ff-ada5-a024a15bf019")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcStructuralSurfaceReaction extends IfcStructuralReaction
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Type of reaction according to its distribution of load values.")
 	@Required()
 	@Guid("af39cd66-ebd2-471d-9517-590a0858c616")
-	private com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceActivityTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcStructuralSurfaceActivityTypeEnum predefinedType;
 
 
 	public IfcStructuralSurfaceReaction()
 	{
 	}
 
-	public IfcStructuralSurfaceReaction(String globalId, com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad appliedLoad, com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGlobalOrLocalEnum globalOrLocal, com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceActivityTypeEnum predefinedType)
+	public IfcStructuralSurfaceReaction(String globalId, IfcStructuralLoad appliedLoad, IfcGlobalOrLocalEnum globalOrLocal, IfcStructuralSurfaceActivityTypeEnum predefinedType)
 	{
 		super(globalId, appliedLoad, globalOrLocal);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceActivityTypeEnum getPredefinedType() {
+	public IfcStructuralSurfaceActivityTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceActivityTypeEnum predefinedType) {
+	public void setPredefinedType(IfcStructuralSurfaceActivityTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

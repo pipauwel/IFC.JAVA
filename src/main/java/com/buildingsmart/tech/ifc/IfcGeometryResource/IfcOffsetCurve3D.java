@@ -5,46 +5,61 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
 
 @Guid("993ba75f-6b94-4c8c-b4c4-ba41608e3dc4")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcOffsetCurve3D extends IfcCurve
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "BasisCurve")
 	@Description("The curve that is being offset.")
 	@Required()
 	@Guid("ceac1059-777f-4fab-a439-4fe198b2a7b1")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve basisCurve;
+	@JacksonXmlProperty(isAttribute=false, localName = "BasisCurve")
+	private IfcCurve basisCurve;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "Distance")
 	@Description("The distance of the offset curve from the basis curve. The distance may be positive, negative or zero.")
 	@Required()
 	@Guid("875036b8-1aba-4de6-9e1d-c77a4f761fcb")
+	@JacksonXmlProperty(isAttribute=true, localName = "Distance")
 	private double distance;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "SelfIntersect")
 	@Description("An indication of whether the offset curve self-intersects, this is for information only.")
 	@Required()
 	@Guid("7b5fafd0-453a-4ce8-b2d4-06ba1b08a15b")
+	@JacksonXmlProperty(isAttribute=true, localName = "SelfIntersect")
 	private Boolean selfIntersect;
 
-	@JacksonXmlProperty(isAttribute=false, localName = "RefDirection")
 	@Description("The direction used to define the direction of the offset curve 3d from the basis curve.")
 	@Required()
 	@Guid("5a018675-aaa2-4e06-8c88-1c7f4e8c0012")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection refDirection;
+	@JacksonXmlProperty(isAttribute=false, localName = "RefDirection")
+	private IfcDirection refDirection;
 
 
 	public IfcOffsetCurve3D()
 	{
 	}
 
-	public IfcOffsetCurve3D(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve basisCurve, double distance, Boolean selfIntersect, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection refDirection)
+	public IfcOffsetCurve3D(IfcCurve basisCurve, double distance, Boolean selfIntersect, IfcDirection refDirection)
 	{
 		this.basisCurve = basisCurve;
 		this.distance = distance;
@@ -52,11 +67,11 @@ public class IfcOffsetCurve3D extends IfcCurve
 		this.refDirection = refDirection;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve getBasisCurve() {
+	public IfcCurve getBasisCurve() {
 		return this.basisCurve;
 	}
 
-	public void setBasisCurve(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve basisCurve) {
+	public void setBasisCurve(IfcCurve basisCurve) {
 		this.basisCurve = basisCurve;
 	}
 
@@ -76,11 +91,11 @@ public class IfcOffsetCurve3D extends IfcCurve
 		this.selfIntersect = selfIntersect;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection getRefDirection() {
+	public IfcDirection getRefDirection() {
 		return this.refDirection;
 	}
 
-	public void setRefDirection(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection refDirection) {
+	public void setRefDirection(IfcDirection refDirection) {
 		this.refDirection = refDirection;
 	}
 

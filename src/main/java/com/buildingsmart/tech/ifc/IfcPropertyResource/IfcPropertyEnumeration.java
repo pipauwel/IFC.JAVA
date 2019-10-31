@@ -7,41 +7,54 @@ package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyAbstraction;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue;
 
 @Guid("95f63d3d-7d92-449b-89e3-626dfacc0648")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPropertyEnumeration extends IfcPropertyAbstraction
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	@Description("Name of this enumeration.")
 	@Required()
 	@Guid("e64d7c48-2084-49bc-97e3-b1caa44a5567")
+	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
 	@Description("List of values that form the enumeration.")
 	@Required()
-	@MinLength(1)
 	@Guid("4de323e5-9f21-42b4-bb59-93e3f65054fe")
-	private List<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue> enumerationValues = new ArrayList<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue>();
+	@MinLength(1)
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcValue")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "EnumerationValues")
+	private List<IfcValue> enumerationValues;
 
 	@Description("Unit for the enumerator values, if not given, the default value for the measure type (given by the TYPE of nominal value) is used as defined by the global unit assignment at IfcProject.")
 	@Guid("49677ec8-ed2f-47c0-9fc4-ff28957e44c6")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit unit;
+	@JacksonXmlProperty(isAttribute=true, localName = "Unit")
+	private IfcUnit unit;
 
 
 	public IfcPropertyEnumeration()
 	{
 	}
 
-	public IfcPropertyEnumeration(String name, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue[] enumerationValues)
+	public IfcPropertyEnumeration(String name, IfcValue[] enumerationValues)
 	{
 		this.name = name;
 		this.enumerationValues = new ArrayList<>(Arrays.asList(enumerationValues));
@@ -55,15 +68,15 @@ public class IfcPropertyEnumeration extends IfcPropertyAbstraction
 		this.name = name;
 	}
 
-	public List<com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue> getEnumerationValues() {
+	public List<IfcValue> getEnumerationValues() {
 		return this.enumerationValues;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit getUnit() {
+	public IfcUnit getUnit() {
 		return this.unit;
 	}
 
-	public void setUnit(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit unit) {
+	public void setUnit(IfcUnit unit) {
 		this.unit = unit;
 	}
 

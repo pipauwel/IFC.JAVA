@@ -5,53 +5,73 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcRectangleHollowProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcRoundedRectangleProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcParameterizedProfileDef;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 
 @Guid("76426990-f6c8-4462-b489-68361df1c390")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcRectangleHollowProfileDef.class, name = "IfcRectangleHollowProfileDef"), @JsonSubTypes.Type(value = IfcRoundedRectangleProfileDef.class, name = "IfcRoundedRectangleProfileDef")})
 public class IfcRectangleProfileDef extends IfcParameterizedProfileDef
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "XDim")
 	@Description("The extent of the rectangle in the direction of the x-axis.")
 	@Required()
 	@Guid("cc30f80d-efff-497d-a442-14ef5a82594e")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure xDim;
+	@JacksonXmlProperty(isAttribute=false, localName = "XDim")
+	private IfcPositiveLengthMeasure xDim;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "YDim")
 	@Description("The extent of the rectangle in the direction of the y-axis.")
 	@Required()
 	@Guid("8675ebcb-7de8-4598-8952-7776657d7a52")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure yDim;
+	@JacksonXmlProperty(isAttribute=false, localName = "YDim")
+	private IfcPositiveLengthMeasure yDim;
 
 
 	public IfcRectangleProfileDef()
 	{
 	}
 
-	public IfcRectangleProfileDef(com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum profileType, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure xDim, com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure yDim)
+	public IfcRectangleProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure xDim, IfcPositiveLengthMeasure yDim)
 	{
 		super(profileType);
 		this.xDim = xDim;
 		this.yDim = yDim;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getXDim() {
+	public IfcPositiveLengthMeasure getXDim() {
 		return this.xDim;
 	}
 
-	public void setXDim(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure xDim) {
+	public void setXDim(IfcPositiveLengthMeasure xDim) {
 		this.xDim = xDim;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getYDim() {
+	public IfcPositiveLengthMeasure getYDim() {
 		return this.yDim;
 	}
 
-	public void setYDim(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure yDim) {
+	public void setYDim(IfcPositiveLengthMeasure yDim) {
 		this.yDim = yDim;
 	}
 

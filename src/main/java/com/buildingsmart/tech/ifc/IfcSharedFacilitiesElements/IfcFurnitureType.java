@@ -5,50 +5,66 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFurnishingElementType;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcAssemblyPlaceEnum;
 
 @Guid("a8b69ebd-a055-4b49-b99d-0de94f4c7d81")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcFurnitureType extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcFurnishingElementType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "AssemblyPlace")
 	@Description("<p>A designation of where the assembly is intended to take place. A selection of alternatives s provided in an enumerated list.</p>")
 	@Required()
 	@Guid("791d2270-d762-4005-b5b8-19697f8a6878")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcAssemblyPlaceEnum assemblyPlace;
+	@JacksonXmlProperty(isAttribute=true, localName = "AssemblyPlace")
+	private IfcAssemblyPlaceEnum assemblyPlace;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("b303f177-1e33-4bd3-a16d-fb06e46b54c0")
-	private com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements.IfcFurnitureTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcFurnitureTypeEnum predefinedType;
 
 
 	public IfcFurnitureType()
 	{
 	}
 
-	public IfcFurnitureType(String globalId, com.buildingsmart.tech.ifc.IfcProductExtension.IfcAssemblyPlaceEnum assemblyPlace)
+	public IfcFurnitureType(String globalId, IfcAssemblyPlaceEnum assemblyPlace)
 	{
 		super(globalId);
 		this.assemblyPlace = assemblyPlace;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcAssemblyPlaceEnum getAssemblyPlace() {
+	public IfcAssemblyPlaceEnum getAssemblyPlace() {
 		return this.assemblyPlace;
 	}
 
-	public void setAssemblyPlace(com.buildingsmart.tech.ifc.IfcProductExtension.IfcAssemblyPlaceEnum assemblyPlace) {
+	public void setAssemblyPlace(IfcAssemblyPlaceEnum assemblyPlace) {
 		this.assemblyPlace = assemblyPlace;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements.IfcFurnitureTypeEnum getPredefinedType() {
+	public IfcFurnitureTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements.IfcFurnitureTypeEnum predefinedType) {
+	public void setPredefinedType(IfcFurnitureTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

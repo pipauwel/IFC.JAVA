@@ -5,19 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
 
 @Guid("54499bfa-3796-45d8-870a-1357fd0e960f")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRoof extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Predefined generic types for a roof that are specified in an enumeration. There may be a property set given for the predefined types.  <blockquote class=\"note\">NOTE&nbsp; The <em>PredefinedType</em> shall only be used, if no <em>IfcRoofType</em> is assigned, providing its own <em>IfcRoofType.PredefinedType</em>.</blockquote>  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been renamed from ShapeType and changed to be OPTIONAL with upward compatibility for file based exchange.</blockquote>")
 	@Guid("27e57560-ff44-4946-bf77-d8f1d8bdc50a")
-	private com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRoofTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcRoofTypeEnum predefinedType;
 
 
 	public IfcRoof()
@@ -29,11 +44,11 @@ public class IfcRoof extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcB
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRoofTypeEnum getPredefinedType() {
+	public IfcRoofTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRoofTypeEnum predefinedType) {
+	public void setPredefinedType(IfcRoofTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

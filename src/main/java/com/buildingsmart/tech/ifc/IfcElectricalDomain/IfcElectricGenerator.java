@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice;
 
 @Guid("ae4d0c52-31d6-4d0e-9fc5-52a5d00577ab")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcElectricGenerator extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("db0378f2-55a2-4645-8236-962605990973")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricGeneratorTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcElectricGeneratorTypeEnum predefinedType;
 
 
 	public IfcElectricGenerator()
@@ -27,11 +43,11 @@ public class IfcElectricGenerator extends com.buildingsmart.tech.ifc.IfcSharedBl
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricGeneratorTypeEnum getPredefinedType() {
+	public IfcElectricGeneratorTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricGeneratorTypeEnum predefinedType) {
+	public void setPredefinedType(IfcElectricGeneratorTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

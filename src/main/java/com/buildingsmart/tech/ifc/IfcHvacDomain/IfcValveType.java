@@ -5,38 +5,53 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowControllerType;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcValveTypeEnum;
 
 @Guid("bc7e1649-6634-4653-947b-036b7b3af5bd")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcValveType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowControllerType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("The type of valve.")
 	@Required()
 	@Guid("64e1374c-df50-4f51-8439-a60368207f3d")
-	private com.buildingsmart.tech.ifc.IfcHvacDomain.IfcValveTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcValveTypeEnum predefinedType;
 
 
 	public IfcValveType()
 	{
 	}
 
-	public IfcValveType(String globalId, com.buildingsmart.tech.ifc.IfcHvacDomain.IfcValveTypeEnum predefinedType)
+	public IfcValveType(String globalId, IfcValveTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcHvacDomain.IfcValveTypeEnum getPredefinedType() {
+	public IfcValveTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcHvacDomain.IfcValveTypeEnum predefinedType) {
+	public void setPredefinedType(IfcValveTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

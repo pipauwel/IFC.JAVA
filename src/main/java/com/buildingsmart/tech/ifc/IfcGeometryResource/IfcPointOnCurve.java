@@ -5,26 +5,41 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
 
 @Guid("48ccc19b-d9f1-4207-af14-8d7c8eafab3b")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPointOnCurve extends IfcPoint
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "BasisCurve")
 	@Description("The curve to which point parameter relates.")
 	@Required()
 	@Guid("23610d14-c492-4d05-b307-e083998c52f8")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve basisCurve;
+	@JacksonXmlProperty(isAttribute=false, localName = "BasisCurve")
+	private IfcCurve basisCurve;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PointParameter")
 	@Description("The parameter value of the point location.")
 	@Required()
 	@Guid("5ee320ad-16c4-44d7-a272-c4c6f7d2deb2")
+	@JacksonXmlProperty(isAttribute=true, localName = "PointParameter")
 	private double pointParameter;
 
 
@@ -32,17 +47,17 @@ public class IfcPointOnCurve extends IfcPoint
 	{
 	}
 
-	public IfcPointOnCurve(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve basisCurve, double pointParameter)
+	public IfcPointOnCurve(IfcCurve basisCurve, double pointParameter)
 	{
 		this.basisCurve = basisCurve;
 		this.pointParameter = pointParameter;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve getBasisCurve() {
+	public IfcCurve getBasisCurve() {
 		return this.basisCurve;
 	}
 
-	public void setBasisCurve(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve basisCurve) {
+	public void setBasisCurve(IfcCurve basisCurve) {
 		this.basisCurve = basisCurve;
 	}
 

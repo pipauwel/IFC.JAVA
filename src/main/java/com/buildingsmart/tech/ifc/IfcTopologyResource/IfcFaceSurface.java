@@ -5,26 +5,45 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcAdvancedFace;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
 
 @Guid("d6ead809-0b4d-450c-af17-45d526239263")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonSubTypes(@JsonSubTypes.Type(value = IfcAdvancedFace.class, name = "IfcAdvancedFace"))
 public class IfcFaceSurface extends IfcFace implements com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface
 {
-	@JacksonXmlProperty(isAttribute=false, localName = "FaceSurface")
 	@Description("The surface which defines the internal shape of the face. This surface may be unbounded. The domain of the face is defined by this surface and the bounding loops in the inherited attribute SELF\\FaceBounds.")
 	@Required()
 	@Guid("7626166a-83c4-45cd-aaeb-d26d2f7279a4")
-	private com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface faceSurface;
+	@JacksonXmlProperty(isAttribute=false, localName = "FaceSurface")
+	private IfcSurface faceSurface;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "SameSense")
 	@Description("This flag indicates whether the sense of the surface normal agrees with (TRUE), or opposes (FALSE), the sense of the topological normal to the face.")
 	@Required()
 	@Guid("330e740a-dd30-4ff0-ad4a-713fed936b0b")
+	@JacksonXmlProperty(isAttribute=true, localName = "SameSense")
 	private Boolean sameSense;
 
 
@@ -32,18 +51,18 @@ public class IfcFaceSurface extends IfcFace implements com.buildingsmart.tech.if
 	{
 	}
 
-	public IfcFaceSurface(com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound[] bounds, com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface faceSurface, Boolean sameSense)
+	public IfcFaceSurface(IfcFaceBound[] bounds, IfcSurface faceSurface, Boolean sameSense)
 	{
 		super(bounds);
 		this.faceSurface = faceSurface;
 		this.sameSense = sameSense;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface getFaceSurface() {
+	public IfcSurface getFaceSurface() {
 		return this.faceSurface;
 	}
 
-	public void setFaceSurface(com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface faceSurface) {
+	public void setFaceSurface(IfcSurface faceSurface) {
 		this.faceSurface = faceSurface;
 	}
 

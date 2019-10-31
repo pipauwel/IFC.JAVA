@@ -5,19 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedComponentElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.*;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcElementComponent;
 
 @Guid("f7f5c079-1ef8-4a9e-a64c-86800f526d37")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcFastener extends IfcElementComponent
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Subtype of fastener")
 	@Guid("662a3ac7-815a-445d-a564-413f149a45af")
-	private com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcFastenerTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcFastenerTypeEnum predefinedType;
 
 
 	public IfcFastener()
@@ -29,11 +44,11 @@ public class IfcFastener extends IfcElementComponent
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcFastenerTypeEnum getPredefinedType() {
+	public IfcFastenerTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcFastenerTypeEnum predefinedType) {
+	public void setPredefinedType(IfcFastenerTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

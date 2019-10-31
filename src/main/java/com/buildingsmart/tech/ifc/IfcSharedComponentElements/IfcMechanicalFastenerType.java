@@ -5,64 +5,80 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedComponentElements;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcElementComponentType;
+import com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcMechanicalFastenerTypeEnum;
 
 @Guid("acdb4036-7f93-4d13-9988-d382967d60e0")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMechanicalFastenerType extends IfcElementComponentType
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Subtype of mechanical fastener")
 	@Required()
 	@Guid("b22546a4-d293-4734-996d-83e4dfe4fa45")
-	private com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcMechanicalFastenerTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcMechanicalFastenerTypeEnum predefinedType;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "NominalDiameter")
 	@Description("The nominal diameter describing the cross-section size of the fastener type.")
 	@Guid("2c61fce1-089c-434e-9f28-2ec15723443b")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure nominalDiameter;
+	@JacksonXmlProperty(isAttribute=false, localName = "NominalDiameter")
+	private IfcPositiveLengthMeasure nominalDiameter;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "NominalLength")
 	@Description("The nominal length describing the longitudinal dimensions of the fastener type.")
 	@Guid("287c53f4-0878-4cca-97a0-b8b5fcba97f2")
-	private com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure nominalLength;
+	@JacksonXmlProperty(isAttribute=false, localName = "NominalLength")
+	private IfcPositiveLengthMeasure nominalLength;
 
 
 	public IfcMechanicalFastenerType()
 	{
 	}
 
-	public IfcMechanicalFastenerType(String globalId, com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcMechanicalFastenerTypeEnum predefinedType)
+	public IfcMechanicalFastenerType(String globalId, IfcMechanicalFastenerTypeEnum predefinedType)
 	{
 		super(globalId);
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcMechanicalFastenerTypeEnum getPredefinedType() {
+	public IfcMechanicalFastenerTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcMechanicalFastenerTypeEnum predefinedType) {
+	public void setPredefinedType(IfcMechanicalFastenerTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getNominalDiameter() {
+	public IfcPositiveLengthMeasure getNominalDiameter() {
 		return this.nominalDiameter;
 	}
 
-	public void setNominalDiameter(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure nominalDiameter) {
+	public void setNominalDiameter(IfcPositiveLengthMeasure nominalDiameter) {
 		this.nominalDiameter = nominalDiameter;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure getNominalLength() {
+	public IfcPositiveLengthMeasure getNominalLength() {
 		return this.nominalLength;
 	}
 
-	public void setNominalLength(com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure nominalLength) {
+	public void setNominalLength(IfcPositiveLengthMeasure nominalLength) {
 		this.nominalLength = nominalLength;
 	}
 

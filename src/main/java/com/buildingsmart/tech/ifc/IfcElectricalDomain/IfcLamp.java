@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminal;
 
 @Guid("7e9a3b99-a029-4ddf-b40f-2d971a9359c2")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcLamp extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminal
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Guid("74ec89a6-5a27-465e-b178-e27168f9c234")
-	private com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLampTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcLampTypeEnum predefinedType;
 
 
 	public IfcLamp()
@@ -27,11 +43,11 @@ public class IfcLamp extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElem
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLampTypeEnum getPredefinedType() {
+	public IfcLampTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLampTypeEnum predefinedType) {
+	public void setPredefinedType(IfcLampTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

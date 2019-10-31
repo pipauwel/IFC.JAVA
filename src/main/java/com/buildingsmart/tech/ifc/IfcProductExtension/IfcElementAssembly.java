@@ -5,24 +5,39 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
 
 @Guid("80060d73-7260-4e2d-8f9b-46819d547abe")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcElementAssembly extends IfcElement
 {
-	@JacksonXmlProperty(isAttribute=true, localName = "AssemblyPlace")
 	@Description("A designation of where the assembly is intended to take place defined by an Enum.")
 	@Guid("1d9c3c37-5ade-4dce-84eb-639544d907bb")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcAssemblyPlaceEnum assemblyPlace;
+	@JacksonXmlProperty(isAttribute=true, localName = "AssemblyPlace")
+	private IfcAssemblyPlaceEnum assemblyPlace;
 
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	@Description("Predefined generic types for a element assembly that are specified in an enumeration. There might be property sets defined specifically for each predefined type.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been changed to be optional.</blockquote>")
 	@Guid("52e54ce3-c706-4309-8db3-88ec5a4386ac")
-	private com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementAssemblyTypeEnum predefinedType;
+	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	private IfcElementAssemblyTypeEnum predefinedType;
 
 
 	public IfcElementAssembly()
@@ -34,19 +49,19 @@ public class IfcElementAssembly extends IfcElement
 		super(globalId);
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcAssemblyPlaceEnum getAssemblyPlace() {
+	public IfcAssemblyPlaceEnum getAssemblyPlace() {
 		return this.assemblyPlace;
 	}
 
-	public void setAssemblyPlace(com.buildingsmart.tech.ifc.IfcProductExtension.IfcAssemblyPlaceEnum assemblyPlace) {
+	public void setAssemblyPlace(IfcAssemblyPlaceEnum assemblyPlace) {
 		this.assemblyPlace = assemblyPlace;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementAssemblyTypeEnum getPredefinedType() {
+	public IfcElementAssemblyTypeEnum getPredefinedType() {
 		return this.predefinedType;
 	}
 
-	public void setPredefinedType(com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementAssemblyTypeEnum predefinedType) {
+	public void setPredefinedType(IfcElementAssemblyTypeEnum predefinedType) {
 		this.predefinedType = predefinedType;
 	}
 

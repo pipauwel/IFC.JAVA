@@ -1,0 +1,43 @@
+<IfcProject Class="IfcProject" GlobalId="3oUsrKbqD0wh41n0gL1Hqn" Name="0001" LongName="Project Name" Phase="Project Status">
+  <OwnerHistory LastModifiedDate="0" CreationDate="1570561985">
+    <OwningUser>
+      <ThePerson GivenName="pipauwel">
+        <MiddleNames>
+          <MiddleName>Test</MiddleName>
+          <MiddleName>Me</MiddleName>
+        </MiddleNames>
+      </ThePerson>
+      <TheOrganization Name="This is the organisation"/>
+    </OwningUser>
+    <OwningApplication Version="2019" ApplicationFullName="Autodesk Revit 2019 (ENU)" ApplicationIdentifier="Revit">
+      <ApplicationDeveloper Name="Autodesk Revit 2019 (ENU)"/>
+    </OwningApplication>
+  </OwnerHistory>
+  <IsDecomposedBy>
+    <IfcRelAggregates GlobalId="3FNdo3HPD8IRkUvWf0t9M_">
+      <RelatedObjects>
+        <IfcObjectDefinition Class="IfcSite" GlobalId="3kIOd66qr36u4qFBFSUffO" Name="The Other Surface:295175" CompositionType="ELEMENT" RefLatitude="181933" RefLongitude="263333" RefElevation="10.0">
+          <IsDecomposedBy>
+            <IfcRelAggregates GlobalId="0q7WH1A$f3GQXtVXZUIa3w">
+              <OwnerHistory LastModifiedDate="0" CreationDate="0"/>
+              <RelatedObjects>
+                <IfcObjectDefinition Class="IfcBuilding" GlobalId="3oUsrKbqD0wh41n0gL1Hqm" CompositionType="ELEMENT" ElevationOfRefHeight="0.0" ElevationOfTerrain="0.0">
+                  <IsDecomposedBy>
+                    <IfcRelAggregates GlobalId="0bEVwXRmbBleAvzFSJirAn">
+                      <RelatedObjects>
+                        <IfcObjectDefinition Class="IfcBuildingStorey" GlobalId="3oUsrKbqD0wh41n0fg_kZk" Name="Level 2" LongName="Level 2" CompositionType="ELEMENT" Elevation="4000.0"/>
+                        <IfcObjectDefinition Class="IfcBuildingStorey" GlobalId="3oUsrKbqD0wh41n0fg_kEY" Name="Level 1" LongName="Level 1" CompositionType="ELEMENT" Elevation="0.0"/>
+                      </RelatedObjects>
+                    </IfcRelAggregates>
+                  </IsDecomposedBy>
+                  <BuildingAddress Class="IfcPostalAddress" Region="Boston" Country="MA"/>
+                </IfcObjectDefinition>
+              </RelatedObjects>
+            </IfcRelAggregates>
+          </IsDecomposedBy>
+        </IfcObjectDefinition>
+        <IfcObjectDefinition Class="IfcSite" GlobalId="3kIOd66qr36u4qFBFSUfRi" Name="Surface:295172" CompositionType="ELEMENT" RefLatitude="181945" RefLongitude="263305" RefElevation="0.0"/>
+      </RelatedObjects>
+    </IfcRelAggregates>
+  </IsDecomposedBy>
+</IfcProject>

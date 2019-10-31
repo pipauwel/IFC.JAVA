@@ -5,10 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour;
 
 @Guid("33ffc6a1-31d2-441f-99ed-c8775cef5eb5")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -17,35 +33,37 @@ public class IfcTextStyleForDefinedFont extends com.buildingsmart.tech.ifc.IfcPr
 	@Description("This property describes the text color of an element (often referred to as the foreground color).")
 	@Required()
 	@Guid("a201eed1-7939-427c-994a-c80f97e60526")
-	private com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour colour;
+	@JacksonXmlProperty(isAttribute=true, localName = "Colour")
+	private IfcColour colour;
 
 	@Description("This property sets the background color of an element.")
 	@Guid("dc717d7d-7060-4f0b-a16f-2d49b2dc6303")
-	private com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour backgroundColour;
+	@JacksonXmlProperty(isAttribute=true, localName = "BackgroundColour")
+	private IfcColour backgroundColour;
 
 
 	public IfcTextStyleForDefinedFont()
 	{
 	}
 
-	public IfcTextStyleForDefinedFont(com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour colour)
+	public IfcTextStyleForDefinedFont(IfcColour colour)
 	{
 		this.colour = colour;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour getColour() {
+	public IfcColour getColour() {
 		return this.colour;
 	}
 
-	public void setColour(com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour colour) {
+	public void setColour(IfcColour colour) {
 		this.colour = colour;
 	}
 
-	public com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour getBackgroundColour() {
+	public IfcColour getBackgroundColour() {
 		return this.backgroundColour;
 	}
 
-	public void setBackgroundColour(com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour backgroundColour) {
+	public void setBackgroundColour(IfcColour backgroundColour) {
 		this.backgroundColour = backgroundColour;
 	}
 
