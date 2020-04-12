@@ -5,28 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcExternalSpatialStructureElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialStructureElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialZone;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("a77e2e44-45fd-486d-8869-116757040301")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,6 +23,7 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
 public abstract class IfcSpatialElement extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct
 {
 	@Description("Long name for a spatial structure element, used for informal purposes. It should be used, if available, in conjunction with the inherited <em>Name</em> attribute.  <blockquote class=\"note\">    NOTE&nbsp; In many scenarios the <em>Name</em> attribute refers to the short name or number of a spacial element, and the <em>LongName</em> refers to the full descriptive name.  </blockquote>")
+	@DataMember(Order = 0)
 	@Guid("2bcb01eb-ff5e-4e42-a804-13d6364682a1")
 	@JacksonXmlProperty(isAttribute=true, localName = "LongName")
 	private String longName;

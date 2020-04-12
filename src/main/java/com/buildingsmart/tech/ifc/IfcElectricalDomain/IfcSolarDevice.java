@@ -5,30 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice;
 
 @Guid("509208ea-e863-454b-9bd2-3fdf0c7dbac6")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSolarDevice extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDevice
 {
+	@DataMember(Order = 0)
 	@Guid("08401fee-143c-4a4a-8600-3460e518aefe")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcSolarDeviceTypeEnum predefinedType;

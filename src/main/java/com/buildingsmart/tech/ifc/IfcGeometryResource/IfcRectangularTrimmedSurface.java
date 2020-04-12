@@ -5,68 +5,61 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBoundedSurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
 
 @Guid("25bb1436-242e-4954-a716-597d8e9ba615")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRectangularTrimmedSurface extends IfcBoundedSurface
 {
 	@Description("Surface being trimmed.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("2b292506-6136-479a-9255-a02ef4d16fa9")
 	@JacksonXmlProperty(isAttribute=false, localName = "BasisSurface")
 	private IfcSurface basisSurface;
 
 	@Description("First u parametric value.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("15237180-8fcc-4bed-a1ef-26b540fe861e")
 	@JacksonXmlProperty(isAttribute=true, localName = "U1")
 	private double u1;
 
 	@Description("First v parametric value.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("f0aaaef2-f79e-42d5-85f8-c8494f5a575b")
 	@JacksonXmlProperty(isAttribute=true, localName = "V1")
 	private double v1;
 
 	@Description("Second u parametric value.")
+	@DataMember(Order = 3)
 	@Required()
 	@Guid("1f5188e3-40dc-4708-9067-d8ce2a75609e")
 	@JacksonXmlProperty(isAttribute=true, localName = "U2")
 	private double u2;
 
 	@Description("Second v parametric value.")
+	@DataMember(Order = 4)
 	@Required()
 	@Guid("fdec4f9a-ac75-4d58-8ca8-70266df5c502")
 	@JacksonXmlProperty(isAttribute=true, localName = "V2")
 	private double v2;
 
 	@Description("Flag to indicate whether the direction of the first parameter of the trimmed surface agrees with or opposes the sense of u in the basis surface.")
+	@DataMember(Order = 5)
 	@Required()
 	@Guid("84dd552c-ed43-4b01-ad77-9d47469c7b67")
 	@JacksonXmlProperty(isAttribute=true, localName = "Usense")
 	private Boolean usense;
 
 	@Description("Flag to indicate whether the direction of the second parameter of the trimmed surface agrees with or opposes the sense of v in the basis surface.")
+	@DataMember(Order = 6)
 	@Required()
 	@Guid("3236b0bf-0d50-4b41-a891-8356e96558f8")
 	@JacksonXmlProperty(isAttribute=true, localName = "Vsense")

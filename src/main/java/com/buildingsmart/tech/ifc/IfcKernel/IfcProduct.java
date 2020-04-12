@@ -5,35 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcObjectPlacement;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcAnnotation;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcGrid;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcPort;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProxy;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialElement;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcProductRepresentation;
 import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralActivity;
 import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralItem;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("ed1b8d59-300e-45f5-b8df-fd0e833a761e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -42,11 +32,13 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
 public abstract class IfcProduct extends IfcObject implements IfcProductSelect
 {
 	@Description("Placement of the product in space, the placement can either be absolute (relative to the world coordinate system), relative (relative to the object placement of another product), or constraint (e.g. relative to grid axes). It is determined by the various subtypes of IfcObjectPlacement, which includes the axis placement information to determine the  transformation for the object coordinate system.")
+	@DataMember(Order = 0)
 	@Guid("d2d0a44a-3717-40dd-8034-5278124028b2")
 	@JacksonXmlProperty(isAttribute=false, localName = "ObjectPlacement")
 	private IfcObjectPlacement objectPlacement;
 
 	@Description("Reference to the representations of the product, being either a representation (IfcProductRepresentation) or as a special case a shape representations (IfcProductDefinitionShape). The product definition shape provides for multiple geometric representations of the shape property of the object within the same object coordinate system, defined by the object placement.")
+	@DataMember(Order = 1)
 	@Guid("dc4c6d0f-4308-4e92-8224-93d3b8194102")
 	@JacksonXmlProperty(isAttribute=false, localName = "Representation")
 	private IfcProductRepresentation representation;

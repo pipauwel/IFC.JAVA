@@ -5,38 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSetUsage;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSet;
 
 @Guid("bbddf2c3-cd7d-4357-94ae-dc7c126b2265")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterialProfileSetUsageTapering extends IfcMaterialProfileSetUsage
 {
 	@Description("The second <em>IfcMaterialProfileSet</em> set to which the usage is applied.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("479176ca-3f02-4f72-abfb-0aea05c25f1f")
 	@JacksonXmlProperty(isAttribute=false, localName = "ForProfileEndSet")
 	private IfcMaterialProfileSet forProfileEndSet;
 
 	@Description("Index reference to a significant point in the second section profile. Describes how this section is aligned relative to the axis of the member it is associated with. This parametric specification of profile alignment can be provided redundantly to the explicit alignment defined by ForProfileSet.MaterialProfiles[*].Profile.")
+	@DataMember(Order = 1)
 	@Guid("c2cdcace-fd71-47d0-9de8-7f392c75629a")
 	@JacksonXmlProperty(isAttribute=true, localName = "CardinalEndPoint")
 	private int cardinalEndPoint;

@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminalType;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcOutletTypeEnum;
 
 @Guid("d3bb6ca8-fe8d-4d85-a6a2-319d9ca0ca47")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcOutletType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminalType
 {
 	@Description("<p>Identifies the predefined types of outlet from which the type required may be set.</p>")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("691fd2aa-9ae2-43b3-b029-b86d21fd07bb")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")

@@ -5,30 +5,17 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcExtrudedAreaSolidTapered;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSweptAreaSolid;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("f65777d3-6cb6-48f6-8a26-d79b570cdfb2")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -37,12 +24,14 @@ import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 public class IfcExtrudedAreaSolid extends IfcSweptAreaSolid
 {
 	@Description("The direction in which the surface, provided by <em>SweptArea</em> is to be swept.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("aef4b8f4-190c-4dbd-a5ef-4ad2bf1d00a3")
 	@JacksonXmlProperty(isAttribute=false, localName = "ExtrudedDirection")
 	private IfcDirection extrudedDirection;
 
 	@Description("The distance the surface is to be swept along the <em>ExtrudedDirection</em>.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("a0e24ce6-15a3-49a4-827b-25a7987a23f7")
 	@JacksonXmlProperty(isAttribute=false, localName = "Depth")

@@ -5,40 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCovering;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("921a1a16-20f9-45bc-956b-62e09d80fa95")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelCoversBldgElements extends com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects
 {
 	@Description("Relationship to the element that is covered. It includes building elements for coverings such as flooring or cladding, or distribution elements for coverings such as sleeving or wrapping.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("9c474fe1-510a-4abc-a5df-1d393a70137d")
 	@JacksonXmlProperty(isAttribute=false, localName = "RelatingBuildingElement")
 	private IfcElement relatingBuildingElement;
 
 	@Description("Relationship to the set of coverings that are assigned to this element.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("4422a81c-654e-4da3-84be-ef46e94d3d3a")
 	@MinLength(1)

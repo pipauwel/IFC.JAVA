@@ -5,33 +5,21 @@
 
 package com.buildingsmart.tech.ifc.IfcControlExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcApprovalResource.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociates;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcDefinitionSelect;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcApprovalResource.IfcApproval;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcDefinitionSelect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("00707e05-63f5-4795-9e7a-2219254df92d")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelAssociatesApproval extends com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociates
 {
 	@Description("Reference to approval that is being applied using this relationship.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("aa4a0a9b-1b67-4b7f-9fae-73e5c2b4d0cb")
 	@JacksonXmlProperty(isAttribute=false, localName = "RelatingApproval")

@@ -5,29 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcConstraintResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcActorSelect;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcConstraintResource.*;
-import com.buildingsmart.tech.ifc.IfcActorResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcMetric;
-import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcObjective;
-import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcConstraintEnum;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("d03dd5c6-bc93-4f7a-903f-d59e7c256d59")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,38 +26,45 @@ import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcConstraintEnum;
 public abstract class IfcConstraint implements com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect
 {
 	@Description("A human-readable name to be used for the constraint.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("a96ada47-fcff-40e9-9a9c-b70ac0c99a51")
 	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
 	@Description("A human-readable description that may apply additional information about a constraint.")
+	@DataMember(Order = 1)
 	@Guid("0a3a6e99-aefa-43e9-8879-dd20addf527d")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
 	@Description("Enumeration that qualifies the type of constraint.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("bf869c29-5929-4e43-b21b-787d7cce70a3")
 	@JacksonXmlProperty(isAttribute=true, localName = "ConstraintGrade")
 	private IfcConstraintEnum constraintGrade;
 
 	@Description("Any source material, such as a code or standard, from which the constraint originated.")
+	@DataMember(Order = 3)
 	@Guid("b66f856a-0c4f-4ea8-945d-427e9a936555")
 	@JacksonXmlProperty(isAttribute=true, localName = "ConstraintSource")
 	private String constraintSource;
 
 	@Description("Person and/or organization that has created the constraint.")
+	@DataMember(Order = 4)
 	@Guid("4730840e-ab1d-4c08-98f1-5d6971c50e1a")
 	@JacksonXmlProperty(isAttribute=true, localName = "CreatingActor")
 	private IfcActorSelect creatingActor;
 
 	@Description("Time when information specifying the constraint instance was created.")
+	@DataMember(Order = 5)
 	@Guid("f2e74ad7-9998-444d-b4f1-9cbaa8740a15")
 	@JacksonXmlProperty(isAttribute=true, localName = "CreationTime")
 	private String creationTime;
 
 	@Description("Allows for specification of user defined grade of the constraint  beyond the enumeration values (hard, soft, advisory) provided by ConstraintGrade attribute of type <em>IfcConstraintEnum</em>.   When a value is provided for attribute UserDefinedGrade in parallel the attribute ConstraintGrade shall have enumeration value USERDEFINED.")
+	@DataMember(Order = 6)
 	@Guid("9c83de82-3273-4c32-91c6-ae490c5c104d")
 	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedGrade")
 	private String userDefinedGrade;

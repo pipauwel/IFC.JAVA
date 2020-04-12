@@ -5,39 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelationship;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcContext;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcDefinitionSelect;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("f38b268f-5cb1-42c3-81e3-89081e6b0528")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelDeclares extends IfcRelationship
 {
 	@Description("Reference to the <em>IfcProject</em> to which additional information is assigned.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("7212f0e4-c36c-4f03-81cb-8220441d3691")
 	@JsonIgnore
 	private IfcContext relatingContext;
 
 	@Description("Set of object or property definitions that are assigned to a context and to which the unit and representation context definitions of that context apply.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("9d9ced1f-f4f3-407a-9b0d-78385692a1a9")
 	@MinLength(1)

@@ -5,28 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableCarrierSegmentType;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableSegmentType;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcDuctSegmentType;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcPipeSegmentType;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionFlowElementType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("bba24c30-4562-4049-b08d-4c3ed6146531")
 @JsonIgnoreProperties(ignoreUnknown=true)

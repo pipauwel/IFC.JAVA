@@ -5,26 +5,17 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionResourceType;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeObject;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("0fb1cf26-3a59-44f5-9a5e-adc7ac27e46a")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,16 +24,19 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeObject;
 public abstract class IfcTypeResource extends IfcTypeObject implements IfcResourceSelect
 {
 	@Description("An identifying designation given to a resource type.")
+	@DataMember(Order = 0)
 	@Guid("5e812f44-4e04-4aaf-bd53-4a6055e2c355")
 	@JacksonXmlProperty(isAttribute=true, localName = "Identification")
 	private String identification;
 
 	@Description("An long description, or text, describing the resource in detail.  <blockquote class=\"note\">NOTE&nbsp; The inherited <em>SELF\\IfcRoot.Description</em> attribute is used as the short description.</blockquote>")
+	@DataMember(Order = 1)
 	@Guid("e0c1e0d9-98d4-427d-95ff-0d0763cff6b4")
 	@JacksonXmlProperty(isAttribute=true, localName = "LongDescription")
 	private String longDescription;
 
 	@Description("The type denotes a particular type that indicates the resource further. The use has to be established at the level of instantiable subtypes. In particular it holds the user defined type, if the enumeration of the attribute 'PredefinedType' is set to USERDEFINED.")
+	@DataMember(Order = 2)
 	@Guid("dcfa4479-34ce-4047-bd7e-85fc017e6834")
 	@JacksonXmlProperty(isAttribute=true, localName = "ResourceType")
 	private String resourceType;

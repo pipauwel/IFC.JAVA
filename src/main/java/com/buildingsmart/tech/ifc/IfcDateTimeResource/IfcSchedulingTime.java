@@ -5,29 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.*;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcEventTime;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcLagTime;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcResourceTime;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTaskTime;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcWorkTime;
 
 @Guid("b80d3213-eccf-4e8a-84a3-21c1381ff3cc")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,16 +20,19 @@ import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcWorkTime;
 public abstract class IfcSchedulingTime
 {
 	@Description("Optional name for the time definition.")
+	@DataMember(Order = 0)
 	@Guid("9ce7ee5d-0c3d-4394-9ba0-4cd0ff38d925")
 	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
 	@Description("Specifies the origin of the scheduling time entity. It currently      differentiates between predicted, simulated, measured, and user defined values.")
+	@DataMember(Order = 1)
 	@Guid("a82843cd-7cb9-4fac-b255-c3bf8dfcfcc1")
 	@JacksonXmlProperty(isAttribute=true, localName = "DataOrigin")
 	private IfcDataOriginEnum dataOrigin;
 
 	@Description("Value of the data origin if DataOrigin attribute is USERDEFINED.")
+	@DataMember(Order = 2)
 	@Guid("9619b2c7-3037-4380-8c25-83f4ded0ab84")
 	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedDataOrigin")
 	private String userDefinedDataOrigin;

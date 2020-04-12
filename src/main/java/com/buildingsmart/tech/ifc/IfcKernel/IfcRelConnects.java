@@ -5,39 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcRelSequence;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelConnectsElements;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelConnectsPorts;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelConnectsPortToElement;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcRelConnectsStructuralActivity;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcRelConnectsStructuralMember;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelConnectsPorts;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelContainedInSpatialStructure;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRelCoversBldgElements;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRelCoversSpaces;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelFillsElement;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcRelFlowControlElements;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelInterferesElements;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelReferencedInSpatialStructure;
-import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcRelSequence;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelServicesBuildings;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelSpaceBoundary;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelationship;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRelCoversBldgElements;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRelCoversSpaces;
+import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcRelFlowControlElements;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcRelConnectsStructuralActivity;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcRelConnectsStructuralMember;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("d1873043-e605-458b-826d-8e332289ba38")
 @JsonIgnoreProperties(ignoreUnknown=true)

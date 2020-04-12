@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcRevolvedAreaSolid;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis1Placement;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("d15358b0-162a-4760-993f-02cce84f936b")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRevolvedAreaSolidTapered extends IfcRevolvedAreaSolid
 {
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("965ddc62-69c3-429c-b725-41e028fb1a3d")
 	@JacksonXmlProperty(isAttribute=false, localName = "EndSweptArea")

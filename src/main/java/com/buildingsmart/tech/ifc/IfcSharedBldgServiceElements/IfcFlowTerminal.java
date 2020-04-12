@@ -5,37 +5,23 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirTerminal;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcAudioVisualAppliance;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCommunicationsAppliance;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricAppliance;
-import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcFireSuppressionTerminal;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLamp;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcLightFixture;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcMedicalDevice;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcOutlet;
-import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcSanitaryTerminal;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirTerminal;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcMedicalDevice;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcSpaceHeater;
+import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcFireSuppressionTerminal;
+import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcSanitaryTerminal;
 import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcStackTerminal;
 import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcWasteTerminal;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionFlowElement;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("b95360e4-9695-4f5f-b070-7d969f143c5b")
 @JsonIgnoreProperties(ignoreUnknown=true)

@@ -7,34 +7,28 @@ package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcVector;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcStyledItem;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("94e16249-95c6-4654-92c9-5cfac4e1e234")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcFillAreaStyleTiles extends com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem implements IfcFillStyleSelect
 {
 	@Description("A two direction repeat factor defining the shape and relative positioning of the tiles.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute type has changed to directly reference two <em>IfcVector</em>'s.</blockquote>")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("85b936d1-2755-4739-9fd0-716ef0622f80")
 	@MinLength(2)
@@ -44,6 +38,7 @@ public class IfcFillAreaStyleTiles extends com.buildingsmart.tech.ifc.IfcGeometr
 	private List<IfcVector> tilingPattern;
 
 	@Description("A set of constituents of the tile being a styled item that is used as the annotation symbol for tiling the filled area.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The data type has been changed to <em>IfcStyledItem</em>.</blockquote>  <blockquote class=\"note\">NOTE&nbsp; Only <em>IfcStyleItem</em>'s that refer to a compatible geometric representation item and presentation style shall be used.</blockquote>")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("5812d5a2-edd8-486a-8237-149034e4dcaa")
 	@MinLength(1)
@@ -52,6 +47,7 @@ public class IfcFillAreaStyleTiles extends com.buildingsmart.tech.ifc.IfcGeometr
 	private Set<IfcStyledItem> tiles;
 
 	@Description("The scale factor applied to each tile as it is placed in the annotation fill area.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("0200d8ed-49fd-4670-a213-284158f9200d")
 	@JacksonXmlProperty(isAttribute=false, localName = "TilingScale")

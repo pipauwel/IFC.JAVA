@@ -5,31 +5,22 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("71cd9964-d26e-4857-81b8-de24c4651a85")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCovering extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement
 {
 	@Description("Predefined types to define the particular type of the covering. There may be property set definitions available for each predefined type.  <blockquote class=\"note\">NOTE&nbsp; The <em>PredefinedType</em> shall only be used, if no <em>IfcCoveringType</em> is assigned, providing its own <em>IfcCoveringType.PredefinedType</em>.</blockquote>")
+	@DataMember(Order = 0)
 	@Guid("1c0df8fd-2a8e-4b75-a68e-22fa8c279270")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcCoveringTypeEnum predefinedType;

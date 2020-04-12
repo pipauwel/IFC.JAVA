@@ -5,33 +5,20 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcExtendedProperties;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialDefinition;
 
 @Guid("707d56d2-d0f4-419a-a790-679333c0e23e")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterialProperties extends com.buildingsmart.tech.ifc.IfcPropertyResource.IfcExtendedProperties
 {
 	@Description("Reference to the material definition to which the set of properties is assigned.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The datatype has been changed to supertype <em>IfcMaterialDefinition</em>.</blockquote>")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("1f04c044-1625-4c62-8830-244f32e33e14")
 	@JsonIgnore

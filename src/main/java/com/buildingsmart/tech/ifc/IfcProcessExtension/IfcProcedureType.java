@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcProcessExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProcessExtension.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProcess;
-import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureTypeEnum;
 
 @Guid("a91157ae-e871-49c4-bbff-a0b9224d6a3a")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcProcedureType extends com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProcess
 {
 	@Description("Identifies the predefined types of a procedure from which       the type required may be set.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("d373b84f-93fb-46fc-be52-d46907ae3f8b")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")

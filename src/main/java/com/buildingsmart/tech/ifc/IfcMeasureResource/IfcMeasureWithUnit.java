@@ -5,38 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcMeasureResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit;
 
 @Guid("7d000d8f-2938-439d-93a8-c32b17a46db8")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMeasureWithUnit implements com.buildingsmart.tech.ifc.IfcCostResource.IfcAppliedValueSelect, com.buildingsmart.tech.ifc.IfcConstraintResource.IfcMetricValueSelect
 {
 	@Description("The value of the physical quantity when expressed in the specified units.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("479106c8-2fd8-47ea-b8d8-b7c2b4500827")
 	@JacksonXmlProperty(isAttribute=true, localName = "ValueComponent")
 	private IfcValue valueComponent;
 
 	@Description("The unit in which the physical quantity is expressed.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("0b956010-ecb4-40fe-abb6-f9f75898b3f4")
 	@JacksonXmlProperty(isAttribute=true, localName = "UnitComponent")

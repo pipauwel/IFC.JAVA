@@ -5,29 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveMemberVarying;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralMember;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveMemberTypeEnum;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("b0527d1a-798c-4134-b9f1-056c3d7650af")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,12 +22,14 @@ import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
 public class IfcStructuralCurveMember extends IfcStructuralMember
 {
 	@Description("Type of member with respect to its load carrying behavior in this analysis idealization.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("bad7498e-7414-4402-843f-00cb547486b2")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcStructuralCurveMemberTypeEnum predefinedType;
 
 	@Description("Direction which is used in the definition of the local z axis.  <em>Axis</em> is specified relative to the so-called global coordinate system, i.e. the <em>SELF\\IfcProduct.ObjectPlacement</em>.    <blockquote class=\"note\">NOTE&nbsp; It is desirable and usually possible that many instances of <em>IfcStructuralCurveConnection</em> and <em>IfcStructuralCurveMember</em> share a common instance of <em>IfcDirection</em> as their <em>Axis</em> attribute.</blockquote>")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("98e340d3-9f0e-4b44-9421-dc95050a5be5")
 	@JacksonXmlProperty(isAttribute=false, localName = "Axis")

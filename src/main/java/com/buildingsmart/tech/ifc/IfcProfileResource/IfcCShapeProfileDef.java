@@ -5,57 +5,49 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcParameterizedProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("7010039f-b69f-42fe-9bb3-20026bfae6ab")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCShapeProfileDef extends IfcParameterizedProfileDef
 {
 	@Description("Profile depth, see illustration above (= h).")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("c6c9e777-ca9e-4d70-a3a6-38757c26ef87")
 	@JacksonXmlProperty(isAttribute=false, localName = "Depth")
 	private IfcPositiveLengthMeasure depth;
 
 	@Description("Profile width, see illustration above (= b).")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("d3e16bb1-82aa-4312-aa01-8da7cd20409a")
 	@JacksonXmlProperty(isAttribute=false, localName = "Width")
 	private IfcPositiveLengthMeasure width;
 
 	@Description("Constant wall thickness of profile (= ts).")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("ec6de7e9-9f3a-4c81-86a4-a4e785c5e223")
 	@JacksonXmlProperty(isAttribute=false, localName = "WallThickness")
 	private IfcPositiveLengthMeasure wallThickness;
 
 	@Description("Lengths of girth, see illustration above (= c).")
+	@DataMember(Order = 3)
 	@Required()
 	@Guid("daaee771-bc5d-4e0a-917c-9676829c6e0b")
 	@JacksonXmlProperty(isAttribute=false, localName = "Girth")
 	private IfcPositiveLengthMeasure girth;
 
 	@Description("Internal fillet radius according the above illustration (= r1).")
+	@DataMember(Order = 4)
 	@Guid("6aa4d5f7-c33d-4000-be64-34c41302db25")
 	@JacksonXmlProperty(isAttribute=false, localName = "InternalFilletRadius")
 	private IfcNonNegativeLengthMeasure internalFilletRadius;

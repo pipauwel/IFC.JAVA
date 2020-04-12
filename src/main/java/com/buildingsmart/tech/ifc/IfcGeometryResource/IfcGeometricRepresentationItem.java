@@ -5,49 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcAnnotationFillArea;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBooleanResult;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBoundingBox;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCartesianPointList;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCompositeCurveSegment;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCsgPrimitive3D;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcFaceBasedSurfaceModel;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcFillAreaStyleHatching;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcFillAreaStyleTiles;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcGeometricSet;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcHalfSpaceSolid;
-import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightSource;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPlacement;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPlanarExtent;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSectionedSpine;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcShellBasedSurfaceModel;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSolidModel;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedItem;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcFillAreaStyleHatching;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcFillAreaStyleTiles;
+import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcAnnotationFillArea;
+import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPlanarExtent;
 import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcTextLiteral;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcVector;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightSource;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("40f86a50-abee-4be6-ad4b-26f1f60e8956")
 @JsonIgnoreProperties(ignoreUnknown=true)

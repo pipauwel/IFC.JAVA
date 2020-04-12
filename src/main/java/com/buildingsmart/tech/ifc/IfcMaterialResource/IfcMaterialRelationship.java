@@ -5,38 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("6e3cd925-5085-4070-91c6-868ff915e9ae")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterialRelationship extends com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship
 {
 	@Description("Reference to the relating material (the composite).")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("e999e1a6-2c9d-42cc-906e-aa2f77ff42dd")
 	@JacksonXmlProperty(isAttribute=false, localName = "RelatingMaterial")
 	private IfcMaterial relatingMaterial;
 
 	@Description("Reference to related materials (as constituents of composite material).")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("c4283d48-f0a8-4323-802a-02c8c67cb8b6")
 	@MinLength(1)
@@ -45,6 +39,7 @@ public class IfcMaterialRelationship extends com.buildingsmart.tech.ifc.IfcExter
 	private Set<IfcMaterial> relatedMaterials;
 
 	@Description("Information about the material relationship refering for example to the amount of related materials in the composite material.   <blockquote class=\"note\">NOTE&nbsp; Any formal meaning of the <em>Expression</em> string value has to be established in model view definitions or implementer agreements. No such formal language is provided as part of this specification.</blockquote>")
+	@DataMember(Order = 2)
 	@Guid("06e78a67-c146-48c1-a11c-c8b9a2752c74")
 	@JacksonXmlProperty(isAttribute=true, localName = "Expression")
 	private String expression;

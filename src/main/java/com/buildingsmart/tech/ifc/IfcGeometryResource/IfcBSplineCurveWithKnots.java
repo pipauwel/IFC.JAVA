@@ -7,27 +7,18 @@ package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRationalBSplineCurveWithKnots;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineCurveForm;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcKnotType;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("5cf374d3-9550-4d89-8870-9e50d9d4d7f6")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,6 +27,7 @@ import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcKnotType;
 public class IfcBSplineCurveWithKnots extends IfcBSplineCurve
 {
 	@Description("The multiplicities of the knots. This list defines the number of times each knot in the knots list is to be repeated in constructing the knot array.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("4dae82bb-9535-43aa-a1a7-baf777ce6fda")
 	@MinLength(2)
@@ -44,6 +36,7 @@ public class IfcBSplineCurveWithKnots extends IfcBSplineCurve
 	private List<Integer> knotMultiplicities;
 
 	@Description("The list of distinct knots used to define the B-spline basis functions.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("44c6204a-ed46-49b4-a5ef-200b9dd80f13")
 	@MinLength(2)
@@ -52,6 +45,7 @@ public class IfcBSplineCurveWithKnots extends IfcBSplineCurve
 	private List<Double> knots;
 
 	@Description("The description of the knot type. This is for information only.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("fe56ab5c-8a68-43ab-820c-5c7f6d9f1111")
 	@JacksonXmlProperty(isAttribute=true, localName = "KnotSpec")

@@ -5,73 +5,72 @@
 
 package com.buildingsmart.tech.ifc.IfcApprovalResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcActorSelect;
+import com.buildingsmart.tech.ifc.IfcControlExtension.IfcRelAssociatesApproval;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcActorResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcControlExtension.*;
-import com.buildingsmart.tech.ifc.IfcApprovalResource.*;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("76476d02-0061-4539-81cf-c606a2acbe13")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcApproval implements com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect
 {
 	@Description("A computer interpretable identifier by which the approval is known.")
+	@DataMember(Order = 0)
 	@Guid("a1fa1c90-f7b0-4cc3-ac7c-310cb59dc8ea")
 	@JacksonXmlProperty(isAttribute=true, localName = "Identifier")
 	private String identifier;
 
 	@Description("A human readable name given to an approval.")
+	@DataMember(Order = 1)
 	@Guid("97065098-5b7a-4f0a-9047-84618567b028")
 	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
 	@Description("A general textual description of a design, work task, plan, etc. that is being approved for.")
+	@DataMember(Order = 2)
 	@Guid("acec49a4-4798-47ce-b95a-36d2041a421d")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
 	@Description("Date and time when the result of the approval process is produced.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; Attribute data type changed to <em>IfcDateTime</em> using ISO 8601 representation, renamed from ApprovalDateTime and made OPTIONAL.</blockquote>")
+	@DataMember(Order = 3)
 	@Guid("998d7843-2f2d-4e56-a224-6d334af4ac2e")
 	@JacksonXmlProperty(isAttribute=true, localName = "TimeOfApproval")
 	private String timeOfApproval;
 
 	@Description("The result or current status of the approval, e.g. Requested, Processed, Approved, Not Approved.")
+	@DataMember(Order = 4)
 	@Guid("2ee053bf-3553-49ee-9fd8-f253b1eafb26")
 	@JacksonXmlProperty(isAttribute=true, localName = "Status")
 	private String status;
 
 	@Description("Level of the approval e.g. Draft v.s. Completed design.")
+	@DataMember(Order = 5)
 	@Guid("201d349a-9ee9-4d16-a6de-17dc2f6d4e9d")
 	@JacksonXmlProperty(isAttribute=true, localName = "Level")
 	private String level;
 
 	@Description("Textual description of special constraints or conditions for the approval.")
+	@DataMember(Order = 6)
 	@Guid("bbe34628-1287-4cd0-96f2-310cf5177c72")
 	@JacksonXmlProperty(isAttribute=true, localName = "Qualifier")
 	private String qualifier;
 
 	@Description("The actor that is acting in the role specified at <em>IfcOrganization</em> or individually at <em>IfcPerson</em> and requesting an approval.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New attribute for approval request replacing IfcApprovalActorRelationship (being deleted).</blockquote>")
+	@DataMember(Order = 7)
 	@Guid("4b0f76d0-86d3-4da8-aa4a-be82b503cabb")
 	@JacksonXmlProperty(isAttribute=true, localName = "RequestingApproval")
 	private IfcActorSelect requestingApproval;
 
 	@Description("The actor that is acting in the role specified at <em>IfcOrganization</em> or individually at <em>IfcPerson</em> and giving an approval.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New attribute for approval provision replacing IfcApprovalActorRelationship (being deleted).</blockquote>")
+	@DataMember(Order = 8)
 	@Guid("56400bef-4db8-4c65-ad92-c61fc8ee4850")
 	@JacksonXmlProperty(isAttribute=true, localName = "GivingApproval")
 	private IfcActorSelect givingApproval;

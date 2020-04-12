@@ -5,49 +5,41 @@
 
 package com.buildingsmart.tech.ifc.IfcUtilityResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcActorResource.IfcOrganization;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("88190cb4-3569-4c42-9b7d-8778145e179e")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcApplication
 {
 	@Description("Name of the application developer.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("3cc88833-4284-48e3-8942-9a3a7eb58407")
 	@JacksonXmlProperty(isAttribute=false, localName = "ApplicationDeveloper")
 	private IfcOrganization applicationDeveloper;
 
 	@Description("The version number of this software as specified by the developer of the application.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("77ef51fd-a0e6-444c-aa70-72ffc5b971c7")
 	@JacksonXmlProperty(isAttribute=true, localName = "Version")
 	private String version;
 
 	@Description("The full name of the application as specified by the application developer.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("56e2f124-d545-40e2-b5d1-027b21693f30")
 	@JacksonXmlProperty(isAttribute=true, localName = "ApplicationFullName")
 	private String applicationFullName;
 
 	@Description("Short identifying name for the application.")
+	@DataMember(Order = 3)
 	@Required()
 	@Guid("1a43cdd1-0847-4fa0-b2ae-f0918196357c")
 	@JacksonXmlProperty(isAttribute=true, localName = "ApplicationIdentifier")

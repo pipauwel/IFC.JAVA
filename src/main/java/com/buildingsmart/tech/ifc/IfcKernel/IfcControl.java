@@ -5,33 +5,24 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcControlExtension.IfcPerformanceHistory;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcWorkCalendar;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcWorkControl;
 import com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcActionRequest;
 import com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcCostItem;
 import com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcCostSchedule;
-import com.buildingsmart.tech.ifc.IfcControlExtension.IfcPerformanceHistory;
 import com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcPermit;
 import com.buildingsmart.tech.ifc.IfcSharedMgmtElements.IfcProjectOrder;
-import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcWorkCalendar;
-import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcWorkControl;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("5cc95018-83bd-4c3b-ba54-1475cf5cbdb7")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,6 +31,7 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
 public abstract class IfcControl extends IfcObject
 {
 	@Description("An identifying designation given to a control      It is the identifier at the occurrence level.       <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  Attribute unified by promoting from various subtypes of <em>IfcControl</em>.   </blockquote>")
+	@DataMember(Order = 0)
 	@Guid("5e07c327-7005-44be-babc-5f04a40d37cd")
 	@JacksonXmlProperty(isAttribute=true, localName = "Identification")
 	private String identification;

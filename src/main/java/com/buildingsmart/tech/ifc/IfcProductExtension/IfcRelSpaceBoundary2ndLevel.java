@@ -5,35 +5,22 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelSpaceBoundary1stLevel;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpaceBoundarySelect;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcPhysicalOrVirtualEnum;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcInternalOrExternalEnum;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("002bda71-0a52-40b9-8ef9-82bc20f96bf3")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelSpaceBoundary2ndLevel extends IfcRelSpaceBoundary1stLevel
 {
 	@Description("Reference to the other space boundary of the pair of two space boundaries on either side of a space separating thermal boundary element.")
+	@DataMember(Order = 0)
 	@Guid("6c032ee3-47a6-40de-b826-06a8da0c46b3")
 	@JacksonXmlProperty(isAttribute=false, localName = "CorrespondingBoundary")
 	private IfcRelSpaceBoundary2ndLevel correspondingBoundary;

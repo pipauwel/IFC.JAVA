@@ -5,36 +5,24 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator3D;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 
 @Guid("283bc76c-8d97-414d-a5ef-96f76f53702f")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCartesianTransformationOperator3DnonUniform extends IfcCartesianTransformationOperator3D
 {
 	@Description("The scaling value specified for the transformation along the axis 2. This is normally the y scale factor.")
+	@DataMember(Order = 0)
 	@Guid("a8e81164-ed5f-4e59-a76e-ab0907154bf2")
 	@JacksonXmlProperty(isAttribute=true, localName = "Scale2")
 	private double scale2;
 
 	@Description("The scaling value specified for the transformation along the axis 3. This is normally the z scale factor.")
+	@DataMember(Order = 1)
 	@Guid("9efce9a5-63f1-44d1-bb62-a02be5a7092f")
 	@JacksonXmlProperty(isAttribute=true, localName = "Scale3")
 	private double scale3;

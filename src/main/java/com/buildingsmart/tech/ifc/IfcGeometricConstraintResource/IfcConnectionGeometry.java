@@ -5,27 +5,10 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionCurveGeometry;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionPointGeometry;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionSurfaceGeometry;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionVolumeGeometry;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("bbccdc9f-9360-4171-b9a9-3e552ea7289a")
 @JsonIgnoreProperties(ignoreUnknown=true)

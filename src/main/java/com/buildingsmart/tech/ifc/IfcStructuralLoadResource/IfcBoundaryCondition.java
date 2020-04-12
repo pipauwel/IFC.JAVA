@@ -5,26 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralLoadResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryEdgeCondition;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryFaceCondition;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryNodeCondition;
 
 @Guid("d1fbb09c-b03d-4abb-97d2-0ded2403dd38")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,6 +20,7 @@ import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryNodeCondi
 public abstract class IfcBoundaryCondition
 {
 	@Description("Optionally defines a name for this boundary condition.")
+	@DataMember(Order = 0)
 	@Guid("80e193a9-cfc3-4d5e-ba4a-f2e6dd418ac8")
 	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;

@@ -5,29 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcRectangleHollowProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcRoundedRectangleProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcParameterizedProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("76426990-f6c8-4462-b489-68361df1c390")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,12 +22,14 @@ import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 public class IfcRectangleProfileDef extends IfcParameterizedProfileDef
 {
 	@Description("The extent of the rectangle in the direction of the x-axis.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("cc30f80d-efff-497d-a442-14ef5a82594e")
 	@JacksonXmlProperty(isAttribute=false, localName = "XDim")
 	private IfcPositiveLengthMeasure xDim;
 
 	@Description("The extent of the rectangle in the direction of the y-axis.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("8675ebcb-7de8-4598-8952-7776657d7a52")
 	@JacksonXmlProperty(isAttribute=false, localName = "YDim")

@@ -29,22 +29,26 @@ import com.buildingsmart.tech.ifc.IfcActorResource.*;
 public class IfcOrganization implements IfcActorSelect, com.buildingsmart.tech.ifc.IfcPropertyResource.IfcObjectReferenceSelect, com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect
 {
 	@Description("Identification of the organization.")
+	@DataMember(Order = 0)
 	@Guid("69df2c90-db0e-4770-8b56-979b8b047e1e")
 	@JacksonXmlProperty(isAttribute=true, localName = "Identification")
 	private String identification;
 
 	@Description("The word, or group of words, by which the organization is referred to.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("c166f087-4894-4a21-a9e9-d97eb1819fdf")
 	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
 	@Description("Text that relates the nature of the organization.")
+	@DataMember(Order = 2)
 	@Guid("25df158d-5646-41da-ab00-0278fd97465f")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
 	@Description("Roles played by the organization.")
+	@DataMember(Order = 3)
 	@Guid("0d1eb7de-a748-4032-b4dc-41db568b69e9")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcActorRole")
@@ -52,6 +56,7 @@ public class IfcOrganization implements IfcActorSelect, com.buildingsmart.tech.i
 	private List<IfcActorRole> roles;
 
 	@Description("Postal and telecom addresses of an organization.  <blockquote class=\"note\">NOTE&nbsp; There may be several addresses related to an organization.</blockquote>")
+	@DataMember(Order = 4)
 	@Guid("5539929c-db61-4891-a291-4994f62113a2")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcAddress")
@@ -66,7 +71,8 @@ public class IfcOrganization implements IfcActorSelect, com.buildingsmart.tech.i
 
 	@Description("The inverse relationship for relationship RelatingOrganization of IfcOrganizationRelationship.")
 	@Guid("4bad5ffe-b272-41b1-93f8-a45a33946e83")
-	@JsonIgnore
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcOrganizationRelationship")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Relates")
 	private Set<IfcOrganizationRelationship> relates;
 
 	@Description("Inverse relationship to IfcPersonAndOrganization relationships in which IfcOrganization is engaged.")

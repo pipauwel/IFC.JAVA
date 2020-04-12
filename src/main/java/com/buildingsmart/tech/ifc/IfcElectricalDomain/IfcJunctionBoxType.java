@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFittingType;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcJunctionBoxTypeEnum;
 
 @Guid("5b0765d7-22a3-4ba4-a259-32523ca4082c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcJunctionBoxType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFittingType
 {
 	@Description("<p>Identifies the predefined types of junction boxes from which the type required may be set.</p>")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("3bba9337-756a-46d1-a706-78d461b878ae")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")

@@ -5,39 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPresentationStyle;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceSide;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceStyleElementSelect;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("359b755a-e87c-418d-bb14-8b2fd007e3ba")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSurfaceStyle extends IfcPresentationStyle implements IfcPresentationStyleSelect
 {
 	@Description("An indication of which side of the surface to apply the style.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("71fe440e-530e-4206-b288-06ae88a7976e")
 	@JacksonXmlProperty(isAttribute=true, localName = "Side")
 	private IfcSurfaceSide side;
 
 	@Description("A collection of different surface styles.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("7501c93b-df89-434a-a8f8-9720a08bb372")
 	@MinLength(1)

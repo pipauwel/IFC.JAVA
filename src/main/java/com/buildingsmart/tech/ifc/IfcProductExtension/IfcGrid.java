@@ -7,31 +7,26 @@ package com.buildingsmart.tech.ifc.IfcProductExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcGridAxis;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("dfb6beda-5c7c-4df8-bbc6-b101ce4006f3")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcGrid extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct
 {
 	@Description("List of grid axes defining the first row of grid lines.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("bdb5916c-3554-4cf8-af9f-c8f845cd2167")
 	@MinLength(1)
@@ -40,6 +35,7 @@ public class IfcGrid extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct
 	private List<IfcGridAxis> uAxes;
 
 	@Description("List of grid axes defining the second row of grid lines.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("1717252a-3745-4aa4-a034-8dcd37a0d186")
 	@MinLength(1)
@@ -48,6 +44,7 @@ public class IfcGrid extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct
 	private List<IfcGridAxis> vAxes;
 
 	@Description("List of grid axes defining the third row of grid lines. It may be given in the case of a triangular grid.")
+	@DataMember(Order = 2)
 	@Guid("d9aa56a8-d4cc-43e3-ba44-e2f43708fed0")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcGridAxis")
@@ -55,6 +52,7 @@ public class IfcGrid extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct
 	private List<IfcGridAxis> wAxes;
 
 	@Description("Predefined types to define the particular type of the grid.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New attribute.  </blockquote>")
+	@DataMember(Order = 3)
 	@Guid("dd530a2a-4234-4800-82ff-77018c7df73e")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcGridTypeEnum predefinedType;

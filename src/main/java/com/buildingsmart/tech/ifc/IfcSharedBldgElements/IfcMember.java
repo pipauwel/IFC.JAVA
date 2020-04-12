@@ -5,26 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcMemberStandardCase;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
 
 @Guid("b752e035-e86a-47fe-9596-26982071dd71")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,6 +20,7 @@ import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
 public class IfcMember extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement
 {
 	@Description("Predefined generic type for a member that is specified in an enumeration. There may be a property set given for the predefined types.  <blockquote class=\"note\">NOTE&nbsp; The <em>PredefinedType</em> shall only be used, if no <em>IfcMemberType</em> is assigned, providing its own <em>IfcMemberType.PredefinedType</em>.</blockquote>  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added at the end of the entity definition.</blockquote>")
+	@DataMember(Order = 0)
 	@Guid("da25064e-d324-4514-9b91-3e12adc9db3b")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcMemberTypeEnum predefinedType;

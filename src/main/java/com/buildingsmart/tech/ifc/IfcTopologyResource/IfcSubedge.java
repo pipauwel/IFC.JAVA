@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdge;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcVertex;
 
 @Guid("301f5c35-1bd3-43f4-8839-f47887d4d763")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSubedge extends IfcEdge
 {
 	@Description("The Edge, or Subedge, which contains the Subedge.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("4c3df6a8-223d-4e59-9a81-4540065605bc")
 	@JacksonXmlProperty(isAttribute=false, localName = "ParentEdge")

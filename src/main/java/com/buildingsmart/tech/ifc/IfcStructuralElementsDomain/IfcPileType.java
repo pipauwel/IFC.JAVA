@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElementType;
-import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcPileTypeEnum;
 
 @Guid("3694a657-5c71-4fa9-8223-0f80ab28ae3b")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPileType extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElementType
 {
 	@Description("Subtype of pile.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("2fa8112b-beb2-4918-976d-46637c548b07")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")

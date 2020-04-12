@@ -5,37 +5,28 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRelCoversSpaces;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialStructureElement;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("ef5bd9a3-9472-49c9-9aa4-173b9444e09a")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSpace extends IfcSpatialStructureElement implements IfcSpaceBoundarySelect
 {
 	@Description("Predefined generic types for a space that are specified in an enumeration. There might be property sets defined specifically for each predefined type.    <blockquote class=\"note\">NOTE&nbsp; Previous use had been to indicates whether the <em>IfcSpace</em> is an interior space by value INTERNAL, or an exterior space by value EXTERNAL. This use is now deprecated, the property 'IsExternal' at 'Pset_SpaceCommon' should be used instead.</blockquote>    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been renamed from <em>ExteriorOrInteriorSpace</em> with upward compatibility for file based exchange.</blockquote>")
+	@DataMember(Order = 0)
 	@Guid("39555f4a-a49d-4ba2-ac74-c53ebe97b98c")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcSpaceTypeEnum predefinedType;
 
 	@Description("Level of flooring of this space; the average shall be taken, if the space ground surface is sloping or if there are level differences within this space.")
+	@DataMember(Order = 1)
 	@Guid("0c593fdb-4928-4a7e-b527-c275a3eff283")
 	@JacksonXmlProperty(isAttribute=true, localName = "ElevationWithFlooring")
 	private double elevationWithFlooring;

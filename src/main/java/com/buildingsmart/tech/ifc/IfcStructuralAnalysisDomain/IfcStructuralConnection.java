@@ -5,29 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryCondition;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveConnection;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralPointConnection;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceConnection;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralItem;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("d4640db1-7b55-4f79-8ba6-05b016369801")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,6 +25,7 @@ import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralItem;
 public abstract class IfcStructuralConnection extends IfcStructuralItem
 {
 	@Description("Optional boundary conditions which define support conditions of this connection object, given in local coordinate directions of the connection object.  If left unspecified, the connection object is assumed to have no supports besides being connected with members.")
+	@DataMember(Order = 0)
 	@Guid("f73c29bd-73af-42d0-ba9a-8654e4da5996")
 	@JacksonXmlProperty(isAttribute=false, localName = "AppliedCondition")
 	private IfcBoundaryCondition appliedCondition;

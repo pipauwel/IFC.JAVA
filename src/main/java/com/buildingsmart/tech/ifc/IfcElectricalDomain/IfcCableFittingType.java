@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFittingType;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableFittingTypeEnum;
 
 @Guid("6b600515-6cd1-4099-92e8-b13faa4d285c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCableFittingType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFittingType
 {
 	@Description("<p>Identifies the predefined types of cable fitting from which the type required may be set.</p>")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("e45b3f87-bb57-407e-ae06-d5e07c6e2c84")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")

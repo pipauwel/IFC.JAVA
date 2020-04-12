@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionFlowElementType;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionChamberElementTypeEnum;
 
 @Guid("e471c212-612d-4578-8f9e-e9623be892bf")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcDistributionChamberElementType extends IfcDistributionFlowElementType
 {
 	@Description("Predefined types of distribution chambers.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("5547f3da-2b18-4dea-8d61-4940224376c8")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")

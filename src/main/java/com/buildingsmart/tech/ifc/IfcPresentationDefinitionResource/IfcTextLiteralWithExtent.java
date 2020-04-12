@@ -5,41 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcTextLiteral;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcTextPath;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPlanarExtent;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcBoxAlignment;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("4ab54421-83da-48e9-9931-2e0f8051029b")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcTextLiteralWithExtent extends IfcTextLiteral
 {
 	@Description("The extent in the x and y direction of the text literal.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("2f249a57-152d-4616-af5b-ba3c4b2d9f54")
 	@JacksonXmlProperty(isAttribute=false, localName = "Extent")
 	private IfcPlanarExtent extent;
 
 	@Description("The alignment of the text literal relative to its position.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("10d84bed-12f2-4bf3-8e3c-5e87145f7132")
 	@JacksonXmlProperty(isAttribute=false, localName = "BoxAlignment")

@@ -5,23 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricGenerator;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricMotor;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcMotorConnection;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSolarDevice;
+import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcTransformer;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcAirToAirHeatRecovery;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcBoiler;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcBurner;
@@ -30,19 +19,16 @@ import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoil;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCondenser;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCooledBeam;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCoolingTower;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricGenerator;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcElectricMotor;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcEngine;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcEvaporativeCooler;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcEvaporator;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcHeatExchanger;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcHumidifier;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcMotorConnection;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcSolarDevice;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcTransformer;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcTubeBundle;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcUnitaryEquipment;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionFlowElement;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("856df463-42b9-4a83-a733-b458ab487012")
 @JsonIgnoreProperties(ignoreUnknown=true)

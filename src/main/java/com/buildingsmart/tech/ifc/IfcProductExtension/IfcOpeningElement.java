@@ -5,26 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcOpeningStandardCase;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementSubtraction;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("20f5b3eb-0852-4587-a1e1-bb91ca98bc61")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,6 +23,7 @@ import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementSubtracti
 public class IfcOpeningElement extends IfcFeatureElementSubtraction
 {
 	@Description("Predefined generic type for an opening that is specified in an enumeration. There may be a property set given specificly for the predefined types.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added at the end of the entity definition.</blockquote>")
+	@DataMember(Order = 0)
 	@Guid("6367f4bf-61d9-41b7-8019-be8f7f63fc6b")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcOpeningElementTypeEnum predefinedType;

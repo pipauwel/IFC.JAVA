@@ -5,39 +5,31 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentation;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("3968ca44-8f3e-43f2-ab19-855d7709487b")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRepresentationMap implements com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcProductRepresentationSelect
 {
 	@Description("An axis2 placement that defines the position about which the mapped  representation is mapped.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("ccc26f1c-a4ae-4b02-8980-7af9a9680d54")
 	@JacksonXmlProperty(isAttribute=true, localName = "MappingOrigin")
 	private IfcAxis2Placement mappingOrigin;
 
 	@Description("A representation that is mapped to at least one mapped item.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("66c50edd-89c8-4bf7-9312-05facd806895")
 	@JacksonXmlProperty(isAttribute=false, localName = "MappedRepresentation")

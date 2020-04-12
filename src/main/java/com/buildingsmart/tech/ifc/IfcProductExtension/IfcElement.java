@@ -5,36 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcCivilElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcDistributionElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementAssembly;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRelCoversBldgElements;
 import com.buildingsmart.tech.ifc.IfcSharedComponentElements.IfcElementComponent;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFurnishingElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcGeographicElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcTransportElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcVirtualElement;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("9ab3f33b-7e80-4290-afe5-1e7a055cd3ac")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -43,6 +26,7 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
 public abstract class IfcElement extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct implements com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralActivityAssignmentSelect
 {
 	@Description("The tag (or label) identifier at the particular instance of a product, e.g. the serial number, or the position number. It is the identifier at the occurrence level.")
+	@DataMember(Order = 0)
 	@Guid("dcdb600f-7074-41a2-b876-9fb8a9bdb8ec")
 	@JacksonXmlProperty(isAttribute=true, localName = "Tag")
 	private String tag;

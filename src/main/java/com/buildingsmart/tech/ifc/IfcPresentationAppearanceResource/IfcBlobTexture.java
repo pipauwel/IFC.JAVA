@@ -5,36 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceTexture;
 
 @Guid("6f3625b4-6b27-4ac2-8c49-34b2079baf0c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcBlobTexture extends IfcSurfaceTexture
 {
 	@Description("The format of the <em>RasterCode</em> often using a compression.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("cc5e35b1-16ee-455a-aece-ce1cd7148396")
 	@JacksonXmlProperty(isAttribute=true, localName = "RasterFormat")
 	private String rasterFormat;
 
 	@Description("Blob, given as a single binary, to capture the texture within one popular file (compression) format. The file format is provided by the <em>RasterFormat</em> attribute.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("d73b45d5-03ef-42a4-80f8-40956c1ed197")
 	@JacksonXmlProperty(isAttribute=true, localName = "RasterCode")

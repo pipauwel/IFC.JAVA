@@ -5,29 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveAction;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralPointAction;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceAction;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralActivity;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGlobalOrLocalEnum;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("773e5eda-f463-41ec-a0f4-14681750a780")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,6 +22,7 @@ import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGlobalOrLocalEnum
 public abstract class IfcStructuralAction extends IfcStructuralActivity
 {
 	@Description("Indicates if this action may cause a stability problem. If it is 'FALSE', no further investigations regarding stability problems are necessary.")
+	@DataMember(Order = 0)
 	@Guid("7e7162c0-17e9-4165-9c29-294aefb1216b")
 	@JacksonXmlProperty(isAttribute=true, localName = "DestabilizingLoad")
 	private Boolean destabilizingLoad;

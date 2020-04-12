@@ -5,31 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcArbitraryClosedProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcArbitraryOpenProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcCompositeProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcDerivedProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcParameterizedProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("6721f13a-680a-41f0-b994-52e18d901eb5")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,12 +25,14 @@ import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
 public class IfcProfileDef implements com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect
 {
 	@Description("Defines the type of geometry into which this profile definition shall be resolved, either a curve or a surface area. In case of curve the profile should be referenced by a swept surface, in case of area the profile should be referenced by a swept area solid.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("c31d0cfe-9eec-49ef-8912-0879d1a77343")
 	@JacksonXmlProperty(isAttribute=true, localName = "ProfileType")
 	private IfcProfileTypeEnum profileType;
 
 	@Description("Human-readable name of the profile, for example according to a standard profile table. As noted above, machine-readable standardized profile designations should be provided in <em>IfcExternalReference.ItemReference</em>.")
+	@DataMember(Order = 1)
 	@Guid("411500e4-ab55-4fe8-bbf9-3a329ea5b1c7")
 	@JacksonXmlProperty(isAttribute=true, localName = "ProfileName")
 	private String profileName;

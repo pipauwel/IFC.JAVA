@@ -5,29 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralLoadCase;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcGroup;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcLoadGroupTypeEnum;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcActionTypeEnum;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcActionSourceTypeEnum;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("eda81530-0687-4842-bde0-d6567c6ba98b")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,29 +25,34 @@ import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcActionSourceTyp
 public class IfcStructuralLoadGroup extends com.buildingsmart.tech.ifc.IfcKernel.IfcGroup
 {
 	@Description("Selects a predefined type for the load group.  It can be differentiated between load groups, load cases, load combinations, or userdefined grouping levels.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("5663480e-3310-47cf-9895-b66f3b6bc6fc")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcLoadGroupTypeEnum predefinedType;
 
 	@Description("Type of actions in the group. Normally needed if 'PredefinedType' specifies a LOAD_CASE.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("aef5596c-d11b-4db0-a46f-35343620887f")
 	@JacksonXmlProperty(isAttribute=true, localName = "ActionType")
 	private IfcActionTypeEnum actionType;
 
 	@Description("Source of actions in the group. Normally needed if 'PredefinedType' specifies a LOAD_CASE.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("448bc4ea-6678-4bdf-aa0a-b668235e13ff")
 	@JacksonXmlProperty(isAttribute=true, localName = "ActionSource")
 	private IfcActionSourceTypeEnum actionSource;
 
 	@Description("Load factor. If omitted, a factor is not yet known or not specified. A load factor of 1.0 shall be explicitly exported as Coefficient = 1.0.")
+	@DataMember(Order = 3)
 	@Guid("aa87d543-3486-4d44-8480-cb94601a2fc7")
 	@JacksonXmlProperty(isAttribute=true, localName = "Coefficient")
 	private double coefficient;
 
 	@Description("Description of the purpose of this instance. Among else, possible values of the Purpose of load combinations are 'SLS', 'ULS', 'ALS' to indicate serviceability, ultimate, or accidental limit state.")
+	@DataMember(Order = 4)
 	@Guid("fd3c9364-c459-4be9-bd2f-25e1b39b4957")
 	@JacksonXmlProperty(isAttribute=true, localName = "Purpose")
 	private String purpose;
