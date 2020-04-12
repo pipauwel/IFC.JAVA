@@ -7,36 +7,30 @@ package com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightDistributionCurveEnum;
-import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightDistributionData;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("bb394b9d-6446-4af5-b07e-add47d8c8b54")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcLightIntensityDistribution implements IfcLightDistributionDataSourceSelect
 {
 	@Description("Standardized  light distribution curve used to define the luminous intensity of the light in all directions.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("ae46192f-5a5e-4e55-be24-adeceb1bcab5")
 	@JacksonXmlProperty(isAttribute=true, localName = "LightDistributionCurve")
 	private IfcLightDistributionCurveEnum lightDistributionCurve;
 
 	@Description("<p>Light distribution data applied to the light source. It is defined by a list of main plane angles (B or C according to the light distribution curve chosen) that includes (for each B or C angle) a second list of secondary plane angles (the &#946; or &#947; angles) and the according luminous intensity distribution measures.  </p>")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("f5fc7d89-d6eb-4d57-b6ca-aaab08228651")
 	@MinLength(1)

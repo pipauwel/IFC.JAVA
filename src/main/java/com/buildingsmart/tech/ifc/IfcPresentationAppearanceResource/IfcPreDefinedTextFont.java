@@ -5,25 +5,10 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextStyleFontModel;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedItem;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("7f6469c0-88d0-4ad5-b633-ef4a6c848691")
 @JsonIgnoreProperties(ignoreUnknown=true)

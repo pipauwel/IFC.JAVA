@@ -5,29 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableCarrierFitting;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcCableFitting;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcDuctFitting;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcJunctionBox;
+import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcDuctFitting;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcPipeFitting;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionFlowElement;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("7f58cd3c-d48d-44b7-8927-8ff671973559")
 @JsonIgnoreProperties(ignoreUnknown=true)

@@ -5,27 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcQuantityResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcQuantityResource.*;
-import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalComplexQuantity;
-import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalSimpleQuantity;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("992fb4f8-e3be-4df1-8101-f866b2fa8617")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,12 +26,14 @@ import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalSimpleQuantity;
 public abstract class IfcPhysicalQuantity implements com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect
 {
 	@Description("Name of the element quantity or measure. The name attribute has to be made recognizable by further agreements.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("6e61090c-7c36-4a29-84d9-f1404b4270d3")
 	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
 	@Description("Further explanation that might be given to the quantity.")
+	@DataMember(Order = 1)
 	@Guid("2d43b17c-5432-4535-8b22-c8c08aee6cbf")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;

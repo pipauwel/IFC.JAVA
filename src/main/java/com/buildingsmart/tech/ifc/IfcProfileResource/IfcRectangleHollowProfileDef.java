@@ -5,44 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcRectangleProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("19db74b8-9bbd-4310-a2b8-d47984481a40")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRectangleHollowProfileDef extends IfcRectangleProfileDef
 {
 	@Description("Thickness of the material.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("e469897c-3e73-451f-9c72-a373783992ba")
 	@JacksonXmlProperty(isAttribute=false, localName = "WallThickness")
 	private IfcPositiveLengthMeasure wallThickness;
 
 	@Description("Inner corner radius.")
+	@DataMember(Order = 1)
 	@Guid("5aa6d217-3f48-4fbb-9145-55601b62701b")
 	@JacksonXmlProperty(isAttribute=false, localName = "InnerFilletRadius")
 	private IfcNonNegativeLengthMeasure innerFilletRadius;
 
 	@Description("Outer corner radius.")
+	@DataMember(Order = 2)
 	@Guid("493f68ea-2c2e-44f2-bef4-d2c48668cc91")
 	@JacksonXmlProperty(isAttribute=false, localName = "OuterFilletRadius")
 	private IfcNonNegativeLengthMeasure outerFilletRadius;

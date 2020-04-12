@@ -5,28 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcExtendedProperties;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPreDefinedProperties;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyEnumeration;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("3981f908-e217-4f02-92e8-517147b40572")
 @JsonIgnoreProperties(ignoreUnknown=true)

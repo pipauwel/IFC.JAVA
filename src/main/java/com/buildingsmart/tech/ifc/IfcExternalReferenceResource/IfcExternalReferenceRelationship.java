@@ -5,39 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReference;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("d82462fa-c9f8-472b-a7e9-0f1f7136fdfa")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcExternalReferenceRelationship extends IfcResourceLevelRelationship
 {
 	@Description("An external reference that can be used to tag an object within the range of <em>IfcResourceObjectSelect</em>.   <blockquote class=\"note\">   NOTE&nbsp; External references can be a library reference (for example a dictionary or a catalogue reference), a classification reference, or a documentation reference.<br>  </blockquote>")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("d01def8d-ec4f-4bb4-b0d4-15ab85764b7a")
 	@JacksonXmlProperty(isAttribute=false, localName = "RelatingReference")
 	private IfcExternalReference relatingReference;
 
 	@Description("Objects within the list of <em>IfcResourceObjectSelect</em> that can be tagged by an external reference to a dictionary, library, catalogue, classification or documentation.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("bf374582-c84f-44fd-adb8-bb8df33a5f01")
 	@MinLength(1)

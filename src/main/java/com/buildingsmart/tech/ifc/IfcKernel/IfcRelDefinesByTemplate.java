@@ -5,33 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelDefines;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetTemplate;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("8ee8ef7b-68ac-46bb-8c28-b6f508eeb0ab")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelDefinesByTemplate extends IfcRelDefines
 {
 	@Description("One or many property sets or quantity sets that obtain their definitions from the single property set template.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("9ab9894d-523d-414b-a825-be21439de42f")
 	@MinLength(1)
@@ -40,6 +32,7 @@ public class IfcRelDefinesByTemplate extends IfcRelDefines
 	private Set<IfcPropertySetDefinition> relatedPropertySets;
 
 	@Description("Property set template that provides the common definition of related property sets.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("56b4d519-a460-4476-b354-d80dcfeaed64")
 	@JacksonXmlProperty(isAttribute=false, localName = "RelatingTemplate")

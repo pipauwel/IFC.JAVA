@@ -7,39 +7,33 @@ package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCompositeCurve;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("d92abdea-e3e3-4799-9cb5-39b1c40f03aa")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcSectionedSpine extends com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem
 {
 	@Description("A single composite curve, that defines the spine curve. Each of the composite curve segments correspond to the part between two cross-sections.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("9972a3cc-e10b-4958-b69a-cff36403a20f")
 	@JacksonXmlProperty(isAttribute=false, localName = "SpineCurve")
 	private IfcCompositeCurve spineCurve;
 
 	@Description("A list of at least two cross sections, each defined within the xy plane of the position coordinate system of the cross section. The position coordinate system is given by the corresponding list CrossSectionPositions.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("ab186537-69aa-4b04-909e-0a50fb0c39a8")
 	@MinLength(2)
@@ -48,6 +42,7 @@ public class IfcSectionedSpine extends com.buildingsmart.tech.ifc.IfcGeometryRes
 	private List<IfcProfileDef> crossSections;
 
 	@Description("Position coordinate systems for the cross sections that form the sectioned spine. The profiles defining the cross sections are positioned within the xy plane of the corresponding position coordinate system.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("248f7801-8a52-417a-a51f-43ba0fbb601d")
 	@MinLength(2)

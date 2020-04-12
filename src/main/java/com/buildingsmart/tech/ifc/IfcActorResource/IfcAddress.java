@@ -5,26 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcActorResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcActorResource.*;
-import com.buildingsmart.tech.ifc.IfcActorResource.IfcPostalAddress;
-import com.buildingsmart.tech.ifc.IfcActorResource.IfcTelecomAddress;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("a2354718-4c92-40a9-b220-50e7c23e5faf")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,16 +23,19 @@ import com.buildingsmart.tech.ifc.IfcActorResource.IfcTelecomAddress;
 public abstract class IfcAddress implements com.buildingsmart.tech.ifc.IfcPropertyResource.IfcObjectReferenceSelect
 {
 	@Description("Identifies the logical location of the address.")
+	@DataMember(Order = 0)
 	@Guid("6717ebb1-12ab-48aa-9124-de2c4c2117b5")
 	@JacksonXmlProperty(isAttribute=true, localName = "Purpose")
 	private IfcAddressTypeEnum purpose;
 
 	@Description("Text that relates the nature of the address.")
+	@DataMember(Order = 1)
 	@Guid("4e2e9f3c-9dd8-48fe-b139-72e2861e6d26")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
 	@Description("Allows for specification of user specific purpose of the address beyond the   enumeration values provided by Purpose attribute of type IfcAddressTypeEnum.   When a value is provided for attribute UserDefinedPurpose, in parallel the   attribute Purpose shall have enumeration value USERDEFINED.")
+	@DataMember(Order = 2)
 	@Guid("4d473e59-c1ff-46d0-bc94-ddf22c5761c6")
 	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedPurpose")
 	private String userDefinedPurpose;

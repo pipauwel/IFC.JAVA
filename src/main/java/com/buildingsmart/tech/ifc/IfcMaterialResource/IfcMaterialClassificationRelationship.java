@@ -5,33 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcClassificationSelect;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("5b9df3e2-be80-4922-9a85-8f8fb6e9cbef")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterialClassificationRelationship
 {
 	@Description("The material classifications identifying the type of material.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("21ad3946-1327-4f45-b1c7-b34782cb57a2")
 	@MinLength(1)
@@ -40,6 +33,7 @@ public class IfcMaterialClassificationRelationship
 	private Set<IfcClassificationSelect> materialClassifications;
 
 	@Description("Material being classified.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("2cb7cbb7-27a9-41ee-bb2f-4a418429e5e7")
 	@JacksonXmlProperty(isAttribute=false, localName = "ClassifiedMaterial")

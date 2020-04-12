@@ -5,23 +5,7 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcBeamType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcBuildingElementProxyType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcChimneyType;
@@ -29,9 +13,7 @@ import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcColumnType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCoveringType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCurtainWallType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcDoorType;
-import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcFootingType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcMemberType;
-import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcPileType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcPlateType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRailingType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRampFlightType;
@@ -43,7 +25,11 @@ import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcStairFlightType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcStairType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcWallType;
 import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcWindowType;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElementType;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcFootingType;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcPileType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("240944f4-46be-4656-ab86-736f96b1dc40")
 @JsonIgnoreProperties(ignoreUnknown=true)

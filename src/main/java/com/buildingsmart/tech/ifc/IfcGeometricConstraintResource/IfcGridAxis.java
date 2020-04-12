@@ -5,44 +5,38 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcGrid;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("c88238d9-0400-4b8f-846c-03fd460a7fa9")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcGridAxis
 {
 	@Description("The tag or name for this grid axis.")
+	@DataMember(Order = 0)
 	@Guid("f222aeae-6918-400f-8a3a-d30bc1517fdd")
 	@JacksonXmlProperty(isAttribute=true, localName = "AxisTag")
 	private String axisTag;
 
 	@Description("Underlying curve which provides the geometry for this grid axis.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("589c5a86-2e76-4350-a83e-c51111d24192")
 	@JacksonXmlProperty(isAttribute=false, localName = "AxisCurve")
 	private IfcCurve axisCurve;
 
 	@Description("Defines whether the original sense of curve is used or whether it is reversed in the context of the grid axis.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("64d5940a-89dc-4943-b2bb-32f8fabbef9c")
 	@JacksonXmlProperty(isAttribute=true, localName = "SameSense")

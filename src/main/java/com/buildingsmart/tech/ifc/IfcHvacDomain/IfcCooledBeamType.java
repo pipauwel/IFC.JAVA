@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDeviceType;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcCooledBeamTypeEnum;
 
 @Guid("9952316a-c0ba-43c8-aed3-b0f39b461900")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCooledBeamType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDeviceType
 {
 	@Description("Defines the type of cooled beam.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("a9aab02c-8410-4769-831e-142a438666ca")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")

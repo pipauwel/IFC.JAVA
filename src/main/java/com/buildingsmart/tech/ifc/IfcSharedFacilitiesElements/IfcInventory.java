@@ -5,43 +5,37 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcActorSelect;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcPerson;
+import com.buildingsmart.tech.ifc.IfcCostResource.IfcCostValue;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements.*;
-import com.buildingsmart.tech.ifc.IfcActorResource.*;
-import com.buildingsmart.tech.ifc.IfcCostResource.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcGroup;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("73471cd5-1296-4091-bcc3-f7f5e32ff3de")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcInventory extends com.buildingsmart.tech.ifc.IfcKernel.IfcGroup
 {
 	@Description("A list of the types of inventories from which that required may be selected.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE Attribute made optional.</blockquote>")
+	@DataMember(Order = 0)
 	@Guid("8dedffaa-456f-48c2-a583-e63978378160")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcInventoryTypeEnum predefinedType;
 
 	@Description("The organizational unit to which the inventory is applicable.")
+	@DataMember(Order = 1)
 	@Guid("6f479fad-d27e-4644-876a-6711e2ff021c")
 	@JacksonXmlProperty(isAttribute=true, localName = "Jurisdiction")
 	private IfcActorSelect jurisdiction;
 
 	@Description("Persons who are responsible for the inventory.")
+	@DataMember(Order = 2)
 	@Guid("d23c5d1f-1727-46f3-968f-018a51799fa6")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPerson")
@@ -49,16 +43,19 @@ public class IfcInventory extends com.buildingsmart.tech.ifc.IfcKernel.IfcGroup
 	private Set<IfcPerson> responsiblePersons;
 
 	@Description("<p>The date on which the last update of the inventory was carried out.</p>  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE Type changed from IfcDateTimeSelect.</blockquote>")
+	@DataMember(Order = 3)
 	@Guid("fe41de34-a4d1-4bcb-ab62-89f0068aaf9c")
 	@JacksonXmlProperty(isAttribute=true, localName = "LastUpdateDate")
 	private String lastUpdateDate;
 
 	@Description("An estimate of the current cost value of the inventory.")
+	@DataMember(Order = 4)
 	@Guid("264bcae7-f4a5-4147-9961-fc38405ff8b6")
 	@JacksonXmlProperty(isAttribute=false, localName = "CurrentValue")
 	private IfcCostValue currentValue;
 
 	@Description("An estimate of the original cost value of the inventory.")
+	@DataMember(Order = 5)
 	@Guid("412fe95f-936f-4dde-a82c-f8e9f305b952")
 	@JacksonXmlProperty(isAttribute=false, localName = "OriginalValue")
 	private IfcCostValue originalValue;

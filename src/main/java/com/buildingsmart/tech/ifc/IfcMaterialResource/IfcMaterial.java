@@ -5,43 +5,37 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcMaterialDefinitionRepresentation;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialDefinition;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("b36052ed-896b-48e8-b655-a1b4cb67f826")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterial extends IfcMaterialDefinition
 {
 	@Description("Name of the material.   <blockquote class=\"example\">EXAMPLE A view definition may require <em>Material.Name</em> to uniquely specify e.g. concrete or steel grade, in which case the attribute Material.Category could take the value 'Concrete' or 'Steel'. </blockquote>    <blockquote class=\"note\">  NOTE&nbsp; Material grade may have different meaning in different view definitions, e.g. strength grade for structural design and analysis, or visible appearance grade in architectural application. Also, more elaborate material grade definition may be associated as classification via inverse attribute <em>HasExternalReferences</em>.  </blockquote>")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("b6883bdf-1f6e-4067-b785-e3f69c39dd13")
 	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
 	@Description("Definition of the material in more descriptive terms than given by attributes <em>Name</em> or <em>Category</em>.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been added at the end of attribute list.</blockquote>")
+	@DataMember(Order = 1)
 	@Guid("b3710d03-ea05-40f7-8d3a-049eeb34dc83")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
 	@Description("Definition of the category (group or type) of material, in more general terms than given by attribute <em>Name</em>.    <blockquote class=\"example\">EXAMPLE A view definition may require each <em>Material.Name</em> to be unique, e.g. for each concrete or steel grade used in a project, in which case <em>Material.Category</em> could take the values 'Concrete' or 'Steel'.</blockquote>    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been added at the end of attribute list.</blockquote>")
+	@DataMember(Order = 2)
 	@Guid("71f2628a-7d92-42dc-8cae-f750d95d60d0")
 	@JacksonXmlProperty(isAttribute=true, localName = "Category")
 	private String category;

@@ -5,30 +5,24 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeModel;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcStyleModel;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentationContext;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationMap;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcPresentationLayerAssignment;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("487b5a0c-6904-49ae-b622-ec42a5535b20")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -37,22 +31,26 @@ import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
 public abstract class IfcRepresentation implements com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLayeredItem
 {
 	@Description("Definition of the representation context for which the different subtypes of representation are valid.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("6397c6c3-ac2a-4444-874a-e1a8248e1f7c")
 	@JacksonXmlProperty(isAttribute=false, localName = "ContextOfItems")
 	private IfcRepresentationContext contextOfItems;
 
 	@Description("The optional identifier of the representation as used within a project.")
+	@DataMember(Order = 1)
 	@Guid("834bd505-97aa-424b-a4f3-63bbb4c9fff4")
 	@JacksonXmlProperty(isAttribute=true, localName = "RepresentationIdentifier")
 	private String representationIdentifier;
 
 	@Description("The description of the type of a representation context. The representation type defines the type of geometry or topology used for representing the product representation. More information is given at the subtypes <em>IfcShapeRepresentation</em> and <em>IfcTopologyRepresentation</em>.<br>  The supported values for context type are to be specified by implementers agreements.")
+	@DataMember(Order = 2)
 	@Guid("6db71c93-5688-4d8a-b1f8-3d56e73ed944")
 	@JacksonXmlProperty(isAttribute=true, localName = "RepresentationType")
 	private String representationType;
 
 	@Description("Set of geometric representation items that are defined for this representation.")
+	@DataMember(Order = 3)
 	@Required()
 	@Guid("cc5827e6-652d-4ef5-b908-5305d2831319")
 	@MinLength(1)

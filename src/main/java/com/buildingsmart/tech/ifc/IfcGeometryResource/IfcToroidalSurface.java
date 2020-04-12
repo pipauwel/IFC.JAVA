@@ -5,39 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcElementarySurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("48f9b867-ec04-4a55-9138-f52b74f1b60e")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcToroidalSurface extends IfcElementarySurface
 {
 	@Description("The major radius of the torus.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("6d516f41-e0c1-4436-9ba8-bdc235df5f75")
 	@JacksonXmlProperty(isAttribute=false, localName = "MajorRadius")
 	private IfcPositiveLengthMeasure majorRadius;
 
 	@Description("The minor radius of the torus.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("996fe0f6-341c-4dda-9436-f345cfac480f")
 	@JacksonXmlProperty(isAttribute=false, localName = "MinorRadius")

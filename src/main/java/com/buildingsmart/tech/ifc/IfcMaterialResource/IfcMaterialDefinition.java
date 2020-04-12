@@ -5,33 +5,17 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelAssociatesMaterial;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialConstituent;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialConstituentSet;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialLayer;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialLayerSet;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfile;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProfileSet;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("b31f0891-e60f-4cc1-9b3b-9bbae1fde79c")
 @JsonIgnoreProperties(ignoreUnknown=true)

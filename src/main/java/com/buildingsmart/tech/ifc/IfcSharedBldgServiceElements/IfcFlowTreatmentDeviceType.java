@@ -5,27 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcDuctSilencerType;
 import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcFilterType;
 import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcInterceptorType;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionFlowElementType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("a8304da6-feeb-4df7-b790-40123a5f0a85")
 @JsonIgnoreProperties(ignoreUnknown=true)

@@ -5,39 +5,31 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBoundedCurve;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCartesianPointList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("6a61359a-e664-4f61-bb8c-2591f63d0f6d")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcIndexedPolyCurve extends IfcBoundedCurve
 {
 	@Description("A list of points, provided by a point list of either two, or three dimensions, that is used to define the poly curve. If the attribute <em>Segments</em> is not provided, the poly curve is generated as a poly line by connecting the points in the order of their appearance in the point list. If the attribute <em>Segments</em> is provided, the segments determine, how the points are to be used to create straigth and circular arc segments.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("6fb9d816-9c8e-41ae-9189-8cf7c574a303")
 	@JacksonXmlProperty(isAttribute=false, localName = "Points")
 	private IfcCartesianPointList points;
 
 	@Description("List of straight line and circular arc segments, each providing a list of indices into the Cartesian point list. Indices should preserve consecutive connectivity between the segments, the start index of the next segment shall be identical with the end index of the previous segment.")
+	@DataMember(Order = 1)
 	@Guid("9bc9b862-82ed-4798-9a2a-b0db4138f62d")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcSegmentIndexSelect")
@@ -45,6 +37,7 @@ public class IfcIndexedPolyCurve extends IfcBoundedCurve
 	private List<IfcSegmentIndexSelect> segments;
 
 	@Description("Indication of whether the curve intersects itself or not; this is for information only.")
+	@DataMember(Order = 2)
 	@Guid("8fe6fe4d-ed5b-4196-aa43-afe0c30eb2d0")
 	@JacksonXmlProperty(isAttribute=true, localName = "SelfIntersect")
 	private Boolean selfIntersect;

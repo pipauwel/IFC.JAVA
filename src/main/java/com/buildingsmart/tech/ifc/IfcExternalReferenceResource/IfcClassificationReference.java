@@ -5,42 +5,35 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociatesClassification;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReference;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("d6845f56-93c2-41ea-bd7e-edbfea1e9068")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcClassificationReference extends IfcExternalReference implements IfcClassificationReferenceSelect, IfcClassificationSelect
 {
 	@Description("The classification system or source that is referenced.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; Data type changed to <em>IfcClassificationReferenceSelect</em>.</blockquote>")
+	@DataMember(Order = 0)
 	@Guid("4bb1e966-6ba7-4148-bab9-33623a5c9511")
 	@JsonIgnore
 	private IfcClassificationReferenceSelect referencedSource;
 
 	@Description("Description of the classification reference for informational purposes.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New attribute added at the end of the attribute list.</blockquote>")
+	@DataMember(Order = 1)
 	@Guid("845d48a5-3d35-4d28-81cf-d0819a0660f0")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
 	@Description("Optional identifier to sort the set of classification references within the referenced source (either a classification facet of higher level, or the classification system itself).  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New attribute added at the end of the attribute list.</blockquote>")
+	@DataMember(Order = 2)
 	@Guid("5fcf5d22-605e-4ade-97d7-a582739f6d22")
 	@JacksonXmlProperty(isAttribute=true, localName = "Sort")
 	private String sort;

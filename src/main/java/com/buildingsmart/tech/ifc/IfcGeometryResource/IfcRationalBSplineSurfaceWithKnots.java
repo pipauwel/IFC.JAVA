@@ -7,31 +7,23 @@ package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineSurfaceWithKnots;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineSurfaceForm;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcKnotType;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("fa4d0f85-ebcc-4a94-aa4d-e9876009463c")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRationalBSplineSurfaceWithKnots extends IfcBSplineSurfaceWithKnots
 {
 	@Description("The weights associated with the control points in the rational case.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("1140f72c-ae94-41b6-956b-58e9cb40cb9d")
 	@MinLength(2)

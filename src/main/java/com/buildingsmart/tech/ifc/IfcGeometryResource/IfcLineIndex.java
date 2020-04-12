@@ -5,24 +5,9 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Guid("0590099d-fe4d-40ba-ae80-71803e5902d0")
 @JsonIgnoreProperties(ignoreUnknown=true)

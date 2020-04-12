@@ -5,28 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcReparametrisedCompositeCurveSegment;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcTransitionCode;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("baf231ed-97be-4368-a9f9-10ae70bad78e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,18 +25,21 @@ import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
 public class IfcCompositeCurveSegment extends IfcGeometricRepresentationItem
 {
 	@Description("The state of transition (i.e., geometric continuity from the last point of this segment to the first point of the next segment) in a composite curve.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("67cb0bf1-ea16-4e1b-b20a-aed69f9f06fe")
 	@JacksonXmlProperty(isAttribute=true, localName = "Transition")
 	private IfcTransitionCode transition;
 
 	@Description("An indicator of whether or not the sense of the segment agrees with, or opposes, that of the parent curve. If <em>SameSense</em> is false, the point with highest parameter value is taken as the first point of the segment.  <blockquote class=\"note\">NOTE&nbsp; If the datatype of <em>ParentCurve</em> is <em>IfcTrimmedCurve</em>, the value of <em>SameSense</em> overrides the value of <em>IfcTrimmedCurve.SenseAgreement</em></blockquote>")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("5fada968-7c27-4344-9a3a-39128e5d33e9")
 	@JacksonXmlProperty(isAttribute=true, localName = "SameSense")
 	private Boolean sameSense;
 
 	@Description("The bounded curve which defines the geometry of the segment.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("88a9a6ec-70af-43d3-a2cc-d43758ecd898")
 	@JacksonXmlProperty(isAttribute=false, localName = "ParentCurve")

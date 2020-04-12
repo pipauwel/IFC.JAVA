@@ -5,33 +5,20 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcHalfSpaceSolid;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBoundingBox;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("6d52ef81-4176-4ab5-a2d3-39b86c31c378")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcBoxedHalfSpace extends IfcHalfSpaceSolid
 {
 	@Description("The box which bounds the resulting solid of the Boolean operation involving the half space solid for computational purposes only.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("1dfdfca3-ec6b-45af-8bdf-d2bdffe279bc")
 	@JacksonXmlProperty(isAttribute=false, localName = "Enclosure")

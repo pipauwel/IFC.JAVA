@@ -5,42 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociatesLibrary;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReference;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("739c22f8-9791-4f05-b25d-70ddc3ed443f")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcLibraryReference extends IfcExternalReference implements IfcLibrarySelect
 {
 	@Description("Additional description provided for the library reference.  <blockquote class=\"change-ifc2x4\">    IFC4 CHANGE&nbsp; New attribute added at the end of the attribute list.  </blockquote>")
+	@DataMember(Order = 0)
 	@Guid("c36f2056-db4c-4e1e-b01c-a5a7d5794c09")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
 
 	@Description("The language in which a library reference is expressed.  <blockquote class=\"change-ifc2x4\">    IFC4 CHANGE&nbsp; New attribute added at the end of the attribute list.  </blockquote>")
+	@DataMember(Order = 1)
 	@Guid("48d70f10-19be-4364-a36d-d32efe9e72de")
 	@JacksonXmlProperty(isAttribute=false, localName = "Language")
 	private IfcLanguageId language;
 
 	@Description("The library information that is being referenced.")
+	@DataMember(Order = 2)
 	@Guid("0ddfeb57-9edd-46aa-8369-dff55be36456")
 	@JacksonXmlProperty(isAttribute=false, localName = "ReferencedLibrary")
 	private IfcLibraryInformation referencedLibrary;

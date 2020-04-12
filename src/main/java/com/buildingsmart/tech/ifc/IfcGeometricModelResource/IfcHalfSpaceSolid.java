@@ -5,28 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBoxedHalfSpace;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcPolygonalBoundedHalfSpace;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("c9679787-14e8-44ff-b62a-a511bb58005d")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,12 +22,14 @@ import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
 public class IfcHalfSpaceSolid extends com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem implements IfcBooleanOperand
 {
 	@Description("Surface defining side of half space.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("110e5354-e95f-42b1-81d2-f4de74eb9085")
 	@JacksonXmlProperty(isAttribute=false, localName = "BaseSurface")
 	private IfcSurface baseSurface;
 
 	@Description("The agreement flag is TRUE if the normal to the BaseSurface points away from the material of the IfcHalfSpaceSolid. Otherwise it is FALSE.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("689e63ba-3c13-477c-810a-69a5acc44e82")
 	@JacksonXmlProperty(isAttribute=true, localName = "AgreementFlag")

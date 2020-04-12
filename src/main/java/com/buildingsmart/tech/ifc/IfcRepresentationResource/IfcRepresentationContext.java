@@ -5,25 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGeometricRepresentationContext;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("38217e82-b534-4baa-87a6-49402ed0a52c")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,11 +23,13 @@ import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGeometricRepresen
 public abstract class IfcRepresentationContext
 {
 	@Description("The optional identifier of the representation context as used within a project.")
+	@DataMember(Order = 0)
 	@Guid("98c7faf4-7709-4f0a-9ab4-c1e8c7d0f012")
 	@JacksonXmlProperty(isAttribute=true, localName = "ContextIdentifier")
 	private String contextIdentifier;
 
 	@Description("The description of the type of a representation context. The supported values for context type are to be specified by implementers agreements.")
+	@DataMember(Order = 1)
 	@Guid("60350fff-c598-4635-a106-9b50ce5ec88c")
 	@JacksonXmlProperty(isAttribute=true, localName = "ContextType")
 	private String contextType;

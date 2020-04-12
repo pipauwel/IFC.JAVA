@@ -7,29 +7,23 @@ package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterial;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("e2c88e35-f4a8-464a-8816-1b1ae58202f5")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcMaterialList implements IfcMaterialSelect
 {
 	@Description("Materials used in a composition of substances.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("f7c9c7a0-f7e3-4163-b9a3-36a6ead9e8a2")
 	@MinLength(1)

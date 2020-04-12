@@ -5,29 +5,20 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProcessExtension.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEvent;
 import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedure;
+import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcRelSequence;
 import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcTask;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("f56a4e45-de47-49a7-83d1-3628609eb4f3")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,11 +27,13 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
 public abstract class IfcProcess extends IfcObject implements IfcProcessSelect
 {
 	@Description("An identifying designation given to a process or activity.      It is the identifier at the occurrence level.       <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  Attribute promoted from subtypes.</blockquote>")
+	@DataMember(Order = 0)
 	@Guid("66e9489d-b4ed-4ba1-a9bb-eebd2225c8f1")
 	@JacksonXmlProperty(isAttribute=true, localName = "Identification")
 	private String identification;
 
 	@Description("An extended description or narrative that may be provided.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New attribute.</blockquote>")
+	@DataMember(Order = 1)
 	@Guid("a6480a2f-193a-4d98-af8a-dcc00c42d675")
 	@JacksonXmlProperty(isAttribute=true, localName = "LongDescription")
 	private String longDescription;

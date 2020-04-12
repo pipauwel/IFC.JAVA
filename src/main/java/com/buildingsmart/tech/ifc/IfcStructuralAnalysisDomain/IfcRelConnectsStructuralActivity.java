@@ -5,39 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralActivityAssignmentSelect;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralActivity;
 
 @Guid("d755201f-41e5-41f3-b37c-30c473853a22")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcRelConnectsStructuralActivity extends com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects
 {
 	@Description("Reference to a structural item or element to which the specified activity is applied.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("def88b3b-057c-43be-859a-a0378d8c4e28")
 	@JacksonXmlProperty(isAttribute=true, localName = "RelatingElement")
 	private IfcStructuralActivityAssignmentSelect relatingElement;
 
 	@Description("Reference to a structural activity which is acting upon the specified structural item or element.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("8ad8521d-349a-4499-a2b6-796fbf1378f4")
 	@JacksonXmlProperty(isAttribute=false, localName = "RelatedStructuralActivity")

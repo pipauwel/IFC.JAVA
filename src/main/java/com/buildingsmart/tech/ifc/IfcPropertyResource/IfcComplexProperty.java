@@ -5,37 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("c8722acc-8737-44f1-b24d-0eb804a9a4da")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcComplexProperty extends IfcProperty
 {
 	@Description("Usage description of the <em>IfcComplexProperty</em> within the property set which references the <em>IfcComplexProperty</em>.  <blockquote class=\"note\">NOTE&nbsp; Consider a complex property for glazing properties. The <em>Name</em> attribute of the <em>IfcComplexProperty</em> could be <em>Pset_GlazingProperties</em>, and the UsageName attribute could be <em>OuterGlazingPane</em>.</blockquote>")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("f21a5e51-7581-416f-943f-25398d2e3c4d")
 	@JacksonXmlProperty(isAttribute=true, localName = "UsageName")
 	private String usageName;
 
 	@Description("Set of properties that can be used within this complex property (may include other complex properties).")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("6321203a-4666-4064-aa58-167b85c5935f")
 	@MinLength(1)

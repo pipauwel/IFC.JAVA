@@ -5,29 +5,20 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcIndexedColourMap;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcIndexedTextureMap;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcPolygonalFaceSet;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTriangulatedFaceSet;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedItem;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCartesianPointList3D;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("97c81448-43b9-4f3b-8b09-5da72f6a499a")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,6 +27,7 @@ import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCartesianPointLis
 public abstract class IfcTessellatedFaceSet extends IfcTessellatedItem implements IfcBooleanOperand
 {
 	@Description("An ordered list of Cartesian points used by the coordinate index defined at the subtypes of <em>IfcTessellatedFaceSet</em>.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("28b00035-2a37-4bda-aa0e-7845352fa060")
 	@JacksonXmlProperty(isAttribute=false, localName = "Coordinates")

@@ -7,27 +7,18 @@ package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRationalBSplineSurfaceWithKnots;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineSurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineSurfaceForm;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcKnotType;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("8af578ab-a0d2-4d1e-b725-2f0d1ac24326")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,6 +27,7 @@ import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcKnotType;
 public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 {
 	@Description("The multiplicities of the knots in the <em>u</em> parameter direction.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("01cd7da3-0cd3-4aa6-9515-d7e7c7fd48e6")
 	@MinLength(2)
@@ -44,6 +36,7 @@ public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 	private List<Integer> uMultiplicities;
 
 	@Description("The multiplicities of the knots in the <em>v</em> parameter direction.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("3afd3d0c-ad44-4c85-a9c9-4c1fafcca678")
 	@MinLength(2)
@@ -52,6 +45,7 @@ public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 	private List<Integer> vMultiplicities;
 
 	@Description("The list of the distinct knots in the <em>u</em> parameter direction.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("20273f36-c1b4-45cd-a634-aaa034672ba4")
 	@MinLength(2)
@@ -60,6 +54,7 @@ public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 	private List<Double> uKnots;
 
 	@Description("The list of the distinct knots in the <em>v</em> parameter direction.")
+	@DataMember(Order = 3)
 	@Required()
 	@Guid("e5db2f6b-1239-462e-bf03-f805a9a9bf3c")
 	@MinLength(2)
@@ -68,6 +63,7 @@ public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 	private List<Double> vKnots;
 
 	@Description("The description of the knot type.")
+	@DataMember(Order = 4)
 	@Required()
 	@Guid("7b53cb7b-e60a-46de-9e6f-eecd7fc5c858")
 	@JacksonXmlProperty(isAttribute=true, localName = "KnotSpec")

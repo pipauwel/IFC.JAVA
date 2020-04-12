@@ -5,38 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcDocumentInformation;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("79f322fe-2390-4be9-ac5e-2c79ccbfc1d5")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcDocumentInformationRelationship extends IfcResourceLevelRelationship
 {
 	@Description("The document that acts as the parent, referencing or original document in a relationship.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("aa89e7a7-4654-4e52-af82-fda6e179130a")
 	@JacksonXmlProperty(isAttribute=false, localName = "RelatingDocument")
 	private IfcDocumentInformation relatingDocument;
 
 	@Description("The document that acts as the child, referenced or replacing document in a relationship.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("785f2826-b24e-4a4e-ba65-203c8c439d34")
 	@MinLength(1)
@@ -45,6 +39,7 @@ public class IfcDocumentInformationRelationship extends IfcResourceLevelRelation
 	private Set<IfcDocumentInformation> relatedDocuments;
 
 	@Description("Describes the type of relationship between documents. This could be sub-document, replacement etc. The interpretation has to be established in an application context.")
+	@DataMember(Order = 2)
 	@Guid("b23740b1-d36a-4d3d-88df-c8e7e0d1efbf")
 	@JacksonXmlProperty(isAttribute=true, localName = "RelationshipType")
 	private String relationshipType;

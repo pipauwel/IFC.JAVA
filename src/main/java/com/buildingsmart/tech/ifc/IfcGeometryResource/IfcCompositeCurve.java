@@ -7,25 +7,18 @@ package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCompositeCurveOnSurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBoundedCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCompositeCurveSegment;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("ebd15e62-e09c-44c3-8e9c-7f8840bebed8")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,6 +27,7 @@ import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCompositeCurveSegment;
 public class IfcCompositeCurve extends IfcBoundedCurve
 {
 	@Description("The component bounded curves, their transitions and senses. The transition attribute for the last segment defines the transition between the end of the last segment and the start of the first; this transition attribute may take the value discontinuous, which indicates an open curve.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("b32453c8-8375-4bc7-8758-86e6097c7709")
 	@MinLength(1)
@@ -42,6 +36,7 @@ public class IfcCompositeCurve extends IfcBoundedCurve
 	private List<IfcCompositeCurveSegment> segments;
 
 	@Description("Indication of whether the curve intersects itself or not; this is for information only.")
+	@DataMember(Order = 1)
 	@Required()
 	@Guid("8e53369e-bae8-4a7e-81e4-370b1cb785b8")
 	@JacksonXmlProperty(isAttribute=true, localName = "SelfIntersect")

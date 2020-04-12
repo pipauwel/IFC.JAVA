@@ -7,30 +7,23 @@ package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcLoop;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcOrientedEdge;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("1642dee1-9c3d-416b-86a9-db23ccf926ae")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcEdgeLoop extends IfcLoop
 {
 	@Description("A list of oriented edge entities which are concatenated together to form this path.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("c9c4cf69-72a6-4bc9-862b-5518de6b066a")
 	@MinLength(1)

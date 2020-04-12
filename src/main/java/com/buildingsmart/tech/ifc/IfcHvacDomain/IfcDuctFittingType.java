@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFittingType;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcDuctFittingTypeEnum;
 
 @Guid("cb200223-5993-48b1-9720-c4e9380a4074")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcDuctFittingType extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowFittingType
 {
 	@Description("The type of duct fitting.")
+	@DataMember(Order = 0)
 	@Required()
 	@Guid("e24d6c2c-4c21-4500-89ea-01e996e56021")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")

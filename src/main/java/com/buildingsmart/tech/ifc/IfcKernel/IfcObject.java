@@ -5,31 +5,17 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MaxLength;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcActor;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcControl;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcGroup;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProcess;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcResource;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("03ad1d5a-0288-44a7-b612-096bd45ae66b")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,6 +24,7 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
 public abstract class IfcObject extends IfcObjectDefinition
 {
 	@Description("The type denotes a particular type that indicates the object further. The use has to be established at the level of instantiable subtypes. In particular it holds the user defined type, if the enumeration of the attribute <em>PredefinedType</em> is set to USERDEFINED.   <br>")
+	@DataMember(Order = 0)
 	@Guid("a2a49b49-46e4-4a0d-a311-916cc1dd4a25")
 	@JacksonXmlProperty(isAttribute=true, localName = "ObjectType")
 	private String objectType;
@@ -49,11 +36,10 @@ public abstract class IfcObject extends IfcObjectDefinition
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsDeclaredBy")
 	private Set<IfcRelDefinesByObject> isDeclaredBy;
 
-	@JsonIgnore
 	@Description("Link to the relationship object pointing to the reflected object(s) that receives the object definitions. The reflected object has to be part of an object occurrence decomposition. The associated <em>IfcObject</em>, or its subtypes, provides the specific information (as part of a type, or style, definition), that is common to all reflected instances of the declaring <em>IfcObject</em>, or its subtypes.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse relationship, change made with upward compatibility for file based exchange.</blockquote>")
 	@Guid("8a2b55d8-3bca-45a0-9309-e7c6e2770821")
-//	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDefinesByObject")
-//	@JacksonXmlElementWrapper(useWrapping = true, localName = "Declares")
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDefinesByObject")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "Declares")
 	private Set<IfcRelDefinesByObject> declares;
 
 	@Description("Set of relationships to the object type that provides the type definitions for this object occurrence. The then associated <em>IfcTypeObject</em>, or its subtypes, contains the specific information (or type, or style), that is common to all instances of <em>IfcObject</em>, or its subtypes, referring to the same type.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse relationship, the link to <em>IfcRelDefinesByType</em> had previously be included in the inverse relationship <em>IfcRelDefines</em>. Change made with upward compatibility for file based exchange.</blockquote>")

@@ -5,31 +5,10 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcConnectedFaceSet;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdge;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcLoop;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcPath;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcVertex;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("b462c716-83fc-438a-b8ad-e04082530bab")
 @JsonIgnoreProperties(ignoreUnknown=true)

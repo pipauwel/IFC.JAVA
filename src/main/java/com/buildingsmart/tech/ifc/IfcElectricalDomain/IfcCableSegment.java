@@ -5,31 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowSegment;
 
 @Guid("a16f4db3-e5ef-49a6-98e0-f7c2116a5580")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcCableSegment extends com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowSegment
 {
 	@Description("<p>Identifies the predefined types of cable segment from which the type required may be set.</p>")
+	@DataMember(Order = 0)
 	@Guid("26d7b3aa-772a-4113-97d7-0c30b212a00a")
 	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
 	private IfcCableSegmentTypeEnum predefinedType;

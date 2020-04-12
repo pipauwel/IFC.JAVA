@@ -5,42 +5,37 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertyTemplateDefinition;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertyTemplate;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("a7b77ff0-78ea-4751-af7d-edca24e4a5db")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcPropertySetTemplate extends IfcPropertyTemplateDefinition
 {
 	@Description("Property set type defining whether the property set is applicable to a type (subtypes of <em>IfcTypeObject</em>), to an occurrence (subtypes of <em>IfcObject</em>), or as a special case to a performance history.<br><br>  The attribute <em>ApplicableEntity</em> may further refine the applicability to a single or multiple entity type(s).")
+	@DataMember(Order = 0)
 	@Guid("753bf92e-30ff-44b4-be5a-452aa32a8948")
 	@JacksonXmlProperty(isAttribute=true, localName = "TemplateType")
 	private IfcPropertySetTemplateTypeEnum templateType;
 
 	@Description("The attribute optionally defines the data type of the applicable type or occurrence object, to which the assigned property set template can relate. If not present, no instruction is given to which type or occurrence object the property set template is applicable. The following conventions are used:  <ul>    <li>The IFC entity name of the applicable entity using the IFC naming convention, CamelCase with IFC prefix</li>    <li>It can be optionally followed by the predefined type after the separator \"/\" (forward slash), using upper case</li>    <li>If a performance history object of a particular distribution object is attributes by the property set template, then the entity name (and potentially amended by the predefined type) is expanded by adding '[PerformanceHistory]'    <li>If one property set template is applicable to many type and/or occurrence objects, then those object names should be separate by comma \",\" forming a comma separated string.  </ul>  <blockquote class=\"example\">EXAMPLE  Refering to a boiler type as applicable entity would be expressed as 'IfcBoilerType', refering to a steam boiler type as applicable entity would be expressed as 'IfcBoilerType/STEAM', refering to a wall and wall standard case and a wall type would be expressed as 'IfcWall, IfcWallStandardCase, IfcWallType'. An applicable <em>IfcPerformanceHistory</em> assigned to an occurrence or type object would be indicated by IfcBoilerType[PerformanceHistory], or respectively IfcBoilerType/STEAM[PerformanceHistory].</blockquote>")
+	@DataMember(Order = 1)
 	@Guid("05ff2edb-46a7-4fe8-86a8-b263a876a203")
 	@JacksonXmlProperty(isAttribute=true, localName = "ApplicableEntity")
 	private String applicableEntity;
 
 	@Description("Set of <em>IfcPropertyTemplate</em>'s that are defined within the scope of the <em>IfcPropertySetTemplate</em>.")
+	@DataMember(Order = 2)
 	@Required()
 	@Guid("3171afcc-c2c1-4425-9f1e-a9220a12bca4")
 	@MinLength(1)

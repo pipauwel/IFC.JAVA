@@ -5,32 +5,20 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcApprovalResource.IfcApprovalRelationship;
-import com.buildingsmart.tech.ifc.IfcCostResource.IfcCurrencyRelationship;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcDocumentInformationRelationship;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialRelationship;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcActorResource.IfcOrganizationRelationship;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyDependencyRelationship;
+import com.buildingsmart.tech.ifc.IfcApprovalResource.IfcApprovalRelationship;
 import com.buildingsmart.tech.ifc.IfcApprovalResource.IfcResourceApprovalRelationship;
 import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcResourceConstraintRelationship;
+import com.buildingsmart.tech.ifc.IfcCostResource.IfcCurrencyRelationship;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialRelationship;
+import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyDependencyRelationship;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("9a3e1026-c1d1-44fe-ab77-8497972584e4")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -39,11 +27,13 @@ import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcResourceConstraintRel
 public abstract class IfcResourceLevelRelationship
 {
 	@Description("A name used to identify or qualify the relationship.")
+	@DataMember(Order = 0)
 	@Guid("f0cbdaa5-9876-4222-b747-25988a127a3b")
 	@JacksonXmlProperty(isAttribute=true, localName = "Name")
 	private String name;
 
 	@Description("A description that may apply additional information about the relationship.")
+	@DataMember(Order = 1)
 	@Guid("909d74c0-6108-4484-9321-b93293f4f356")
 	@JacksonXmlProperty(isAttribute=true, localName = "Description")
 	private String description;
