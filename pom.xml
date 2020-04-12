@@ -315,19 +315,12 @@
 		<version>2.9.0</version>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/com.github.pipauwel/ifcParserLib -->
-	<dependency>
-		<groupId>com.github.pipauwel</groupId>
-		<artifactId>ifcParserLib</artifactId>
-		<version>0.2</version>
-	</dependency>
-	
 	<!-- https://mvnrepository.com/artifact/com.github.pipauwel/IFCtoRDF -->
-	<dependency>
-		<groupId>com.github.pipauwel</groupId>
-		<artifactId>IFCtoRDF</artifactId>
-		<version>0.3</version>
-	</dependency>
+    <dependency>
+      <groupId>com.github.pipauwel</groupId>
+      <artifactId>IFCtoRDF</artifactId>
+      <version>0.4-SNAPSHOT</version>
+    </dependency>
 
 
     <!-- Test dependencies -->
