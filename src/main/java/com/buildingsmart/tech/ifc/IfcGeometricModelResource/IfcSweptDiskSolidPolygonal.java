@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -21,23 +20,23 @@ public class IfcSweptDiskSolidPolygonal extends IfcSweptDiskSolid
 	@DataMember(Order = 0)
 	@Guid("1fa1bae9-ec32-470f-a6ca-750f269a3470")
 	@JacksonXmlProperty(isAttribute=false, localName = "FilletRadius")
-	private IfcPositiveLengthMeasure filletRadius;
+	private double filletRadius; //IfcPositiveLengthMeasure
 
 
 	public IfcSweptDiskSolidPolygonal()
 	{
 	}
 
-	public IfcSweptDiskSolidPolygonal(IfcCurve directrix, IfcPositiveLengthMeasure radius)
+	public IfcSweptDiskSolidPolygonal(IfcCurve directrix, double radius)
 	{
 		super(directrix, radius);
 	}
 
-	public IfcPositiveLengthMeasure getFilletRadius() {
+	public double getFilletRadius() {
 		return this.filletRadius;
 	}
 
-	public void setFilletRadius(IfcPositiveLengthMeasure filletRadius) {
+	public void setFilletRadius(double filletRadius) {
 		this.filletRadius = filletRadius;
 	}
 

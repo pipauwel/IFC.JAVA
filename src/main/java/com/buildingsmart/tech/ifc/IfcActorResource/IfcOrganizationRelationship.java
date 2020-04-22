@@ -5,18 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcActorResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcOrganization;
 
 @Guid("7d18a179-a00b-491f-937b-dcc94942b9ce")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,8 +42,7 @@ public class IfcOrganizationRelationship extends com.buildingsmart.tech.ifc.IfcE
 	@Required()
 	@Guid("daa9c417-c4bd-4262-82ed-c9a9676f0e18")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcOrganization")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedOrganizations")
+	@JsonIgnore
 	private Set<IfcOrganization> relatedOrganizations;
 
 

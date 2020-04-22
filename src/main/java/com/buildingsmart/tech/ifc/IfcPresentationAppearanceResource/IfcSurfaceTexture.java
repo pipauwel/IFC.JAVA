@@ -5,24 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator2D;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcBlobTexture;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcImageTexture;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPixelTexture;
+import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem;
 
 @Guid("7ea0af80-1628-45aa-92a8-1fdb01644edc")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcBlobTexture.class, name = "IfcBlobTexture"), @JsonSubTypes.Type(value = IfcImageTexture.class, name = "IfcImageTexture"), @JsonSubTypes.Type(value = IfcPixelTexture.class, name = "IfcPixelTexture")})
 public abstract class IfcSurfaceTexture extends com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem
 {
@@ -61,11 +70,13 @@ public abstract class IfcSurfaceTexture extends com.buildingsmart.tech.ifc.IfcPr
 	private List<String> parameter;
 
 	@Description("Texture coordinates, either provided by a corresponding list of texture vertices to vertex-based geometric items or by a texture coordinate generator, that applies the surface texture to the surfaces of the geometric items.  <blackquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; New attribute added at the end of the attribute list.</blockquote>")
+	@InverseProperty(InverseProp = "Maps", Range = "IfcTextureCoordinate")
 	@Guid("7207873e-b05f-4ab2-9ec8-f54a10670e4d")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcTextureCoordinate")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsMappedBy")
 	private Set<IfcTextureCoordinate> isMappedBy;
 
+	@InverseProperty(InverseProp = "Textures", Range = "IfcSurfaceStyleWithTextures")
 	@Guid("a01b593c-80bc-4abc-851a-3da9bfb93c5d")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcSurfaceStyleWithTextures")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "UsedInStyles")

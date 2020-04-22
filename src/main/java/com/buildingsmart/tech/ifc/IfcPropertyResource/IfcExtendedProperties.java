@@ -5,15 +5,7 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.annotations.*;
 import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProperties;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileProperties;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -22,9 +14,13 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 @Guid("6eefdfa8-0f42-440b-a927-ddd04185cfd4")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcMaterialProperties.class, name = "IfcMaterialProperties"), @JsonSubTypes.Type(value = IfcProfileProperties.class, name = "IfcProfileProperties")})
 public abstract class IfcExtendedProperties extends IfcPropertyAbstraction
 {

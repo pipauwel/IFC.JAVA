@@ -7,19 +7,25 @@ package com.buildingsmart.tech.ifc.IfcProductExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcGridAxis;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcGridAxis;
 
 @Guid("dfb6beda-5c7c-4df8-bbc6-b101ce4006f3")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -58,6 +64,7 @@ public class IfcGrid extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct
 	private IfcGridTypeEnum predefinedType;
 
 	@Description("Relationship to a spatial structure element, to which the grid is primarily associated.  <blockquote class=\"change-ifc2x\">IFC2x CHANGE&nbsp; The inverse relationship has been added to <em>IfcGrid</em> with upward compatibility</blockquote>")
+	@InverseProperty(InverseProp = "RelatedElements", Range = "IfcRelContainedInSpatialStructure")
 	@Guid("eab7c659-344b-47a3-82ed-2c7243b71a28")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelContainedInSpatialStructure")

@@ -8,7 +8,6 @@ package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -16,7 +15,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("4eee487b-9f5a-4135-9327-1e972cc6124f")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcTaskTimeRecurring.class, name = "IfcTaskTimeRecurring"))
 public class IfcTaskTime extends IfcSchedulingTime
 {
@@ -120,7 +119,7 @@ public class IfcTaskTime extends IfcSchedulingTime
 	@DataMember(Order = 16)
 	@Guid("84fca29b-286d-4a6b-a358-c543c94ff5f0")
 	@JacksonXmlProperty(isAttribute=false, localName = "Completion")
-	private IfcPositiveRatioMeasure completion;
+	private double completion; //IfcPositiveRatioMeasure
 
 
 	public IfcTaskTime()
@@ -255,11 +254,11 @@ public class IfcTaskTime extends IfcSchedulingTime
 		this.remainingTime = remainingTime;
 	}
 
-	public IfcPositiveRatioMeasure getCompletion() {
+	public double getCompletion() {
 		return this.completion;
 	}
 
-	public void setCompletion(IfcPositiveRatioMeasure completion) {
+	public void setCompletion(double completion) {
 		this.completion = completion;
 	}
 

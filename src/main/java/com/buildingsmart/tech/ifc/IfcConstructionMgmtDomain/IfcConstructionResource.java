@@ -5,24 +5,37 @@
 
 package com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.ifc.IfcCostResource.IfcAppliedValue;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcResourceTime;
-import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalQuantity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.*;
+import com.buildingsmart.tech.ifc.IfcCostResource.*;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.*;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionEquipmentResource;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionMaterialResource;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionProductResource;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcCrewResource;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcLaborResource;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcSubContractResource;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcResource;
 
 @Guid("8d7d96c2-5987-41a0-aa66-ab3c2f3443bf")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcConstructionEquipmentResource.class, name = "IfcConstructionEquipmentResource"), @JsonSubTypes.Type(value = IfcConstructionMaterialResource.class, name = "IfcConstructionMaterialResource"), @JsonSubTypes.Type(value = IfcConstructionProductResource.class, name = "IfcConstructionProductResource"), @JsonSubTypes.Type(value = IfcCrewResource.class, name = "IfcCrewResource"), @JsonSubTypes.Type(value = IfcLaborResource.class, name = "IfcLaborResource"), @JsonSubTypes.Type(value = IfcSubContractResource.class, name = "IfcSubContractResource")})
 public abstract class IfcConstructionResource extends com.buildingsmart.tech.ifc.IfcKernel.IfcResource
 {

@@ -5,19 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcActorResource.IfcActorSelect;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociatesDocument;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalInformation;
 
 @Guid("ece4dd99-11bc-4dbb-b170-998764abc239")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -130,24 +138,28 @@ public class IfcDocumentInformation extends IfcExternalInformation implements If
 	private IfcDocumentStatusEnum status;
 
 	@Description("The document information with which objects are associated.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "RelatingDocument", Range = "IfcRelAssociatesDocument")
 	@Guid("999d5137-72f3-4f77-84c9-a46462336d47")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssociatesDocument")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "DocumentInfoForObjects")
 	private Set<IfcRelAssociatesDocument> documentInfoForObjects;
 
 	@Description("The document references to which the document applies")
+	@InverseProperty(InverseProp = "ReferencedDocument", Range = "IfcDocumentReference")
 	@Guid("d8bda5e9-e1b0-4528-93ef-de597e59496e")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcDocumentReference")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasDocumentReferences")
 	private Set<IfcDocumentReference> hasDocumentReferences;
 
 	@Description("An inverse relationship from the IfcDocumentInformationRelationship to the related documents./EPM-HTML>")
+	@InverseProperty(InverseProp = "RelatedDocuments", Range = "IfcDocumentInformationRelationship")
 	@Guid("c07ff305-e30a-4c6e-913b-81d830965461")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcDocumentInformationRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsPointedTo")
 	private Set<IfcDocumentInformationRelationship> isPointedTo;
 
 	@Description("An inverse relationship from the IfcDocumentInformationRelationship to the relating document.")
+	@InverseProperty(InverseProp = "RelatingDocument", Range = "IfcDocumentInformationRelationship")
 	@Guid("0f32d29f-9d4e-4b4f-b971-762eaf28ea39")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcDocumentInformationRelationship")

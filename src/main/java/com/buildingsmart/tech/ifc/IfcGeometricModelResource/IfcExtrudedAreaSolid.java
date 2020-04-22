@@ -10,7 +10,6 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -19,7 +18,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("f65777d3-6cb6-48f6-8a26-d79b570cdfb2")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcExtrudedAreaSolidTapered.class, name = "IfcExtrudedAreaSolidTapered"))
 public class IfcExtrudedAreaSolid extends IfcSweptAreaSolid
 {
@@ -35,14 +34,14 @@ public class IfcExtrudedAreaSolid extends IfcSweptAreaSolid
 	@Required()
 	@Guid("a0e24ce6-15a3-49a4-827b-25a7987a23f7")
 	@JacksonXmlProperty(isAttribute=false, localName = "Depth")
-	private IfcPositiveLengthMeasure depth;
+	private double depth; //IfcPositiveLengthMeasure
 
 
 	public IfcExtrudedAreaSolid()
 	{
 	}
 
-	public IfcExtrudedAreaSolid(IfcProfileDef sweptArea, IfcDirection extrudedDirection, IfcPositiveLengthMeasure depth)
+	public IfcExtrudedAreaSolid(IfcProfileDef sweptArea, IfcDirection extrudedDirection, double depth)
 	{
 		super(sweptArea);
 		this.extrudedDirection = extrudedDirection;
@@ -57,11 +56,11 @@ public class IfcExtrudedAreaSolid extends IfcSweptAreaSolid
 		this.extrudedDirection = extrudedDirection;
 	}
 
-	public IfcPositiveLengthMeasure getDepth() {
+	public double getDepth() {
 		return this.depth;
 	}
 
-	public void setDepth(IfcPositiveLengthMeasure depth) {
+	public void setDepth(double depth) {
 		this.depth = depth;
 	}
 

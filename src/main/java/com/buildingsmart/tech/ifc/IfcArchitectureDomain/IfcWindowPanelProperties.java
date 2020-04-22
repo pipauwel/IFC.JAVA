@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -36,13 +35,13 @@ public class IfcWindowPanelProperties extends com.buildingsmart.tech.ifc.IfcKern
 	@DataMember(Order = 2)
 	@Guid("19f2e6ca-8d92-4ec8-a726-c4d44a0d2853")
 	@JacksonXmlProperty(isAttribute=false, localName = "FrameDepth")
-	private IfcPositiveLengthMeasure frameDepth;
+	private double frameDepth; //IfcPositiveLengthMeasure
 
 	@Description("Width of panel frame, measured from inside of panel (at glazing) to outside of panel (at lining), i.e. parallel to the window (elevation) plane.")
 	@DataMember(Order = 3)
 	@Guid("27ea5ee4-1d5f-49c7-b4d6-d708649bb38a")
 	@JacksonXmlProperty(isAttribute=false, localName = "FrameThickness")
-	private IfcPositiveLengthMeasure frameThickness;
+	private double frameThickness; //IfcPositiveLengthMeasure
 
 	@Description("Optional link to a shape aspect definition, which points to the part of the geometric representation of the window style, which is used to represent the panel.  <blockquote class=\"deprecated\">DEPRECATION&nbsp; The attribute is deprecated and shall no longer be used, i.e. the value shall be NIL ($).</blockquote>")
 	@DataMember(Order = 4)
@@ -78,19 +77,19 @@ public class IfcWindowPanelProperties extends com.buildingsmart.tech.ifc.IfcKern
 		this.panelPosition = panelPosition;
 	}
 
-	public IfcPositiveLengthMeasure getFrameDepth() {
+	public double getFrameDepth() {
 		return this.frameDepth;
 	}
 
-	public void setFrameDepth(IfcPositiveLengthMeasure frameDepth) {
+	public void setFrameDepth(double frameDepth) {
 		this.frameDepth = frameDepth;
 	}
 
-	public IfcPositiveLengthMeasure getFrameThickness() {
+	public double getFrameThickness() {
 		return this.frameThickness;
 	}
 
-	public void setFrameThickness(IfcPositiveLengthMeasure frameThickness) {
+	public void setFrameThickness(double frameThickness) {
 		this.frameThickness = frameThickness;
 	}
 

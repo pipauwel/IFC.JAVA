@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -47,7 +46,7 @@ public class IfcReinforcementBarProperties extends com.buildingsmart.tech.ifc.If
 	@DataMember(Order = 4)
 	@Guid("9e618967-8206-4a64-bf1c-f065826620ac")
 	@JacksonXmlProperty(isAttribute=false, localName = "NominalBarDiameter")
-	private IfcPositiveLengthMeasure nominalBarDiameter;
+	private double nominalBarDiameter; //IfcPositiveLengthMeasure
 
 	@Description("The number of bars with identical nominal diameter and steel grade included in the specific reinforcement configuration.")
 	@DataMember(Order = 5)
@@ -98,11 +97,11 @@ public class IfcReinforcementBarProperties extends com.buildingsmart.tech.ifc.If
 		this.effectiveDepth = effectiveDepth;
 	}
 
-	public IfcPositiveLengthMeasure getNominalBarDiameter() {
+	public double getNominalBarDiameter() {
 		return this.nominalBarDiameter;
 	}
 
-	public void setNominalBarDiameter(IfcPositiveLengthMeasure nominalBarDiameter) {
+	public void setNominalBarDiameter(double nominalBarDiameter) {
 		this.nominalBarDiameter = nominalBarDiameter;
 	}
 

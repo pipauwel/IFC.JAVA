@@ -5,25 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureMap;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceSurface;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcTopologicalRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound;
 
 @Guid("30261543-34bc-4fcc-bd68-c6643fc090c9")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcFaceSurface.class, name = "IfcFaceSurface"))
 public class IfcFace extends IfcTopologicalRepresentationItem
 {
@@ -36,6 +43,7 @@ public class IfcFace extends IfcTopologicalRepresentationItem
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "Bounds")
 	private Set<IfcFaceBound> bounds;
 
+	@InverseProperty(InverseProp = "MappedTo", Range = "IfcTextureMap")
 	@Guid("f4c1aa64-ef3e-4267-a0e3-47c4bfc89b38")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcTextureMap")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasTextureMaps")

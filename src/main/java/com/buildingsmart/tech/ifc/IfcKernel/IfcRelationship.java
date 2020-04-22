@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("9719f52b-2f51-4db0-9908-f63426ac8fc8")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcRelAssigns.class, name = "IfcRelAssigns"), @JsonSubTypes.Type(value = IfcRelAssociates.class, name = "IfcRelAssociates"), @JsonSubTypes.Type(value = IfcRelConnects.class, name = "IfcRelConnects"), @JsonSubTypes.Type(value = IfcRelDeclares.class, name = "IfcRelDeclares"), @JsonSubTypes.Type(value = IfcRelDecomposes.class, name = "IfcRelDecomposes"), @JsonSubTypes.Type(value = IfcRelDefines.class, name = "IfcRelDefines")})
 public abstract class IfcRelationship extends IfcRoot
 {

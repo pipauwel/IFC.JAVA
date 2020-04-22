@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("439553ce-81d9-4bd1-8648-bcf6a5ee6ecc")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcFeatureElementAddition.class, name = "IfcFeatureElementAddition"), @JsonSubTypes.Type(value = IfcFeatureElementSubtraction.class, name = "IfcFeatureElementSubtraction"), @JsonSubTypes.Type(value = IfcSurfaceFeature.class, name = "IfcSurfaceFeature")})
 public abstract class IfcFeatureElement extends IfcElement
 {

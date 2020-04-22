@@ -5,22 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcReparametrisedCompositeCurveSegment;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcTransitionCode;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
 
 @Guid("baf231ed-97be-4368-a9f9-10ae70bad78e")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcReparametrisedCompositeCurveSegment.class, name = "IfcReparametrisedCompositeCurveSegment"))
 public class IfcCompositeCurveSegment extends IfcGeometricRepresentationItem
 {
@@ -46,6 +56,7 @@ public class IfcCompositeCurveSegment extends IfcGeometricRepresentationItem
 	private IfcCurve parentCurve;
 
 	@Description("The set of composite curves which use this composite curve segment as a segment. This set shall not be empty.")
+	@InverseProperty(InverseProp = "Segments", Range = "IfcCompositeCurve")
 	@Guid("1cede6f4-cc66-4b43-8893-d6a8a6afe94a")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcCompositeCurve")

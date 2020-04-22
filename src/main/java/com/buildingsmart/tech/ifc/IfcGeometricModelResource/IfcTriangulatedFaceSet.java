@@ -5,19 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("f8ed7699-eae0-403b-a7a3-79679b07189f")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -44,7 +39,7 @@ public class IfcTriangulatedFaceSet extends IfcTessellatedFaceSet
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "CoordIndex")
-	private List<IfcPositiveInteger> coordIndex;
+	private List<Double> coordIndex; //IfcPositiveInteger
 
 	@Description("The list of integers defining the locations in the <em>IfcCartesianPointList3D</em> to obtain the point coordinates for the indices withint the <i>CoordIndex</i>. If the <i>PnIndex</i> is not provided the indices point directly into the <em>IfcCartesianPointList3D</em>.")
 	@DataMember(Order = 3)
@@ -52,14 +47,14 @@ public class IfcTriangulatedFaceSet extends IfcTessellatedFaceSet
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "PnIndex")
-	private List<IfcPositiveInteger> pnIndex;
+	private List<Double> pnIndex; //IfcPositiveInteger
 
 
 	public IfcTriangulatedFaceSet()
 	{
 	}
 
-	public IfcTriangulatedFaceSet(IfcCartesianPointList3D coordinates, IfcPositiveInteger[] coordIndex)
+	public IfcTriangulatedFaceSet(IfcCartesianPointList3D coordinates, Double[] coordIndex)
 	{
 		super(coordinates);
 		this.coordIndex = new ArrayList<>(Arrays.asList(coordIndex));
@@ -77,11 +72,11 @@ public class IfcTriangulatedFaceSet extends IfcTessellatedFaceSet
 		this.closed = closed;
 	}
 
-	public List<IfcPositiveInteger> getCoordIndex() {
+	public List<Double> getCoordIndex() {
 		return this.coordIndex;
 	}
 
-	public List<IfcPositiveInteger> getPnIndex() {
+	public List<Double> getPnIndex() {
 		return this.pnIndex;
 	}
 

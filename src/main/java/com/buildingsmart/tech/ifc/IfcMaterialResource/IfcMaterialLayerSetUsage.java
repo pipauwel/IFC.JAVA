@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -49,7 +48,7 @@ public class IfcMaterialLayerSetUsage extends IfcMaterialUsageDefinition
 	@DataMember(Order = 4)
 	@Guid("05463889-9d39-40f7-a51d-64d1eae28a58")
 	@JacksonXmlProperty(isAttribute=false, localName = "ReferenceExtent")
-	private IfcPositiveLengthMeasure referenceExtent;
+	private double referenceExtent; //IfcPositiveLengthMeasure
 
 
 	public IfcMaterialLayerSetUsage()
@@ -96,11 +95,11 @@ public class IfcMaterialLayerSetUsage extends IfcMaterialUsageDefinition
 		this.offsetFromReferenceLine = offsetFromReferenceLine;
 	}
 
-	public IfcPositiveLengthMeasure getReferenceExtent() {
+	public double getReferenceExtent() {
 		return this.referenceExtent;
 	}
 
-	public void setReferenceExtent(IfcPositiveLengthMeasure referenceExtent) {
+	public void setReferenceExtent(double referenceExtent) {
 		this.referenceExtent = referenceExtent;
 	}
 

@@ -5,19 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("db4f6cc6-cf8a-4dbe-9456-f8235923f349")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -44,7 +39,7 @@ public class IfcPolygonalFaceSet extends IfcTessellatedFaceSet
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "PnIndex")
-	private List<IfcPositiveInteger> pnIndex;
+	private List<Double> pnIndex; //IfcPositiveInteger
 
 
 	public IfcPolygonalFaceSet()
@@ -69,7 +64,7 @@ public class IfcPolygonalFaceSet extends IfcTessellatedFaceSet
 		return this.faces;
 	}
 
-	public List<IfcPositiveInteger> getPnIndex() {
+	public List<Double> getPnIndex() {
 		return this.pnIndex;
 	}
 

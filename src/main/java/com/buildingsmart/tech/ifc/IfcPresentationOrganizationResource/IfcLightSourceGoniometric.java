@@ -5,14 +5,31 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightSource;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightEmissionSourceEnum;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightDistributionDataSourceSelect;
 
 @Guid("50d32070-67dc-40a9-8ba3-9cf188f08490")
 @JsonIgnoreProperties(ignoreUnknown=true)

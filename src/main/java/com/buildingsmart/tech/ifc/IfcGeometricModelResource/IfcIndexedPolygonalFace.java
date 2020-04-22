@@ -5,26 +5,21 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+
 @Guid("d254b777-e1d5-480f-a356-6496977d5a4a")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcIndexedPolygonalFaceWithVoids.class, name = "IfcIndexedPolygonalFaceWithVoids"))
 public class IfcIndexedPolygonalFace extends IfcTessellatedItem
 {
@@ -35,9 +30,10 @@ public class IfcIndexedPolygonalFace extends IfcTessellatedItem
 	@MinLength(3)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "CoordIndex")
-	private List<IfcPositiveInteger> coordIndex;
+	private List<Double> coordIndex; //IfcPositiveInteger
 
 	@Description("Reference to the <em>IfcPolygonalFaceSet</em> for which this face is associated.")
+	@InverseProperty(InverseProp = "Faces", Range = "IfcPolygonalFaceSet")
 	@Guid("539ffe91-454c-4cc6-a6ee-03a20eaf9166")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPolygonalFaceSet")
@@ -49,12 +45,12 @@ public class IfcIndexedPolygonalFace extends IfcTessellatedItem
 	{
 	}
 
-	public IfcIndexedPolygonalFace(IfcPositiveInteger[] coordIndex)
+	public IfcIndexedPolygonalFace(Double[] coordIndex)
 	{
 		this.coordIndex = new ArrayList<>(Arrays.asList(coordIndex));
 	}
 
-	public List<IfcPositiveInteger> getCoordIndex() {
+	public List<Double> getCoordIndex() {
 		return this.coordIndex;
 	}
 

@@ -5,17 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcMaterialDefinitionRepresentation;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
+import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialDefinition;
 
 @Guid("b36052ed-896b-48e8-b655-a1b4cb67f826")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -41,6 +50,7 @@ public class IfcMaterial extends IfcMaterialDefinition
 	private String category;
 
 	@Description("Reference to the <em>IfcMaterialDefinitionRepresentation</em> that provides presentation information to a representation common to this material in style definitions.    <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; The inverse attribute <em>HasRepresentation</em> has been added.</blockquote>")
+	@InverseProperty(InverseProp = "RepresentedMaterial", Range = "IfcMaterialDefinitionRepresentation")
 	@Guid("7807052f-f464-49e8-8e1f-76be0f2e6d53")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcMaterialDefinitionRepresentation")
@@ -48,12 +58,14 @@ public class IfcMaterial extends IfcMaterialDefinition
 	private Set<IfcMaterialDefinitionRepresentation> hasRepresentation;
 
 	@Description("Reference to a material relationship indicating that this material is a part (or constituent) in a material composite.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The inverse attribute has been added.</blockquote>")
+	@InverseProperty(InverseProp = "RelatedMaterials", Range = "IfcMaterialRelationship")
 	@Guid("fad3b164-50b4-446a-be5d-7f148ddf544d")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcMaterialRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsRelatedWith")
 	private Set<IfcMaterialRelationship> isRelatedWith;
 
 	@Description("Reference to a material relationship indicating that this material composite has parts (or constituents).  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The inverse attribute has been added.</blockquote>")
+	@InverseProperty(InverseProp = "RelatingMaterial", Range = "IfcMaterialRelationship")
 	@Guid("dee9726c-471e-4e55-8ed6-2fa143b0f671")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcMaterialRelationship")

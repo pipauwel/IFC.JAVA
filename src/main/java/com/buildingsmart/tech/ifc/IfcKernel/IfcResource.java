@@ -5,21 +5,30 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionResource;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionResource;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
 
 @Guid("7d23ec63-a69d-48c1-9db7-f4089326e1f2")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcConstructionResource.class, name = "IfcConstructionResource"))
 public abstract class IfcResource extends IfcObject implements IfcResourceSelect
 {
@@ -36,6 +45,7 @@ public abstract class IfcResource extends IfcObject implements IfcResourceSelect
 	private String longDescription;
 
 	@Description("Set of relationships to other objects, e.g. products, processes, controls, resources or actors, for which this resource object is a resource.")
+	@InverseProperty(InverseProp = "RelatingResource", Range = "IfcRelAssignsToResource")
 	@Guid("e87b021e-ec74-43eb-9a4e-b35cff326133")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssignsToResource")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "ResourceOf")

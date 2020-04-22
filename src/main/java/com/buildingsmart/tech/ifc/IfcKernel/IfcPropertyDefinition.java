@@ -5,23 +5,35 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinition;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertyTemplateDefinition;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcRoot;
 
 @Guid("244ca500-edbb-46f5-9ab8-9560710b61a4")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcPropertySetDefinition.class, name = "IfcPropertySetDefinition"), @JsonSubTypes.Type(value = IfcPropertyTemplateDefinition.class, name = "IfcPropertyTemplateDefinition")})
 public abstract class IfcPropertyDefinition extends IfcRoot implements IfcDefinitionSelect
 {
+	@InverseProperty(InverseProp = "RelatedDefinitions", Range = "IfcRelDeclares")
 	@Guid("28b07bf7-fbb2-4391-bcc6-65fdc6c85e0c")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDeclares")
@@ -29,6 +41,7 @@ public abstract class IfcPropertyDefinition extends IfcRoot implements IfcDefini
 	private Set<IfcRelDeclares> hasContext;
 
 	@Description("Reference to the relationship IfcRelAssociates and thus to those externally defined concepts, like classifications, documents, or library information, which are associated to the property definition.")
+	@InverseProperty(InverseProp = "RelatedObjects", Range = "IfcRelAssociates")
 	@Guid("0e3ae573-eb5a-4df0-9bf3-6a03c15d2cd9")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssociates")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasAssociations")

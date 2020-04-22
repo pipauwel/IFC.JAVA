@@ -5,19 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("d2c744de-ffd9-4239-a7cb-245b41b80a33")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -30,20 +25,20 @@ public class IfcIndexedPolygonalFaceWithVoids extends IfcIndexedPolygonalFace
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "InnerCoordIndices")
-	private List<IfcPositiveInteger> innerCoordIndices;
+	private List<Double> innerCoordIndices; //IfcPositiveInteger
 
 
 	public IfcIndexedPolygonalFaceWithVoids()
 	{
 	}
 
-	public IfcIndexedPolygonalFaceWithVoids(IfcPositiveInteger[] coordIndex, IfcPositiveInteger[] innerCoordIndices)
+	public IfcIndexedPolygonalFaceWithVoids(Double[] coordIndex, Double[] innerCoordIndices)
 	{
 		super(coordIndex);
 		this.innerCoordIndices = new ArrayList<>(Arrays.asList(innerCoordIndices));
 	}
 
-	public List<IfcPositiveInteger> getInnerCoordIndices() {
+	public List<Double> getInnerCoordIndices() {
 		return this.innerCoordIndices;
 	}
 

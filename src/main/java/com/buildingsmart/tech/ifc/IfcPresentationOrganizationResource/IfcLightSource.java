@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure;
 import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -18,7 +17,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("71827db2-742f-4dc0-bf75-f01994ba5b74")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcLightSourceAmbient.class, name = "IfcLightSourceAmbient"), @JsonSubTypes.Type(value = IfcLightSourceDirectional.class, name = "IfcLightSourceDirectional"), @JsonSubTypes.Type(value = IfcLightSourceGoniometric.class, name = "IfcLightSourceGoniometric"), @JsonSubTypes.Type(value = IfcLightSourcePositional.class, name = "IfcLightSourcePositional")})
 public abstract class IfcLightSource extends com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem
 {
@@ -39,13 +38,13 @@ public abstract class IfcLightSource extends com.buildingsmart.tech.ifc.IfcGeome
 	@DataMember(Order = 2)
 	@Guid("55499aa0-2d76-4bb7-8ffb-ddb32a56f629")
 	@JacksonXmlProperty(isAttribute=false, localName = "AmbientIntensity")
-	private IfcNormalisedRatioMeasure ambientIntensity;
+	private double ambientIntensity; //IfcNormalisedRatioMeasure
 
 	@Description("Definition from VRML97 - ISO/IEC 14772-1:1997: The intensity field specifies the brightness of the direct emission from the ligth. Light intensity may range from 0.0 (no light emission) to 1.0 (full intensity).")
 	@DataMember(Order = 3)
 	@Guid("118472c5-0afa-48b6-a33a-dcada5d71a1f")
 	@JacksonXmlProperty(isAttribute=false, localName = "Intensity")
-	private IfcNormalisedRatioMeasure intensity;
+	private double intensity; //IfcNormalisedRatioMeasure
 
 
 	public IfcLightSource()
@@ -73,19 +72,19 @@ public abstract class IfcLightSource extends com.buildingsmart.tech.ifc.IfcGeome
 		this.lightColour = lightColour;
 	}
 
-	public IfcNormalisedRatioMeasure getAmbientIntensity() {
+	public double getAmbientIntensity() {
 		return this.ambientIntensity;
 	}
 
-	public void setAmbientIntensity(IfcNormalisedRatioMeasure ambientIntensity) {
+	public void setAmbientIntensity(double ambientIntensity) {
 		this.ambientIntensity = ambientIntensity;
 	}
 
-	public IfcNormalisedRatioMeasure getIntensity() {
+	public double getIntensity() {
 		return this.intensity;
 	}
 
-	public void setIntensity(IfcNormalisedRatioMeasure intensity) {
+	public void setIntensity(double intensity) {
 		this.intensity = intensity;
 	}
 

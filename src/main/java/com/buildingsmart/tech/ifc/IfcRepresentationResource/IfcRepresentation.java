@@ -5,28 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationMap;
-import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcPresentationLayerAssignment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeModel;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcStyleModel;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentationContext;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
 
 @Guid("487b5a0c-6904-49ae-b622-ec42a5535b20")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcShapeModel.class, name = "IfcShapeModel"), @JsonSubTypes.Type(value = IfcStyleModel.class, name = "IfcStyleModel")})
 public abstract class IfcRepresentation implements com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLayeredItem
 {
@@ -59,6 +65,7 @@ public abstract class IfcRepresentation implements com.buildingsmart.tech.ifc.If
 	private Set<IfcRepresentationItem> items;
 
 	@Description("Use of the representation within an <em>IfcRepresentationMap</em>. If used, this <em>IfcRepresentation</em> may be assigned to many representations as one of its <em>Items</em> using an <em>IfcMappedItem</em>. Using <em>IfcRepresentationMap</em> is the way to share one representation (often of type <em>IfcShapeRepresentation</em>) by many products.    <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; The inverse attribute <em>LayerAssignments</em> has been added</blockquote>")
+	@InverseProperty(InverseProp = "MappedRepresentation", Range = "IfcRepresentationMap")
 	@Guid("d66de186-3772-4637-8afe-d9fe4bf7aa65")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRepresentationMap")
@@ -66,12 +73,14 @@ public abstract class IfcRepresentation implements com.buildingsmart.tech.ifc.If
 	private Set<IfcRepresentationMap> representationMap;
 
 	@Description("Assignment of the whole representation to a single or multiple layer(s). The <em>LayerAssigments</em> can be overridden by <em>LayerAssigments</em> of the <em>IfcRepresentationItem</em>'s within the list of <em>Items</em>.  <blockquote class=\"note\">NOTE&nbsp; Implementation agreements can restrict the maximum number of layer assignments to 1.</blockquote>  <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; The inverse attribute <em>LayerAssignments</em> has been added</blockquote>")
+	@InverseProperty(InverseProp = "AssignedItems", Range = "IfcPresentationLayerAssignment")
 	@Guid("25d8e6f0-a248-4327-97e1-5cfd45416980")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPresentationLayerAssignment")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "LayerAssignments")
 	private Set<IfcPresentationLayerAssignment> layerAssignments;
 
 	@Description("Reference to the product representations to which this individual representation applies. In most cases it is the reference to one or many product shapes, to which this shape representation is applicable.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE Inverse relationship cardinality relaxed to be 0:N.</blockquote>")
+	@InverseProperty(InverseProp = "Representations", Range = "IfcProductRepresentation")
 	@Guid("c55fb5c3-aac5-47ac-adf5-5afc03392f9b")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcProductRepresentation")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "OfProductRepresentation")

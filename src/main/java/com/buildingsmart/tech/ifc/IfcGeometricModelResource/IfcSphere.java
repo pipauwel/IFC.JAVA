@@ -10,7 +10,6 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -23,24 +22,24 @@ public class IfcSphere extends IfcCsgPrimitive3D
 	@Required()
 	@Guid("f2c191d1-bda8-4116-980c-18cb4d6e9402")
 	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private IfcPositiveLengthMeasure radius;
+	private double radius; //IfcPositiveLengthMeasure
 
 
 	public IfcSphere()
 	{
 	}
 
-	public IfcSphere(IfcAxis2Placement3D position, IfcPositiveLengthMeasure radius)
+	public IfcSphere(IfcAxis2Placement3D position, double radius)
 	{
 		super(position);
 		this.radius = radius;
 	}
 
-	public IfcPositiveLengthMeasure getRadius() {
+	public double getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(IfcPositiveLengthMeasure radius) {
+	public void setRadius(double radius) {
 		this.radius = radius;
 	}
 

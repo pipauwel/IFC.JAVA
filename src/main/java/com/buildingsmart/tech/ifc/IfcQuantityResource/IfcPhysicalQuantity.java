@@ -5,23 +5,31 @@
 
 package com.buildingsmart.tech.ifc.IfcQuantityResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.*;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalComplexQuantity;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalSimpleQuantity;
 
 @Guid("992fb4f8-e3be-4df1-8101-f866b2fa8617")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcPhysicalComplexQuantity.class, name = "IfcPhysicalComplexQuantity"), @JsonSubTypes.Type(value = IfcPhysicalSimpleQuantity.class, name = "IfcPhysicalSimpleQuantity")})
 public abstract class IfcPhysicalQuantity implements com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect
 {
@@ -39,12 +47,14 @@ public abstract class IfcPhysicalQuantity implements com.buildingsmart.tech.ifc.
 	private String description;
 
 	@Description("Reference to an external reference, e.g. library, classification, or document information, that is associated to the quantity.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "RelatedResourceObjects", Range = "IfcExternalReferenceRelationship")
 	@Guid("27b2b843-28a6-42e2-bb25-b4fdcb625898")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcExternalReferenceRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasExternalReferences")
 	private Set<IfcExternalReferenceRelationship> hasExternalReferences;
 
 	@Description("Reference to a physical complex quantity in which the physical quantity may be contained.")
+	@InverseProperty(InverseProp = "HasQuantities", Range = "IfcPhysicalComplexQuantity")
 	@Guid("e3118983-d5ed-4e50-9a48-f842a13ce296")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPhysicalComplexQuantity")

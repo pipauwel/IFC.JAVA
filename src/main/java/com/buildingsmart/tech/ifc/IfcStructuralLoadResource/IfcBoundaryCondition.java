@@ -15,7 +15,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("d1fbb09c-b03d-4abb-97d2-0ded2403dd38")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcBoundaryEdgeCondition.class, name = "IfcBoundaryEdgeCondition"), @JsonSubTypes.Type(value = IfcBoundaryFaceCondition.class, name = "IfcBoundaryFaceCondition"), @JsonSubTypes.Type(value = IfcBoundaryNodeCondition.class, name = "IfcBoundaryNodeCondition")})
 public abstract class IfcBoundaryCondition
 {

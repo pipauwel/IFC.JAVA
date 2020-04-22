@@ -5,17 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentation;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentation;
 
 @Guid("3968ca44-8f3e-43f2-ab19-855d7709487b")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,11 +46,13 @@ public class IfcRepresentationMap implements com.buildingsmart.tech.ifc.IfcRepre
 	private IfcRepresentation mappedRepresentation;
 
 	@Description("Reference to the shape aspect that represents part of the shape or its feature distinctively.  <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; Inverse attribute added.  </blockquote>")
+	@InverseProperty(InverseProp = "PartOfProductDefinitionShape", Range = "IfcShapeAspect")
 	@Guid("706e409b-b397-4d89-af8c-f070939b0668")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcShapeAspect")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasShapeAspects")
 	private Set<IfcShapeAspect> hasShapeAspects;
 
+	@InverseProperty(InverseProp = "MappingSource", Range = "IfcMappedItem")
 	@Guid("10781165-90b6-4b8f-bb3e-340053c55543")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcMappedItem")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "MapUsage")

@@ -5,16 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcActorResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcRoleEnum;
 
 @Guid("82b7f4e9-c9c0-41a2-a7e4-2b02f8a377c3")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,6 +50,7 @@ public class IfcActorRole implements com.buildingsmart.tech.ifc.IfcExternalRefer
 	private String description;
 
 	@Description("Reference to external information, e.g. library, classification, or document information, which is associated with the actor role.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "RelatedResourceObjects", Range = "IfcExternalReferenceRelationship")
 	@Guid("0c0b8207-2077-4ad5-a65b-49eaccdf4a62")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcExternalReferenceRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasExternalReference")

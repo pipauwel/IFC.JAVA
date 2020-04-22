@@ -5,18 +5,35 @@
 
 package com.buildingsmart.tech.ifc.IfcQuantityResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNamedUnit;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcQuantityArea;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcQuantityCount;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcQuantityLength;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcQuantityTime;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcQuantityVolume;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcQuantityWeight;
+import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalQuantity;
 
 @Guid("cd63ae14-6967-4acf-b92c-2b33caddf894")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcQuantityArea.class, name = "IfcQuantityArea"), @JsonSubTypes.Type(value = IfcQuantityCount.class, name = "IfcQuantityCount"), @JsonSubTypes.Type(value = IfcQuantityLength.class, name = "IfcQuantityLength"), @JsonSubTypes.Type(value = IfcQuantityTime.class, name = "IfcQuantityTime"), @JsonSubTypes.Type(value = IfcQuantityVolume.class, name = "IfcQuantityVolume"), @JsonSubTypes.Type(value = IfcQuantityWeight.class, name = "IfcQuantityWeight")})
 public abstract class IfcPhysicalSimpleQuantity extends IfcPhysicalQuantity
 {

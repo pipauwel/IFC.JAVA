@@ -5,18 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociatesClassification;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalInformation;
 
 @Guid("86dd2655-910b-4394-9cd1-3478de9e1798")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -68,12 +76,14 @@ public class IfcClassification extends IfcExternalInformation implements IfcClas
 	private List<String> referenceTokens;
 
 	@Description("The classification with which objects are associated.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "RelatingClassification", Range = "IfcRelAssociatesClassification")
 	@Guid("4d93c948-effe-49fa-b9d7-d6aaae000629")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssociatesClassification")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "ClassificationForObjects")
 	private Set<IfcRelAssociatesClassification> classificationForObjects;
 
 	@Description("The classification references to which the classification applies. It can either be the final classification notation, or an intermediate classification item.")
+	@InverseProperty(InverseProp = "ReferencedSource", Range = "IfcClassificationReference")
 	@Guid("35467369-dd27-41ae-99ba-466f5c1e23ab")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcClassificationReference")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasReferences")

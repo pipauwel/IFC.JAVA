@@ -5,22 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.annotations.*;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedFaceSet;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("72a45e5a-521d-4b77-ba81-0938e73dffff")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -37,7 +31,7 @@ public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentat
 	@DataMember(Order = 1)
 	@Guid("95d4d17c-ac0b-4a8d-9c90-545c63064df1")
 	@JacksonXmlProperty(isAttribute=false, localName = "Opacity")
-	private IfcNormalisedRatioMeasure opacity;
+	private double opacity; //IfcNormalisedRatioMeasure
 
 	@Description("Indexable list of lists of quadruples, representing RGB colours.")
 	@DataMember(Order = 2)
@@ -53,14 +47,14 @@ public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentat
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "ColourIndex")
-	private List<IfcPositiveInteger> colourIndex;
+	private List<Double> colourIndex; //IfcPositiveInteger
 
 
 	public IfcIndexedColourMap()
 	{
 	}
 
-	public IfcIndexedColourMap(IfcTessellatedFaceSet mappedTo, IfcColourRgbList colours, IfcPositiveInteger[] colourIndex)
+	public IfcIndexedColourMap(IfcTessellatedFaceSet mappedTo, IfcColourRgbList colours, Double[] colourIndex)
 	{
 		this.mappedTo = mappedTo;
 		this.colours = colours;
@@ -75,11 +69,11 @@ public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentat
 		this.mappedTo = mappedTo;
 	}
 
-	public IfcNormalisedRatioMeasure getOpacity() {
+	public double getOpacity() {
 		return this.opacity;
 	}
 
-	public void setOpacity(IfcNormalisedRatioMeasure opacity) {
+	public void setOpacity(double opacity) {
 		this.opacity = opacity;
 	}
 
@@ -91,7 +85,7 @@ public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentat
 		this.colours = colours;
 	}
 
-	public List<IfcPositiveInteger> getColourIndex() {
+	public List<Double> getColourIndex() {
 		return this.colourIndex;
 	}
 

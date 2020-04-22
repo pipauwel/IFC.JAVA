@@ -10,7 +10,6 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -18,7 +17,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("4140e5e6-6e10-487d-80b0-738ba2b7bedb")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcSweptDiskSolidPolygonal.class, name = "IfcSweptDiskSolidPolygonal"))
 public class IfcSweptDiskSolid extends IfcSolidModel
 {
@@ -34,13 +33,13 @@ public class IfcSweptDiskSolid extends IfcSolidModel
 	@Required()
 	@Guid("b6637ef9-cdaa-47f9-820d-37b6666212c5")
 	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private IfcPositiveLengthMeasure radius;
+	private double radius; //IfcPositiveLengthMeasure
 
 	@Description("This attribute is optional, if present it defines the radius of a circular hole in the centre of the disk.")
 	@DataMember(Order = 2)
 	@Guid("1c03cb39-4ce4-40cb-8e6d-61b748f473f6")
 	@JacksonXmlProperty(isAttribute=false, localName = "InnerRadius")
-	private IfcPositiveLengthMeasure innerRadius;
+	private double innerRadius; //IfcPositiveLengthMeasure
 
 	@Description("The parameter value on the <em>Directrix</em> at which the sweeping operation commences. <font color=\"#0000ff\">If no value is provided the start of the sweeping operation is at the start of the <em>Directrix</em>.</font>.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been changed to OPTIONAL with upward compatibility for file-based exchange.</blockquote>")
 	@DataMember(Order = 3)
@@ -59,7 +58,7 @@ public class IfcSweptDiskSolid extends IfcSolidModel
 	{
 	}
 
-	public IfcSweptDiskSolid(IfcCurve directrix, IfcPositiveLengthMeasure radius)
+	public IfcSweptDiskSolid(IfcCurve directrix, double radius)
 	{
 		this.directrix = directrix;
 		this.radius = radius;
@@ -73,19 +72,19 @@ public class IfcSweptDiskSolid extends IfcSolidModel
 		this.directrix = directrix;
 	}
 
-	public IfcPositiveLengthMeasure getRadius() {
+	public double getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(IfcPositiveLengthMeasure radius) {
+	public void setRadius(double radius) {
 		this.radius = radius;
 	}
 
-	public IfcPositiveLengthMeasure getInnerRadius() {
+	public double getInnerRadius() {
 		return this.innerRadius;
 	}
 
-	public void setInnerRadius(IfcPositiveLengthMeasure innerRadius) {
+	public void setInnerRadius(double innerRadius) {
 		this.innerRadius = innerRadius;
 	}
 

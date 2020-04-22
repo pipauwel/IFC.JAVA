@@ -10,7 +10,6 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -19,7 +18,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("32a170a7-e0ba-48c0-9f27-f2a1df1265d0")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcLightSourceSpot.class, name = "IfcLightSourceSpot"))
 public class IfcLightSourcePositional extends IfcLightSource
 {
@@ -35,7 +34,7 @@ public class IfcLightSourcePositional extends IfcLightSource
 	@Required()
 	@Guid("e32ed7f9-1e64-44f1-890b-6a5b3397c943")
 	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private IfcPositiveLengthMeasure radius;
+	private double radius; //IfcPositiveLengthMeasure
 
 	@Description("Definition from ISO/CD 10303-46:1992: This real indicates the value of the attenuation in the lighting equation that is constant.")
 	@DataMember(Order = 2)
@@ -63,7 +62,7 @@ public class IfcLightSourcePositional extends IfcLightSource
 	{
 	}
 
-	public IfcLightSourcePositional(IfcColourRgb lightColour, IfcCartesianPoint position, IfcPositiveLengthMeasure radius, double constantAttenuation, double distanceAttenuation, double quadricAttenuation)
+	public IfcLightSourcePositional(IfcColourRgb lightColour, IfcCartesianPoint position, double radius, double constantAttenuation, double distanceAttenuation, double quadricAttenuation)
 	{
 		super(lightColour);
 		this.position = position;
@@ -81,11 +80,11 @@ public class IfcLightSourcePositional extends IfcLightSource
 		this.position = position;
 	}
 
-	public IfcPositiveLengthMeasure getRadius() {
+	public double getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(IfcPositiveLengthMeasure radius) {
+	public void setRadius(double radius) {
 		this.radius = radius;
 	}
 

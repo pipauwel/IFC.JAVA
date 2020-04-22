@@ -6,27 +6,26 @@
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
 import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Guid("0590099d-fe4d-40ba-ae80-71803e5902d0")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcLineIndex implements IfcSegmentIndexSelect {
-	public IfcPositiveInteger value;
+	public double value; //IfcPositiveInteger
 
 	public IfcLineIndex() {
 	}
 
-	public IfcLineIndex(IfcPositiveInteger value) {
+	public IfcLineIndex(double value) {
 		this();
 		this.value = value;
 	}
 
-	public IfcPositiveInteger getValue() {
+	public double getValue() {
 		return this.value;
 	}
 
-	public void setValue(IfcPositiveInteger value) {
+	public void setValue(double value) {
 		this.value = value;
 	}
 }

@@ -5,12 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
 
 @Guid("c9b965ff-02c6-41a5-937f-4788c8513e6c")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,13 +46,13 @@ public class IfcStairFlight extends com.buildingsmart.tech.ifc.IfcProductExtensi
 	@DataMember(Order = 2)
 	@Guid("221e43e9-f43c-47d3-b02e-20a0a86fbab6")
 	@JacksonXmlProperty(isAttribute=false, localName = "RiserHeight")
-	private IfcPositiveLengthMeasure riserHeight;
+	private double riserHeight; //IfcPositiveLengthMeasure
 
 	@Description("Horizontal distance from the front to the back of the tread. The tread length is supposed to be equal for all steps of the stair flight.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been deprecated it shall only be exposed with a NIL value. Use <em>Pset_StairFlightCommon.TreadLength</em> instead.</blockquote>")
 	@DataMember(Order = 3)
 	@Guid("bf014ecd-1bc8-4fee-bf42-f86df0c5cca6")
 	@JacksonXmlProperty(isAttribute=false, localName = "TreadLength")
-	private IfcPositiveLengthMeasure treadLength;
+	private double treadLength; //IfcPositiveLengthMeasure
 
 	@Description("Predefined generic type for a stair flight that is specified in an enumeration. There may be a property set given specificly for the predefined types.  <blockquote class=\"note\">NOTE&nbsp; The <em>PredefinedType</em> shall only be used, if no <em>IfcStairFlightType</em> is assigned, providing its own <em>IfcStairFlightType.PredefinedType</em>.</blockquote>  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added at the end of the entity definition.</blockquote>")
 	@DataMember(Order = 4)
@@ -72,19 +86,19 @@ public class IfcStairFlight extends com.buildingsmart.tech.ifc.IfcProductExtensi
 		this.numberOfTreads = numberOfTreads;
 	}
 
-	public IfcPositiveLengthMeasure getRiserHeight() {
+	public double getRiserHeight() {
 		return this.riserHeight;
 	}
 
-	public void setRiserHeight(IfcPositiveLengthMeasure riserHeight) {
+	public void setRiserHeight(double riserHeight) {
 		this.riserHeight = riserHeight;
 	}
 
-	public IfcPositiveLengthMeasure getTreadLength() {
+	public double getTreadLength() {
 		return this.treadLength;
 	}
 
-	public void setTreadLength(IfcPositiveLengthMeasure treadLength) {
+	public void setTreadLength(double treadLength) {
 		this.treadLength = treadLength;
 	}
 

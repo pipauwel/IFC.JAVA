@@ -5,22 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.MinLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProcess;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeProduct;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeResource;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
 
 @Guid("1d05673d-0b58-4733-862e-d6626abd1efb")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcTypeProcess.class, name = "IfcTypeProcess"), @JsonSubTypes.Type(value = IfcTypeProduct.class, name = "IfcTypeProduct"), @JsonSubTypes.Type(value = IfcTypeResource.class, name = "IfcTypeResource")})
 public class IfcTypeObject extends IfcObjectDefinition
 {
@@ -39,6 +49,7 @@ public class IfcTypeObject extends IfcObjectDefinition
 	private Set<IfcPropertySetDefinition> hasPropertySets;
 
 	@Description("Reference to the relationship IfcRelDefinedByType and thus to those occurrence objects, which are defined by this type.")
+	@InverseProperty(InverseProp = "RelatingType", Range = "IfcRelDefinesByType")
 	@Guid("b9f6a3c9-d5d6-4a7a-8d44-116f467fda32")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDefinesByType")

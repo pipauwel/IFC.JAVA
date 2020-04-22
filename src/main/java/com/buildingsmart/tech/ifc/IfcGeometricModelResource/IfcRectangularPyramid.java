@@ -10,7 +10,6 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -23,28 +22,28 @@ public class IfcRectangularPyramid extends IfcCsgPrimitive3D
 	@Required()
 	@Guid("6ee25ec0-9aa1-4206-8c9c-e0d5e6634d02")
 	@JacksonXmlProperty(isAttribute=false, localName = "XLength")
-	private IfcPositiveLengthMeasure xLength;
+	private double xLength; //IfcPositiveLengthMeasure
 
 	@Description("The length of the base measured along the placement Y axis. It is provided by the inherited axis placement through <em>SELF\\IfcCsgPrimitive3D.Position.P[2]</em>.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("89841464-6302-4f14-9183-315dcb0d7dc4")
 	@JacksonXmlProperty(isAttribute=false, localName = "YLength")
-	private IfcPositiveLengthMeasure yLength;
+	private double yLength; //IfcPositiveLengthMeasure
 
 	@Description("The height of the apex above the plane of the base, measured in the direction of the placement Z axis, the <em>SELF\\IfcCsgPrimitive3D.Position.P[2]</em>.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("8a3db941-ccad-4bec-86c4-b5a54eeda96f")
 	@JacksonXmlProperty(isAttribute=false, localName = "Height")
-	private IfcPositiveLengthMeasure height;
+	private double height; //IfcPositiveLengthMeasure
 
 
 	public IfcRectangularPyramid()
 	{
 	}
 
-	public IfcRectangularPyramid(IfcAxis2Placement3D position, IfcPositiveLengthMeasure xLength, IfcPositiveLengthMeasure yLength, IfcPositiveLengthMeasure height)
+	public IfcRectangularPyramid(IfcAxis2Placement3D position, double xLength, double yLength, double height)
 	{
 		super(position);
 		this.xLength = xLength;
@@ -52,27 +51,27 @@ public class IfcRectangularPyramid extends IfcCsgPrimitive3D
 		this.height = height;
 	}
 
-	public IfcPositiveLengthMeasure getXLength() {
+	public double getXLength() {
 		return this.xLength;
 	}
 
-	public void setXLength(IfcPositiveLengthMeasure xLength) {
+	public void setXLength(double xLength) {
 		this.xLength = xLength;
 	}
 
-	public IfcPositiveLengthMeasure getYLength() {
+	public double getYLength() {
 		return this.yLength;
 	}
 
-	public void setYLength(IfcPositiveLengthMeasure yLength) {
+	public void setYLength(double yLength) {
 		this.yLength = yLength;
 	}
 
-	public IfcPositiveLengthMeasure getHeight() {
+	public double getHeight() {
 		return this.height;
 	}
 
-	public void setHeight(IfcPositiveLengthMeasure height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 

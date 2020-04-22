@@ -5,18 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcGrid;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
 
 @Guid("c88238d9-0400-4b8f-846c-03fd460a7fa9")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -43,6 +52,7 @@ public class IfcGridAxis
 	private Boolean sameSense;
 
 	@Description("If provided, the <em>IfcGridAxis</em> is part of the <em>WAxes</em> of <em>IfcGrid</em>.  <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "WAxes", Range = "IfcGrid")
 	@Guid("37f2104e-edaa-42e5-9169-517462c7484e")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcGrid")
@@ -50,6 +60,7 @@ public class IfcGridAxis
 	private Set<IfcGrid> partOfW;
 
 	@Description("If provided, the <em>IfcGridAxis</em> is part of the <em>VAxes</em> of <em>IfcGrid</em>.  <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "VAxes", Range = "IfcGrid")
 	@Guid("2d9d9cfa-15a7-4eba-9d29-d6c6b56c8ca7")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcGrid")
@@ -57,6 +68,7 @@ public class IfcGridAxis
 	private Set<IfcGrid> partOfV;
 
 	@Description("If provided, the <em>IfcGridAxis</em> is part of the <em>UAxes</em> of <em>IfcGrid</em>.  <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "UAxes", Range = "IfcGrid")
 	@Guid("a67ae0fa-6b90-407b-a0af-d5724a050f0d")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcGrid")
@@ -64,6 +76,7 @@ public class IfcGridAxis
 	private Set<IfcGrid> partOfU;
 
 	@Description("The reference to a set of <IfcVirtualGridIntersection</em>'s, that connect other grid axes to this grid axis.  <blockquote class=\"change-ifc2x3\">IFC2x3 CHANGE&nbsp; New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "IntersectingAxes", Range = "IfcVirtualGridIntersection")
 	@Guid("351beb68-0443-424d-8205-71b6086c5eb7")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcVirtualGridIntersection")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasIntersections")

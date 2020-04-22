@@ -5,15 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcRelCoversSpaces;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialStructureElement;
 
 @Guid("ef5bd9a3-9472-49c9-9aa4-173b9444e09a")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,12 +43,14 @@ public class IfcSpace extends IfcSpatialStructureElement implements IfcSpaceBoun
 	private double elevationWithFlooring;
 
 	@Description("Reference to <em>IfcCovering</em> by virtue of the objectified relationship <em>IfcRelCoversSpaces</em>. It defines the concept of a space having coverings assigned. Those coverings may represent different flooring, or tiling areas.    <blockquote class=\"note\">NOTE&nbsp; Coverings are often managed by the space, and not by the building element, which they cover.</blockquote>  <blockquote class=\"change-ifc2x3\">IFC2x Edition3 CHANGE&nbsp; New inverse relationship. Upward compatibility for file based exchange is guaranteed.</blockquote>")
+	@InverseProperty(InverseProp = "RelatingSpace", Range = "IfcRelCoversSpaces")
 	@Guid("e169375e-bbf4-43b8-a679-bf64711c047f")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelCoversSpaces")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasCoverings")
 	private Set<IfcRelCoversSpaces> hasCoverings;
 
 	@Description("Reference to a set of <em>IfcRelSpaceBoundary</em>'s that defines the physical or virtual delimitation of that space against physical or virtual boundaries.")
+	@InverseProperty(InverseProp = "RelatingSpace", Range = "IfcRelSpaceBoundary")
 	@Guid("618d511c-b181-48b0-85bd-f8e858015320")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelSpaceBoundary")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "BoundedBy")

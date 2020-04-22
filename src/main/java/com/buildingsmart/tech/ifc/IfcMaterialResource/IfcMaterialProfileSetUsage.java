@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -17,7 +16,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("1ca68971-59c5-4363-bcf5-4a3bf1006eae")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcMaterialProfileSetUsageTapering.class, name = "IfcMaterialProfileSetUsageTapering"))
 public class IfcMaterialProfileSetUsage extends IfcMaterialUsageDefinition
 {
@@ -38,7 +37,7 @@ public class IfcMaterialProfileSetUsage extends IfcMaterialUsageDefinition
 	@DataMember(Order = 2)
 	@Guid("0030178b-e5f9-4374-9d8c-f15dd967e318")
 	@JacksonXmlProperty(isAttribute=false, localName = "ReferenceExtent")
-	private IfcPositiveLengthMeasure referenceExtent;
+	private double referenceExtent; //IfcPositiveLengthMeasure
 
 
 	public IfcMaterialProfileSetUsage()
@@ -66,11 +65,11 @@ public class IfcMaterialProfileSetUsage extends IfcMaterialUsageDefinition
 		this.cardinalPoint = cardinalPoint;
 	}
 
-	public IfcPositiveLengthMeasure getReferenceExtent() {
+	public double getReferenceExtent() {
 		return this.referenceExtent;
 	}
 
-	public void setReferenceExtent(IfcPositiveLengthMeasure referenceExtent) {
+	public void setReferenceExtent(double referenceExtent) {
 		this.referenceExtent = referenceExtent;
 	}
 

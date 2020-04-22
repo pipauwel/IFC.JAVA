@@ -5,23 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnitAssignment;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentationContext;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcProject;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcProjectLibrary;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
 
 @Guid("2ef4dae0-8e0d-4c3e-a179-bf7d2f279492")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcProject.class, name = "IfcProject"), @JsonSubTypes.Type(value = IfcProjectLibrary.class, name = "IfcProjectLibrary")})
 public abstract class IfcContext extends IfcObjectDefinition
 {
@@ -58,12 +68,14 @@ public abstract class IfcContext extends IfcObjectDefinition
 	private IfcUnitAssignment unitsInContext;
 
 	@Description("Set of relationships to property set definitions attached to this context. Those statically or dynamically defined properties contain alphanumeric information content that further defines the context.   <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; The data type has been changed from <em>IfcRelDefines</em> to <em>IfcRelDefinesByProperties</em> with upward compatibility for file based exchange.  </blockquote>")
+	@InverseProperty(InverseProp = "RelatedObjects", Range = "IfcRelDefinesByProperties")
 	@Guid("7e8b25d6-0e9c-4e04-bc16-e08eea08f8ec")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDefinesByProperties")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsDefinedBy")
 	private Set<IfcRelDefinesByProperties> isDefinedBy;
 
 	@Description("Reference to the <em>IfcRelDeclares</em> relationship that assigns the uppermost entities of includes hierarchies to this context instance.  <blockquote class=\"note\">NOTE&nbsp; The spatial hiearchy is assigned to <em>IfcProject</em> using the <em>IfcRelAggregates</em> relationship. This is a single exception due to compatibility reasons with earlier releases.</blockquote>")
+	@InverseProperty(InverseProp = "RelatingContext", Range = "IfcRelDeclares")
 	@Guid("cd34747d-186f-4fe1-9267-19625144c9e6")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDeclares")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "Declares")

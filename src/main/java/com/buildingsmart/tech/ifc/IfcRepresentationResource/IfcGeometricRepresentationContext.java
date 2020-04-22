@@ -5,27 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
-import java.util.Set;
+import java.util.*;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGeometricRepresentationSubContext;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentationContext;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
 
 @Guid("0eca3f63-ee99-4b79-bd1a-4602d00d24d9")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "id")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcGeometricRepresentationSubContext.class, name = "IfcGeometricRepresentationSubContext"))
 public class IfcGeometricRepresentationContext extends IfcRepresentationContext implements IfcCoordinateReferenceSystemSelect
 {
+	@Description("Internal ID")
+	@Required()
+	@JacksonXmlProperty(isAttribute=false, localName = "Id")
+	private UUID id;
+
 	@Description("The integer dimension count of the coordinate space modeled in a geometric representation context.  <br>")
 	@DataMember(Order = 0)
 	@Required()
@@ -53,12 +58,14 @@ public class IfcGeometricRepresentationContext extends IfcRepresentationContext 
 	private IfcDirection trueNorth;
 
 	@Description("The set of <em>IfcGeometricRepresentationSubContexts</em> that refer to this <em>IfcGeometricRepresentationContext</em>.")
+	@InverseProperty(InverseProp = "ParentContext", Range = "IfcGeometricRepresentationSubContext")
 	@Guid("2af7d963-9ff0-43fe-a2b2-e2766bb83443")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcGeometricRepresentationSubContext")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasSubContexts")
 	private Set<IfcGeometricRepresentationSubContext> hasSubContexts;
 
 	@Description("Indicates conversion between coordinate systems. In particular it refers to an <em>IfcCoordinateOperation</em> between a Geographic map coordinate reference system, and the engineering coordinate system of this construction project. If there is more then one <em>IfcGeometricRepresentationContext</em> provided to the <em>IfcProject</em> then all contexts shall have an identical instance of <em>IfcCoordinateOperation</em> as <em>HasCoordinateOperation</em> refering to the same instance of <em>IfcCoordinateReferenceSystem</em>.")
+	@InverseProperty(InverseProp = "SourceCRS", Range = "IfcCoordinateOperation")
 	@Guid("d5175543-19ac-432c-ae3b-5b13d4d04785")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcCoordinateOperation")
@@ -68,12 +75,22 @@ public class IfcGeometricRepresentationContext extends IfcRepresentationContext 
 
 	public IfcGeometricRepresentationContext()
 	{
+		this.id = UUID.randomUUID();
 	}
 
 	public IfcGeometricRepresentationContext(int coordinateSpaceDimension, IfcAxis2Placement worldCoordinateSystem)
 	{
+		this();
 		this.coordinateSpaceDimension = coordinateSpaceDimension;
 		this.worldCoordinateSystem = worldCoordinateSystem;
+	}
+
+	public UUID getId() {
+		return this.id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 	public int getCoordinateSpaceDimension() {

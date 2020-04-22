@@ -8,7 +8,6 @@ package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -16,7 +15,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("0f9043b3-19f5-4f1b-b221-76018647d933")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcWindowStandardCase.class, name = "IfcWindowStandardCase"))
 public class IfcWindow extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement
 {
@@ -24,13 +23,13 @@ public class IfcWindow extends com.buildingsmart.tech.ifc.IfcProductExtension.If
 	@DataMember(Order = 0)
 	@Guid("4eab6bd3-dcea-4c3d-bb3c-069664b3bb8e")
 	@JacksonXmlProperty(isAttribute=false, localName = "OverallHeight")
-	private IfcPositiveLengthMeasure overallHeight;
+	private double overallHeight; //IfcPositiveLengthMeasure
 
 	@Description("Overall measure of the width, it reflects the X Dimension of a bounding box, enclosing the window opening. If omitted, the <em>OverallWidth</em> should be taken from the geometric representation of the <em>IfcOpening</em> in which the window is inserted.     <blockquote class=\"note\">NOTE&nbsp; The body of the window might be wider then the window opening (for example in cases where the window lining includes a casing). In these cases the <em>OverallWidth</em> shall still be given as the window opening width, and not as the total width of the window lining.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("0fe5fb49-9b5f-4384-ba1c-6afa2219013c")
 	@JacksonXmlProperty(isAttribute=false, localName = "OverallWidth")
-	private IfcPositiveLengthMeasure overallWidth;
+	private double overallWidth; //IfcPositiveLengthMeasure
 
 	@Description("Predefined generic type for a window that is specified in an enumeration. There may be a property set given specificly for the predefined types.  <blockquote class=\"note\">NOTE&nbsp; The <em>PredefinedType</em> shall only be used, if no <em>IfcWindowType</em> is assigned, providing its own <em>IfcWindowType.PredefinedType</em>.</blockquote>  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added at the end of the entity definition.</blockquote>")
 	@DataMember(Order = 2)
@@ -60,19 +59,19 @@ public class IfcWindow extends com.buildingsmart.tech.ifc.IfcProductExtension.If
 		super(globalId);
 	}
 
-	public IfcPositiveLengthMeasure getOverallHeight() {
+	public double getOverallHeight() {
 		return this.overallHeight;
 	}
 
-	public void setOverallHeight(IfcPositiveLengthMeasure overallHeight) {
+	public void setOverallHeight(double overallHeight) {
 		this.overallHeight = overallHeight;
 	}
 
-	public IfcPositiveLengthMeasure getOverallWidth() {
+	public double getOverallWidth() {
 		return this.overallWidth;
 	}
 
-	public void setOverallWidth(IfcPositiveLengthMeasure overallWidth) {
+	public void setOverallWidth(double overallWidth) {
 		this.overallWidth = overallWidth;
 	}
 

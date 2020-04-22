@@ -5,20 +5,35 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProfileResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcExtrudedAreaSolid;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcFixedReferenceSweptAreaSolid;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcRevolvedAreaSolid;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSurfaceCurveSweptAreaSolid;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSolidModel;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
 
 @Guid("1bfb8302-5211-4de4-a3b9-20e200cf1097")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcExtrudedAreaSolid.class, name = "IfcExtrudedAreaSolid"), @JsonSubTypes.Type(value = IfcFixedReferenceSweptAreaSolid.class, name = "IfcFixedReferenceSweptAreaSolid"), @JsonSubTypes.Type(value = IfcRevolvedAreaSolid.class, name = "IfcRevolvedAreaSolid"), @JsonSubTypes.Type(value = IfcSurfaceCurveSweptAreaSolid.class, name = "IfcSurfaceCurveSweptAreaSolid")})
 public abstract class IfcSweptAreaSolid extends IfcSolidModel
 {

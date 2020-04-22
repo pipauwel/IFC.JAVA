@@ -5,17 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.*;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcEventTime;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcLagTime;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcResourceTime;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTaskTime;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcWorkTime;
 
 @Guid("b80d3213-eccf-4e8a-84a3-21c1381ff3cc")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcEventTime.class, name = "IfcEventTime"), @JsonSubTypes.Type(value = IfcLagTime.class, name = "IfcLagTime"), @JsonSubTypes.Type(value = IfcResourceTime.class, name = "IfcResourceTime"), @JsonSubTypes.Type(value = IfcTaskTime.class, name = "IfcTaskTime"), @JsonSubTypes.Type(value = IfcWorkTime.class, name = "IfcWorkTime")})
 public abstract class IfcSchedulingTime
 {

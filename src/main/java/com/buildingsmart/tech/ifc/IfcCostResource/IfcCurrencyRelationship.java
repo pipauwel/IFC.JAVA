@@ -11,7 +11,6 @@ import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcLibraryInformation;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcMonetaryUnit;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -38,7 +37,7 @@ public class IfcCurrencyRelationship extends com.buildingsmart.tech.ifc.IfcExter
 	@Required()
 	@Guid("b0243b1e-6e24-414e-9b92-5ee782e1c2b7")
 	@JacksonXmlProperty(isAttribute=false, localName = "ExchangeRate")
-	private IfcPositiveRatioMeasure exchangeRate;
+	private double exchangeRate; //IfcPositiveRatioMeasure
 
 	@Description("The date and time at which an exchange rate applies.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE Type changed from IfcDateTimeSelect. Attribute made optional.</blockquote>")
 	@DataMember(Order = 3)
@@ -57,7 +56,7 @@ public class IfcCurrencyRelationship extends com.buildingsmart.tech.ifc.IfcExter
 	{
 	}
 
-	public IfcCurrencyRelationship(IfcMonetaryUnit relatingMonetaryUnit, IfcMonetaryUnit relatedMonetaryUnit, IfcPositiveRatioMeasure exchangeRate)
+	public IfcCurrencyRelationship(IfcMonetaryUnit relatingMonetaryUnit, IfcMonetaryUnit relatedMonetaryUnit, double exchangeRate)
 	{
 		this.relatingMonetaryUnit = relatingMonetaryUnit;
 		this.relatedMonetaryUnit = relatedMonetaryUnit;
@@ -80,11 +79,11 @@ public class IfcCurrencyRelationship extends com.buildingsmart.tech.ifc.IfcExter
 		this.relatedMonetaryUnit = relatedMonetaryUnit;
 	}
 
-	public IfcPositiveRatioMeasure getExchangeRate() {
+	public double getExchangeRate() {
 		return this.exchangeRate;
 	}
 
-	public void setExchangeRate(IfcPositiveRatioMeasure exchangeRate) {
+	public void setExchangeRate(double exchangeRate) {
 		this.exchangeRate = exchangeRate;
 	}
 

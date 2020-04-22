@@ -9,8 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -23,52 +21,52 @@ public class IfcRectangleHollowProfileDef extends IfcRectangleProfileDef
 	@Required()
 	@Guid("e469897c-3e73-451f-9c72-a373783992ba")
 	@JacksonXmlProperty(isAttribute=false, localName = "WallThickness")
-	private IfcPositiveLengthMeasure wallThickness;
+	private double wallThickness; //IfcPositiveLengthMeasure
 
 	@Description("Inner corner radius.")
 	@DataMember(Order = 1)
 	@Guid("5aa6d217-3f48-4fbb-9145-55601b62701b")
 	@JacksonXmlProperty(isAttribute=false, localName = "InnerFilletRadius")
-	private IfcNonNegativeLengthMeasure innerFilletRadius;
+	private double innerFilletRadius; //IfcNonNegativeLengthMeasure
 
 	@Description("Outer corner radius.")
 	@DataMember(Order = 2)
 	@Guid("493f68ea-2c2e-44f2-bef4-d2c48668cc91")
 	@JacksonXmlProperty(isAttribute=false, localName = "OuterFilletRadius")
-	private IfcNonNegativeLengthMeasure outerFilletRadius;
+	private double outerFilletRadius; //IfcNonNegativeLengthMeasure
 
 
 	public IfcRectangleHollowProfileDef()
 	{
 	}
 
-	public IfcRectangleHollowProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure xDim, IfcPositiveLengthMeasure yDim, IfcPositiveLengthMeasure wallThickness)
+	public IfcRectangleHollowProfileDef(IfcProfileTypeEnum profileType, double xDim, double yDim, double wallThickness)
 	{
 		super(profileType, xDim, yDim);
 		this.wallThickness = wallThickness;
 	}
 
-	public IfcPositiveLengthMeasure getWallThickness() {
+	public double getWallThickness() {
 		return this.wallThickness;
 	}
 
-	public void setWallThickness(IfcPositiveLengthMeasure wallThickness) {
+	public void setWallThickness(double wallThickness) {
 		this.wallThickness = wallThickness;
 	}
 
-	public IfcNonNegativeLengthMeasure getInnerFilletRadius() {
+	public double getInnerFilletRadius() {
 		return this.innerFilletRadius;
 	}
 
-	public void setInnerFilletRadius(IfcNonNegativeLengthMeasure innerFilletRadius) {
+	public void setInnerFilletRadius(double innerFilletRadius) {
 		this.innerFilletRadius = innerFilletRadius;
 	}
 
-	public IfcNonNegativeLengthMeasure getOuterFilletRadius() {
+	public double getOuterFilletRadius() {
 		return this.outerFilletRadius;
 	}
 
-	public void setOuterFilletRadius(IfcNonNegativeLengthMeasure outerFilletRadius) {
+	public void setOuterFilletRadius(double outerFilletRadius) {
 		this.outerFilletRadius = outerFilletRadius;
 	}
 

@@ -5,15 +5,29 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelSpaceBoundary1stLevel;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpaceBoundarySelect;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcPhysicalOrVirtualEnum;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcInternalOrExternalEnum;
 
 @Guid("002bda71-0a52-40b9-8ef9-82bc20f96bf3")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -26,6 +40,7 @@ public class IfcRelSpaceBoundary2ndLevel extends IfcRelSpaceBoundary1stLevel
 	private IfcRelSpaceBoundary2ndLevel correspondingBoundary;
 
 	@Description("Reference to the other space boundary of the pair of two space boundaries on either side of a space separating thermal boundary element.")
+	@InverseProperty(InverseProp = "CorrespondingBoundary", Range = "IfcRelSpaceBoundary2ndLevel")
 	@Guid("fa4aeb16-4d01-4f05-9f53-8d4ee0d707c5")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelSpaceBoundary2ndLevel")

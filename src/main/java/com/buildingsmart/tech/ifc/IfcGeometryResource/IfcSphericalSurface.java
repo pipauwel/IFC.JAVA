@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -22,24 +21,24 @@ public class IfcSphericalSurface extends IfcElementarySurface
 	@Required()
 	@Guid("1431b5ce-d37d-4e1d-bb29-b88763676b27")
 	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private IfcPositiveLengthMeasure radius;
+	private double radius; //IfcPositiveLengthMeasure
 
 
 	public IfcSphericalSurface()
 	{
 	}
 
-	public IfcSphericalSurface(IfcAxis2Placement3D position, IfcPositiveLengthMeasure radius)
+	public IfcSphericalSurface(IfcAxis2Placement3D position, double radius)
 	{
 		super(position);
 		this.radius = radius;
 	}
 
-	public IfcPositiveLengthMeasure getRadius() {
+	public double getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(IfcPositiveLengthMeasure radius) {
+	public void setRadius(double radius) {
 		this.radius = radius;
 	}
 

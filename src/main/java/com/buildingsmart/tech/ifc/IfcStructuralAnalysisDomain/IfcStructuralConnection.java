@@ -5,22 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryCondition;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveConnection;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralPointConnection;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralSurfaceConnection;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralItem;
 
 @Guid("d4640db1-7b55-4f79-8ba6-05b016369801")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcStructuralCurveConnection.class, name = "IfcStructuralCurveConnection"), @JsonSubTypes.Type(value = IfcStructuralPointConnection.class, name = "IfcStructuralPointConnection"), @JsonSubTypes.Type(value = IfcStructuralSurfaceConnection.class, name = "IfcStructuralSurfaceConnection")})
 public abstract class IfcStructuralConnection extends IfcStructuralItem
 {
@@ -31,6 +42,7 @@ public abstract class IfcStructuralConnection extends IfcStructuralItem
 	private IfcBoundaryCondition appliedCondition;
 
 	@Description("References to the IfcRelConnectsStructuralMembers relationship by which structural members can be associated to structural connections.")
+	@InverseProperty(InverseProp = "RelatedStructuralConnection", Range = "IfcRelConnectsStructuralMember")
 	@Guid("e589142e-96a4-4236-be46-02d7d341f21b")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelConnectsStructuralMember")

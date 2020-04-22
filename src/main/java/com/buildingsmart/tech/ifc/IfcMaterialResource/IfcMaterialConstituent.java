@@ -5,11 +5,7 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure;
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -40,7 +36,7 @@ public class IfcMaterialConstituent extends IfcMaterialDefinition
 	@DataMember(Order = 3)
 	@Guid("c7db76e7-d83a-421c-a53d-714aef504ca3")
 	@JacksonXmlProperty(isAttribute=false, localName = "Fraction")
-	private IfcNormalisedRatioMeasure fraction;
+	private double fraction; //IfcNormalisedRatioMeasure
 
 	@Description("Category of the material constituent, e.g. the role it has in the constituent set it belongs to.")
 	@DataMember(Order = 4)
@@ -49,6 +45,7 @@ public class IfcMaterialConstituent extends IfcMaterialDefinition
 	private String category;
 
 	@Description("Material constituent set in which this material constituent is included.")
+	@InverseProperty(InverseProp = "MaterialConstituents", Range = "IfcMaterialConstituentSet")
 	@Guid("209ecc93-41cf-491d-b4e8-7e22cada303e")
 	@JacksonXmlProperty(isAttribute=false, localName = "ToMaterialConstituentSet")
 	private IfcMaterialConstituentSet toMaterialConstituentSet;
@@ -87,11 +84,11 @@ public class IfcMaterialConstituent extends IfcMaterialDefinition
 		this.material = material;
 	}
 
-	public IfcNormalisedRatioMeasure getFraction() {
+	public double getFraction() {
 		return this.fraction;
 	}
 
-	public void setFraction(IfcNormalisedRatioMeasure fraction) {
+	public void setFraction(double fraction) {
 		this.fraction = fraction;
 	}
 

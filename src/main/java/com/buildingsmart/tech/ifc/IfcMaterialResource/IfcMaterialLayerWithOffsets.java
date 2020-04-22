@@ -5,13 +5,7 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -42,7 +36,7 @@ public class IfcMaterialLayerWithOffsets extends IfcMaterialLayer
 	{
 	}
 
-	public IfcMaterialLayerWithOffsets(IfcNonNegativeLengthMeasure layerThickness, IfcLayerSetDirectionEnum offsetDirection, Double[] offsetValues)
+	public IfcMaterialLayerWithOffsets(double layerThickness, IfcLayerSetDirectionEnum offsetDirection, Double[] offsetValues)
 	{
 		super(layerThickness);
 		this.offsetDirection = offsetDirection;

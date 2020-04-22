@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -35,14 +34,14 @@ public class IfcCurveStyleFontAndScaling extends com.buildingsmart.tech.ifc.IfcP
 	@Required()
 	@Guid("4b64232e-b6ee-4e8f-b6e2-925e172f2dcf")
 	@JacksonXmlProperty(isAttribute=false, localName = "CurveFontScaling")
-	private IfcPositiveRatioMeasure curveFontScaling;
+	private double curveFontScaling; //IfcPositiveRatioMeasure
 
 
 	public IfcCurveStyleFontAndScaling()
 	{
 	}
 
-	public IfcCurveStyleFontAndScaling(IfcCurveStyleFontSelect curveFont, IfcPositiveRatioMeasure curveFontScaling)
+	public IfcCurveStyleFontAndScaling(IfcCurveStyleFontSelect curveFont, double curveFontScaling)
 	{
 		this.curveFont = curveFont;
 		this.curveFontScaling = curveFontScaling;
@@ -64,11 +63,11 @@ public class IfcCurveStyleFontAndScaling extends com.buildingsmart.tech.ifc.IfcP
 		this.curveFont = curveFont;
 	}
 
-	public IfcPositiveRatioMeasure getCurveFontScaling() {
+	public double getCurveFontScaling() {
 		return this.curveFontScaling;
 	}
 
-	public void setCurveFontScaling(IfcPositiveRatioMeasure curveFontScaling) {
+	public void setCurveFontScaling(double curveFontScaling) {
 		this.curveFontScaling = curveFontScaling;
 	}
 

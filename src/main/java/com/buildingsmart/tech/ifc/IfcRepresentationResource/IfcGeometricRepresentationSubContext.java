@@ -5,16 +5,29 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGeometricRepresentationContext;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGeometricProjectionEnum;
 
 @Guid("2e4bdfcf-4532-4cf3-b45f-4372edb5bfb3")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -31,7 +44,7 @@ public class IfcGeometricRepresentationSubContext extends IfcGeometricRepresenta
 	@DataMember(Order = 1)
 	@Guid("073455e4-1a2b-4354-9ff3-c1f32182a254")
 	@JacksonXmlProperty(isAttribute=false, localName = "TargetScale")
-	private IfcPositiveRatioMeasure targetScale;
+	private double targetScale; //IfcPositiveRatioMeasure
 
 	@Description("Target view of the representation to which this representation context applies.")
 	@DataMember(Order = 2)
@@ -66,11 +79,11 @@ public class IfcGeometricRepresentationSubContext extends IfcGeometricRepresenta
 		this.parentContext = parentContext;
 	}
 
-	public IfcPositiveRatioMeasure getTargetScale() {
+	public double getTargetScale() {
 		return this.targetScale;
 	}
 
-	public void setTargetScale(IfcPositiveRatioMeasure targetScale) {
+	public void setTargetScale(double targetScale) {
 		this.targetScale = targetScale;
 	}
 

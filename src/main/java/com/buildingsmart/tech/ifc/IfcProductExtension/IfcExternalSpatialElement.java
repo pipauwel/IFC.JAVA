@@ -5,14 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcExternalSpatialStructureElement;
 
 @Guid("0b5b1546-4045-4588-b4c0-6baa80c9ff8b")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -25,6 +36,7 @@ public class IfcExternalSpatialElement extends IfcExternalSpatialStructureElemen
 	private IfcExternalSpatialElementTypeEnum predefinedType;
 
 	@Description("Reference to a set of <em>IfcRelSpaceBoundary</em>'s that defines the physical or virtual delimitation of that external spacial element against physical or virtual boundaries.")
+	@InverseProperty(InverseProp = "RelatingSpace", Range = "IfcRelSpaceBoundary")
 	@Guid("d69bec85-7aa3-4a03-86d5-091130682ec1")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelSpaceBoundary")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "BoundedBy")

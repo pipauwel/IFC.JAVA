@@ -5,23 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcConstraintResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcActorResource.IfcActorSelect;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcConstraintResource.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcMetric;
+import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcObjective;
+import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcConstraintEnum;
 
 @Guid("d03dd5c6-bc93-4f7a-903f-d59e7c256d59")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcMetric.class, name = "IfcMetric"), @JsonSubTypes.Type(value = IfcObjective.class, name = "IfcObjective")})
 public abstract class IfcConstraint implements com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect
 {
@@ -70,12 +80,14 @@ public abstract class IfcConstraint implements com.buildingsmart.tech.ifc.IfcExt
 	private String userDefinedGrade;
 
 	@Description("Reference to an external references, e.g. library, classification, or document information, that are associated to the constraint.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "RelatedResourceObjects", Range = "IfcExternalReferenceRelationship")
 	@Guid("0acdd9d1-5a08-4e9a-ac1d-5bfdccf3d6d2")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcExternalReferenceRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasExternalReferences")
 	private Set<IfcExternalReferenceRelationship> hasExternalReferences;
 
 	@Description("Reference to the properties to which the constraint is applied.")
+	@InverseProperty(InverseProp = "RelatingConstraint", Range = "IfcResourceConstraintRelationship")
 	@Guid("ae15850d-b69e-467e-9807-7fcf73ab1bcb")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcResourceConstraintRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "PropertiesForConstraint")

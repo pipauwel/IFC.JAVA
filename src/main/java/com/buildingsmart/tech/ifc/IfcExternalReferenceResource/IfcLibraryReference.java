@@ -5,15 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociatesLibrary;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReference;
 
 @Guid("739c22f8-9791-4f05-b25d-70ddc3ed443f")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,6 +49,7 @@ public class IfcLibraryReference extends IfcExternalReference implements IfcLibr
 	private IfcLibraryInformation referencedLibrary;
 
 	@Description("The library reference with which objects are associated.  <blockquote class=\"change-ifc2x4\">    IFC4 CHANGE&nbsp; New inverse attribute.  </blockquote>")
+	@InverseProperty(InverseProp = "RelatingLibrary", Range = "IfcRelAssociatesLibrary")
 	@Guid("369a8e6b-21f9-42f6-82fc-0feec6c5a0fe")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssociatesLibrary")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "LibraryRefForObjects")

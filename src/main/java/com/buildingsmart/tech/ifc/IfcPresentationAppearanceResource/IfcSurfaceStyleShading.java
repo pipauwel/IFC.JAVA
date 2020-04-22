@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -17,7 +16,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("4d15ed6e-2d9b-4101-a12a-055e03cab045")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcSurfaceStyleRendering.class, name = "IfcSurfaceStyleRendering"))
 public class IfcSurfaceStyleShading extends com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem implements IfcSurfaceStyleElementSelect
 {
@@ -32,7 +31,7 @@ public class IfcSurfaceStyleShading extends com.buildingsmart.tech.ifc.IfcPresen
 	@DataMember(Order = 1)
 	@Guid("3ced60f5-17d8-4093-a16a-d36cdad0806d")
 	@JacksonXmlProperty(isAttribute=false, localName = "Transparency")
-	private IfcNormalisedRatioMeasure transparency;
+	private double transparency; //IfcNormalisedRatioMeasure
 
 
 	public IfcSurfaceStyleShading()
@@ -52,11 +51,11 @@ public class IfcSurfaceStyleShading extends com.buildingsmart.tech.ifc.IfcPresen
 		this.surfaceColour = surfaceColour;
 	}
 
-	public IfcNormalisedRatioMeasure getTransparency() {
+	public double getTransparency() {
 		return this.transparency;
 	}
 
-	public void setTransparency(IfcNormalisedRatioMeasure transparency) {
+	public void setTransparency(double transparency) {
 		this.transparency = transparency;
 	}
 

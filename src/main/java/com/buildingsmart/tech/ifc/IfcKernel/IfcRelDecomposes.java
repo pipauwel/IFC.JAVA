@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("4ee02ebb-86ec-4872-a4ca-287681002e36")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcRelAggregates.class, name = "IfcRelAggregates"), @JsonSubTypes.Type(value = IfcRelNests.class, name = "IfcRelNests"), @JsonSubTypes.Type(value = IfcRelProjectsElement.class, name = "IfcRelProjectsElement"), @JsonSubTypes.Type(value = IfcRelVoidsElement.class, name = "IfcRelVoidsElement")})
 public abstract class IfcRelDecomposes extends IfcRelationship
 {

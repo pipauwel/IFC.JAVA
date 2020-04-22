@@ -5,23 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.annotations.*;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcVector;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.*;
 
 @Guid("94e16249-95c6-4654-92c9-5cfac4e1e234")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -51,14 +41,14 @@ public class IfcFillAreaStyleTiles extends com.buildingsmart.tech.ifc.IfcGeometr
 	@Required()
 	@Guid("0200d8ed-49fd-4670-a213-284158f9200d")
 	@JacksonXmlProperty(isAttribute=false, localName = "TilingScale")
-	private IfcPositiveRatioMeasure tilingScale;
+	private double tilingScale; //IfcPositiveRatioMeasure
 
 
 	public IfcFillAreaStyleTiles()
 	{
 	}
 
-	public IfcFillAreaStyleTiles(IfcVector[] tilingPattern, IfcStyledItem[] tiles, IfcPositiveRatioMeasure tilingScale)
+	public IfcFillAreaStyleTiles(IfcVector[] tilingPattern, IfcStyledItem[] tiles, double tilingScale)
 	{
 		this.tilingPattern = new ArrayList<>(Arrays.asList(tilingPattern));
 		this.tiles = new HashSet<>(Arrays.asList(tiles));
@@ -73,11 +63,11 @@ public class IfcFillAreaStyleTiles extends com.buildingsmart.tech.ifc.IfcGeometr
 		return this.tiles;
 	}
 
-	public IfcPositiveRatioMeasure getTilingScale() {
+	public double getTilingScale() {
 		return this.tilingScale;
 	}
 
-	public void setTilingScale(IfcPositiveRatioMeasure tilingScale) {
+	public void setTilingScale(double tilingScale) {
 		this.tilingScale = tilingScale;
 	}
 

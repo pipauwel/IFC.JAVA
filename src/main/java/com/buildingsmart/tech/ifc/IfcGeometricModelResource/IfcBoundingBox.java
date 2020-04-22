@@ -10,7 +10,6 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -30,28 +29,28 @@ public class IfcBoundingBox extends com.buildingsmart.tech.ifc.IfcGeometryResour
 	@Required()
 	@Guid("ac286f3a-4c71-42ad-bca4-e89e98d10b7e")
 	@JacksonXmlProperty(isAttribute=false, localName = "XDim")
-	private IfcPositiveLengthMeasure xDim;
+	private double xDim; //IfcPositiveLengthMeasure
 
 	@Description("Width attribute (measured along the edge parallel to the Y Axis)")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("941f838c-8426-4b28-a96a-ea74f02966e4")
 	@JacksonXmlProperty(isAttribute=false, localName = "YDim")
-	private IfcPositiveLengthMeasure yDim;
+	private double yDim; //IfcPositiveLengthMeasure
 
 	@Description("Height attribute (measured along the edge parallel to the Z Axis).")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("2a330725-d6a9-4a8d-b1db-a105d8b900d5")
 	@JacksonXmlProperty(isAttribute=false, localName = "ZDim")
-	private IfcPositiveLengthMeasure zDim;
+	private double zDim; //IfcPositiveLengthMeasure
 
 
 	public IfcBoundingBox()
 	{
 	}
 
-	public IfcBoundingBox(IfcCartesianPoint corner, IfcPositiveLengthMeasure xDim, IfcPositiveLengthMeasure yDim, IfcPositiveLengthMeasure zDim)
+	public IfcBoundingBox(IfcCartesianPoint corner, double xDim, double yDim, double zDim)
 	{
 		this.corner = corner;
 		this.xDim = xDim;
@@ -67,27 +66,27 @@ public class IfcBoundingBox extends com.buildingsmart.tech.ifc.IfcGeometryResour
 		this.corner = corner;
 	}
 
-	public IfcPositiveLengthMeasure getXDim() {
+	public double getXDim() {
 		return this.xDim;
 	}
 
-	public void setXDim(IfcPositiveLengthMeasure xDim) {
+	public void setXDim(double xDim) {
 		this.xDim = xDim;
 	}
 
-	public IfcPositiveLengthMeasure getYDim() {
+	public double getYDim() {
 		return this.yDim;
 	}
 
-	public void setYDim(IfcPositiveLengthMeasure yDim) {
+	public void setYDim(double yDim) {
 		this.yDim = yDim;
 	}
 
-	public IfcPositiveLengthMeasure getZDim() {
+	public double getZDim() {
 		return this.zDim;
 	}
 
-	public void setZDim(IfcPositiveLengthMeasure zDim) {
+	public void setZDim(double zDim) {
 		this.zDim = zDim;
 	}
 

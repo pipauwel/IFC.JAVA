@@ -8,7 +8,6 @@ package com.buildingsmart.tech.ifc.IfcSharedComponentElements;
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -20,13 +19,13 @@ public class IfcMechanicalFastener extends IfcElementComponent
 	@DataMember(Order = 0)
 	@Guid("58964986-572b-460b-8156-7b3fb1391575")
 	@JacksonXmlProperty(isAttribute=false, localName = "NominalDiameter")
-	private IfcPositiveLengthMeasure nominalDiameter;
+	private double nominalDiameter; //IfcPositiveLengthMeasure
 
 	@Description("The nominal length describing the longitudinal dimensions of the fastener type.    <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; Deprecated; the respective attribute of <em>IfcMechanicalFastenerType</em> should be used instead.  </blockquote>")
 	@DataMember(Order = 1)
 	@Guid("c2376fb0-5048-42ec-849f-fab982f91c21")
 	@JacksonXmlProperty(isAttribute=false, localName = "NominalLength")
-	private IfcPositiveLengthMeasure nominalLength;
+	private double nominalLength; //IfcPositiveLengthMeasure
 
 	@Description("Subtype of mechanical fastener")
 	@DataMember(Order = 2)
@@ -44,19 +43,19 @@ public class IfcMechanicalFastener extends IfcElementComponent
 		super(globalId);
 	}
 
-	public IfcPositiveLengthMeasure getNominalDiameter() {
+	public double getNominalDiameter() {
 		return this.nominalDiameter;
 	}
 
-	public void setNominalDiameter(IfcPositiveLengthMeasure nominalDiameter) {
+	public void setNominalDiameter(double nominalDiameter) {
 		this.nominalDiameter = nominalDiameter;
 	}
 
-	public IfcPositiveLengthMeasure getNominalLength() {
+	public double getNominalLength() {
 		return this.nominalLength;
 	}
 
-	public void setNominalLength(IfcPositiveLengthMeasure nominalLength) {
+	public void setNominalLength(double nominalLength) {
 		this.nominalLength = nominalLength;
 	}
 

@@ -10,7 +10,6 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -23,40 +22,40 @@ public class IfcRightCircularCylinder extends IfcCsgPrimitive3D
 	@Required()
 	@Guid("dcf9b582-ff9a-4dd7-8ea9-1ba2cbdc8c7b")
 	@JacksonXmlProperty(isAttribute=false, localName = "Height")
-	private IfcPositiveLengthMeasure height;
+	private double height; //IfcPositiveLengthMeasure
 
 	@Description("The radius of the cylinder.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("fccf868b-e746-42cf-86cb-78c653cf2949")
 	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private IfcPositiveLengthMeasure radius;
+	private double radius; //IfcPositiveLengthMeasure
 
 
 	public IfcRightCircularCylinder()
 	{
 	}
 
-	public IfcRightCircularCylinder(IfcAxis2Placement3D position, IfcPositiveLengthMeasure height, IfcPositiveLengthMeasure radius)
+	public IfcRightCircularCylinder(IfcAxis2Placement3D position, double height, double radius)
 	{
 		super(position);
 		this.height = height;
 		this.radius = radius;
 	}
 
-	public IfcPositiveLengthMeasure getHeight() {
+	public double getHeight() {
 		return this.height;
 	}
 
-	public void setHeight(IfcPositiveLengthMeasure height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 
-	public IfcPositiveLengthMeasure getRadius() {
+	public double getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(IfcPositiveLengthMeasure radius) {
+	public void setRadius(double radius) {
 		this.radius = radius;
 	}
 

@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("a8304da6-feeb-4df7-b790-40123a5f0a85")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcDuctSilencerType.class, name = "IfcDuctSilencerType"), @JsonSubTypes.Type(value = IfcFilterType.class, name = "IfcFilterType"), @JsonSubTypes.Type(value = IfcInterceptorType.class, name = "IfcInterceptorType")})
 public abstract class IfcFlowTreatmentDeviceType extends IfcDistributionFlowElementType
 {

@@ -5,17 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcApprovalResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcActorResource.IfcActorSelect;
-import com.buildingsmart.tech.ifc.IfcControlExtension.IfcRelAssociatesApproval;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcControlExtension.*;
+import com.buildingsmart.tech.ifc.IfcApprovalResource.*;
 
 @Guid("76476d02-0061-4539-81cf-c606a2acbe13")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -76,30 +86,35 @@ public class IfcApproval implements com.buildingsmart.tech.ifc.IfcExternalRefere
 	private IfcActorSelect givingApproval;
 
 	@Description("Reference to external references, e.g. library, classification, or document information, that are associated to the Approval.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse attribute.</blockquote>")
+	@InverseProperty(InverseProp = "RelatedResourceObjects", Range = "IfcExternalReferenceRelationship")
 	@Guid("8cd1b95c-03b1-4fbd-bb5e-86213dc0d6d2")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcExternalReferenceRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasExternalReferences")
 	private Set<IfcExternalReferenceRelationship> hasExternalReferences;
 
 	@Description("Reference to the <em>IfcRelAssociatesApproval</em> instances associating this approval to objects (subtypes of <em>IfcRoot</em>")
+	@InverseProperty(InverseProp = "RelatingApproval", Range = "IfcRelAssociatesApproval")
 	@Guid("1803bd98-5411-4c09-9660-d1c5beb99533")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssociatesApproval")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "ApprovedObjects")
 	private Set<IfcRelAssociatesApproval> approvedObjects;
 
 	@Description("The set of relationships by which resource objects that are are approved by this approval are known.")
+	@InverseProperty(InverseProp = "RelatingApproval", Range = "IfcResourceApprovalRelationship")
 	@Guid("7c6e96b1-7bc8-42fb-b828-eac53994c387")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcResourceApprovalRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "ApprovedResources")
 	private Set<IfcResourceApprovalRelationship> approvedResources;
 
 	@Description("The set of relationships by which this approval is related to others.")
+	@InverseProperty(InverseProp = "RelatedApprovals", Range = "IfcApprovalRelationship")
 	@Guid("cf2deea0-6ee1-4f94-a3f9-d149fa54d64e")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcApprovalRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsRelatedWith")
 	private Set<IfcApprovalRelationship> isRelatedWith;
 
 	@Description("The set of relationships by which other approvals are related to this one.")
+	@InverseProperty(InverseProp = "RelatingApproval", Range = "IfcApprovalRelationship")
 	@Guid("65d560d3-2883-4606-a81c-802b6c633550")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcApprovalRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "Relates")

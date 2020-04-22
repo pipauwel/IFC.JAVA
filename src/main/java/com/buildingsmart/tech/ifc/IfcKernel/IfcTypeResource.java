@@ -5,11 +5,10 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.Set;
-
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.InverseProperty;
 import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionResourceType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -17,9 +16,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
+import java.util.Set;
+
 @Guid("0fb1cf26-3a59-44f5-9a5e-adc7ac27e46a")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcConstructionResourceType.class, name = "IfcConstructionResourceType"))
 public abstract class IfcTypeResource extends IfcTypeObject implements IfcResourceSelect
 {
@@ -42,6 +43,7 @@ public abstract class IfcTypeResource extends IfcTypeObject implements IfcResour
 	private String resourceType;
 
 	@Description("Set of relationships to other objects, e.g. products, processes, controls, resources or actors to which this resource type is a resource.  <blockquote class=\"history\">HISTORY New inverse relationship in IFC4.</blockquote>")
+	@InverseProperty(InverseProp = "RelatingResource", Range = "IfcRelAssignsToResource")
 	@Guid("c8fa0b60-bb75-4c92-9360-ebbe138f9d20")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssignsToResource")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "ResourceOf")

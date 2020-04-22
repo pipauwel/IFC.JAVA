@@ -5,18 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
-import java.util.List;
-
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.buildingsmart.tech.annotations.*;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcReinforcingBarSurfaceEnum;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.List;
 
 @Guid("c46e7d75-e366-4cf2-839d-664d7f121513")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,7 +28,7 @@ public class IfcReinforcingBarType extends IfcReinforcingElementType
 	@DataMember(Order = 1)
 	@Guid("fde37eb2-b137-41aa-aed4-6316a725c799")
 	@JacksonXmlProperty(isAttribute=false, localName = "NominalDiameter")
-	private IfcPositiveLengthMeasure nominalDiameter;
+	private double nominalDiameter; //IfcPositiveLengthMeasure
 
 	@Description("The effective cross-section area of the reinforcing bar.")
 	@DataMember(Order = 2)
@@ -45,7 +40,7 @@ public class IfcReinforcingBarType extends IfcReinforcingElementType
 	@DataMember(Order = 3)
 	@Guid("daef2cc9-4032-40d9-96be-0106c845b10a")
 	@JacksonXmlProperty(isAttribute=false, localName = "BarLength")
-	private IfcPositiveLengthMeasure barLength;
+	private double barLength; //IfcPositiveLengthMeasure
 
 	@Description("Indicator for whether the bar surface is plain or textured.")
 	@DataMember(Order = 4)
@@ -86,11 +81,11 @@ public class IfcReinforcingBarType extends IfcReinforcingElementType
 		this.predefinedType = predefinedType;
 	}
 
-	public IfcPositiveLengthMeasure getNominalDiameter() {
+	public double getNominalDiameter() {
 		return this.nominalDiameter;
 	}
 
-	public void setNominalDiameter(IfcPositiveLengthMeasure nominalDiameter) {
+	public void setNominalDiameter(double nominalDiameter) {
 		this.nominalDiameter = nominalDiameter;
 	}
 
@@ -102,11 +97,11 @@ public class IfcReinforcingBarType extends IfcReinforcingElementType
 		this.crossSectionArea = crossSectionArea;
 	}
 
-	public IfcPositiveLengthMeasure getBarLength() {
+	public double getBarLength() {
 		return this.barLength;
 	}
 
-	public void setBarLength(IfcPositiveLengthMeasure barLength) {
+	public void setBarLength(double barLength) {
 		this.barLength = barLength;
 	}
 

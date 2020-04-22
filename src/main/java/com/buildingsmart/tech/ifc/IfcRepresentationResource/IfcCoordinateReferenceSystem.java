@@ -5,22 +5,29 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcProjectedCRS;
 
 @Guid("55d837bf-64b2-4c83-9324-044e57cbaa9f")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcProjectedCRS.class, name = "IfcProjectedCRS"))
 public abstract class IfcCoordinateReferenceSystem implements IfcCoordinateReferenceSystemSelect
 {
@@ -50,6 +57,7 @@ public abstract class IfcCoordinateReferenceSystem implements IfcCoordinateRefer
 	private String verticalDatum;
 
 	@Description("Indicates conversion between coordinate systems. In particular it refers to an <em>IfcCoordinateOperation</em> between this coordinate reference system, and another Geographic coordinate reference system.")
+	@InverseProperty(InverseProp = "SourceCRS", Range = "IfcCoordinateOperation")
 	@Guid("83795333-6df7-46ac-b61e-5101640f8615")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcCoordinateOperation")

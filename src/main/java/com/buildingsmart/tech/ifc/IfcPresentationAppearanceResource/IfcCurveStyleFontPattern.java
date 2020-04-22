@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -29,14 +28,14 @@ public class IfcCurveStyleFontPattern extends com.buildingsmart.tech.ifc.IfcPres
 	@Required()
 	@Guid("317e8bab-7743-45d9-bda6-e034d1b74450")
 	@JacksonXmlProperty(isAttribute=false, localName = "InvisibleSegmentLength")
-	private IfcPositiveLengthMeasure invisibleSegmentLength;
+	private double invisibleSegmentLength; //IfcPositiveLengthMeasure
 
 
 	public IfcCurveStyleFontPattern()
 	{
 	}
 
-	public IfcCurveStyleFontPattern(double visibleSegmentLength, IfcPositiveLengthMeasure invisibleSegmentLength)
+	public IfcCurveStyleFontPattern(double visibleSegmentLength, double invisibleSegmentLength)
 	{
 		this.visibleSegmentLength = visibleSegmentLength;
 		this.invisibleSegmentLength = invisibleSegmentLength;
@@ -50,11 +49,11 @@ public class IfcCurveStyleFontPattern extends com.buildingsmart.tech.ifc.IfcPres
 		this.visibleSegmentLength = visibleSegmentLength;
 	}
 
-	public IfcPositiveLengthMeasure getInvisibleSegmentLength() {
+	public double getInvisibleSegmentLength() {
 		return this.invisibleSegmentLength;
 	}
 
-	public void setInvisibleSegmentLength(IfcPositiveLengthMeasure invisibleSegmentLength) {
+	public void setInvisibleSegmentLength(double invisibleSegmentLength) {
 		this.invisibleSegmentLength = invisibleSegmentLength;
 	}
 

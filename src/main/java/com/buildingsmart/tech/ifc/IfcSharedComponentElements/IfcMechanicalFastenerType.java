@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -28,13 +27,13 @@ public class IfcMechanicalFastenerType extends IfcElementComponentType
 	@DataMember(Order = 1)
 	@Guid("2c61fce1-089c-434e-9f28-2ec15723443b")
 	@JacksonXmlProperty(isAttribute=false, localName = "NominalDiameter")
-	private IfcPositiveLengthMeasure nominalDiameter;
+	private double nominalDiameter; //IfcPositiveLengthMeasure
 
 	@Description("The nominal length describing the longitudinal dimensions of the fastener type.")
 	@DataMember(Order = 2)
 	@Guid("287c53f4-0878-4cca-97a0-b8b5fcba97f2")
 	@JacksonXmlProperty(isAttribute=false, localName = "NominalLength")
-	private IfcPositiveLengthMeasure nominalLength;
+	private double nominalLength; //IfcPositiveLengthMeasure
 
 
 	public IfcMechanicalFastenerType()
@@ -55,19 +54,19 @@ public class IfcMechanicalFastenerType extends IfcElementComponentType
 		this.predefinedType = predefinedType;
 	}
 
-	public IfcPositiveLengthMeasure getNominalDiameter() {
+	public double getNominalDiameter() {
 		return this.nominalDiameter;
 	}
 
-	public void setNominalDiameter(IfcPositiveLengthMeasure nominalDiameter) {
+	public void setNominalDiameter(double nominalDiameter) {
 		this.nominalDiameter = nominalDiameter;
 	}
 
-	public IfcPositiveLengthMeasure getNominalLength() {
+	public double getNominalLength() {
 		return this.nominalLength;
 	}
 
-	public void setNominalLength(IfcPositiveLengthMeasure nominalLength) {
+	public void setNominalLength(double nominalLength) {
 		this.nominalLength = nominalLength;
 	}
 

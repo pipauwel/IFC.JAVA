@@ -5,18 +5,31 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedColour;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedCurveFont;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedTextFont;
+import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem;
 
 @Guid("24f52902-4123-41ea-bdd0-f47e6ab00191")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcPreDefinedColour.class, name = "IfcPreDefinedColour"), @JsonSubTypes.Type(value = IfcPreDefinedCurveFont.class, name = "IfcPreDefinedCurveFont"), @JsonSubTypes.Type(value = IfcPreDefinedTextFont.class, name = "IfcPreDefinedTextFont")})
 public abstract class IfcPreDefinedItem extends com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem
 {

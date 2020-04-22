@@ -5,22 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralLoadCase;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcGroup;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcLoadGroupTypeEnum;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcActionTypeEnum;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcActionSourceTypeEnum;
 
 @Guid("eda81530-0687-4842-bde0-d6567c6ba98b")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcStructuralLoadCase.class, name = "IfcStructuralLoadCase"))
 public class IfcStructuralLoadGroup extends com.buildingsmart.tech.ifc.IfcKernel.IfcGroup
 {
@@ -58,6 +69,7 @@ public class IfcStructuralLoadGroup extends com.buildingsmart.tech.ifc.IfcKernel
 	private String purpose;
 
 	@Description("Results which were computed using this load group.")
+	@InverseProperty(InverseProp = "ResultForLoadGroup", Range = "IfcStructuralResultGroup")
 	@Guid("cc5325c9-4d29-44d1-b97c-63725962202d")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcStructuralResultGroup")
@@ -65,6 +77,7 @@ public class IfcStructuralLoadGroup extends com.buildingsmart.tech.ifc.IfcKernel
 	private Set<IfcStructuralResultGroup> sourceOfResultGroup;
 
 	@Description("Analysis models in which this load group is used.")
+	@InverseProperty(InverseProp = "LoadedBy", Range = "IfcStructuralAnalysisModel")
 	@Guid("4da738a4-3225-4f05-895a-6c91c1c53f79")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcStructuralAnalysisModel")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "LoadGroupFor")

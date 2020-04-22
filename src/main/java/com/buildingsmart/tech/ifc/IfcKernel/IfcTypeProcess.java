@@ -5,23 +5,32 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
 import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcEventType;
 import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcProcedureType;
 import com.buildingsmart.tech.ifc.IfcProcessExtension.IfcTaskType;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeObject;
 
 @Guid("638492f3-23b3-4ca5-a78e-9370f5343f65")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcEventType.class, name = "IfcEventType"), @JsonSubTypes.Type(value = IfcProcedureType.class, name = "IfcProcedureType"), @JsonSubTypes.Type(value = IfcTaskType.class, name = "IfcTaskType")})
 public abstract class IfcTypeProcess extends IfcTypeObject implements IfcProcessSelect
 {
@@ -44,6 +53,7 @@ public abstract class IfcTypeProcess extends IfcTypeObject implements IfcProcess
 	private String processType;
 
 	@Description("Set of relationships to other objects, e.g. products, processes, controls, resources or actors that are operated on by the process type.  <blockquote class=\"history\">HISTORY  New inverse relationship in IFC4.</blockquote>")
+	@InverseProperty(InverseProp = "RelatingProcess", Range = "IfcRelAssignsToProcess")
 	@Guid("1d7bcb8a-6c9f-4994-a414-1ddc9c2c6863")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssignsToProcess")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "OperatesOn")

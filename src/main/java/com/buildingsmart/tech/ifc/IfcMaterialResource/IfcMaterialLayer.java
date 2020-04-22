@@ -5,11 +5,7 @@
 
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -17,7 +13,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("1550d694-6c4a-46c4-9661-12b1956f035d")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcMaterialLayerWithOffsets.class, name = "IfcMaterialLayerWithOffsets"))
 public class IfcMaterialLayer extends IfcMaterialDefinition
 {
@@ -32,7 +28,7 @@ public class IfcMaterialLayer extends IfcMaterialDefinition
 	@Required()
 	@Guid("37ff71f7-f0fc-487e-b121-8627e1c4e98a")
 	@JacksonXmlProperty(isAttribute=false, localName = "LayerThickness")
-	private IfcNonNegativeLengthMeasure layerThickness;
+	private double layerThickness; //IfcNonNegativeLengthMeasure
 
 	@Description("Indication of whether the material layer represents an air layer (or cavity).   <ul>    <li class=\"small\">set to TRUE if the material layer is an air gap and provides air exchange from the layer to the outside air.</li>    <li class=\"small\">set to UNKNOWN if the material layer is an air gap and does not provide air exchange (or when this information about air exchange of the air gap is not available).</li>    <li class=\"small\">set to FALSE if the material layer is a solid material layer (the default).</li>   </ul>")
 	@DataMember(Order = 2)
@@ -65,6 +61,7 @@ public class IfcMaterialLayer extends IfcMaterialDefinition
 	private int priority;
 
 	@Description("Reference to the <em>IfcMaterialLayerSet</em> in which the material layer is included.")
+	@InverseProperty(InverseProp = "MaterialLayers", Range = "IfcMaterialLayerSet")
 	@Guid("f2c9c962-d35f-4ea5-b566-2dba24893f5a")
 	@JacksonXmlProperty(isAttribute=false, localName = "ToMaterialLayerSet")
 	private IfcMaterialLayerSet toMaterialLayerSet;
@@ -74,7 +71,7 @@ public class IfcMaterialLayer extends IfcMaterialDefinition
 	{
 	}
 
-	public IfcMaterialLayer(IfcNonNegativeLengthMeasure layerThickness)
+	public IfcMaterialLayer(double layerThickness)
 	{
 		this.layerThickness = layerThickness;
 	}
@@ -87,11 +84,11 @@ public class IfcMaterialLayer extends IfcMaterialDefinition
 		this.material = material;
 	}
 
-	public IfcNonNegativeLengthMeasure getLayerThickness() {
+	public double getLayerThickness() {
 		return this.layerThickness;
 	}
 
-	public void setLayerThickness(IfcNonNegativeLengthMeasure layerThickness) {
+	public void setLayerThickness(double layerThickness) {
 		this.layerThickness = layerThickness;
 	}
 

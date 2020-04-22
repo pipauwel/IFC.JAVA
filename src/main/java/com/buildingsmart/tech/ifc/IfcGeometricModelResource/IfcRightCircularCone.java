@@ -10,7 +10,6 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -23,40 +22,40 @@ public class IfcRightCircularCone extends IfcCsgPrimitive3D
 	@Required()
 	@Guid("a0b36efe-1934-4e3b-80dd-4b67e80b840f")
 	@JacksonXmlProperty(isAttribute=false, localName = "Height")
-	private IfcPositiveLengthMeasure height;
+	private double height; //IfcPositiveLengthMeasure
 
 	@Description("The radius of the cone at the base.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("96023c2d-7a04-412b-9320-9a31d8e31a05")
 	@JacksonXmlProperty(isAttribute=false, localName = "BottomRadius")
-	private IfcPositiveLengthMeasure bottomRadius;
+	private double bottomRadius; //IfcPositiveLengthMeasure
 
 
 	public IfcRightCircularCone()
 	{
 	}
 
-	public IfcRightCircularCone(IfcAxis2Placement3D position, IfcPositiveLengthMeasure height, IfcPositiveLengthMeasure bottomRadius)
+	public IfcRightCircularCone(IfcAxis2Placement3D position, double height, double bottomRadius)
 	{
 		super(position);
 		this.height = height;
 		this.bottomRadius = bottomRadius;
 	}
 
-	public IfcPositiveLengthMeasure getHeight() {
+	public double getHeight() {
 		return this.height;
 	}
 
-	public void setHeight(IfcPositiveLengthMeasure height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 
-	public IfcPositiveLengthMeasure getBottomRadius() {
+	public double getBottomRadius() {
 		return this.bottomRadius;
 	}
 
-	public void setBottomRadius(IfcPositiveLengthMeasure bottomRadius) {
+	public void setBottomRadius(double bottomRadius) {
 		this.bottomRadius = bottomRadius;
 	}
 

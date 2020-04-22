@@ -5,17 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.List;
-
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.MinLength;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedFaceSet;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.List;
 
 @Guid("2749b740-94fa-4cfa-ba95-c6f30ee8024d")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -27,7 +26,7 @@ public class IfcIndexedTriangleTextureMap extends IfcIndexedTextureMap
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "TexCoordIndex")
-	private List<IfcPositiveInteger> texCoordIndex;
+	private List<Double> texCoordIndex; //IfcPositiveInteger
 
 
 	public IfcIndexedTriangleTextureMap()
@@ -39,7 +38,7 @@ public class IfcIndexedTriangleTextureMap extends IfcIndexedTextureMap
 		super(maps, mappedTo, texCoords);
 	}
 
-	public List<IfcPositiveInteger> getTexCoordIndex() {
+	public List<Double> getTexCoordIndex() {
 		return this.texCoordIndex;
 	}
 

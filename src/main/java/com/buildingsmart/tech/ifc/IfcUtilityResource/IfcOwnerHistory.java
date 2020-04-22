@@ -5,18 +5,29 @@
 
 package com.buildingsmart.tech.ifc.IfcUtilityResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcActorResource.IfcPersonAndOrganization;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.*;
+
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcUtilityResource.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcPersonAndOrganization;
+import com.buildingsmart.tech.ifc.IfcUtilityResource.IfcApplication;
 
 @Guid("6ef8f949-8689-4582-bbae-9259e7c2d559")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "id")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcOwnerHistory
 {
+	@Description("Internal ID")
+	@Required()
+	@JacksonXmlProperty(isAttribute=false, localName = "Id")
+	private UUID id;
+
 	@Description("Direct reference to the end user who currently \"owns\" this object. Note that IFC includes the concept of ownership transfer from one user to another and therefore distinguishes between the Owning User and Creating User.")
 	@DataMember(Order = 0)
 	@Required()
@@ -71,13 +82,23 @@ public class IfcOwnerHistory
 
 	public IfcOwnerHistory()
 	{
+		this.id = UUID.randomUUID();
 	}
 
 	public IfcOwnerHistory(IfcPersonAndOrganization owningUser, IfcApplication owningApplication, int creationDate)
 	{
+		this();
 		this.owningUser = owningUser;
 		this.owningApplication = owningApplication;
 		this.creationDate = creationDate;
+	}
+
+	public UUID getId() {
+		return this.id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 	public IfcPersonAndOrganization getOwningUser() {

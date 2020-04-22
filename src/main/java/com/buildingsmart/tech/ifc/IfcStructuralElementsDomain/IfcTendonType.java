@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -28,7 +27,7 @@ public class IfcTendonType extends IfcReinforcingElementType
 	@DataMember(Order = 1)
 	@Guid("e68ea63d-b611-4993-ac7c-486784151c1e")
 	@JacksonXmlProperty(isAttribute=false, localName = "NominalDiameter")
-	private IfcPositiveLengthMeasure nominalDiameter;
+	private double nominalDiameter; //IfcPositiveLengthMeasure
 
 	@Description("The effective cross-section area of the prestressed part of the tendon.")
 	@DataMember(Order = 2)
@@ -40,7 +39,7 @@ public class IfcTendonType extends IfcReinforcingElementType
 	@DataMember(Order = 3)
 	@Guid("558f7ecf-0e60-4557-abf4-3eb909d17bc2")
 	@JacksonXmlProperty(isAttribute=false, localName = "SheathDiameter")
-	private IfcPositiveLengthMeasure sheathDiameter;
+	private double sheathDiameter; //IfcPositiveLengthMeasure
 
 
 	public IfcTendonType()
@@ -61,11 +60,11 @@ public class IfcTendonType extends IfcReinforcingElementType
 		this.predefinedType = predefinedType;
 	}
 
-	public IfcPositiveLengthMeasure getNominalDiameter() {
+	public double getNominalDiameter() {
 		return this.nominalDiameter;
 	}
 
-	public void setNominalDiameter(IfcPositiveLengthMeasure nominalDiameter) {
+	public void setNominalDiameter(double nominalDiameter) {
 		this.nominalDiameter = nominalDiameter;
 	}
 
@@ -77,11 +76,11 @@ public class IfcTendonType extends IfcReinforcingElementType
 		this.crossSectionArea = crossSectionArea;
 	}
 
-	public IfcPositiveLengthMeasure getSheathDiameter() {
+	public double getSheathDiameter() {
 		return this.sheathDiameter;
 	}
 
-	public void setSheathDiameter(IfcPositiveLengthMeasure sheathDiameter) {
+	public void setSheathDiameter(double sheathDiameter) {
 		this.sheathDiameter = sheathDiameter;
 	}
 

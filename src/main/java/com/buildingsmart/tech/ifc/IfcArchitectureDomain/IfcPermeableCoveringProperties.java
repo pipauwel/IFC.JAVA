@@ -9,7 +9,6 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -36,13 +35,13 @@ public class IfcPermeableCoveringProperties extends com.buildingsmart.tech.ifc.I
 	@DataMember(Order = 2)
 	@Guid("5c7ce082-5be9-41a8-8db7-aebe3981c7f7")
 	@JacksonXmlProperty(isAttribute=false, localName = "FrameDepth")
-	private IfcPositiveLengthMeasure frameDepth;
+	private double frameDepth; //IfcPositiveLengthMeasure
 
 	@Description("Width of panel frame (used to include the permeable covering), measured from inside of panel (at permeable covering) to outside of panel (at lining), i.e. parallel to the window or door (elevation) plane.")
 	@DataMember(Order = 3)
 	@Guid("007a1b22-400e-417c-bd21-04defdf8d6a2")
 	@JacksonXmlProperty(isAttribute=false, localName = "FrameThickness")
-	private IfcPositiveLengthMeasure frameThickness;
+	private double frameThickness; //IfcPositiveLengthMeasure
 
 	@Description("Optional link to a shape aspect definition, which points to the part of the geometric representation of the window style, which is used to represent the permeable covering.")
 	@DataMember(Order = 4)
@@ -78,19 +77,19 @@ public class IfcPermeableCoveringProperties extends com.buildingsmart.tech.ifc.I
 		this.panelPosition = panelPosition;
 	}
 
-	public IfcPositiveLengthMeasure getFrameDepth() {
+	public double getFrameDepth() {
 		return this.frameDepth;
 	}
 
-	public void setFrameDepth(IfcPositiveLengthMeasure frameDepth) {
+	public void setFrameDepth(double frameDepth) {
 		this.frameDepth = frameDepth;
 	}
 
-	public IfcPositiveLengthMeasure getFrameThickness() {
+	public double getFrameThickness() {
 		return this.frameThickness;
 	}
 
-	public void setFrameThickness(IfcPositiveLengthMeasure frameThickness) {
+	public void setFrameThickness(double frameThickness) {
 		this.frameThickness = frameThickness;
 	}
 

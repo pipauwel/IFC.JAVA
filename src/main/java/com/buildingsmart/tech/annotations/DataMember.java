@@ -12,6 +12,6 @@ import java.lang.annotation.Target;
 @Target({ FIELD, LOCAL_VARIABLE })
 public @interface DataMember {
 
-	int Order();
+	public int Order();
 
 }

@@ -5,16 +5,24 @@
 
 package com.buildingsmart.tech.ifc.IfcActorResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
 
 @Guid("444c7a43-9f92-48d5-9ff4-acdf38ead916")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -79,9 +87,11 @@ public class IfcPerson implements IfcActorSelect, com.buildingsmart.tech.ifc.Ifc
 	private List<IfcAddress> addresses;
 
 	@Description("The inverse relationship to IfcPersonAndOrganization relationships in which IfcPerson is engaged.")
+	@InverseProperty(InverseProp = "ThePerson", Range = "IfcPersonAndOrganization")
 	@Guid("72fa7a66-38ba-470c-84d5-3f99391bf4a6")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPersonAndOrganization")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "EngagedIn")
+	@JsonIgnore
 	private Set<IfcPersonAndOrganization> engagedIn;
 
 

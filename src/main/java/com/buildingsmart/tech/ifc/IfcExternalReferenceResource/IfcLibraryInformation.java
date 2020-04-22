@@ -5,17 +5,27 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcActorResource.IfcActorSelect;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociatesLibrary;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalInformation;
 
 @Guid("614b2347-4e01-42a4-a914-c29116ce216a")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -59,12 +69,14 @@ public class IfcLibraryInformation extends IfcExternalInformation implements Ifc
 	private String description;
 
 	@Description("The library information with which objects are associated.  <blockquote class=\"change-ifc2x4\">    IFC4 CHANGE&nbsp; New inverse attribute.  </blockquote>")
+	@InverseProperty(InverseProp = "RelatingLibrary", Range = "IfcRelAssociatesLibrary")
 	@Guid("d76b6ef8-3769-4e4c-bc12-0fd6bb9f2c63")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssociatesLibrary")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "LibraryInfoForObjects")
 	private Set<IfcRelAssociatesLibrary> libraryInfoForObjects;
 
 	@Description("The library references to which the library information applies.")
+	@InverseProperty(InverseProp = "ReferencedLibrary", Range = "IfcLibraryReference")
 	@Guid("4ce4efbe-3cb1-47aa-9fdb-f566c62d4f8a")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcLibraryReference")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasLibraryReferences")

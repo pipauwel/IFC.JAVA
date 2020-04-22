@@ -5,15 +5,29 @@
 
 package com.buildingsmart.tech.ifc.IfcArchitectureDomain;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcArchitectureDomain.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcPreDefinedPropertySet;
+import com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelOperationEnum;
+import com.buildingsmart.tech.ifc.IfcArchitectureDomain.IfcDoorPanelPositionEnum;
 
 @Guid("9cba168e-4c79-497b-9481-9b26b7aa86d4")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -23,7 +37,7 @@ public class IfcDoorPanelProperties extends com.buildingsmart.tech.ifc.IfcKernel
 	@DataMember(Order = 0)
 	@Guid("60db7d64-ad51-4907-abb9-1e37b03e6ef5")
 	@JacksonXmlProperty(isAttribute=false, localName = "PanelDepth")
-	private IfcPositiveLengthMeasure panelDepth;
+	private double panelDepth; //IfcPositiveLengthMeasure
 
 	@Description("The <em>PanelOperation</em> defines the way of operation of that panel. The <em>PanelOperation</em> of the door panel has to correspond with the <em>OperationType</em> of the <em>IfcDoorStyle</em> by which it is referenced.")
 	@DataMember(Order = 1)
@@ -36,7 +50,7 @@ public class IfcDoorPanelProperties extends com.buildingsmart.tech.ifc.IfcKernel
 	@DataMember(Order = 2)
 	@Guid("5ac6ab35-7be7-4433-9f2a-95d15dfb9753")
 	@JacksonXmlProperty(isAttribute=false, localName = "PanelWidth")
-	private IfcNormalisedRatioMeasure panelWidth;
+	private double panelWidth; //IfcNormalisedRatioMeasure
 
 	@Description("Position of this panel within the door. The <em>PanelPosition</em> of the door panel has to correspond with the <em>OperationType</em> of the <em>IfcDoorStyle</em> by which it is referenced.")
 	@DataMember(Order = 3)
@@ -63,11 +77,11 @@ public class IfcDoorPanelProperties extends com.buildingsmart.tech.ifc.IfcKernel
 		this.panelPosition = panelPosition;
 	}
 
-	public IfcPositiveLengthMeasure getPanelDepth() {
+	public double getPanelDepth() {
 		return this.panelDepth;
 	}
 
-	public void setPanelDepth(IfcPositiveLengthMeasure panelDepth) {
+	public void setPanelDepth(double panelDepth) {
 		this.panelDepth = panelDepth;
 	}
 
@@ -79,11 +93,11 @@ public class IfcDoorPanelProperties extends com.buildingsmart.tech.ifc.IfcKernel
 		this.panelOperation = panelOperation;
 	}
 
-	public IfcNormalisedRatioMeasure getPanelWidth() {
+	public double getPanelWidth() {
 		return this.panelWidth;
 	}
 
-	public void setPanelWidth(IfcNormalisedRatioMeasure panelWidth) {
+	public void setPanelWidth(double panelWidth) {
 		this.panelWidth = panelWidth;
 	}
 

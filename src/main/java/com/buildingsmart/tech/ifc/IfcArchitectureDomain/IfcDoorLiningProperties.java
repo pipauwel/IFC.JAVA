@@ -8,8 +8,6 @@ package com.buildingsmart.tech.ifc.IfcArchitectureDomain;
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -22,31 +20,31 @@ public class IfcDoorLiningProperties extends com.buildingsmart.tech.ifc.IfcKerne
 	@DataMember(Order = 0)
 	@Guid("40c38c4f-81b1-4400-b64b-981586e14b6c")
 	@JacksonXmlProperty(isAttribute=false, localName = "LiningDepth")
-	private IfcPositiveLengthMeasure liningDepth;
+	private double liningDepth; //IfcPositiveLengthMeasure
 
 	@Description("Thickness of the door lining as explained in the figure above. If <em>LiningThickness</em> value is 0. (zero) it denotes a door without a lining (all other lining parameters shall be set to NIL in this case). If the <em>LiningThickness</em> is NIL it denotes that the value is not available.  <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; Data type modified to be <em>IfcNonNegativeLengthMeasure</em>.  </blockquote>")
 	@DataMember(Order = 1)
 	@Guid("53c5f2d9-ac1d-45b6-a1ce-12397e8ad5bf")
 	@JacksonXmlProperty(isAttribute=false, localName = "LiningThickness")
-	private IfcNonNegativeLengthMeasure liningThickness;
+	private double liningThickness; //IfcNonNegativeLengthMeasure
 
 	@Description("Depth (dimension in plane perpendicular to door leaf) of the door threshold. Only given if the door lining includes a threshold. If omitted (and with a given value to threshold thickness) it indicates an adjustable depth (i.e. a depth that adjusts to the thickness of the wall into which the occurrence of this door style is inserted).")
 	@DataMember(Order = 2)
 	@Guid("db0a7c60-4300-4d24-988d-0983bdfce5ce")
 	@JacksonXmlProperty(isAttribute=false, localName = "ThresholdDepth")
-	private IfcPositiveLengthMeasure thresholdDepth;
+	private double thresholdDepth; //IfcPositiveLengthMeasure
 
 	@Description("Thickness of the door threshold as explained in the figure above. If <em>ThresholdThickness</em> value is 0. (zero) it denotes a door without a threshold (<em>ThresholdDepth</em> shall be set to NIL in this case). If the <em>ThresholdThickness</em> is NIL it denotes that the information about a threshold is not available.  <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; Data type modified to be <em>IfcNonNegativeLengthMeasure</em>.  </blockquote>")
 	@DataMember(Order = 3)
 	@Guid("5361bc7f-6510-42a5-aebc-488f63e93876")
 	@JacksonXmlProperty(isAttribute=false, localName = "ThresholdThickness")
-	private IfcNonNegativeLengthMeasure thresholdThickness;
+	private double thresholdThickness; //IfcNonNegativeLengthMeasure
 
 	@Description("Thickness (width in plane parallel to door leaf) of the transom (if provided - that is, if the <em>TransomOffset</em> attribute is set), which divides the door leaf from a glazing (or window) above.  If the <em>TransomThickness</em> is set to zero (and the <em>TransomOffset</em> set to a positive length), then the door is divided vertically into a leaf and transom window area without a physical frame.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; Data type changed to <em>IfcNonNegativeLengthMeasure</em>.</blockquote>")
 	@DataMember(Order = 4)
 	@Guid("17b1f23a-20d2-439d-924c-049868c9df8d")
 	@JacksonXmlProperty(isAttribute=false, localName = "TransomThickness")
-	private IfcNonNegativeLengthMeasure transomThickness;
+	private double transomThickness; //IfcNonNegativeLengthMeasure
 
 	@Description("Offset of the transom (if given) which divides the door leaf from a glazing (or window) above. The offset is given from the bottom of the door opening.")
 	@DataMember(Order = 5)
@@ -70,13 +68,13 @@ public class IfcDoorLiningProperties extends com.buildingsmart.tech.ifc.IfcKerne
 	@DataMember(Order = 8)
 	@Guid("f35d56da-5b60-4e7e-92ca-34f4845b3e1e")
 	@JacksonXmlProperty(isAttribute=false, localName = "CasingThickness")
-	private IfcPositiveLengthMeasure casingThickness;
+	private double casingThickness; //IfcPositiveLengthMeasure
 
 	@Description("Depth of the casing (dimension in plane perpendicular to door leaf). If given it is applied equally to all four sides of the adjacent wall.")
 	@DataMember(Order = 9)
 	@Guid("a77d2518-2e6f-4a33-a7b0-e9c0c1475308")
 	@JacksonXmlProperty(isAttribute=false, localName = "CasingDepth")
-	private IfcPositiveLengthMeasure casingDepth;
+	private double casingDepth; //IfcPositiveLengthMeasure
 
 	@Description("Pointer to the shape aspect, if given. The shape aspect reflects the part of the door shape, which represents the door lining.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute is deprecated and shall no longer be used, i.e. the value shall be NIL ($).</blockquote>")
 	@DataMember(Order = 10)
@@ -106,43 +104,43 @@ public class IfcDoorLiningProperties extends com.buildingsmart.tech.ifc.IfcKerne
 		super(globalId);
 	}
 
-	public IfcPositiveLengthMeasure getLiningDepth() {
+	public double getLiningDepth() {
 		return this.liningDepth;
 	}
 
-	public void setLiningDepth(IfcPositiveLengthMeasure liningDepth) {
+	public void setLiningDepth(double liningDepth) {
 		this.liningDepth = liningDepth;
 	}
 
-	public IfcNonNegativeLengthMeasure getLiningThickness() {
+	public double getLiningThickness() {
 		return this.liningThickness;
 	}
 
-	public void setLiningThickness(IfcNonNegativeLengthMeasure liningThickness) {
+	public void setLiningThickness(double liningThickness) {
 		this.liningThickness = liningThickness;
 	}
 
-	public IfcPositiveLengthMeasure getThresholdDepth() {
+	public double getThresholdDepth() {
 		return this.thresholdDepth;
 	}
 
-	public void setThresholdDepth(IfcPositiveLengthMeasure thresholdDepth) {
+	public void setThresholdDepth(double thresholdDepth) {
 		this.thresholdDepth = thresholdDepth;
 	}
 
-	public IfcNonNegativeLengthMeasure getThresholdThickness() {
+	public double getThresholdThickness() {
 		return this.thresholdThickness;
 	}
 
-	public void setThresholdThickness(IfcNonNegativeLengthMeasure thresholdThickness) {
+	public void setThresholdThickness(double thresholdThickness) {
 		this.thresholdThickness = thresholdThickness;
 	}
 
-	public IfcNonNegativeLengthMeasure getTransomThickness() {
+	public double getTransomThickness() {
 		return this.transomThickness;
 	}
 
-	public void setTransomThickness(IfcNonNegativeLengthMeasure transomThickness) {
+	public void setTransomThickness(double transomThickness) {
 		this.transomThickness = transomThickness;
 	}
 
@@ -170,19 +168,19 @@ public class IfcDoorLiningProperties extends com.buildingsmart.tech.ifc.IfcKerne
 		this.thresholdOffset = thresholdOffset;
 	}
 
-	public IfcPositiveLengthMeasure getCasingThickness() {
+	public double getCasingThickness() {
 		return this.casingThickness;
 	}
 
-	public void setCasingThickness(IfcPositiveLengthMeasure casingThickness) {
+	public void setCasingThickness(double casingThickness) {
 		this.casingThickness = casingThickness;
 	}
 
-	public IfcPositiveLengthMeasure getCasingDepth() {
+	public double getCasingDepth() {
 		return this.casingDepth;
 	}
 
-	public void setCasingDepth(IfcPositiveLengthMeasure casingDepth) {
+	public void setCasingDepth(double casingDepth) {
 		this.casingDepth = casingDepth;
 	}
 

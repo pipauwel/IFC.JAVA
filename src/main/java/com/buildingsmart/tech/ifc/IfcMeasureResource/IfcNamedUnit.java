@@ -5,18 +5,33 @@
 
 package com.buildingsmart.tech.ifc.IfcMeasureResource;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.Required;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcContextDependentUnit;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcConversionBasedUnit;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcSIUnit;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcDimensionalExponents;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnitEnum;
 
 @Guid("feff0f85-92ea-4f67-8748-661f27621758")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcContextDependentUnit.class, name = "IfcContextDependentUnit"), @JsonSubTypes.Type(value = IfcConversionBasedUnit.class, name = "IfcConversionBasedUnit"), @JsonSubTypes.Type(value = IfcSIUnit.class, name = "IfcSIUnit")})
 public abstract class IfcNamedUnit implements IfcUnit
 {
@@ -24,7 +39,7 @@ public abstract class IfcNamedUnit implements IfcUnit
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("55ff10f6-6fd1-45cd-a53c-2707349993cb")
-	@JacksonXmlProperty(isAttribute=false, localName = "Dimensions")
+	@JacksonXmlProperty(isAttribute=true, localName = "Dimensions")
 	private IfcDimensionalExponents dimensions;
 
 	@Description("The type of the unit.")

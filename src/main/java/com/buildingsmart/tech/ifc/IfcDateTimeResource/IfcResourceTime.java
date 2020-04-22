@@ -8,7 +8,6 @@ package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -26,7 +25,7 @@ public class IfcResourceTime extends IfcSchedulingTime
 	@DataMember(Order = 1)
 	@Guid("de98a5df-400e-4d81-917e-b5a94759d675")
 	@JacksonXmlProperty(isAttribute=false, localName = "ScheduleUsage")
-	private IfcPositiveRatioMeasure scheduleUsage;
+	private double scheduleUsage; //IfcPositiveRatioMeasure
 
 	@Description("Indicates the time when the resource is scheduled to start working.")
 	@DataMember(Order = 2)
@@ -74,7 +73,7 @@ public class IfcResourceTime extends IfcSchedulingTime
 	@DataMember(Order = 9)
 	@Guid("6a504f50-8aac-406c-9874-26733470043c")
 	@JacksonXmlProperty(isAttribute=false, localName = "ActualUsage")
-	private IfcPositiveRatioMeasure actualUsage;
+	private double actualUsage; //IfcPositiveRatioMeasure
 
 	@Description("Indicates the time when the resource actually started working.")
 	@DataMember(Order = 10)
@@ -97,13 +96,13 @@ public class IfcResourceTime extends IfcSchedulingTime
 	@DataMember(Order = 13)
 	@Guid("3f98d797-f920-4f52-9739-48be47b047e3")
 	@JacksonXmlProperty(isAttribute=false, localName = "RemainingUsage")
-	private IfcPositiveRatioMeasure remainingUsage;
+	private double remainingUsage; //IfcPositiveRatioMeasure
 
 	@Description("Indicates the percent completion of this resource.  If the resource is assigned to a task, then indicates completion of the task on behalf of the resource; if the resource is partitioned into sub-allocations, then indicates overall completion of sub-allocations.")
 	@DataMember(Order = 14)
 	@Guid("2a9a0478-4070-40f3-b8c8-736ceb9d9c9d")
 	@JacksonXmlProperty(isAttribute=false, localName = "Completion")
-	private IfcPositiveRatioMeasure completion;
+	private double completion; //IfcPositiveRatioMeasure
 
 
 	public IfcResourceTime()
@@ -118,11 +117,11 @@ public class IfcResourceTime extends IfcSchedulingTime
 		this.scheduleWork = scheduleWork;
 	}
 
-	public IfcPositiveRatioMeasure getScheduleUsage() {
+	public double getScheduleUsage() {
 		return this.scheduleUsage;
 	}
 
-	public void setScheduleUsage(IfcPositiveRatioMeasure scheduleUsage) {
+	public void setScheduleUsage(double scheduleUsage) {
 		this.scheduleUsage = scheduleUsage;
 	}
 
@@ -182,11 +181,11 @@ public class IfcResourceTime extends IfcSchedulingTime
 		this.actualWork = actualWork;
 	}
 
-	public IfcPositiveRatioMeasure getActualUsage() {
+	public double getActualUsage() {
 		return this.actualUsage;
 	}
 
-	public void setActualUsage(IfcPositiveRatioMeasure actualUsage) {
+	public void setActualUsage(double actualUsage) {
 		this.actualUsage = actualUsage;
 	}
 
@@ -214,19 +213,19 @@ public class IfcResourceTime extends IfcSchedulingTime
 		this.remainingWork = remainingWork;
 	}
 
-	public IfcPositiveRatioMeasure getRemainingUsage() {
+	public double getRemainingUsage() {
 		return this.remainingUsage;
 	}
 
-	public void setRemainingUsage(IfcPositiveRatioMeasure remainingUsage) {
+	public void setRemainingUsage(double remainingUsage) {
 		this.remainingUsage = remainingUsage;
 	}
 
-	public IfcPositiveRatioMeasure getCompletion() {
+	public double getCompletion() {
 		return this.completion;
 	}
 
-	public void setCompletion(IfcPositiveRatioMeasure completion) {
+	public void setCompletion(double completion) {
 		this.completion = completion;
 	}
 

@@ -56,10 +56,6 @@ public class IfcSIUnit extends IfcNamedUnit
 		this.name = name;
 	}
 
-	public IfcDimensionalExponents getDimensions() {
-		return null;
-	}
-
 
 }
 

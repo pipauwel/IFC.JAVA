@@ -5,15 +5,25 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingElement;
 
 @Guid("71cd9964-d26e-4857-81b8-de24c4651a85")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -26,6 +36,7 @@ public class IfcCovering extends com.buildingsmart.tech.ifc.IfcProductExtension.
 	private IfcCoveringTypeEnum predefinedType;
 
 	@Description("Reference to the objectified relationship that handles the relationship of the covering to the covered space.")
+	@InverseProperty(InverseProp = "RelatedCoverings", Range = "IfcRelCoversSpaces")
 	@Guid("84a19b72-c5f8-40f0-8380-e4989bb7d407")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelCoversSpaces")
@@ -33,6 +44,7 @@ public class IfcCovering extends com.buildingsmart.tech.ifc.IfcProductExtension.
 	private Set<IfcRelCoversSpaces> coversSpaces;
 
 	@Description("Reference to the objectified relationship that handles the relationship of the covering to the covered element.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  Renamed into <em>CoversElements</em> for consistency.  </blockquote>")
+	@InverseProperty(InverseProp = "RelatedCoverings", Range = "IfcRelCoversBldgElements")
 	@Guid("1e41a6ca-9e36-4047-a656-34a282811332")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelCoversBldgElements")

@@ -5,23 +5,34 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcClassificationReference;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcDocumentReference;
 import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcExternallyDefinedHatchStyle;
 import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcExternallyDefinedSurfaceStyle;
 import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcExternallyDefinedTextFont;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcLibraryReference;
 
 @Guid("89de2ef7-7bc1-4682-ac3b-f058ab404fad")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcClassificationReference.class, name = "IfcClassificationReference"), @JsonSubTypes.Type(value = IfcDocumentReference.class, name = "IfcDocumentReference"), @JsonSubTypes.Type(value = IfcExternallyDefinedHatchStyle.class, name = "IfcExternallyDefinedHatchStyle"), @JsonSubTypes.Type(value = IfcExternallyDefinedSurfaceStyle.class, name = "IfcExternallyDefinedSurfaceStyle"), @JsonSubTypes.Type(value = IfcExternallyDefinedTextFont.class, name = "IfcExternallyDefinedTextFont"), @JsonSubTypes.Type(value = IfcLibraryReference.class, name = "IfcLibraryReference")})
 public abstract class IfcExternalReference implements com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource.IfcLightDistributionDataSourceSelect, com.buildingsmart.tech.ifc.IfcPropertyResource.IfcObjectReferenceSelect, IfcResourceObjectSelect
 {
@@ -44,6 +55,7 @@ public abstract class IfcExternalReference implements com.buildingsmart.tech.ifc
 	private String name;
 
 	@Description("Reference to all associations between this external reference and objects within the <em>IfcResourceObjectSelect</em> that are tagged by the external reference.   <blockquote class=\"change-ifc2x4\">   IFC4 CHANGE&nbsp; New inverse attribute added with upward compatibility.<br>  </blockquote>")
+	@InverseProperty(InverseProp = "RelatingReference", Range = "IfcExternalReferenceRelationship")
 	@Guid("52adb1da-05bd-4f8b-bd47-3c140643a153")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcExternalReferenceRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "ExternalReferenceForResources")

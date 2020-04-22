@@ -7,22 +7,31 @@ package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MinLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcIndexedTextureMap;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureCoordinateGenerator;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureMap;
+import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceTexture;
 
 @Guid("bcd71dc5-c1c1-46c9-8dcf-2d9155a3edff")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcIndexedTextureMap.class, name = "IfcIndexedTextureMap"), @JsonSubTypes.Type(value = IfcTextureCoordinateGenerator.class, name = "IfcTextureCoordinateGenerator"), @JsonSubTypes.Type(value = IfcTextureMap.class, name = "IfcTextureMap")})
 public abstract class IfcTextureCoordinate extends com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem
 {

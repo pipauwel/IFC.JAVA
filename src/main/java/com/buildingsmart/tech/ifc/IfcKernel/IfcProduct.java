@@ -5,29 +5,39 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcObjectPlacement;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
+import com.buildingsmart.tech.ifc.IfcKernel.*;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcAnnotation;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcGrid;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcPort;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcProxy;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialElement;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcProductRepresentation;
 import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralActivity;
 import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralItem;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
 
 @Guid("ed1b8d59-300e-45f5-b8df-fd0e833a761e")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcAnnotation.class, name = "IfcAnnotation"), @JsonSubTypes.Type(value = IfcElement.class, name = "IfcElement"), @JsonSubTypes.Type(value = IfcGrid.class, name = "IfcGrid"), @JsonSubTypes.Type(value = IfcPort.class, name = "IfcPort"), @JsonSubTypes.Type(value = IfcProxy.class, name = "IfcProxy"), @JsonSubTypes.Type(value = IfcSpatialElement.class, name = "IfcSpatialElement"), @JsonSubTypes.Type(value = IfcStructuralActivity.class, name = "IfcStructuralActivity"), @JsonSubTypes.Type(value = IfcStructuralItem.class, name = "IfcStructuralItem")})
 public abstract class IfcProduct extends IfcObject implements IfcProductSelect
 {
@@ -44,6 +54,7 @@ public abstract class IfcProduct extends IfcObject implements IfcProductSelect
 	private IfcProductRepresentation representation;
 
 	@Description("Reference to the <em>IfcRelAssignsToProduct</em> relationship, by which other products, processes, controls, resources or actors (as subtypes of <em>IfcObjectDefinition</em>) can be related to this product.")
+	@InverseProperty(InverseProp = "RelatingProduct", Range = "IfcRelAssignsToProduct")
 	@Guid("4672f05f-d72b-42d4-880c-01367391c23f")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssignsToProduct")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "ReferencedBy")

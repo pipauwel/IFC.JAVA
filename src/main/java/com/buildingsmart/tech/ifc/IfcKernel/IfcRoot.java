@@ -10,14 +10,15 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcUtilityResource.IfcOwnerHistory;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import nl.tue.isbe.ifcspftools.GuidHandler;
 
 @Guid("f8efd3b8-d3ea-429a-95d6-d19264324999")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "globalId")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcObjectDefinition.class, name = "IfcObjectDefinition"), @JsonSubTypes.Type(value = IfcPropertyDefinition.class, name = "IfcPropertyDefinition"), @JsonSubTypes.Type(value = IfcRelationship.class, name = "IfcRelationship")})
 public abstract class IfcRoot
 {
@@ -57,11 +58,19 @@ public abstract class IfcRoot
 	}
 
 	public String getGlobalId() {
+		if(globalId.length()==22){
+			System.out.println("uncompressing guid");
+			this.globalId = GuidHandler.uncompressGuidString(globalId);
+		}
 		return this.globalId;
 	}
 
 	public void setGlobalId(String globalId) {
-		this.globalId = globalId;
+		if(globalId.length()==22){
+			System.out.println("uncompressing guid");
+			this.globalId = GuidHandler.uncompressGuidString(globalId);
+		}
+		this.globalId = GuidHandler.uncompressGuidString(globalId);
 	}
 
 	public IfcOwnerHistory getOwnerHistory() {

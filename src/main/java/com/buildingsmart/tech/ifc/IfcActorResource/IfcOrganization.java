@@ -64,21 +64,24 @@ public class IfcOrganization implements IfcActorSelect, com.buildingsmart.tech.i
 	private List<IfcAddress> addresses;
 
 	@Description("The inverse relationship for relationship RelatedOrganizations of IfcOrganizationRelationship.")
+	@InverseProperty(InverseProp = "RelatedOrganizations", Range = "IfcOrganizationRelationship")
 	@Guid("59988b08-ea6e-488b-b72b-2dcc2c2d9d0a")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcOrganizationRelationship")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsRelatedBy")
 	private Set<IfcOrganizationRelationship> isRelatedBy;
 
 	@Description("The inverse relationship for relationship RelatingOrganization of IfcOrganizationRelationship.")
+	@InverseProperty(InverseProp = "RelatingOrganization", Range = "IfcOrganizationRelationship")
 	@Guid("4bad5ffe-b272-41b1-93f8-a45a33946e83")
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcOrganizationRelationship")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "Relates")
+	@JsonIgnore
 	private Set<IfcOrganizationRelationship> relates;
 
 	@Description("Inverse relationship to IfcPersonAndOrganization relationships in which IfcOrganization is engaged.")
+	@InverseProperty(InverseProp = "TheOrganization", Range = "IfcPersonAndOrganization")
 	@Guid("5555917c-f7e2-4872-9d55-b2e5ae11442d")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPersonAndOrganization")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "Engages")
+	@JsonIgnore
 	private Set<IfcPersonAndOrganization> engages;
 
 

@@ -5,20 +5,30 @@
 
 package com.buildingsmart.tech.ifc.IfcActorResource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.*;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcPostalAddress;
+import com.buildingsmart.tech.ifc.IfcActorResource.IfcTelecomAddress;
 
 @Guid("a2354718-4c92-40a9-b220-50e7c23e5faf")
 @JsonIgnoreProperties(ignoreUnknown=true)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "Class")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({@JsonSubTypes.Type(value = IfcPostalAddress.class, name = "IfcPostalAddress"), @JsonSubTypes.Type(value = IfcTelecomAddress.class, name = "IfcTelecomAddress")})
 public abstract class IfcAddress implements com.buildingsmart.tech.ifc.IfcPropertyResource.IfcObjectReferenceSelect
 {
@@ -41,12 +51,14 @@ public abstract class IfcAddress implements com.buildingsmart.tech.ifc.IfcProper
 	private String userDefinedPurpose;
 
 	@Description("The inverse relationship to Person to whom address is associated.")
+	@InverseProperty(InverseProp = "Addresses", Range = "IfcPerson")
 	@Guid("a2566a22-ad93-4b14-92e4-7c905751de4a")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPerson")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "OfPerson")
 	private Set<IfcPerson> ofPerson;
 
 	@Description("The inverse relationship to Organization to whom address is associated.")
+	@InverseProperty(InverseProp = "Addresses", Range = "IfcOrganization")
 	@Guid("049b4ec2-3343-44d9-98fb-a8366b4313c7")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcOrganization")
 	@JacksonXmlElementWrapper(useWrapping = true, localName = "OfOrganization")

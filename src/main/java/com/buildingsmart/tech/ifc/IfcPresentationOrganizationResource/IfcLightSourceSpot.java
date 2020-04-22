@@ -11,8 +11,6 @@ import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositivePlaneAngleMeasure;
 import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -39,21 +37,21 @@ public class IfcLightSourceSpot extends IfcLightSourcePositional
 	@Required()
 	@Guid("3abd8fa5-f5cb-4075-a2f2-2f6396defd8f")
 	@JacksonXmlProperty(isAttribute=false, localName = "SpreadAngle")
-	private IfcPositivePlaneAngleMeasure spreadAngle;
+	private double spreadAngle; //IfcPositivePlaneAngleMeasure
 
 	@Description("Definition from VRML97 - ISO/IEC 14772-1:1997: The beamWidth field specifies an inner solid angle in which the light source emits light at uniform full intensity. The light source's emission intensity drops off from the inner solid angle (beamWidthAngle) to the outer solid angle (spreadAngle).")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("d1bbe032-d2ef-436a-98fa-1380e580ff1c")
 	@JacksonXmlProperty(isAttribute=false, localName = "BeamWidthAngle")
-	private IfcPositivePlaneAngleMeasure beamWidthAngle;
+	private double beamWidthAngle; //IfcPositivePlaneAngleMeasure
 
 
 	public IfcLightSourceSpot()
 	{
 	}
 
-	public IfcLightSourceSpot(IfcColourRgb lightColour, IfcCartesianPoint position, IfcPositiveLengthMeasure radius, double constantAttenuation, double distanceAttenuation, double quadricAttenuation, IfcDirection orientation, IfcPositivePlaneAngleMeasure spreadAngle, IfcPositivePlaneAngleMeasure beamWidthAngle)
+	public IfcLightSourceSpot(IfcColourRgb lightColour, IfcCartesianPoint position, double radius, double constantAttenuation, double distanceAttenuation, double quadricAttenuation, IfcDirection orientation, double spreadAngle, double beamWidthAngle)
 	{
 		super(lightColour, position, radius, constantAttenuation, distanceAttenuation, quadricAttenuation);
 		this.orientation = orientation;
@@ -77,19 +75,19 @@ public class IfcLightSourceSpot extends IfcLightSourcePositional
 		this.concentrationExponent = concentrationExponent;
 	}
 
-	public IfcPositivePlaneAngleMeasure getSpreadAngle() {
+	public double getSpreadAngle() {
 		return this.spreadAngle;
 	}
 
-	public void setSpreadAngle(IfcPositivePlaneAngleMeasure spreadAngle) {
+	public void setSpreadAngle(double spreadAngle) {
 		this.spreadAngle = spreadAngle;
 	}
 
-	public IfcPositivePlaneAngleMeasure getBeamWidthAngle() {
+	public double getBeamWidthAngle() {
 		return this.beamWidthAngle;
 	}
 
-	public void setBeamWidthAngle(IfcPositivePlaneAngleMeasure beamWidthAngle) {
+	public void setBeamWidthAngle(double beamWidthAngle) {
 		this.beamWidthAngle = beamWidthAngle;
 	}
 

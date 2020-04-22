@@ -5,16 +5,26 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
-import com.buildingsmart.tech.annotations.DataMember;
-import com.buildingsmart.tech.annotations.Description;
-import com.buildingsmart.tech.annotations.Guid;
-import com.buildingsmart.tech.annotations.MaxLength;
-import com.buildingsmart.tech.annotations.Required;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcGroup;
+import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcAnalysisTheoryTypeEnum;
 
 @Guid("744fe291-2e62-4a6f-b0a4-1ead956bee5c")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -41,6 +51,7 @@ public class IfcStructuralResultGroup extends com.buildingsmart.tech.ifc.IfcKern
 	private Boolean isLinear;
 
 	@Description("Reference to an instance of IfcStructuralAnalysisModel for which this instance captures a result.")
+	@InverseProperty(InverseProp = "HasResults", Range = "IfcStructuralAnalysisModel")
 	@Guid("611d0a6e-2ce8-4adc-8e0f-7b92afe5309e")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcStructuralAnalysisModel")
