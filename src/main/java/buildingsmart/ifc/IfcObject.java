@@ -1,11 +1,10 @@
-// This file was automatically generated from IFCDOC at www.buildingsmart-tech.org.
+// This file was automatically generated from IFCDOC at www
+// .buildingsmart-tech.org.
 // IFC content is copyright (C) 1996-2013 BuildingSMART International Ltd.
 
-package buildingsmart.ifc
-{
-	public class IfcObject extends IfcObjectDefinition
-	{
-		private string ObjectType;
-		private IfcRelDefines[] IsDefinedBy;
-	}
+package buildingsmart.ifc;
+
+public class IfcObject extends IfcObjectDefinition {
+    private String ObjectType;
+    private IfcRelDefines[] IsDefinedBy;
 }

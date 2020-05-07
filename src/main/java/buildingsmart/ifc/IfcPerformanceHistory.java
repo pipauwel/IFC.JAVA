@@ -1,10 +1,9 @@
-// This file was automatically generated from IFCDOC at www.buildingsmart-tech.org.
+// This file was automatically generated from IFCDOC at www
+// .buildingsmart-tech.org.
 // IFC content is copyright (C) 1996-2013 BuildingSMART International Ltd.
 
-package buildingsmart.ifc
-{
-	public class IfcPerformanceHistory extends IfcControl
-	{
-		private string LifeCyclePhase;
-	}
+package buildingsmart.ifc;
+
+public class IfcPerformanceHistory extends IfcControl {
+    private String LifeCyclePhase;
 }

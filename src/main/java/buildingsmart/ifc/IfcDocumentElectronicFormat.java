@@ -1,12 +1,11 @@
-// This file was automatically generated from IFCDOC at www.buildingsmart-tech.org.
+// This file was automatically generated from IFCDOC at www
+// .buildingsmart-tech.org.
 // IFC content is copyright (C) 1996-2013 BuildingSMART International Ltd.
 
-package buildingsmart.ifc
-{
-	public class IfcDocumentElectronicFormat extends IfcBase
-	{
-		private string FileExtension;
-		private string MimeContentType;
-		private string MimeSubtype;
-	}
+package buildingsmart.ifc;
+
+public class IfcDocumentElectronicFormat extends IfcBase {
+    private String FileExtension;
+    private String MimeContentType;
+    private String MimeSubtype;
 }

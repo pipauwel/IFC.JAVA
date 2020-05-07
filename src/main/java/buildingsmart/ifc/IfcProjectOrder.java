@@ -1,12 +1,11 @@
-// This file was automatically generated from IFCDOC at www.buildingsmart-tech.org.
+// This file was automatically generated from IFCDOC at www
+// .buildingsmart-tech.org.
 // IFC content is copyright (C) 1996-2013 BuildingSMART International Ltd.
 
-package buildingsmart.ifc
-{
-	public class IfcProjectOrder extends IfcControl
-	{
-		private string ID;
-		private IfcProjectOrderTypeEnum PredefinedType;
-		private string Status;
-	}
+package buildingsmart.ifc;
+
+public class IfcProjectOrder extends IfcControl {
+    private String ID;
+    private IfcProjectOrderTypeEnum PredefinedType;
+    private String Status;
 }

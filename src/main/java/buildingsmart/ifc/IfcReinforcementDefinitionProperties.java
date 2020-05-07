@@ -1,11 +1,10 @@
-// This file was automatically generated from IFCDOC at www.buildingsmart-tech.org.
+// This file was automatically generated from IFCDOC at www
+// .buildingsmart-tech.org.
 // IFC content is copyright (C) 1996-2013 BuildingSMART International Ltd.
 
-package buildingsmart.ifc
-{
-	public class IfcReinforcementDefinitionProperties extends IfcPropertySetDefinition
-	{
-		private string DefinitionType;
-		private IfcSectionReinforcementProperties[] ReinforcementSectionDefinitions;
-	}
+package buildingsmart.ifc;
+
+public class IfcReinforcementDefinitionProperties extends IfcPropertySetDefinition {
+    private String DefinitionType;
+    private IfcSectionReinforcementProperties[] ReinforcementSectionDefinitions;
 }

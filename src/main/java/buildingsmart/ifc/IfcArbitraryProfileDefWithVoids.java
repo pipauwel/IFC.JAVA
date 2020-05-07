@@ -1,10 +1,9 @@
-// This file was automatically generated from IFCDOC at www.buildingsmart-tech.org.
+// This file was automatically generated from IFCDOC at www
+// .buildingsmart-tech.org.
 // IFC content is copyright (C) 1996-2013 BuildingSMART International Ltd.
 
-package buildingsmart.ifc
-{
-	public class IfcArbitraryProfileDefWithVoids extends IfcArbitraryClosedProfileDef
-	{
-		private IfcCurve[] InnerCurves;
-	}
+package buildingsmart.ifc;
+
+public class IfcArbitraryProfileDefWithVoids extends IfcArbitraryClosedProfileDef {
+    private IfcCurve[] InnerCurves;
 }
