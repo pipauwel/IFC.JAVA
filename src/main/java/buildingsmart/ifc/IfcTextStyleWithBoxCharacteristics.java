@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcTextStyleWithBoxCharacteristics extends IfcBase {
+public class IfcTextStyleWithBoxCharacteristics {
     private IfcLengthMeasure BoxHeight;
     private IfcLengthMeasure BoxWidth;
     private double BoxSlantAngle;

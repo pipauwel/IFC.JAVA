@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcPresentationStyle extends IfcBase {
+public class IfcPresentationStyle {
     private String Name;
 }

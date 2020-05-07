@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcTable extends IfcBase {
+public class IfcTable {
     private String Name;
     private IfcTableRow[] Rows;
     private INTEGER NumberOfCellsInRow;

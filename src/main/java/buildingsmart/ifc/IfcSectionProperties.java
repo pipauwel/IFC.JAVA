@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcSectionProperties extends IfcBase {
+public class IfcSectionProperties {
     private IfcSectionTypeEnum SectionType;
     private IfcProfileDef StartProfile;
     private IfcProfileDef EndProfile;

@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcClassificationItemRelationship extends IfcBase {
+public class IfcClassificationItemRelationship {
     private IfcClassificationItem RelatingItem;
     private IfcClassificationItem[] RelatedItems;
 }

@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcLightIntensityDistribution extends IfcBase {
+public class IfcLightIntensityDistribution {
     private IfcLightDistributionCurveEnum LightDistributionCurve;
     private IfcLightDistributionData[] DistributionData;
 }

@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcMaterialLayerSet extends IfcBase {
+public class IfcMaterialLayerSet {
     private IfcMaterialLayer[] MaterialLayers;
     private String LayerSetName;
     private double TotalThickness;

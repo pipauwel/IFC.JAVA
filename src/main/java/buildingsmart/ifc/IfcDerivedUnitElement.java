@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcDerivedUnitElement extends IfcBase {
+public class IfcDerivedUnitElement {
     private IfcNamedUnit Unit;
     private INTEGER Exponent;
 }

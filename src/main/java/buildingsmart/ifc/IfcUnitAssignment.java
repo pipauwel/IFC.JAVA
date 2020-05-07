@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcUnitAssignment extends IfcBase {
+public class IfcUnitAssignment {
     private IfcUnit[] Units;
 }

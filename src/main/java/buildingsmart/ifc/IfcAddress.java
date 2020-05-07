@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcAddress extends IfcBase {
+public class IfcAddress {
     private IfcAddressTypeEnum Purpose;
     private String Description;
     private String UserDefinedPurpose;

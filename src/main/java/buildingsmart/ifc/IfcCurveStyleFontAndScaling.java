@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcCurveStyleFontAndScaling extends IfcBase {
+public class IfcCurveStyleFontAndScaling {
     private String Name;
     private IfcCurveStyleFontSelect CurveFont;
     private IfcRatioMeasure CurveFontScaling;

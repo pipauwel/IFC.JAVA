@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcAppliedValueRelationship extends IfcBase {
+public class IfcAppliedValueRelationship {
     private IfcAppliedValue ComponentOfTotal;
     private IfcAppliedValue[] Components;
     private IfcArithmeticOperatorEnum ArithmeticOperator;

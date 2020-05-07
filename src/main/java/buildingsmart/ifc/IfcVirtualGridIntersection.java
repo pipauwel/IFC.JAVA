@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcVirtualGridIntersection extends IfcBase {
+public class IfcVirtualGridIntersection {
     private IfcGridAxis[] IntersectingAxes;
     private double[] OffsetDistances;
 }

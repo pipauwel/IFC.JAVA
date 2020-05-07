@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcApprovalPropertyRelationship extends IfcBase {
+public class IfcApprovalPropertyRelationship {
     private IfcProperty[] ApprovedProperties;
     private IfcApproval Approval;
 }

@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcMeasureWithUnit extends IfcBase {
+public class IfcMeasureWithUnit {
     private IfcValue ValueComponent;
     private IfcUnit UnitComponent;
 }

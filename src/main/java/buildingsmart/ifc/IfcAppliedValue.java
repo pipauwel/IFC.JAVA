@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcAppliedValue extends IfcBase {
+public class IfcAppliedValue {
     private String Name;
     private String Description;
     private IfcAppliedValueSelect AppliedValue;

@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcTextureVertex extends IfcBase {
+public class IfcTextureVertex {
     private double[] Coordinates;
 }

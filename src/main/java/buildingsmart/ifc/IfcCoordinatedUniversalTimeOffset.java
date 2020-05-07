@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcCoordinatedUniversalTimeOffset extends IfcBase {
+public class IfcCoordinatedUniversalTimeOffset {
     private int HourOffset;
     private int MinuteOffset;
     private IfcAheadOrBehind Sense;

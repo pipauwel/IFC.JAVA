@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcGridAxis extends IfcBase {
+public class IfcGridAxis {
     private String AxisTag;
     private IfcCurve AxisCurve;
     private bool SameSense;

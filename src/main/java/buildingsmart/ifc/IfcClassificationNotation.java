@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcClassificationNotation extends IfcBase {
+public class IfcClassificationNotation {
     private IfcClassificationNotationFacet[] NotationFacets;
 }

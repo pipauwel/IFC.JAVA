@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcApplication extends IfcBase {
+public class IfcApplication {
     private IfcOrganization ApplicationDeveloper;
     private String Version;
     private String ApplicationFullName;

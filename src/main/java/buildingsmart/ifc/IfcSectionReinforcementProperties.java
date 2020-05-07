@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcSectionReinforcementProperties extends IfcBase {
+public class IfcSectionReinforcementProperties {
     private double LongitudinalStartPosition;
     private double LongitudinalEndPosition;
     private double TransversePosition;

@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcConstraintAggregationRelationship extends IfcBase {
+public class IfcConstraintAggregationRelationship {
     private String Name;
     private String Description;
     private IfcConstraint RelatingConstraint;

@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcMaterialList extends IfcBase {
+public class IfcMaterialList {
     private IfcMaterial[] Materials;
 }

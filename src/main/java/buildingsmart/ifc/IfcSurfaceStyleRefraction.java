@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcSurfaceStyleRefraction extends IfcBase {
+public class IfcSurfaceStyleRefraction {
     private double RefractionIndex;
     private double DispersionFactor;
 }

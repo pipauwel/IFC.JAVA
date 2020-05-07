@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcRepresentationContext extends IfcBase {
+public class IfcRepresentationContext {
     private String ContextIdentifier;
     private String ContextType;
     private IfcRepresentation[] RepresentationsInContext;

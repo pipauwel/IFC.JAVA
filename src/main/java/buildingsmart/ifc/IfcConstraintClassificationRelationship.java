@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcConstraintClassificationRelationship extends IfcBase {
+public class IfcConstraintClassificationRelationship {
     private IfcConstraint ClassifiedConstraint;
     private IfcClassificationNotationSelect[] RelatedClassifications;
 }

@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcReferencesValueDocument extends IfcBase {
+public class IfcReferencesValueDocument {
     private IfcDocumentSelect ReferencedDocument;
     private IfcAppliedValue[] ReferencingValues;
     private String Name;

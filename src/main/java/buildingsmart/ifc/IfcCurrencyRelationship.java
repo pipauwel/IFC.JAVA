@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcCurrencyRelationship extends IfcBase {
+public class IfcCurrencyRelationship {
     private IfcMonetaryUnit RelatingMonetaryUnit;
     private IfcMonetaryUnit RelatedMonetaryUnit;
     private IfcRatioMeasure ExchangeRate;

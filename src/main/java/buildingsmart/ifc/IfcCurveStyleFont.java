@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcCurveStyleFont extends IfcBase {
+public class IfcCurveStyleFont {
     private String Name;
     private IfcCurveStyleFontPattern[] PatternList;
 }

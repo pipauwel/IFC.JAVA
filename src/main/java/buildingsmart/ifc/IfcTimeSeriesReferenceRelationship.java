@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcTimeSeriesReferenceRelationship extends IfcBase {
+public class IfcTimeSeriesReferenceRelationship {
     private IfcTimeSeries ReferencedTimeSeries;
     private IfcDocumentSelect[] TimeSeriesReferences;
 }

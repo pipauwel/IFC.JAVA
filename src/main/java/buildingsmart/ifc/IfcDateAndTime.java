@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcDateAndTime extends IfcBase {
+public class IfcDateAndTime {
     private IfcCalendarDate DateComponent;
     private IfcLocalTime TimeComponent;
 }

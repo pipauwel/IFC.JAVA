@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcPresentationLayerAssignment extends IfcBase {
+public class IfcPresentationLayerAssignment {
     private String Name;
     private String Description;
     private IfcLayeredItem[] AssignedItems;

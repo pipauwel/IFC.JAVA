@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcIrregularTimeSeriesValue extends IfcBase {
+public class IfcIrregularTimeSeriesValue {
     private IfcDateTimeSelect TimeStamp;
     private IfcValue[] ListValues;
 }

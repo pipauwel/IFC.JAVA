@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcClassification extends IfcBase {
+public class IfcClassification {
     private String Source;
     private String Edition;
     private IfcCalendarDate EditionDate;

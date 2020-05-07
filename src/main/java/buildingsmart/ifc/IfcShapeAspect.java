@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcShapeAspect extends IfcBase {
+public class IfcShapeAspect {
     private IfcShapeModel[] ShapeRepresentations;
     private String Name;
     private String Description;

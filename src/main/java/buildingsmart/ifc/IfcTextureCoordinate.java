@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcTextureCoordinate extends IfcBase {
+public class IfcTextureCoordinate {
     private IfcAnnotationSurface[] AnnotatedSurface;
 }

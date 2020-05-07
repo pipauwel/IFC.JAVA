@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcStructuralConnectionCondition extends IfcBase {
+public class IfcStructuralConnectionCondition {
     private String Name;
 }

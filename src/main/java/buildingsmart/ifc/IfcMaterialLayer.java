@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcMaterialLayer extends IfcBase {
+public class IfcMaterialLayer {
     private IfcMaterial Material;
     private IfcLengthMeasure LayerThickness;
     private int IsVentilated;

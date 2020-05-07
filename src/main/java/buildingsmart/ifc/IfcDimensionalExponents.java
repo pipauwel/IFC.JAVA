@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcDimensionalExponents extends IfcBase {
+public class IfcDimensionalExponents {
     private INTEGER LengthExponent;
     private INTEGER MassExponent;
     private INTEGER TimeExponent;

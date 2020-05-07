@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcStructuralLoad extends IfcBase {
+public class IfcStructuralLoad {
     private String Name;
 }

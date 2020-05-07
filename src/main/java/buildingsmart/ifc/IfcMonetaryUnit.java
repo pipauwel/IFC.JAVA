@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcMonetaryUnit extends IfcBase {
+public class IfcMonetaryUnit {
     private IfcCurrencyEnum Currency;
 }

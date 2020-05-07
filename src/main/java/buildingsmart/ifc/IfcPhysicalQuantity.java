@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcPhysicalQuantity extends IfcBase {
+public class IfcPhysicalQuantity {
     private String Name;
     private String Description;
     private IfcPhysicalComplexQuantity[] PartOfComplex;

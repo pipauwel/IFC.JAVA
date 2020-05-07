@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcMaterialLayerSetUsage extends IfcBase {
+public class IfcMaterialLayerSetUsage {
     private IfcMaterialLayerSet ForLayerSet;
     private IfcLayerSetDirectionEnum LayerSetDirection;
     private IfcDirectionSenseEnum DirectionSense;

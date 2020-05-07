@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcTimeSeriesValue extends IfcBase {
+public class IfcTimeSeriesValue {
     private IfcValue[] ListValues;
 }

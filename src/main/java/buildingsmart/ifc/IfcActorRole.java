@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcActorRole extends IfcBase {
+public class IfcActorRole {
     private IfcRoleEnum Role;
     private String UserDefinedRole;
     private String Description;

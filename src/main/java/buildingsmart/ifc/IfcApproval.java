@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcApproval extends IfcBase {
+public class IfcApproval {
     private String Description;
     private IfcDateTimeSelect ApprovalDateTime;
     private String ApprovalStatus;

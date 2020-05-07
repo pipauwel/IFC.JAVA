@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcProfileDef extends IfcBase {
+public class IfcProfileDef {
     private IfcProfileTypeEnum ProfileType;
     private String ProfileName;
 }

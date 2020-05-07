@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcOwnerHistory extends IfcBase {
+public class IfcOwnerHistory {
     private IfcPersonAndOrganization OwningUser;
     private IfcApplication OwningApplication;
     private IfcStateEnum State;

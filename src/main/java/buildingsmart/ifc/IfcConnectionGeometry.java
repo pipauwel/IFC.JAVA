@@ -4,5 +4,5 @@
 
 package buildingsmart.ifc;
 
-public class IfcConnectionGeometry extends IfcBase {
+public class IfcConnectionGeometry {
 }

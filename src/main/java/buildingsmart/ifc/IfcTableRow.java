@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcTableRow extends IfcBase {
+public class IfcTableRow {
     private IfcValue[] RowCells;
     private BOOLEAN IsHeading;
     private IfcTable OfTable;

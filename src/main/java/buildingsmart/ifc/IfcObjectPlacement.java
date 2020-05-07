@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcObjectPlacement extends IfcBase {
+public class IfcObjectPlacement {
     private IfcProduct[] PlacesObject;
     private IfcLocalPlacement[] ReferencedByPlacements;
 }

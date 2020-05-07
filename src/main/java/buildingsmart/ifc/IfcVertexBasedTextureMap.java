@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcVertexBasedTextureMap extends IfcBase {
+public class IfcVertexBasedTextureMap {
     private IfcTextureVertex[] TextureVertices;
     private IfcCartesianPoint[] TexturePoints;
 }

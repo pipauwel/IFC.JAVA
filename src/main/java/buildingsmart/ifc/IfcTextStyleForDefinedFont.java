@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcTextStyleForDefinedFont extends IfcBase {
+public class IfcTextStyleForDefinedFont {
     private IfcColour Colour;
     private IfcColour BackgroundColour;
 }

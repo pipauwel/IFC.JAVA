@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcConstraint extends IfcBase {
+public class IfcConstraint {
     private String Name;
     private String Description;
     private IfcConstraintEnum ConstraintGrade;

@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcOrganizationRelationship extends IfcBase {
+public class IfcOrganizationRelationship {
     private String Name;
     private String Description;
     private IfcOrganization RelatingOrganization;

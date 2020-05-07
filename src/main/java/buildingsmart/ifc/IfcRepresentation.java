@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcRepresentation extends IfcBase {
+public class IfcRepresentation {
     private IfcRepresentationContext ContextOfItems;
     private String RepresentationIdentifier;
     private String RepresentationType;

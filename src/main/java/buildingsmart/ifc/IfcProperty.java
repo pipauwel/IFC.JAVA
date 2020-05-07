@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcProperty extends IfcBase {
+public class IfcProperty {
     private String Name;
     private String Description;
     private IfcPropertyDependencyRelationship[] PropertyForDependance;

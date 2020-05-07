@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcRelaxation extends IfcBase {
+public class IfcRelaxation {
     private IfcRatioMeasure RelaxationValue;
     private IfcRatioMeasure InitialStress;
 }

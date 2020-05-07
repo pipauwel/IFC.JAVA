@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcColourSpecification extends IfcBase {
+public class IfcColourSpecification {
     private String Name;
 }

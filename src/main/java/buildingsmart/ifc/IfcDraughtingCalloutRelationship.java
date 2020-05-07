@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcDraughtingCalloutRelationship extends IfcBase {
+public class IfcDraughtingCalloutRelationship {
     private String Name;
     private String Description;
     private IfcDraughtingCallout RelatingDraughtingCallout;

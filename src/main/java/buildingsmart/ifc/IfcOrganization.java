@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcOrganization extends IfcBase {
+public class IfcOrganization {
     private String Id;
     private String Name;
     private String Description;

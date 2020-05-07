@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcSurfaceStyleWithTextures extends IfcBase {
+public class IfcSurfaceStyleWithTextures {
     private IfcSurfaceTexture[] Textures;
 }

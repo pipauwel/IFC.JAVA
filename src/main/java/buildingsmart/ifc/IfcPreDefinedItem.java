@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcPreDefinedItem extends IfcBase {
+public class IfcPreDefinedItem {
     private String Name;
 }

@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcReinforcementBarProperties extends IfcBase {
+public class IfcReinforcementBarProperties {
     private double TotalCrossSectionArea;
     private String SteelGrade;
     private IfcReinforcingBarSurfaceEnum BarSurface;

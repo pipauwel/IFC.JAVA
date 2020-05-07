@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcTextStyleTextModel extends IfcBase {
+public class IfcTextStyleTextModel {
     private IfcSizeSelect TextIndent;
     private String TextAlign;
     private String TextDecoration;

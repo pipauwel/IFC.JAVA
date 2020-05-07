@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcTimeSeries extends IfcBase {
+public class IfcTimeSeries {
     private String Name;
     private String Description;
     private IfcDateTimeSelect StartTime;

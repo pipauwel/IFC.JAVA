@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcBoundaryCondition extends IfcBase {
+public class IfcBoundaryCondition {
     private String Name;
 }

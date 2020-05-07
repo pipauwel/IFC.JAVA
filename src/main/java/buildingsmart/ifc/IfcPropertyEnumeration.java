@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcPropertyEnumeration extends IfcBase {
+public class IfcPropertyEnumeration {
     private String Name;
     private IfcValue[] EnumerationValues;
     private IfcUnit Unit;

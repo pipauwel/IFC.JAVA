@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcDocumentInformation extends IfcBase {
+public class IfcDocumentInformation {
     private String DocumentId;
     private String Name;
     private String Description;

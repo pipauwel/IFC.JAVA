@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcDocumentInformationRelationship extends IfcBase {
+public class IfcDocumentInformationRelationship {
     private IfcDocumentInformation RelatingDocument;
     private IfcDocumentInformation[] RelatedDocuments;
     private String RelationshipType;

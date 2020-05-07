@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcNamedUnit extends IfcBase {
+public class IfcNamedUnit {
     private IfcDimensionalExponents Dimensions;
     private IfcUnitEnum UnitType;
 }

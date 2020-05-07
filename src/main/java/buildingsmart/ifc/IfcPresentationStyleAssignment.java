@@ -4,6 +4,6 @@
 
 package buildingsmart.ifc;
 
-public class IfcPresentationStyleAssignment extends IfcBase {
+public class IfcPresentationStyleAssignment {
     private IfcPresentationStyleSelect[] Styles;
 }

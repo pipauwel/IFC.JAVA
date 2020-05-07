@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcRoot extends IfcBase {
+public class IfcRoot {
     private String GlobalId;
     private IfcOwnerHistory OwnerHistory;
     private String Name;

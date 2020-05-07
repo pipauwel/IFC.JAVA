@@ -4,7 +4,7 @@
 
 package buildingsmart.ifc;
 
-public class IfcPerson extends IfcBase {
+public class IfcPerson {
     private String Id;
     private String FamilyName;
     private String GivenName;
