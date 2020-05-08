@@ -1,13 +1,16 @@
-// This file was automatically generated from IFCDOC at www
-// .buildingsmart-tech.org.
-// IFC content is copyright (C) 1996-2013 BuildingSMART International Ltd.
-
 package buildingsmart.ifc;
 
-public enum IfcAddressTypeEnum {
-    OFFICE,
-    SITE,
-    HOME,
-    DISTRIBUTIONPOINT,
-    USERDEFINED,
+/**
+ * Identifies the logical location of the address.
+ */
+public enum IfcAddressTypeEnum implements IfcDefinedType {
+    OFFICE, SITE, HOME, DISTRIBUTIONPOINT, USERDEFINED;
+
+    /**
+     * @return The representation of the type in an IFC STEP file.
+     */
+    @Override
+    public String serialize() {
+        return "'" + name() + "'";
+    }
 }
