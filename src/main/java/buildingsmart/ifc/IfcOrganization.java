@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * A named and structured grouping with a corporate identity.
  */
-public class IfcOrganization {
+public class IfcOrganization extends IfcEntity {
     private final IfcIdentifier id;
     private final IfcLabel name;
     private final IfcText description;

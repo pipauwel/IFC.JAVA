@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Identification of a person within an organization.
  */
-public class IfcPersonAndOrganization {
+public class IfcPersonAndOrganization extends IfcEntity {
     private final IfcPerson thePerson;
     private final IfcOrganization theOrganization;
     private final List<IfcActorRole> roles;

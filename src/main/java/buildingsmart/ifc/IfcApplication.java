@@ -13,11 +13,12 @@ import java.util.Set;
  * IfcApplication utilizes a short identifying name as provided by the
  * application developer.
  */
-public class IfcApplication {
+public class IfcApplication extends IfcEntity {
     private static final Set<Pair<IfcLabel, IfcLabel>>
             uniqueAppFullNameAndVersions = new HashSet<>();
     private static final Set<IfcIdentifier> uniqueAppIdentifiers =
             new HashSet<>();
+
     private final IfcOrganization applicationDeveloper;
     private final IfcLabel version;
     private final IfcLabel applicationFullName;

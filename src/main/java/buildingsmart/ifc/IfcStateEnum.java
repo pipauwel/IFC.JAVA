@@ -1,9 +1,10 @@
 package buildingsmart.ifc;
 
-public enum IfcStateEnum {
-    READWRITE,
-    READONLY,
-    LOCKED,
-    READWRITELOCKED,
-    READONLYLOCKED,
+public enum IfcStateEnum implements IfcDefinedType {
+    READWRITE, READONLY, LOCKED, READWRITELOCKED, READONLYLOCKED;
+
+    @Override
+    public String serialize() {
+        return "'" + name() + "'";
+    }
 }

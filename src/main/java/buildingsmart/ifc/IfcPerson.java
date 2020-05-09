@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * An individual human being.
  */
-public class IfcPerson {
+public class IfcPerson extends IfcEntity {
     private final IfcIdentifier id;
     private final IfcLabel familyName;
     private final IfcLabel givenName;
