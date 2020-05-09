@@ -36,7 +36,8 @@ public class IfcPerson {
      * @param roles        Roles played by the person.
      * @param addresses    Postal and telecommunication addresses of a person.
      * @throws IllegalArgumentException If both familyName and givenName are
-     *                                  null.
+     *                                  null, or if one of the parameters of
+     *                                  type List has size equal to zero.
      */
     public IfcPerson(IfcIdentifier id, IfcLabel familyName, IfcLabel givenName,
                      List<IfcLabel> middleNames, List<IfcLabel> prefixTitles,
@@ -46,6 +47,29 @@ public class IfcPerson {
             throw new IllegalArgumentException(
                     "familyName and givenName can't be both null, at least " +
                             "one of them should have a value");
+        }
+        if (middleNames != null && middleNames.size() < 1) {
+            throw new IllegalArgumentException(
+                    "middleNames must be null or its size must be at least " +
+                            "one");
+        }
+        if (prefixTitles != null && prefixTitles.size() < 1) {
+            throw new IllegalArgumentException(
+                    "prefixTitles must be null or its size must be at least " +
+                            "one");
+        }
+        if (suffixTitles != null && suffixTitles.size() < 1) {
+            throw new IllegalArgumentException(
+                    "suffixTitles must be null or its size must be at least " +
+                            "one");
+        }
+        if (roles != null && roles.size() < 1) {
+            throw new IllegalArgumentException(
+                    "roles must be null or its size must be at least one");
+        }
+        if (addresses != null && addresses.size() < 1) {
+            throw new IllegalArgumentException(
+                    "addresses must be null or its size must be at least one");
         }
         this.id = id;
         this.familyName = familyName;
