@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcVertexPoint extends IfcVertex {
+public abstract class IfcVertexPoint extends IfcVertex {
     private IfcPoint VertexGeometry;
 }

@@ -1,4 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcDimensionCurveDirectedCallout extends IfcDraughtingCallout {
+public abstract class IfcDimensionCurveDirectedCallout
+        extends IfcDraughtingCallout {
 }

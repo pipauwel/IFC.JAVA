@@ -1,4 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcTopologicalRepresentationItem extends IfcRepresentationItem {
+public abstract class IfcTopologicalRepresentationItem
+        extends IfcRepresentationItem {
 }

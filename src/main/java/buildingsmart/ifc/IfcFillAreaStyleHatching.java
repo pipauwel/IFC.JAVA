@@ -1,6 +1,7 @@
 package buildingsmart.ifc;
 
-public class IfcFillAreaStyleHatching extends IfcGeometricRepresentationItem {
+public abstract class IfcFillAreaStyleHatching
+        extends IfcGeometricRepresentationItem {
     private IfcCurveStyle HatchLineAppearance;
     private IfcHatchLineDistanceSelect StartOfNextHatchLine;
     private IfcCartesianPoint PointOfReferenceHatchLine;

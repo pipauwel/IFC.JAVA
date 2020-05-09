@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcMappedItem extends IfcRepresentationItem {
+public abstract class IfcMappedItem extends IfcRepresentationItem {
     private IfcRepresentationMap MappingSource;
     private IfcCartesianTransformationOperator MappingTarget;
 }

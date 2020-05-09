@@ -1,7 +1,7 @@
 package buildingsmart.ifc;
 
 public class IfcSoundProperties extends IfcPropertySetDefinition {
-    private bool IsAttenuating;
+    private boolean IsAttenuating;
     private IfcSoundScaleEnum SoundScale;
     private IfcSoundValue[] SoundValues;
 }

@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcVertexLoop extends IfcLoop {
+public abstract class IfcVertexLoop extends IfcLoop {
     private IfcVertex LoopVertex;
 }

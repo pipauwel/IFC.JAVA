@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcDimensionCurve extends IfcAnnotationCurveOccurrence {
+public abstract class IfcDimensionCurve extends IfcAnnotationCurveOccurrence {
     private IfcTerminatorSymbol[] AnnotatedBySymbols;
 }

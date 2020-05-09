@@ -1,6 +1,7 @@
 package buildingsmart.ifc;
 
-public class IfcFaceBasedSurfaceModel extends IfcGeometricRepresentationItem {
+public abstract class IfcFaceBasedSurfaceModel
+        extends IfcGeometricRepresentationItem {
     private IfcConnectedFaceSet[] FbsmFaces;
     private int Dim;
 }

@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcBoundedSurface extends IfcSurface {
+public abstract class IfcBoundedSurface extends IfcSurface {
 }

@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcGeometricCurveSet extends IfcGeometricSet {
+public abstract class IfcGeometricCurveSet extends IfcGeometricSet {
 }

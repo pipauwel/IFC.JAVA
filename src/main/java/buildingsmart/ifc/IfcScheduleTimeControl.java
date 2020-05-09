@@ -14,7 +14,7 @@ public class IfcScheduleTimeControl extends IfcControl {
     private double RemainingTime;
     private double FreeFloat;
     private double TotalFloat;
-    private BOOLEAN IsCritical;
+    private boolean IsCritical;
     private IfcDateTimeSelect StatusTime;
     private double StartFloat;
     private double FinishFloat;

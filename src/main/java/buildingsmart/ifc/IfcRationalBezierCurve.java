@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcRationalBezierCurve extends IfcBezierCurve {
-    private REAL[] WeightsData;
-    private REAL Weights;
+public abstract class IfcRationalBezierCurve extends IfcBezierCurve {
+    private double[] WeightsData;
+    private double Weights;
 }

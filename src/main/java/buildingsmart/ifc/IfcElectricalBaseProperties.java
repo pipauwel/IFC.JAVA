@@ -8,5 +8,5 @@ public class IfcElectricalBaseProperties extends IfcEnergyProperties {
     private double MinimumCircuitCurrent;
     private double MaximumPowerInput;
     private double RatedPowerInput;
-    private INTEGER InputPhase;
+    private int InputPhase;
 }

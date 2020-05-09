@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcPlanarExtent extends IfcGeometricRepresentationItem {
+public abstract class IfcPlanarExtent extends IfcGeometricRepresentationItem {
     private double SizeInX;
     private double SizeInY;
 }

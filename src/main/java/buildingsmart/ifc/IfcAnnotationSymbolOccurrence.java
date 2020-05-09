@@ -1,4 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcAnnotationSymbolOccurrence extends IfcAnnotationOccurrence {
+public abstract class IfcAnnotationSymbolOccurrence
+        extends IfcAnnotationOccurrence {
 }

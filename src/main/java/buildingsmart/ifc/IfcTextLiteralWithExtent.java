@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcTextLiteralWithExtent extends IfcTextLiteral {
+public abstract class IfcTextLiteralWithExtent extends IfcTextLiteral {
     private IfcPlanarExtent Extent;
     private IfcLabel BoxAlignment;
 }

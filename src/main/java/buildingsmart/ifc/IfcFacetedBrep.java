@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcFacetedBrep extends IfcManifoldSolidBrep {
+public abstract class IfcFacetedBrep extends IfcManifoldSolidBrep {
 }

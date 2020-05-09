@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcCurve extends IfcGeometricRepresentationItem {
+public abstract class IfcCurve extends IfcGeometricRepresentationItem {
     private int Dim;
 }

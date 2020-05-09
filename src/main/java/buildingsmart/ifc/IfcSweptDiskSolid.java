@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcSweptDiskSolid extends IfcSolidModel {
+public abstract class IfcSweptDiskSolid extends IfcSolidModel {
     private IfcCurve Directrix;
     private IfcLengthMeasure Radius;
     private IfcLengthMeasure InnerRadius;

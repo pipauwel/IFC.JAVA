@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcBooleanClippingResult extends IfcBooleanResult {
+public abstract class IfcBooleanClippingResult extends IfcBooleanResult {
 }

@@ -1,8 +1,9 @@
 package buildingsmart.ifc;
 
-public class IfcPresentationLayerWithStyle extends IfcPresentationLayerAssignment {
-    private LOGICAL LayerOn;
-    private LOGICAL LayerFrozen;
-    private LOGICAL LayerBlocked;
+public class IfcPresentationLayerWithStyle
+        extends IfcPresentationLayerAssignment {
+    private boolean LayerOn;
+    private boolean LayerFrozen;
+    private boolean LayerBlocked;
     private IfcPresentationStyleSelect[] LayerStyles;
 }

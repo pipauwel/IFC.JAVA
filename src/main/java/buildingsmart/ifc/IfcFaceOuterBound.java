@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcFaceOuterBound extends IfcFaceBound {
+public abstract class IfcFaceOuterBound extends IfcFaceBound {
 }

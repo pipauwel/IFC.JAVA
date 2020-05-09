@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcSectionedSpine extends IfcGeometricRepresentationItem {
+public abstract class IfcSectionedSpine extends IfcGeometricRepresentationItem {
     private IfcCompositeCurve SpineCurve;
     private IfcProfileDef[] CrossSections;
     private IfcAxis2Placement3D[] CrossSectionPositions;

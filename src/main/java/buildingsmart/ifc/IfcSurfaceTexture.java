@@ -1,8 +1,8 @@
 package buildingsmart.ifc;
 
 public class IfcSurfaceTexture {
-    private BOOLEAN RepeatS;
-    private BOOLEAN RepeatT;
+    private boolean RepeatS;
+    private boolean RepeatT;
     private IfcSurfaceTextureEnum TextureType;
     private IfcCartesianTransformationOperator2D TextureTransform;
 }

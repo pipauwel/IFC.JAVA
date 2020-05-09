@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcBoundedCurve extends IfcCurve {
+public abstract class IfcBoundedCurve extends IfcCurve {
 }

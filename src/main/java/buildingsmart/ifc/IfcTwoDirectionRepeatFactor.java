@@ -1,5 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcTwoDirectionRepeatFactor extends IfcOneDirectionRepeatFactor {
+public abstract class IfcTwoDirectionRepeatFactor
+        extends IfcOneDirectionRepeatFactor {
     private IfcVector SecondRepeatFactor;
 }

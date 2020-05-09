@@ -6,5 +6,5 @@ public class IfcReinforcementBarProperties {
     private IfcReinforcingBarSurfaceEnum BarSurface;
     private double EffectiveDepth;
     private IfcLengthMeasure NominalBarDiameter;
-    private NUMBER BarCount;
+    private double BarCount;
 }

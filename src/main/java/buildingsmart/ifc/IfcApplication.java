@@ -14,6 +14,7 @@ import java.util.Set;
  * application developer.
  */
 public class IfcApplication extends IfcEntity {
+    //TODO: find a better way to implement the UNIQUE constraint
     private static final Set<Pair<IfcLabel, IfcLabel>>
             uniqueAppFullNameAndVersions = new HashSet<>();
     private static final Set<IfcIdentifier> uniqueAppIdentifiers =

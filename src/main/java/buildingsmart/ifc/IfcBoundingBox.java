@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcBoundingBox extends IfcGeometricRepresentationItem {
+public abstract class IfcBoundingBox extends IfcGeometricRepresentationItem {
     private IfcCartesianPoint Corner;
     private IfcLengthMeasure XDim;
     private IfcLengthMeasure YDim;

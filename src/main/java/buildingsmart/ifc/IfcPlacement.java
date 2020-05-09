@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcPlacement extends IfcGeometricRepresentationItem {
+public abstract class IfcPlacement extends IfcGeometricRepresentationItem {
     private IfcCartesianPoint Location;
     private int Dim;
 }

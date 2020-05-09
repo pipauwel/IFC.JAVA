@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcPoint extends IfcGeometricRepresentationItem {
+public abstract class IfcPoint extends IfcGeometricRepresentationItem {
 }

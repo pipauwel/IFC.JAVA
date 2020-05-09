@@ -5,5 +5,5 @@ public class IfcPixelTexture extends IfcSurfaceTexture {
     private int Height;
     private int ColourComponents;
 
-    private BINARY(32)[] Pixel;
+    //private BINARY(32)[] Pixel;
 }

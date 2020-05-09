@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcGeometricSet extends IfcGeometricRepresentationItem {
+public abstract class IfcGeometricSet extends IfcGeometricRepresentationItem {
     private IfcGeometricSetSelect[] Elements;
     private int Dim;
 }

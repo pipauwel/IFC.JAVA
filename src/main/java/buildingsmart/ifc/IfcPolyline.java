@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcPolyline extends IfcBoundedCurve {
+public abstract class IfcPolyline extends IfcBoundedCurve {
     private IfcCartesianPoint[] Points;
 }

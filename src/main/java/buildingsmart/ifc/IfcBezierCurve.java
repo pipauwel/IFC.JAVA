@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcBezierCurve extends IfcBSplineCurve {
+public abstract class IfcBezierCurve extends IfcBSplineCurve {
 }

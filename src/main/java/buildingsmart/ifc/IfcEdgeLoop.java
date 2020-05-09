@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcEdgeLoop extends IfcLoop {
+public abstract class IfcEdgeLoop extends IfcLoop {
     private IfcOrientedEdge[] EdgeList;
-    private INTEGER Ne;
+    private int Ne;
 }

@@ -1,7 +1,7 @@
 package buildingsmart.ifc;
 
-public class IfcOffsetCurve2D extends IfcCurve {
+public abstract class IfcOffsetCurve2D extends IfcCurve {
     private IfcCurve BasisCurve;
     private double Distance;
-    private LOGICAL SelfIntersect;
+    private boolean SelfIntersect;
 }

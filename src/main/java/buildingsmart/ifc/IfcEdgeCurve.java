@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcEdgeCurve extends IfcEdge {
+public abstract class IfcEdgeCurve extends IfcEdge {
     private IfcCurve EdgeGeometry;
-    private BOOLEAN SameSense;
+    private boolean SameSense;
 }

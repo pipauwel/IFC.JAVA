@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcManifoldSolidBrep extends IfcSolidModel {
+public abstract class IfcManifoldSolidBrep extends IfcSolidModel {
     private IfcClosedShell Outer;
 }

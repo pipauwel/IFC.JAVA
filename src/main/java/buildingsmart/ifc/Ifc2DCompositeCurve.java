@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class Ifc2DCompositeCurve extends IfcCompositeCurve {
+public abstract class Ifc2DCompositeCurve extends IfcCompositeCurve {
 }

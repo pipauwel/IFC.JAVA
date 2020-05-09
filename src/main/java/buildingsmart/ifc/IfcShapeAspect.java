@@ -4,6 +4,6 @@ public class IfcShapeAspect {
     private IfcShapeModel[] ShapeRepresentations;
     private String Name;
     private String Description;
-    private LOGICAL ProductDefinitional;
+    // private boolean ProductDefinitional;
     private IfcProductDefinitionShape PartOfProductDefinitionShape;
 }

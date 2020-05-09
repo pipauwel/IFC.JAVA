@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcFaceSurface extends IfcFace {
+public abstract class IfcFaceSurface extends IfcFace {
     private IfcSurface FaceSurface;
-    private BOOLEAN SameSense;
+    private boolean SameSense;
 }

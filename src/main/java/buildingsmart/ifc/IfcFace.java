@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcFace extends IfcTopologicalRepresentationItem {
+public abstract class IfcFace extends IfcTopologicalRepresentationItem {
     private IfcFaceBound[] Bounds;
 }

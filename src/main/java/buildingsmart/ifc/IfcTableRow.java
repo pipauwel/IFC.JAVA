@@ -2,6 +2,6 @@ package buildingsmart.ifc;
 
 public class IfcTableRow {
     private IfcValue[] RowCells;
-    private BOOLEAN IsHeading;
+    private boolean IsHeading;
     private IfcTable OfTable;
 }

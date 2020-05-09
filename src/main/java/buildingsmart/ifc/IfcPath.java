@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcPath extends IfcTopologicalRepresentationItem {
+public abstract class IfcPath extends IfcTopologicalRepresentationItem {
     private IfcOrientedEdge[] EdgeList;
 }

@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcDimensionCurveTerminator extends IfcTerminatorSymbol {
+public abstract class IfcDimensionCurveTerminator extends IfcTerminatorSymbol {
     private IfcDimensionExtentUsage Role;
 }

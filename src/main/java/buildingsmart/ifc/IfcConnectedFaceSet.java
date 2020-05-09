@@ -1,5 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcConnectedFaceSet extends IfcTopologicalRepresentationItem {
+public abstract class IfcConnectedFaceSet
+        extends IfcTopologicalRepresentationItem {
     private IfcFace[] CfsFaces;
 }

@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcPolyLoop extends IfcLoop {
+public abstract class IfcPolyLoop extends IfcLoop {
     private IfcCartesianPoint[] Polygon;
 }

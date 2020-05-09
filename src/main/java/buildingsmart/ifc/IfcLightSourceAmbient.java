@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcLightSourceAmbient extends IfcLightSource {
+public abstract class IfcLightSourceAmbient extends IfcLightSource {
 }

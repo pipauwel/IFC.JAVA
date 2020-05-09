@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcSubedge extends IfcEdge {
+public abstract class IfcSubedge extends IfcEdge {
     private IfcEdge ParentEdge;
 }

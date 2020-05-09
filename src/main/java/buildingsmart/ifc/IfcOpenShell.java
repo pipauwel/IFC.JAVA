@@ -1,4 +1,4 @@
 package buildingsmart.ifc;
 
-public class IfcOpenShell extends IfcConnectedFaceSet {
+public abstract class IfcOpenShell extends IfcConnectedFaceSet {
 }

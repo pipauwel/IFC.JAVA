@@ -1,7 +1,4 @@
-
-
-package String
-{
+package buildingsmart.ifc;
 
 public enum IfcPileConstructionEnum {
     CAST_IN_PLACE,

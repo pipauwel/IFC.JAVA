@@ -8,5 +8,5 @@ public class IfcGeometricRepresentationSubContext extends IfcGeometricRepresenta
     private IfcAxis2Placement WorldCoordinateSystem;
     private int CoordinateSpaceDimension;
     private IfcDirection TrueNorth;
-    private REAL Precision;
+    private double Precision;
 }

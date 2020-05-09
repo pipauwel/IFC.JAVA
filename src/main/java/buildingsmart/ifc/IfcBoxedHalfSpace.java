@@ -1,5 +1,5 @@
 package buildingsmart.ifc;
 
-public class IfcBoxedHalfSpace extends IfcHalfSpaceSolid {
+public abstract class IfcBoxedHalfSpace extends IfcHalfSpaceSolid {
     private IfcBoundingBox Enclosure;
 }

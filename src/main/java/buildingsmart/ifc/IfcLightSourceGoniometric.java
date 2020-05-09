@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcLightSourceGoniometric extends IfcLightSource {
+public abstract class IfcLightSourceGoniometric extends IfcLightSource {
     private IfcAxis2Placement3D Position;
     private IfcColourRgb ColourAppearance;
     private double ColourTemperature;

@@ -1,7 +1,7 @@
 package buildingsmart.ifc;
 
 public class IfcWaterProperties extends IfcMaterialProperties {
-    private BOOLEAN IsPotable;
+    private boolean IsPotable;
     private double Hardness;
     private double AlkalinityConcentration;
     private double AcidityConcentration;

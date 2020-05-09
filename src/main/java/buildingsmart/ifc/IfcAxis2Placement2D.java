@@ -1,6 +1,6 @@
 package buildingsmart.ifc;
 
-public class IfcAxis2Placement2D extends IfcPlacement {
+public abstract class IfcAxis2Placement2D extends IfcPlacement {
     private IfcDirection RefDirection;
     private IfcDirection[] P;
 }
