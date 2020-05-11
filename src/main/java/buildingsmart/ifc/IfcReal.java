@@ -3,15 +3,18 @@ package buildingsmart.ifc;
 import java.util.Objects;
 
 /**
- * A defined type of simple data type REAL. In principle, the domain of
- * IfcReal (being a Real) is all rational, irrational and scientific real
- * numbers.
+ * A defined type of simple data type REAL. In principle, the domain of IfcReal
+ * (being a Real) is all rational, irrational and scientific real numbers.
  */
 public class IfcReal implements IfcDefinedType {
-    private final double ifcReal;
+    private final double value;
 
-    public IfcReal(double ifcReal) {
-        this.ifcReal = ifcReal;
+    public IfcReal(double value) {
+        this.value = value;
+    }
+
+    public double getValue() {
+        return value;
     }
 
     /**
@@ -19,7 +22,7 @@ public class IfcReal implements IfcDefinedType {
      */
     @Override
     public String serialize() {
-        return Double.toString(ifcReal);
+        return Double.toString(value);
     }
 
     @Override
@@ -31,11 +34,11 @@ public class IfcReal implements IfcDefinedType {
             return false;
         }
         IfcReal ifcReal1 = (IfcReal) o;
-        return Double.compare(ifcReal1.ifcReal, ifcReal) == 0;
+        return Double.compare(ifcReal1.value, value) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ifcReal);
+        return Objects.hash(value);
     }
 }

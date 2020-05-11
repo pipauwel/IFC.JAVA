@@ -11,18 +11,20 @@ import java.util.Objects;
  * space. The actual magnitudes of the components have no effect upon the
  * direction being defined, only the ratios X:Y:Z or X:Y are significant.
  */
-public class IfcDirection extends IfcGeometricRepresentationItem {
+public class IfcDirection extends IfcGeometricRepresentationItem
+        implements IfcVectorOrDirection {
     private final List<IfcReal> directionRatios;
-    //private int dim;
+    private final IfcDimensionCount dim; // derived attribute
 
     /**
      * @param directionRatios The components in the direction of X axis
      *                        (DirectionRatios[1]), of Y axis
-     *                        (DirectionRatios[2]), and of Z axis
-     *                        (DirectionRatios[3]). The size of this list
-     *                        must be either 2 or 3, and it cannot be null.
-     * @throws IllegalArgumentException If the size of directionRatios is not
-     *                                  2 or 3, or if directionRatios is null.
+     *                        (DirectionRatios[2]),
+     *                        and of Z axis (DirectionRatios[3]). The size of
+     *                        this list must be either 2 or 3, and it cannot be
+     *                        null.
+     * @throws IllegalArgumentException If the size of directionRatios is not 2
+     *                                  or 3, or if directionRatios is null.
      */
     public IfcDirection(@NotNull List<IfcReal> directionRatios) {
         if (directionRatios == null) {
@@ -34,21 +36,22 @@ public class IfcDirection extends IfcGeometricRepresentationItem {
                     "size of directionRatios must be 2 or 3");
         }
         this.directionRatios = directionRatios;
+        this.dim = new IfcDimensionCount((byte) directionRatios.size());
     }
 
     /**
      * @param directionRatios The components in the direction of X axis
      *                        (DirectionRatios[1]), of Y axis
-     *                        (DirectionRatios[2]), and of Z axis
-     *                        (DirectionRatios[3]). The size of this list
-     *                        must be either 2 or 3, and it cannot be null.
-     * @throws IllegalArgumentException If the size of directionRatios is not
-     *                                  2 or 3, or if directionRatios is null.
+     *                        (DirectionRatios[2]),
+     *                        and of Z axis (DirectionRatios[3]). The size of
+     *                        this array must be either 2 or 3, and it cannot be
+     *                        null.
+     * @throws IllegalArgumentException If the size of directionRatios is not 2
+     *                                  or 3, or if directionRatios is null.
      */
     public IfcDirection(@NotNull double... directionRatios) {
         if (directionRatios == null) {
-            throw new IllegalArgumentException(
-                    "directionRatios cannot be null");
+            throw new IllegalArgumentException("directionRatios cannot be null");
         }
         if (directionRatios.length < 2 || directionRatios.length > 3) {
             throw new IllegalArgumentException(
@@ -60,6 +63,26 @@ public class IfcDirection extends IfcGeometricRepresentationItem {
             directionRatiosList.add(new IfcReal(dirRatio));
         }
         this.directionRatios = directionRatiosList;
+        this.dim = new IfcDimensionCount((byte) directionRatiosList.size());
+    }
+
+    /**
+     * @return The space dimensionality of this class, defined by the number of
+     * real in the list of DirectionRatios.
+     */
+    @Override
+    public IfcDimensionCount getDim() {
+        return this.dim;
+    }
+
+    /**
+     * @return The components of the direction in the direction of X axis
+     * (DirectionRatios[1]), of Y axis (DirectionRatios[2]), and of Z axis
+     * (DirectionRatios[3])
+     */
+    @Override
+    public List<IfcReal> getDirectionRatios() {
+        return directionRatios;
     }
 
     @Override

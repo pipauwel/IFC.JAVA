@@ -8,10 +8,17 @@ import java.util.Objects;
  * Usually measured in millimeters (mm).
  */
 public class IfcLengthMeasure implements IfcDefinedType {
-    private final double ifcLengthMeasure;
+    private final double value;
 
-    public IfcLengthMeasure(double ifcLengthMeasure) {
-        this.ifcLengthMeasure = ifcLengthMeasure;
+    /**
+     * @param value The value of the distance.
+     */
+    public IfcLengthMeasure(double value) {
+        this.value = value;
+    }
+
+    public double getValue() {
+        return value;
     }
 
     /**
@@ -19,7 +26,7 @@ public class IfcLengthMeasure implements IfcDefinedType {
      */
     @Override
     public String serialize() {
-        return Double.toString(ifcLengthMeasure);
+        return Double.toString(value);
     }
 
     @Override
@@ -31,12 +38,11 @@ public class IfcLengthMeasure implements IfcDefinedType {
             return false;
         }
         IfcLengthMeasure ifcLengthMeasure1 = (IfcLengthMeasure) o;
-        return Double.compare(ifcLengthMeasure1.ifcLengthMeasure,
-                ifcLengthMeasure) == 0;
+        return Double.compare(ifcLengthMeasure1.value, value) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ifcLengthMeasure);
+        return Objects.hash(value);
     }
 }

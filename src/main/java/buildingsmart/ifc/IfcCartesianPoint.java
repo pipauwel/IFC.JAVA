@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class IfcCartesianPoint extends IfcPoint {
     private final List<IfcLengthMeasure> coordinates;
-    //private int dim;
+    private final IfcDimensionCount dim; // derived attribute
 
     /**
      * @param coordinates The first, second, and third coordinate of the point
@@ -23,18 +23,19 @@ public class IfcCartesianPoint extends IfcPoint {
      *                    the Y coordinate, and Coordinates[3] is the Z
      *                    coordinate.
      * @throws IllegalArgumentException If the size of coordinates is lower than
-     *                                  1 or bigger than 3, or if coordinates is
+     *                                  2 or bigger than 3, or if coordinates is
      *                                  null.
      */
     public IfcCartesianPoint(@NotNull List<IfcLengthMeasure> coordinates) {
         if (coordinates == null) {
             throw new IllegalArgumentException("coordinates cannot be null");
         }
-        if (coordinates.size() < 1 || coordinates.size() > 3) {
+        if (coordinates.size() < 2 || coordinates.size() > 3) {
             throw new IllegalArgumentException(
                     "size of coordinates must be 2 or 3");
         }
         this.coordinates = coordinates;
+        this.dim = new IfcDimensionCount((byte) coordinates.size());
     }
 
     /**
@@ -45,14 +46,14 @@ public class IfcCartesianPoint extends IfcPoint {
      *                    the Y coordinate, and Coordinates[3] is the Z
      *                    coordinate.
      * @throws IllegalArgumentException If the size of coordinates is lower than
-     *                                  1 or bigger than 3, or if coordinates is
+     *                                  2 or bigger than 3, or if coordinates is
      *                                  null.
      */
     public IfcCartesianPoint(@NotNull double... coordinates) {
         if (coordinates == null) {
             throw new IllegalArgumentException("coordinates cannot be null");
         }
-        if (coordinates.length < 1 || coordinates.length > 3) {
+        if (coordinates.length < 2 || coordinates.length > 3) {
             throw new IllegalArgumentException(
                     "size of coordinates must be 2 or 3");
         }
@@ -62,6 +63,15 @@ public class IfcCartesianPoint extends IfcPoint {
             coordinatesList.add(new IfcLengthMeasure(coordinate));
         }
         this.coordinates = coordinatesList;
+        this.dim = new IfcDimensionCount((byte) coordinatesList.size());
+    }
+
+    /**
+     * @return The space dimensionality of this class, determined by the number
+     * of coordinates in the List of Coordinates.
+     */
+    protected IfcDimensionCount getDim() {
+        return dim;
     }
 
     @Override
