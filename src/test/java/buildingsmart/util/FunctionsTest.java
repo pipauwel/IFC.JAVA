@@ -6,9 +6,6 @@ import buildingsmart.ifc.IfcReal;
 import buildingsmart.ifc.IfcVector;
 import org.junit.Test;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 import static org.junit.Assert.assertEquals;
@@ -17,39 +14,6 @@ import static org.junit.Assert.assertNull;
 public class FunctionsTest {
     // delta for double comparisons
     private static final double DELTA = 0.000000000000001;
-
-    /**
-     * Rounds a floating point number using the specified number of decimal
-     * places.
-     *
-     * @param value  The number to round.
-     * @param places The number of decimal places to use.
-     * @return The rounded number.
-     */
-    public static double round(double value, int places) {
-        if (places < 0) {
-            throw new IllegalArgumentException();
-        }
-
-        BigDecimal bd = BigDecimal.valueOf(value);
-        bd = bd.setScale(places, RoundingMode.HALF_UP);
-        return bd.doubleValue();
-    }
-
-    /**
-     * Compares two floating point numbers after rounding them to the specified
-     * number of decimal places.
-     *
-     * @param d1     The first value to compare.
-     * @param d2     The second value to compare.
-     * @param places The number of decimal places to consider.
-     * @return {@code true} if the numbers are equal, {@code false} otherwise.
-     */
-    public static boolean areEqual(double d1, double d2, int places) {
-        d1 = round(d1, places);
-        d2 = round(d2, places);
-        return d1 == d2;
-    }
 
     @Test(expected = IllegalArgumentException.class)
     public void ifcCrossProduct_nullDirection() {
