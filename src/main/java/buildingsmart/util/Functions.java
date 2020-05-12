@@ -16,14 +16,15 @@ public class Functions {
     /**
      * @param arg1 The first input direction.
      * @param arg2 The second input direction.
-     * @return The vector (or cross) product of two input directions. The input
-     * directions must be three-dimensional. The result is always a vector which
-     * is unitless. If one of the input directions has all components equal to
-     * zero, or if they are either parallel or anti-parallel, a vector of zero
-     * magnitude is returned.
+     * @return The vector (or cross) product of two input directions, after
+     * normalizing them. The input directions must be three-dimensional. The
+     * result is always a vector which is unitless. If one of the input
+     * directions has all components equal to zero, or if they are either
+     * parallel or anti-parallel, a vector of zero magnitude is returned.
      * @throws IllegalArgumentException If at least one of the arguments is
      *                                  null, or if at least one is not
      *                                  three-dimensional.
+     * @see Functions#ifcNormalise(IfcDirection)
      */
     public static IfcVector ifcCrossProduct(@NotNull IfcDirection arg1,
                                             @NotNull IfcDirection arg2) {
