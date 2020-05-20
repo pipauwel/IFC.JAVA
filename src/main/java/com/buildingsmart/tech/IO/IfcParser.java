@@ -43,7 +43,6 @@ public class IfcParser {
 	private String inputFile = "";
 	private String outputFile = "";
 	private String filePath = "";
-	private Boolean radical = true;
 
 	private Map<Long, IFCVO> linemap = new HashMap<>();
 	private Map<Long, Object> objectmap = new HashMap<>();
@@ -55,17 +54,17 @@ public class IfcParser {
 	private static IfcProject proj;
 
 	// CONSTRUCTOR
-	public IfcParser(String inputFile, String outputFormat, boolean radical) {
+	public IfcParser(String inputFile, String outputFormat) {
 		this.inputFile = inputFile;
 		this.outputFile = inputFile.substring(0, inputFile.length() - 4) + "." + outputFormat;
 		this.filePath = inputFile.substring(0, inputFile.length() - 4);
-		this.radical = radical;
 	}
 
 	public static void main(String[] args) {
 
-		if (args.length != 0 && args.length!=4) {
-			LOG.info("Usage:\n" + "    IfcParser <inputFile> <inputFormat> <outputFormat> <radical>\n");
+		if (args.length != 0 && args.length!=3) {
+			LOG.info("Usage:\n" + "    IfcParser <inputFile> <inputFormat> <outputFormat>\n +" +
+					"\t\t Example IfcParser C:\\pathToDirectory\\file.ifc spf json\n");
 			return;
 		}
 
@@ -74,29 +73,27 @@ public class IfcParser {
 		String inputFile = "C:\\Users\\20194060\\Desktop\\resources\\files\\7m900_tue_hello_wall_with_door_ifc4.ifc";
 		String inputFormat = "spf";
 		String outputFormat = "json";
-		String radical = "true";
 
 		if(argsList.size() == 0){
 			argsList.add(0,inputFile);
 			argsList.add(1,inputFormat);
 			argsList.add(2,outputFormat);
-			argsList.add(3,radical);
 		}
 		else{
 			inputFile = args[0];
 			inputFormat = args[1];
 			outputFormat = args[2];
-			radical = args[3];
 		}
 
-		final int numRequiredOptions = 4;
+		final int numRequiredOptions = 3;
 		if (argsList.size() != numRequiredOptions) {
-			LOG.info("Usage:\n" + "    IfcParser <inputFile> <inputFormat> <outputFormat> <radical>\n");
+			LOG.info("Usage:\n" + "    IfcParser <inputFile> <inputFormat> <outputFormat> <radical>\n +" +
+					"\t\t Example IfcParser C:\\pathToDirectory\\file.ifc spf json\n");
 			return;
 		}
 
-		IfcParser parser = new IfcParser(inputFile, outputFormat, Boolean.valueOf(radical));
-		LOG.info("Parsing file: " + inputFile + "\r\n");
+		IfcParser parser = new IfcParser(inputFile, outputFormat);
+		LOG.info("Parsing file: " + inputFile);
 
 		//parser.setup();
 		//parser.convert(inputFile, outputFile, r.DEFAULT_PATH);
@@ -110,9 +107,9 @@ public class IfcParser {
 		    //TODO other formats
         }
 
+		LOG.info("exporting to file...");
 		if(outputFormat.equalsIgnoreCase("json")) {
 			parser.writeModelToJSON();
-			parser.writeModelToXML();
 		}
 		else if(outputFormat.equalsIgnoreCase("xml")) {
 			parser.writeModelToXML();
@@ -129,6 +126,8 @@ public class IfcParser {
 		proj = null;
 		parser.parseModelFromXML(fp+".xml");
 		parser.writeModelToXML(fp1+".xml");*/
+
+		LOG.info("Done!");
 	}
 
 	private void loadTypeNames(){
@@ -188,16 +187,14 @@ public class IfcParser {
 			if (!parsedSuccessfully)
 				return;
 
-			LOG.info("Entries mapped into list");
-
 			//recover data from parser
 			//conv.idCounter = parser.getIdCounter();
 			linemap = parser.getLinemap();
 
+			LOG.info("loading data and tracking relations...");
 			loadToClassLibrary();
 			linkObjects();
 			computeInverses();
-			//secondRunForMakingMatches();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -210,13 +207,12 @@ public class IfcParser {
 
 			//get full classname;
 			String name = ifcLineEntry.getName();
-			System.out.println(name + " - " + ifcLineEntry.getLineNum());
+			LOG.debug(name + " - " + ifcLineEntry.getLineNum());
 			String className = IFC4_ADD2_classes.get(name);
 
 			try {
 				Class<?> cls = Class.forName(className);
 				Object clsInstance = cls.getDeclaredConstructor().newInstance();
-				System.out.println(clsInstance);
 				objectmap.put(ifcLineEntry.getLineNum(),clsInstance);
 
 				if(ifcLineEntry.getName().equalsIgnoreCase("IfcProject"))
@@ -233,7 +229,7 @@ public class IfcParser {
 				if(fields.size()!=input.size()){
 					//input values is not equal in number to field values
 					//#13 = IFCMEASUREWITHUNIT(IFCPLANEANGLEMEASURE(1.745E-2), #14);
-					System.out.println("Fields and input do not match in size - probably a type reference in the line");
+					LOG.debug("Fields and input do not match in size - probably a type reference in the line");
 					unevenlistsizes = true;
 					diff = input.size() - fields.size();
 				}
@@ -258,10 +254,9 @@ public class IfcParser {
 
 							if(originalType!="" && input.get(inputIndex+1)!=null && input.get(inputIndex+1) instanceof LinkedList){
 								//This class exists!
-								//System.out.println("found this in the linkedlist string or whatever it is: " + input.get(inputIndex+1));
 								LinkedList xx = (LinkedList) input.get(inputIndex+1);
 								if(xx.size()!=1) {
-									System.out.println("ERROR: LinkedList should have only one element: " + fields.get(fieldIndex));
+									LOG.error("ERROR: LinkedList should have only one element: " + fields.get(fieldIndex));
 									inputIndex++;
 									diff--;
 									if(diff == 0)
@@ -271,9 +266,6 @@ public class IfcParser {
 
 								String x = (String)xx.get(0);
 								//This is typically a string, it needs to be handled again before creating again
-								//Object clsSelectInstance = (Object) clsSelect.getDeclaredConstructor().newInstance(x);
-								/*System.out.println("DOING THIS: This is the issue with the Unexisting Select class - go to " +
-										"com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue and find ... no subclasses!");*/
 
 								String originalTypeName = getOriginalFullTypeName(originalType);
 								String range = IFC4_ADD2_types.get(originalTypeName);
@@ -311,17 +303,15 @@ public class IfcParser {
 									valField.set(typeclsInstance,Integer.parseInt(x));
 								else if(valType.equals(Double.class))
 									valField.set(typeclsInstance,Double.parseDouble(x));
-								else if(valType.equals(Array.class)) {
-									//TODO probably a Byte[] array
-									System.out.println("WARNING: TODO Byte Array");
-								}
 								else if(valType.equals(Boolean.class))
 									valField.set(typeclsInstance,Boolean.parseBoolean(x));
+								else
+									LOG.warn("unhandled type");
 
 								fields.get(fieldIndex).setAccessible(true);
 								fields.get(fieldIndex).set(clsInstance, typeclsInstance);
 
-								System.out.println("OK declared field: " + fields.get(fieldIndex));
+								LOG.debug("OK declared field: " + fields.get(fieldIndex));
 
 								inputIndex++;
 								inputIndex++;
@@ -344,7 +334,7 @@ public class IfcParser {
 								IfcDimensionalExponents ide = getIfcDimensionsForSiUnit(unitName);
 								fields.get(fieldIndex).setAccessible(true);
 								fields.get(fieldIndex).set(clsInstance, ide);
-								System.out.println("OK declared field: " + fields.get(fieldIndex));
+								LOG.debug("OK declared field: " + fields.get(fieldIndex));
 
 								inputIndex++;
 								continue;
@@ -364,7 +354,7 @@ public class IfcParser {
 								continue;
 							}
 							else{
-								System.out.println("Skipping field: Field " + fields.get(fieldIndex) + " is not assignable from type "
+								LOG.warn("Skipping field: Field " + fields.get(fieldIndex) + " is not assignable from type "
 										+ String.class + ", especially not because it is a '*'.");
 								inputIndex++;
 								continue;
@@ -399,16 +389,14 @@ public class IfcParser {
 									valField.set(typeclsInstance,Integer.parseInt(txt));
 								else if(valType.equals(Double.class))
 									valField.set(typeclsInstance,Double.parseDouble(txt));
-								else if(valType.equals(Array.class)) {
-									//TODO probably a Byte[] array
-									System.out.println("WARNING: TODO Byte Array");
-								}
 								else if(valType.equals(Boolean.class))
 									valField.set(typeclsInstance,Boolean.parseBoolean(txt));
+								else
+									LOG.warn("unhandled type");
 
 								fields.get(fieldIndex).setAccessible(true);
 								fields.get(fieldIndex).set(clsInstance, typeclsInstance);
-								System.out.println("OK declared field: " + fields.get(fieldIndex));
+								LOG.debug("OK declared field: " + fields.get(fieldIndex));
 
 								inputIndex++;
 								continue;
@@ -425,15 +413,13 @@ public class IfcParser {
 									valField.set(typeclsInstance,Integer.parseInt(txt));
 								else if(valType.equals(Double.class))
 									valField.set(typeclsInstance,Double.parseDouble(txt));
-								else if(valType.equals(Array.class)) {
-									//TODO probably a Byte[] array
-									System.out.println("WARNING: TODO Byte Array");
-								}
 								else if(valType.equals(Boolean.class))
 									valField.set(typeclsInstance,Boolean.parseBoolean(txt));
+								else
+									LOG.warn("unhandled type");
 								fields.get(fieldIndex).setAccessible(true);
 								fields.get(fieldIndex).set(clsInstance, typeclsInstance);
-								System.out.println("OK declared field: " + fields.get(fieldIndex));
+								LOG.debug("OK declared field: " + fields.get(fieldIndex));
 								inputIndex++;
 								continue;
 							}
@@ -443,14 +429,14 @@ public class IfcParser {
 							Enum anEnum = Enum.valueOf((Class<Enum>) fields.get(fieldIndex).getType(), txt);
 							fields.get(fieldIndex).setAccessible(true);
 							fields.get(fieldIndex).set(clsInstance, anEnum);
-							System.out.println("OK declared field: " + fields.get(fieldIndex));
+							LOG.debug("OK declared field: " + fields.get(fieldIndex));
 							inputIndex++;
 							continue;
 						}
 						else if(t.equals(String.class)){
 							fields.get(fieldIndex).setAccessible(true);
 							fields.get(fieldIndex).set(clsInstance, txt);
-							System.out.println("OK declared field: " + fields.get(fieldIndex));
+							LOG.debug("OK declared field: " + fields.get(fieldIndex));
 							inputIndex++;
 							continue;
 						}
@@ -458,7 +444,7 @@ public class IfcParser {
 							int x = Integer.parseInt(txt);
 							fields.get(fieldIndex).setAccessible(true);
 							fields.get(fieldIndex).set(clsInstance, x);
-							System.out.println("OK declared field: " + fields.get(fieldIndex));
+							LOG.debug("OK declared field: " + fields.get(fieldIndex));
 							inputIndex++;
 							continue;
 						}
@@ -466,7 +452,7 @@ public class IfcParser {
 							double x = Double.parseDouble(txt);
 							fields.get(fieldIndex).setAccessible(true);
 							fields.get(fieldIndex).set(clsInstance, x);
-							System.out.println("OK declared field: " + fields.get(fieldIndex));
+							LOG.debug("OK declared field: " + fields.get(fieldIndex));
 							inputIndex++;
 							continue;
 						}
@@ -474,32 +460,32 @@ public class IfcParser {
 							Boolean x = Boolean.parseBoolean(txt);
 							fields.get(fieldIndex).setAccessible(true);
 							fields.get(fieldIndex).set(clsInstance, x);
-							System.out.println("OK declared field: " + fields.get(fieldIndex));
+							LOG.debug("OK declared field: " + fields.get(fieldIndex));
 							inputIndex++;
 							continue;
 						}
 						else if(fields.get(fieldIndex).getName().endsWith("valueComponent")){
 							// these fields point to interfaces, which are the JAVA versions of EXPRESS Selects.
 							//#13 = IFCMEASUREWITHUNIT(IFCPLANEANGLEMEASURE(1.745E-2), #14);
-							System.out.println("WARNING: Skipping field: The SELECT field " + fields.get(fieldIndex) + " is not assignable from type " + String.class);
+							LOG.warn("Skipping field: The SELECT field " + fields.get(fieldIndex) + " is not assignable from type " + String.class);
 							inputIndex++;
 							continue;
 						}
 
 						if (!fields.get(fieldIndex).getType().isAssignableFrom(String.class)) {
-							System.out.println("WARNING: Skipping field: Field " + fields.get(fieldIndex) + " is not assignable from type " + String.class);
+							LOG.warn("Skipping field: Field " + fields.get(fieldIndex) + " is not assignable from type " + String.class);
 							continue;
 						}
 
-						System.out.println("WARNING: This code should be unreachable.");
+						LOG.warn("It is probably harmless, but this code should be unreachable.");
 					}
 					else if(input.get(inputIndex) instanceof IFCVO){
 						//regular class - record this - to be mapped afterwards
 						new ToBeMappedObject(clsInstance,fields.get(fieldIndex),(IFCVO)input.get(inputIndex));
-						System.out.println("OK marked object and field to be filled in later (IFCVO): " + fields.get(fieldIndex));
+						LOG.debug("OK marked object and field to be filled in later (IFCVO): " + fields.get(fieldIndex));
 					}
 					else if(input.get(inputIndex) instanceof LinkedList){
-						System.out.println("OK marked object and field to be filled in later (LinkedList): " + fields.get(fieldIndex) + " except for type-based linked lists");
+						LOG.debug("OK marked object and field to be filled in later (LinkedList): " + fields.get(fieldIndex) + " except for type-based linked lists");
 						// only if this is a list of values, we can handle it here: e.g. #23 = IFCSITE('3rNg_N55v4CRBpQVbZJoHB', $, 'TU/e campus',
 						//      'The High Tech campus of the Eindhoven University of Technology', $, $, $, $, .ELEMENT.,
 						//      (24, 28, 0), (54, 25, 0), $, $, $);
@@ -508,22 +494,22 @@ public class IfcParser {
 						if(fields.get(fieldIndex).getType() == IfcComplexNumber.class) {
 							//TODO
 							// com.buildingsmart.tech.ifc.IfcMeasureResource.IfcComplexNumber - ARRAY [1:2] OF REAL
-							System.out.println("WARNING: TODO IfcComplexNumber");
+							LOG.warn("TODO IfcComplexNumber");
 						}
 						else if(fields.get(fieldIndex).getType() == IfcArcIndex.class) {
 							//TODO
 							// com.buildingsmart.tech.ifc.IfcMeasureResource.IfcArcIndex - LIST [3:3] OF IfcPositiveInteger
-							System.out.println("WARNING: TODO IfcArcIndex");
+							LOG.warn("TODO IfcArcIndex");
 						}
 						else if(fields.get(fieldIndex).getType() == IfcLineIndex.class) {
 							//TODO
 							// com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLineIndex - LIST [2:?] OF IfcPositiveInteger
-							System.out.println("WARNING: TODO IfcLineIndex");
+							LOG.warn("TODO IfcLineIndex");
 						}
 						else if(fields.get(fieldIndex).getType() == IfcPropertySetDefinitionSet.class) {
 							//TODO
 							// com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinitionSet - SET [1:?] OF IfcPropertySetDefinition
-							System.out.println("WARNING: TODO IfcPropertySetDefinition");
+							LOG.warn("TODO IfcPropertySetDefinition");
 						}
 						else if(fields.get(fieldIndex).getType() == IfcCompoundPlaneAngleMeasure.class){
 							//handling IfcCompoundPlaneAngleMeasure case
@@ -541,7 +527,7 @@ public class IfcParser {
 								}
 								catch (NumberFormatException nfe)
 								{
-									System.out.println("ERROR : IfcCompoundPlaneAngleMeasure found with elements other than integers. Should be Integers.");
+									LOG.error("IfcCompoundPlaneAngleMeasure found with elements other than integers. Should be Integers.");
 								}
 							}
 							else if(cleanList.size()==4){
@@ -558,25 +544,21 @@ public class IfcParser {
 								}
 								catch (NumberFormatException nfe)
 								{
-									System.out.println("ERROR : IfcCompoundPlaneAngleMeasure found with elements other than integers. Should be Integers.");
+									LOG.error("IfcCompoundPlaneAngleMeasure found with elements other than integers. Should be Integers.");
 								}
 							}
 							else {
-								System.out.println("ERROR : IfcCompoundPlaneAngleMeasure found with wrong number of elements. Should be 3 or 4.");
+								LOG.error("IfcCompoundPlaneAngleMeasure found with wrong number of elements. Should be 3 or 4.");
 							}
 						}
 						else{
-							/*String s = fields.get(fieldIndex).getType().getName();
-							if(IFC4_ADD2_types.containsKey(fields.get(fieldIndex).getType().getName())){
-								System.out.println("out");
-							}*/
 							//regular class - record this - to be mapped afterwards
 							new ToBeMappedList(clsInstance,fields.get(fieldIndex),list);
-							System.out.println("OK marked object and field to be filled in later (LinkedList): " + fields.get(fieldIndex));
+							LOG.debug("OK marked object and field to be filled in later (LinkedList): " + fields.get(fieldIndex));
 						}
 					}
 					else {
-						System.out.println("not sure what this field is: " + fields.get(fieldIndex));
+						LOG.warn("not sure what this field is: " + fields.get(fieldIndex));
 					}
 
 					inputIndex++;
@@ -611,7 +593,6 @@ public class IfcParser {
 				for(Annotation annotation : annotations){
 					if(annotation instanceof DataMember){
 						DataMember myAnnotation = (DataMember) annotation;
-						//System.out.println("order: " + myAnnotation.Order());
 						extra.add(f);
 					}
 				}
@@ -621,8 +602,6 @@ public class IfcParser {
 				result.add(0, extra.get(j-1));
 			}
 
-			//Collections.addAll(result, i.getDeclaredFields());
-			//result.add(0,extra.toArray());
 			i = i.getSuperclass();
 			extra.clear();
 		}
@@ -653,8 +632,6 @@ public class IfcParser {
 				result.add(0, extra.get(j-1));
 			}
 
-			//Collections.addAll(result, i.getDeclaredFields());
-			//result.add(0,extra.toArray());
 			i = i.getSuperclass();
 			extra.clear();
 		}
@@ -671,20 +648,20 @@ public class IfcParser {
 				return s;
 			}
 		}
-		System.out.println("ERROR: typename not found while it should be");
+		LOG.error("typename not found while it should be");
 		return null;
 	}
 
 	private void linkObjects(){
-		System.out.println("");
-		System.out.println("---------------------------------");
-		System.out.println("LINKING OBJECTS");
-		System.out.println("---------------------------------");
-		System.out.println("");
+		LOG.debug("");
+		LOG.debug("---------------------------------");
+		LOG.debug("LINKING OBJECTS");
+		LOG.debug("---------------------------------");
+		LOG.debug("");
 		for(ToBeMappedObject obj : ToBeMappedObject.listOfObjects){
 			try {
 				//Fill forward object value
-				System.out.println(obj.getClsInstance());
+				LOG.debug("Handling instance: " + obj.getClsInstance());
 				Object source = obj.getClsInstance();
 				Field forwardField = obj.getField();
 				Object target = objectmap.get(obj.getIfcvo().getLineNum());
@@ -697,7 +674,7 @@ public class IfcParser {
 		for(ToBeMappedList list : ToBeMappedList.listOfObjects){
 			try {
 				Object clsInstance = list.getClsInstance();
-				System.out.println(clsInstance);
+				LOG.debug("Handling instance: " + clsInstance);
 				Field f = list.getField();
 				LinkedList<Object> theList = list.getLinkedlist();
 
@@ -727,7 +704,7 @@ public class IfcParser {
 										}
 									}
 									if (originalTypeName == "")
-										System.out.println("ERROR: typename not found while it should be");
+										LOG.error("typename not found while it should be");
 
 									Class<?> referencedType = Class.forName(originalTypeName);
 									Object typeclsInstance = referencedType.getDeclaredConstructor().newInstance();
@@ -739,17 +716,15 @@ public class IfcParser {
 											value = value.substring(1);
 										if (value != "")
 											valField.set(typeclsInstance, value);
-									} else if (valType.equals(Integer.class))
+									}
+									else if (valType.equals(Integer.class))
 										valField.set(typeclsInstance, Integer.parseInt(value));
 									else if (valType.equals(Double.class))
 										valField.set(typeclsInstance, Double.parseDouble(value));
-									else if (valType.equals(Array.class)) {
-										//TODO probably a Byte[] array
-										System.out.println("WARNING: TODO Byte Array");
-									} else if (valType.equals(Boolean.class))
+									else if (valType.equals(Boolean.class))
 										valField.set(typeclsInstance, Boolean.parseBoolean(value));
 									else {
-										System.out.println("ERROR: found unknown data type : " + valType.getTypeName());
+										LOG.warn("found unknown data type : " + valType.getTypeName());
 									}
 
 									x.add(typeclsInstance);
@@ -812,14 +787,10 @@ public class IfcParser {
 																	innerinnerField.set(typeclsInnerInstance, Integer.parseInt(value));
 																else if (innerValType.equals(Double.class))
 																	innerinnerField.set(typeclsInnerInstance, Double.parseDouble(value));
-																else if (innerValType.equals(Array.class)) {
-																	//TODO probably a Byte[] array
-																	System.out.println("WARNING: TODO Byte Array");
-																}
 																else if (innerValType.equals(Boolean.class))
 																	innerinnerField.set(typeclsInnerInstance, Boolean.parseBoolean(value));
 																else {
-																	System.out.println("ERROR: found unknown data type : " + innerValType.getTypeName());
+																	LOG.warn("found unknown data type : " + innerValType.getTypeName());
 																}
 																listValue.add(typeclsInnerInstance);
 															}
@@ -836,13 +807,12 @@ public class IfcParser {
 
 								}
 								else{
-									System.out.println("WARNING: unhandled type");
+									LOG.warn("unhandled type");
 								}
 							}
 							else if(type instanceof ParameterizedType) {
 								ParameterizedType pt = (ParameterizedType) type;
 								for (Type t : pt.getActualTypeArguments()) {
-									//System.out.println("    " + t);
 									String className = t.getTypeName();
 									if (t.equals(String.class)) {
 										if(v.toString().startsWith("'"))
@@ -887,18 +857,18 @@ public class IfcParser {
 										else if(valType.equals(Boolean.class))
 											valField.set(typeclsInstance,Boolean.parseBoolean((String) v));
 										else{
-											System.out.println("WARNING: unhandled type");
+											LOG.warn("unhandled type");
 										}
 
 										x.add(typeclsInstance);
 									}
 									else{
-										System.out.println("WARNING: not handled : " + className + " - " + v);
+										LOG.warn("not handled : " + className + " - " + v);
 									}
 								}
 							}
 							else {
-								System.out.println("WARNING: skipping String to linkedlist: " + f);
+								LOG.warn("skipping String to linkedlist: " + f);
 							}
 						}
 						else if (v instanceof IFCVO) {
@@ -956,16 +926,16 @@ public class IfcParser {
 								x.add(innerList);
 							}
 
-							System.out.println("OK!: Declared LIST to LIST: " + f);
+							LOG.debug("OK: Declared LIST of LIST: " + f);
 						}
 						else {
-							System.out.println("WARNING: Panic and run");
+							LOG.warn("Panic and run");
 						}
 						inputIndex++;
 					}
 					f.setAccessible(true);
 					f.set(clsInstance, x);
-					System.out.println("OK declared LIST to field: " + f);
+					LOG.debug("OK declared LIST to field: " + f);
 				}
 				else if(f.getType() == Set.class){
 					Set x = new HashSet();
@@ -990,7 +960,7 @@ public class IfcParser {
 									}
 								}
 								if(originalTypeName == "")
-									System.out.println("ERROR: typename not found while it should be");
+									LOG.error("typename not found while it should be");
 
 								Class<?> referencedType = Class.forName(originalTypeName);
 								Object typeclsInstance = referencedType.getDeclaredConstructor().newInstance();
@@ -1007,14 +977,10 @@ public class IfcParser {
 									valField.set(typeclsInstance,Integer.parseInt(value));
 								else if(valType.equals(Double.class))
 									valField.set(typeclsInstance,Double.parseDouble(value));
-								else if(valType.equals(Array.class)) {
-									//TODO probably a Byte[] array
-									System.out.println("WARNING: TODO Byte Array");
-								}
 								else if(valType.equals(Boolean.class))
 									valField.set(typeclsInstance,Boolean.parseBoolean(value));
 								else{
-									System.out.println("ERROR: found unknown data type : " + valType.getTypeName());
+									LOG.warn("found unknown data type : " + valType.getTypeName());
 								}
 
 								x.add(typeclsInstance);
@@ -1044,20 +1010,19 @@ public class IfcParser {
 												valField.set(typeclsInstance, Integer.parseInt((String) v));
 											else if (valType.equals(Double.class))
 												valField.set(typeclsInstance, Double.parseDouble((String) v));
-											else if (valType.equals(Array.class)) {
-												//TODO probably a Byte[] array
-												System.out.println("WARNING: TODO Byte[] array ");
-											} else if (valType.equals(Boolean.class))
+											else if (valType.equals(Boolean.class))
 												valField.set(typeclsInstance, Boolean.parseBoolean((String) v));
+											else
+												LOG.warn("type not found: " + valType.getTypeName());
 
 											x.add(typeclsInstance);
 										} else {
-											System.out.println("WARNING: not handled : " + className + " - " + v);
+											LOG.warn("not handled : " + className + " - " + v);
 										}
 									}
 								}
 								else {
-									System.out.println("WARNING: Not really handled in detail");
+									LOG.warn("Not really handled in detail");
 									x.add(v);
 								}
 							}
@@ -1065,14 +1030,14 @@ public class IfcParser {
 							Object ifcObject2 = objectmap.get(((IFCVO) v).getLineNum());
 							x.add(ifcObject2);
 						} else if (v instanceof LinkedList) {
-							System.out.println("WARNING: skipping SET to linkedlist - to Check 1");
+							LOG.warn("skipping SET to linkedlist - to Check");
 						} else {
-							System.out.println("WARNING: Panic and run");
+							LOG.warn("Panic and run");
 						}
 					}
 					f.setAccessible(true);
 					f.set(clsInstance, x);
-					System.out.println("OK declared SET to field: " + clsInstance.toString() + " - " + f.getName() + " - " + x);
+					LOG.debug("OK declared SET to field: " + clsInstance.toString() + " - " + f.getName() + " - " + x);
 				}
 				else if(f.getType().isArray()){
 					//This is a major exception. This could either be an ARRAY of Real or an ARRAY of IfcLengthMeasure
@@ -1094,7 +1059,6 @@ public class IfcParser {
 						if (v instanceof Character) {
 							//must be comma
 						} else if (v instanceof String) {
-							//System.out.println("    " + t);
 							if(IFC4_ADD2_types.containsKey(className)) {
 								Object typeclsInstance = typecls.getDeclaredConstructor().newInstance();
 								Field valField = typecls.getDeclaredField("value");
@@ -1106,18 +1070,18 @@ public class IfcParser {
 									valField.set(typeclsInstance, Integer.parseInt((String) v));
 								else if (valType.equals(Double.class))
 									valField.set(typeclsInstance, Double.parseDouble((String) v));
-								else if (valType.equals(Array.class)) {
-									//TODO probably a Byte[] array
-								} else if (valType.equals(Boolean.TYPE))
+								else if (valType.equals(Boolean.TYPE))
 									valField.set(typeclsInstance, Boolean.parseBoolean((String) v));
+								else
+									LOG.warn("type not handled : " + valType.getTypeName());
 
 								x.add(typeclsInstance);
 							}
 							else {
-								System.out.println("WARNING: not handled : " + className + " - " + v);
+								LOG.warn("not handled : " + className + " - " + v);
 							}
 						} else {
-							System.out.println("WARNING: Encountered unknown data type : " + v);
+							LOG.warn("Encountered unknown data type : " + v);
 						}
 					}
 
@@ -1127,12 +1091,12 @@ public class IfcParser {
 					}
 
 					f.setAccessible(true);
-					f.set(clsInstance, o); //toArray(new String[list.size()]);
+					f.set(clsInstance, o);
 
-					System.out.println("OK declared ARRAY to field: " + clsInstance.toString() + " - " + f.getName() + " - " + x);
+					LOG.debug("OK declared ARRAY to field: " + clsInstance.toString() + " - " + f.getName() + " - " + x);
 				}
 				else {
-					System.out.println("WARNING: This should be unreachable code ");
+					LOG.warn("It is probably harmless, but this should be unreachable code.");
 				}
 			} catch (IllegalAccessException | ClassNotFoundException | NoSuchMethodException | NoSuchFieldException | InstantiationException | InvocationTargetException e) {
 				e.printStackTrace();
@@ -1151,14 +1115,14 @@ public class IfcParser {
 	}
 
 	private void computeInverses(){
-		System.out.println("");
-		System.out.println("---------------------------------");
-		System.out.println("COMPUTING INVERSES");
-		System.out.println("---------------------------------");
-		System.out.println("");
+		LOG.debug("");
+		LOG.debug("---------------------------------");
+		LOG.debug("COMPUTING INVERSES");
+		LOG.debug("---------------------------------");
+		LOG.debug("");
 		for(ToBeMappedObject obj : ToBeMappedObject.listOfObjects){
 			try {
-				System.out.println(obj.getClsInstance());
+				LOG.debug("Handling instance : " + obj.getClsInstance());
 				Object source = obj.getClsInstance();
 				Field forwardField = obj.getField();
 				Object target = objectmap.get(obj.getIfcvo().getLineNum());
@@ -1186,7 +1150,7 @@ public class IfcParser {
 										inverseField.set(target, mySet);
 									}
 									mySet.add(source);
-									System.out.println("OK: declared SET with " + source + " to field: " + inverseField);
+									LOG.debug("OK: declared SET with " + source + " to field: " + inverseField);
 								}
 								else if (inverseField.getType() == List.class) {
 									List myList = (List) inverseField.get(target);
@@ -1195,14 +1159,14 @@ public class IfcParser {
 										inverseField.set(target, myList);
 									}
 									myList.add(source);
-									System.out.println("OK: declared LIST with " + source + " to field: " + inverseField);
+									LOG.debug("OK: declared LIST with " + source + " to field: " + inverseField);
 								}
 								else if(inverseField.getType() == source.getClass()) {
 									inverseField.set(target, source);
-									System.out.println("OK: declared IfcObject " + source + " to field: " + inverseField);
+									LOG.debug("OK: declared IfcObject " + source + " to field: " + inverseField);
 								}
 								else {
-									System.out.println("WARNING: This should be unreachable code : " + fields.get(i));
+									LOG.warn("It is probably harmless, but this should be unreachable code : " + fields.get(i));
 								}
 							}
 							break;
@@ -1264,7 +1228,7 @@ public class IfcParser {
 												inverseField.set(target, mySet);
 											}
 											mySet.add(source);
-											System.out.println("OK: declared SET with " + source + " to field: " + inverseField);
+											LOG.debug("OK: declared SET with " + source + " to field: " + inverseField);
 										}
 										else if (inverseField.getType() == List.class) {
 											List myList = (List) inverseField.get(target);
@@ -1273,14 +1237,14 @@ public class IfcParser {
 												inverseField.set(target, myList);
 											}
 											myList.add(source);
-											System.out.println("OK: declared LIST with " + source + " to field: " + inverseField);
+											LOG.debug("OK: declared LIST with " + source + " to field: " + inverseField);
 										}
 										else if(inverseField.getType() == theClass) {
 											inverseField.set(target, source);
-											System.out.println("OK: declared IfcObject " + source + " to field: " + inverseField);
+											LOG.debug("OK: declared IfcObject " + source + " to field: " + inverseField);
 										}
 										else {
-											System.out.println("WARNING: This should be unreachable code : " + fields.get(i));
+											LOG.warn("It is probably harmless, but this should be unreachable code : " + fields.get(i));
 										}
 									}
 								} catch (IllegalAccessException e) {
@@ -1291,13 +1255,13 @@ public class IfcParser {
 							}
 						}
 						if(yes) {
-							//found the inverse field
+							//found the inverse field - handled
 							break;
 						}
 					}
 				}
 				else if (obj.getClass().equals(List.class)){
-					System.out.println("ERROR: unhandled List of List");
+					LOG.error("unhandled List of List");
 				}
 			}
 		}
@@ -1329,14 +1293,14 @@ public class IfcParser {
 				//while(iter.hasNext()){
 				//	IfcRelAggregates ira = iter.next();
 					if(ira.getRelatedObjects().size() == 0){
-						System.out.println("did not find IfcSite");
+						LOG.warn("did not find IfcSite");
 						ira.getRelatedObjects().add(new IfcSite());
 						IfcSite s = new IfcSite();
 						s.setName(new IfcLabel("testName"));
 					}				
 				//}
 	
-				System.out.println("completed");
+				LOG.info("completed");
 	
 			} catch (JsonParseException e) {
 				// TODO Auto-generated catch block

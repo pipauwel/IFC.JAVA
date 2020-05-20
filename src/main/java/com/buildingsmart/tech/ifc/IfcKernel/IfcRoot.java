@@ -61,7 +61,6 @@ public abstract class IfcRoot
 
 	public String getGlobalId() {
 		if(globalId.length()==22){
-			System.out.println("uncompressing guid");
 			this.globalId = GuidHandler.uncompressGuidString(globalId);
 		}
 		return this.globalId;
@@ -69,7 +68,6 @@ public abstract class IfcRoot
 
 	public void setGlobalId(String globalId) {
 		if(globalId.length()==22){
-			System.out.println("uncompressing guid");
 			this.globalId = GuidHandler.uncompressGuidString(globalId);
 		}
 		this.globalId = GuidHandler.uncompressGuidString(globalId);
