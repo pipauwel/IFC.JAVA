@@ -9,6 +9,8 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcText;
 import com.buildingsmart.tech.ifc.IfcUtilityResource.IfcOwnerHistory;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -26,26 +28,26 @@ public abstract class IfcRoot
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("2ef91ad0-a87b-4049-910a-d9c2aea67739")
-	@JacksonXmlProperty(isAttribute=true, localName = "GlobalId")
+	@JacksonXmlProperty(isAttribute=true, localName = "globalId")
 	private String globalId;
 
 	@Description("Assignment of the information about the current ownership of that object, including owning actor, application, local identification and information captured about the recent changes of the object,     <blockquote class=\"note\">NOTE&nbsp; only the last modification in stored - either as addition, deletion or modification.</blockquote>  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been changed to be OPTIONAL.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("3f6c9112-a79d-49a2-a983-4fd08a4cedc3")
-	@JacksonXmlProperty(isAttribute=false, localName = "OwnerHistory")
+	@JacksonXmlProperty(isAttribute=false, localName = "ownerHistory")
 	private IfcOwnerHistory ownerHistory;
 
 	@Description("Optional name for use by the participating software systems or users. For some subtypes of IfcRoot the insertion of the Name attribute may be required. This would be enforced by a where rule.")
 	@DataMember(Order = 2)
 	@Guid("03435dd4-ced4-460f-9203-e318d330c219")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 	@Description("Optional description, provided for exchanging informative comments.")
 	@DataMember(Order = 3)
 	@Guid("ae1c2069-cba7-4c56-b652-2ce207a2345f")
-	@JacksonXmlProperty(isAttribute=true, localName = "Description")
-	private String description;
+	@JacksonXmlProperty(isAttribute=true, localName = "description")
+	private IfcText description;
 
 
 	public IfcRoot()
@@ -81,19 +83,19 @@ public abstract class IfcRoot
 		this.ownerHistory = ownerHistory;
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 
-	public String getDescription() {
+	public IfcText getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(IfcText description) {
 		this.description = description;
 	}
 

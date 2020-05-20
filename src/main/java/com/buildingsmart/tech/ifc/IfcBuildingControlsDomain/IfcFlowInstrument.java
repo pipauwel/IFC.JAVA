@@ -5,25 +5,10 @@
 
 package com.buildingsmart.tech.ifc.IfcBuildingControlsDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionControlElement;
 
 @Guid("67624ad3-5d2e-4f19-abe4-c8abfa34fd54")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -31,7 +16,7 @@ public class IfcFlowInstrument extends com.buildingsmart.tech.ifc.IfcSharedBldgS
 {
 	@DataMember(Order = 0)
 	@Guid("5b774128-e349-4ff3-8ae3-28adab4523b1")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcFlowInstrumentTypeEnum predefinedType;
 
 

@@ -6,8 +6,17 @@
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcVector;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("95905ecc-b883-4200-8384-7915a54c30ca")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcPositiveLengthMeasure.class, name = "IfcPositiveLengthMeasure"),
+        @JsonSubTypes.Type(value = IfcVector.class, name = "IfcVector")})
 public interface IfcHatchLineDistanceSelect {
 
 }

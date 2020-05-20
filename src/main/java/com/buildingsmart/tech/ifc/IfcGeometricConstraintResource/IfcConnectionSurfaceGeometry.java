@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcSurfaceOrFaceSurface;
 
 @Guid("2e3f9a00-22e8-4d1e-9473-28fab150a1fa")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,13 +20,13 @@ public class IfcConnectionSurfaceGeometry extends IfcConnectionGeometry
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("314adc40-553a-4304-9635-524cc52d9f2b")
-	@JacksonXmlProperty(isAttribute=true, localName = "SurfaceOnRelatingElement")
+	@JacksonXmlProperty(isAttribute=true, localName = "surfaceOnRelatingElement")
 	private IfcSurfaceOrFaceSurface surfaceOnRelatingElement;
 
 	@Description("Surface at which the relating element is aligned at the related element, given in the LCS of the related element. If the information is omitted, then the origin of the related element is used.")
 	@DataMember(Order = 1)
 	@Guid("799673ed-96e5-416c-9b59-e0b232546f8e")
-	@JacksonXmlProperty(isAttribute=true, localName = "SurfaceOnRelatedElement")
+	@JacksonXmlProperty(isAttribute=true, localName = "surfaceOnRelatedElement")
 	private IfcSurfaceOrFaceSurface surfaceOnRelatedElement;
 
 

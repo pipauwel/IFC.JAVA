@@ -5,27 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionPointEccentricity;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcPointOrVertexPoint;
 
 @Guid("eb9cba99-d452-42f5-91a7-7d9d1195d90d")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -37,13 +24,13 @@ public class IfcConnectionPointGeometry extends IfcConnectionGeometry
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("976628c1-26d5-43ee-819d-e2ef622cf70c")
-	@JacksonXmlProperty(isAttribute=true, localName = "PointOnRelatingElement")
+	@JacksonXmlProperty(isAttribute=true, localName = "pointOnRelatingElement")
 	private IfcPointOrVertexPoint pointOnRelatingElement;
 
 	@Description("Point at which connected objects are aligned at the related element, given in the LCS of the related element. If the information is omitted, then the origin of the related element is used.")
 	@DataMember(Order = 1)
 	@Guid("393301b1-7137-4011-bbd9-6e513c7d079f")
-	@JacksonXmlProperty(isAttribute=true, localName = "PointOnRelatedElement")
+	@JacksonXmlProperty(isAttribute=true, localName = "pointOnRelatedElement")
 	private IfcPointOrVertexPoint pointOnRelatedElement;
 
 

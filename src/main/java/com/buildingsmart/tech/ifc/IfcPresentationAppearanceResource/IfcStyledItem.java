@@ -5,27 +5,17 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcStyleAssignmentSelect;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("03067245-b9da-400b-8de8-c6189fa9b928")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -43,14 +33,14 @@ public class IfcStyledItem extends com.buildingsmart.tech.ifc.IfcGeometryResourc
 	@Guid("d38b5c99-b51e-4f5a-a2a5-140d9071d049")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcStyleAssignmentSelect")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "Styles")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "styles")
 	private Set<IfcStyleAssignmentSelect> styles;
 
 	@Description("The word, or group of words, by which the styled item is referred to.")
 	@DataMember(Order = 2)
 	@Guid("d82e6d30-0872-439b-9e6c-e97111ad8266")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 
 	public IfcStyledItem()
@@ -74,11 +64,11 @@ public class IfcStyledItem extends com.buildingsmart.tech.ifc.IfcGeometryResourc
 		return this.styles;
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 

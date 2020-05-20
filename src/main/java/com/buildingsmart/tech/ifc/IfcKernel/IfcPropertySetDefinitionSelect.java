@@ -6,8 +6,15 @@
 package com.buildingsmart.tech.ifc.IfcKernel;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("379de60f-07fe-44bd-8cc1-0e7db8c4fda2")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcPropertySetDefinitionSet.class, name = "IfcPropertySetDefinitionSet"),
+        @JsonSubTypes.Type(value = IfcPropertySetDefinition.class, name = "IfcPropertySetDefinition")})
 public interface IfcPropertySetDefinitionSelect {
 
 }

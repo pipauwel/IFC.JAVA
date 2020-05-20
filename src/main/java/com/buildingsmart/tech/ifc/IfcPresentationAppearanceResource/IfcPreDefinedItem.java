@@ -5,27 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedColour;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedCurveFont;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedTextFont;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem;
 
 @Guid("24f52902-4123-41ea-bdd0-f47e6ab00191")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -37,24 +25,24 @@ public abstract class IfcPreDefinedItem extends com.buildingsmart.tech.ifc.IfcPr
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("b0f1937f-94b4-4988-82a9-cf7620fca2ff")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 
 	public IfcPreDefinedItem()
 	{
 	}
 
-	public IfcPreDefinedItem(String name)
+	public IfcPreDefinedItem(IfcLabel name)
 	{
 		this.name = name;
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 

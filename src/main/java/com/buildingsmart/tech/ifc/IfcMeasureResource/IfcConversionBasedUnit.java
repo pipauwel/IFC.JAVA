@@ -5,30 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcMeasureResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcConversionBasedUnitWithOffset;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNamedUnit;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcDimensionalExponents;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnitEnum;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcMeasureWithUnit;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Set;
 
 @Guid("7d4b1cf1-345c-456d-9199-c2fc2e7e94f0")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,21 +25,21 @@ public class IfcConversionBasedUnit extends IfcNamedUnit implements com.building
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("8f0badf9-2c68-49b2-9365-0e66adb20d4d")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
+	@JacksonXmlProperty(isAttribute=true, localName = "name")
 	private String name;
 
 	@Description("The physical quantity from which the converted unit is derived.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("91e5e04e-74ab-456a-9cb8-77cbbdf2cdf7")
-	@JacksonXmlProperty(isAttribute=false, localName = "ConversionFactor")
+	@JacksonXmlProperty(isAttribute=false, localName = "conversionFactor")
 	private IfcMeasureWithUnit conversionFactor;
 
 	@Description("Reference to external information, e.g. library, classification, or document information, which is associated with the conversion-based unit.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE New inverse attribute.</blockquote>")
-	@InverseProperty(InverseProp = "RelatedResourceObjects", Range = "IfcExternalReferenceRelationship")
+	@InverseProperty(InverseProp = "relatedResourceObjects", Range = "IfcExternalReferenceRelationship")
 	@Guid("d6118974-bfed-426c-b479-6ecff30b88a2")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcExternalReferenceRelationship")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasExternalReference")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "hasExternalReference")
 	private Set<IfcExternalReferenceRelationship> hasExternalReference;
 
 

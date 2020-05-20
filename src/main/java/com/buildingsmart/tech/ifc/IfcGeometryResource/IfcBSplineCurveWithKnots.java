@@ -5,29 +5,20 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcInteger;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLogical;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcParameterValue;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRationalBSplineCurveWithKnots;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineCurveForm;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcKnotType;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("5cf374d3-9550-4d89-8870-9e50d9d4d7f6")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,24 +31,24 @@ public class IfcBSplineCurveWithKnots extends IfcBSplineCurve
 	@Required()
 	@Guid("4dae82bb-9535-43aa-a1a7-baf777ce6fda")
 	@MinLength(2)
-	@JacksonXmlProperty(isAttribute = false, localName = "Integer")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "KnotMultiplicities")
-	private List<Integer> knotMultiplicities;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcInteger")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "knotMultiplicities")
+	private List<IfcInteger> knotMultiplicities;
 
 	@Description("The list of distinct knots used to define the B-spline basis functions.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("44c6204a-ed46-49b4-a5ef-200b9dd80f13")
 	@MinLength(2)
-	@JacksonXmlProperty(isAttribute = false, localName = "Double")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "Knots")
-	private List<Double> knots;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcParameterValue")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "knots")
+	private List<IfcParameterValue> knots;
 
 	@Description("The description of the knot type. This is for information only.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("fe56ab5c-8a68-43ab-820c-5c7f6d9f1111")
-	@JacksonXmlProperty(isAttribute=true, localName = "KnotSpec")
+	@JacksonXmlProperty(isAttribute=true, localName = "knotSpec")
 	private IfcKnotType knotSpec;
 
 
@@ -65,7 +56,7 @@ public class IfcBSplineCurveWithKnots extends IfcBSplineCurve
 	{
 	}
 
-	public IfcBSplineCurveWithKnots(int degree, IfcCartesianPoint[] controlPointsList, IfcBSplineCurveForm curveForm, Boolean closedCurve, Boolean selfIntersect, Integer[] knotMultiplicities, Double[] knots, IfcKnotType knotSpec)
+	public IfcBSplineCurveWithKnots(IfcInteger degree, IfcCartesianPoint[] controlPointsList, IfcBSplineCurveForm curveForm, IfcLogical closedCurve, IfcLogical selfIntersect, IfcInteger[] knotMultiplicities, IfcParameterValue[] knots, IfcKnotType knotSpec)
 	{
 		super(degree, controlPointsList, curveForm, closedCurve, selfIntersect);
 		this.knotMultiplicities = new ArrayList<>(Arrays.asList(knotMultiplicities));
@@ -73,11 +64,11 @@ public class IfcBSplineCurveWithKnots extends IfcBSplineCurve
 		this.knotSpec = knotSpec;
 	}
 
-	public List<Integer> getKnotMultiplicities() {
+	public List<IfcInteger> getKnotMultiplicities() {
 		return this.knotMultiplicities;
 	}
 
-	public List<Double> getKnots() {
+	public List<IfcParameterValue> getKnots() {
 		return this.knots;
 	}
 
@@ -89,8 +80,11 @@ public class IfcBSplineCurveWithKnots extends IfcBSplineCurve
 		this.knotSpec = knotSpec;
 	}
 
+	@JsonIgnore
 	public int getUpperIndexOnKnots() {
-		return 0;
+		//UpperIndexOnKnots
+		//:=SIZEOF(Knots)
+		return knots.size();
 	}
 
 

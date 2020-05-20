@@ -10,6 +10,7 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -21,41 +22,41 @@ public class IfcRightCircularCylinder extends IfcCsgPrimitive3D
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("dcf9b582-ff9a-4dd7-8ea9-1ba2cbdc8c7b")
-	@JacksonXmlProperty(isAttribute=false, localName = "Height")
-	private double height; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "height")
+	private IfcPositiveLengthMeasure height;
 
 	@Description("The radius of the cylinder.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("fccf868b-e746-42cf-86cb-78c653cf2949")
-	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private double radius; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "radius")
+	private IfcPositiveLengthMeasure radius;
 
 
 	public IfcRightCircularCylinder()
 	{
 	}
 
-	public IfcRightCircularCylinder(IfcAxis2Placement3D position, double height, double radius)
+	public IfcRightCircularCylinder(IfcAxis2Placement3D position, IfcPositiveLengthMeasure height, IfcPositiveLengthMeasure radius)
 	{
 		super(position);
 		this.height = height;
 		this.radius = radius;
 	}
 
-	public double getHeight() {
+	public IfcPositiveLengthMeasure getHeight() {
 		return this.height;
 	}
 
-	public void setHeight(double height) {
+	public void setHeight(IfcPositiveLengthMeasure height) {
 		this.height = height;
 	}
 
-	public double getRadius() {
+	public IfcPositiveLengthMeasure getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(double radius) {
+	public void setRadius(IfcPositiveLengthMeasure radius) {
 		this.radius = radius;
 	}
 

@@ -5,30 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedFaceSet;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcIndexedTriangleTextureMap;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureCoordinate;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceTexture;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedFaceSet;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcTextureVertexList;
 
 @Guid("ac1ef8ed-e75b-403b-a651-72cd4dec16ce")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -47,7 +33,7 @@ public abstract class IfcIndexedTextureMap extends IfcTextureCoordinate
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("e3ac75e4-db50-4833-aad4-1310cc86ea8c")
-	@JacksonXmlProperty(isAttribute=false, localName = "TexCoords")
+	@JacksonXmlProperty(isAttribute=false, localName = "texCoords")
 	private IfcTextureVertexList texCoords;
 
 

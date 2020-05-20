@@ -9,6 +9,7 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -24,14 +25,14 @@ public class IfcStructuralSurfaceMember extends IfcStructuralMember
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("7f571c3a-8900-4457-889e-282980a58f89")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcStructuralSurfaceMemberTypeEnum predefinedType;
 
 	@Description("Defines the typically understood thickness of the structural surface member, measured normal to its reference surface.")
 	@DataMember(Order = 1)
 	@Guid("dc70652b-1bc6-4bef-8a4f-70049ac774f9")
-	@JacksonXmlProperty(isAttribute=false, localName = "Thickness")
-	private double thickness; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "thickness")
+	private IfcPositiveLengthMeasure thickness;
 
 
 	public IfcStructuralSurfaceMember()
@@ -52,11 +53,11 @@ public class IfcStructuralSurfaceMember extends IfcStructuralMember
 		this.predefinedType = predefinedType;
 	}
 
-	public double getThickness() {
+	public IfcPositiveLengthMeasure getThickness() {
 		return this.thickness;
 	}
 
-	public void setThickness(double thickness) {
+	public void setThickness(IfcPositiveLengthMeasure thickness) {
 		this.thickness = thickness;
 	}
 

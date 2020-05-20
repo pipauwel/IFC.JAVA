@@ -7,6 +7,7 @@ package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import com.buildingsmart.tech.annotations.*;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcVector;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -24,7 +25,7 @@ public class IfcFillAreaStyleTiles extends com.buildingsmart.tech.ifc.IfcGeometr
 	@MinLength(2)
 	@MaxLength(2)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcVector")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "TilingPattern")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "tilingPattern")
 	private List<IfcVector> tilingPattern;
 
 	@Description("A set of constituents of the tile being a styled item that is used as the annotation symbol for tiling the filled area.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The data type has been changed to <em>IfcStyledItem</em>.</blockquote>  <blockquote class=\"note\">NOTE&nbsp; Only <em>IfcStyleItem</em>'s that refer to a compatible geometric representation item and presentation style shall be used.</blockquote>")
@@ -33,22 +34,22 @@ public class IfcFillAreaStyleTiles extends com.buildingsmart.tech.ifc.IfcGeometr
 	@Guid("5812d5a2-edd8-486a-8237-149034e4dcaa")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcStyledItem")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "Tiles")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "tiles")
 	private Set<IfcStyledItem> tiles;
 
 	@Description("The scale factor applied to each tile as it is placed in the annotation fill area.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("0200d8ed-49fd-4670-a213-284158f9200d")
-	@JacksonXmlProperty(isAttribute=false, localName = "TilingScale")
-	private double tilingScale; //IfcPositiveRatioMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "tilingScale")
+	private IfcPositiveRatioMeasure tilingScale;
 
 
 	public IfcFillAreaStyleTiles()
 	{
 	}
 
-	public IfcFillAreaStyleTiles(IfcVector[] tilingPattern, IfcStyledItem[] tiles, double tilingScale)
+	public IfcFillAreaStyleTiles(IfcVector[] tilingPattern, IfcStyledItem[] tiles, IfcPositiveRatioMeasure tilingScale)
 	{
 		this.tilingPattern = new ArrayList<>(Arrays.asList(tilingPattern));
 		this.tiles = new HashSet<>(Arrays.asList(tiles));
@@ -63,11 +64,11 @@ public class IfcFillAreaStyleTiles extends com.buildingsmart.tech.ifc.IfcGeometr
 		return this.tiles;
 	}
 
-	public double getTilingScale() {
+	public IfcPositiveRatioMeasure getTilingScale() {
 		return this.tilingScale;
 	}
 
-	public void setTilingScale(double tilingScale) {
+	public void setTilingScale(IfcPositiveRatioMeasure tilingScale) {
 		this.tilingScale = tilingScale;
 	}
 

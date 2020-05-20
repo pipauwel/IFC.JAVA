@@ -5,26 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedTextFont;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSizeSelect;
 
 @Guid("7439723c-1271-4a1c-9d39-89b9279b1f54")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,33 +24,33 @@ public class IfcTextStyleFontModel extends IfcPreDefinedTextFont
 	@Required()
 	@Guid("49edc9c1-a620-4fe5-bf00-03775f79342f")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "String")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "FontFamily")
-	private List<String> fontFamily;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcTextFontName")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "fontFamily")
+	private List<IfcTextFontName> fontFamily;
 
 	@Description("The font style property selects between normal (sometimes referred to as \"roman\" or \"upright\"), italic and oblique faces within a font family.<br>")
 	@DataMember(Order = 1)
 	@Guid("be8c8ef7-984b-4dc6-ac1d-7734785491d7")
-	@JacksonXmlProperty(isAttribute=true, localName = "FontStyle")
-	private String fontStyle;
+	@JacksonXmlProperty(isAttribute=false, localName = "fontStyle")
+	private IfcFontStyle fontStyle;
 
 	@Description("The font variant property selects between normal and small-caps.    <blockquote class=\"note\">NOTE&nbsp; It has been introduced for later compliance to full CSS1 support.</blockquote>")
 	@DataMember(Order = 2)
 	@Guid("d9d340f1-ae0d-4a40-804f-85dea2f4c6f7")
-	@JacksonXmlProperty(isAttribute=true, localName = "FontVariant")
-	private String fontVariant;
+	@JacksonXmlProperty(isAttribute=false, localName = "fontVariant")
+	private IfcFontVariant fontVariant;
 
 	@Description("The font weight property selects the weight of the font.    <blockquote class=\"note\">NOTE&nbsp; Values other then 'normal' and 'bold' have been introduced for later compliance to full CSS1 support.</blockquote>")
 	@DataMember(Order = 3)
 	@Guid("1589c244-68d5-4db6-b286-d166f93c9d25")
-	@JacksonXmlProperty(isAttribute=true, localName = "FontWeight")
-	private String fontWeight;
+	@JacksonXmlProperty(isAttribute=false, localName = "fontWeight")
+	private IfcFontWeight fontWeight;
 
 	@Description("The font size provides the size or height of the text font.    <blockquote class=\"note\">NOTE&nbsp; The following values are allowed, <<em>IfcLengthMeasure<em>, with positive values, the length unit is globally defined at <em>IfcUnitAssignment</em>.</blockquote>")
 	@DataMember(Order = 4)
 	@Required()
 	@Guid("ef2ef376-ffb2-443f-8885-ee01737be7a9")
-	@JacksonXmlProperty(isAttribute=true, localName = "FontSize")
+	@JacksonXmlProperty(isAttribute=true, localName = "fontSize")
 	private IfcSizeSelect fontSize;
 
 
@@ -69,38 +58,38 @@ public class IfcTextStyleFontModel extends IfcPreDefinedTextFont
 	{
 	}
 
-	public IfcTextStyleFontModel(String name, String[] fontFamily, IfcSizeSelect fontSize)
+	public IfcTextStyleFontModel(IfcLabel name, IfcTextFontName[] fontFamily, IfcSizeSelect fontSize)
 	{
 		super(name);
 		this.fontFamily = new ArrayList<>(Arrays.asList(fontFamily));
 		this.fontSize = fontSize;
 	}
 
-	public List<String> getFontFamily() {
+	public List<IfcTextFontName> getFontFamily() {
 		return this.fontFamily;
 	}
 
-	public String getFontStyle() {
+	public IfcFontStyle getFontStyle() {
 		return this.fontStyle;
 	}
 
-	public void setFontStyle(String fontStyle) {
+	public void setFontStyle(IfcFontStyle fontStyle) {
 		this.fontStyle = fontStyle;
 	}
 
-	public String getFontVariant() {
+	public IfcFontVariant getFontVariant() {
 		return this.fontVariant;
 	}
 
-	public void setFontVariant(String fontVariant) {
+	public void setFontVariant(IfcFontVariant fontVariant) {
 		this.fontVariant = fontVariant;
 	}
 
-	public String getFontWeight() {
+	public IfcFontWeight getFontWeight() {
 		return this.fontWeight;
 	}
 
-	public void setFontWeight(String fontWeight) {
+	public void setFontWeight(IfcFontWeight fontWeight) {
 		this.fontWeight = fontWeight;
 	}
 

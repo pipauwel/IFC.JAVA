@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminalType;
-import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.IfcSanitaryTerminalTypeEnum;
 
 @Guid("3e6d6990-982c-4e43-a72e-52557bdc1ac3")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,7 +20,7 @@ public class IfcSanitaryTerminalType extends com.buildingsmart.tech.ifc.IfcShare
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("1e4ce0fe-9a0e-4b63-85a0-96729bee115b")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcSanitaryTerminalTypeEnum predefinedType;
 
 

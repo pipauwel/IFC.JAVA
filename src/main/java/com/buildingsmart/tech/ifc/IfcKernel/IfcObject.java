@@ -6,6 +6,7 @@
 package com.buildingsmart.tech.ifc.IfcKernel;
 
 import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -24,36 +25,36 @@ public abstract class IfcObject extends IfcObjectDefinition
 	@Description("The type denotes a particular type that indicates the object further. The use has to be established at the level of instantiable subtypes. In particular it holds the user defined type, if the enumeration of the attribute <em>PredefinedType</em> is set to USERDEFINED.   <br>")
 	@DataMember(Order = 0)
 	@Guid("a2a49b49-46e4-4a0d-a311-916cc1dd4a25")
-	@JacksonXmlProperty(isAttribute=true, localName = "ObjectType")
-	private String objectType;
+	@JacksonXmlProperty(isAttribute=false, localName = "objectType")
+	private IfcLabel objectType;
 
 	@Description("Link to the relationship object pointing to the declaring object that provides the object definitions for this object occurrence. The declaring object has to be part of an object type decomposition. The associated <em>IfcObject</em>, or its subtypes, contains the specific information (as part of a type, or style, definition), that is common to all reflected instances of the declaring <em>IfcObject</em>, or its subtypes.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse relationship, change made with upward compatibility for file based exchange.</blockquote>")
-	@InverseProperty(InverseProp = "RelatedObjects", Range = "IfcRelDefinesByObject")
+	@InverseProperty(InverseProp = "relatedObjects", Range = "IfcRelDefinesByObject")
 	@Guid("61731909-a38e-45fe-98b9-b403ef1e803d")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDefinesByObject")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsDeclaredBy")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "isDeclaredBy")
 	private Set<IfcRelDefinesByObject> isDeclaredBy;
 
 	@Description("Link to the relationship object pointing to the reflected object(s) that receives the object definitions. The reflected object has to be part of an object occurrence decomposition. The associated <em>IfcObject</em>, or its subtypes, provides the specific information (as part of a type, or style, definition), that is common to all reflected instances of the declaring <em>IfcObject</em>, or its subtypes.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse relationship, change made with upward compatibility for file based exchange.</blockquote>")
-	@InverseProperty(InverseProp = "RelatingObject", Range = "IfcRelDefinesByObject")
+	@InverseProperty(InverseProp = "relatingObject", Range = "IfcRelDefinesByObject")
 	@Guid("8a2b55d8-3bca-45a0-9309-e7c6e2770821")
 	@JsonIgnore
 	private Set<IfcRelDefinesByObject> declares;
 
 	@Description("Set of relationships to the object type that provides the type definitions for this object occurrence. The then associated <em>IfcTypeObject</em>, or its subtypes, contains the specific information (or type, or style), that is common to all instances of <em>IfcObject</em>, or its subtypes, referring to the same type.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse relationship, the link to <em>IfcRelDefinesByType</em> had previously be included in the inverse relationship <em>IfcRelDefines</em>. Change made with upward compatibility for file based exchange.</blockquote>")
-	@InverseProperty(InverseProp = "RelatedObjects", Range = "IfcRelDefinesByType")
+	@InverseProperty(InverseProp = "relatedObjects", Range = "IfcRelDefinesByType")
 	@Guid("4016c47e-1d15-481e-8a59-b6fb531ad43c")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDefinesByType")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsTypedBy")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "isTypedBy")
 	private Set<IfcRelDefinesByType> isTypedBy;
 
 	@Description("Set of relationships to property set definitions attached to this object. Those statically or dynamically defined properties contain alphanumeric information content that further defines the object.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The data type has been changed from <em>IfcRelDefines</em> to <em>IfcRelDefinesByProperties</em> with upward compatibility for file based exchange.</blockquote>")
-	@InverseProperty(InverseProp = "RelatedObjects", Range = "IfcRelDefinesByProperties")
+	@InverseProperty(InverseProp = "relatedObjects", Range = "IfcRelDefinesByProperties")
 	@Guid("e2315ec5-85ce-457d-b508-07be258c2138")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelDefinesByProperties")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsDefinedBy")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "isDefinedBy")
 	private Set<IfcRelDefinesByProperties> isDefinedBy;
 
 
@@ -66,11 +67,11 @@ public abstract class IfcObject extends IfcObjectDefinition
 		super(globalId);
 	}
 
-	public String getObjectType() {
+	public IfcLabel getObjectType() {
 		return this.objectType;
 	}
 
-	public void setObjectType(String objectType) {
+	public void setObjectType(IfcLabel objectType) {
 		this.objectType = objectType;
 	}
 

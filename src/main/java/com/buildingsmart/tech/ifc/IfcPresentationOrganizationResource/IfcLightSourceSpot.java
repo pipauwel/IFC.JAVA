@@ -11,6 +11,9 @@ import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositivePlaneAngleMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcReal;
 import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -23,35 +26,37 @@ public class IfcLightSourceSpot extends IfcLightSourcePositional
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("d9869222-c492-48b1-97b8-646a9e1e60f9")
-	@JacksonXmlProperty(isAttribute=false, localName = "Orientation")
+	@JacksonXmlProperty(isAttribute=false, localName = "orientation")
 	private IfcDirection orientation;
 
 	@Description("Definition from ISO/CD 10303-46:1992: This real is the exponent on the cosine of the angle between the line that starts at the position of the spot light source and is in the direction of the orientation of the spot light source and a line that starts at the position of the spot light source and goes through a point on the surface being shaded.  NOTE&nbsp; This attribute does not exists in ISO/IEC 14772-1:1997.")
 	@DataMember(Order = 1)
 	@Guid("faca732f-be60-468f-82dd-cf078ecb985b")
-	@JacksonXmlProperty(isAttribute=true, localName = "ConcentrationExponent")
-	private double concentrationExponent;
+	@JacksonXmlProperty(isAttribute=false, localName = "concentrationExponent")
+	private IfcReal concentrationExponent;
 
 	@Description("Definition from ISO/CD 10303-46:1992: This planar angle measure is the angle between the line that starts at the position of the spot light source and is in the direction of the spot light source and any line on the boundary of the cone of influence.  Definition from VRML97 - ISO/IEC 14772-1:1997: The cutOffAngle (name of spread angle in VRML) field specifies the outer bound of the solid angle. The light source does not emit light outside of this solid angle.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("3abd8fa5-f5cb-4075-a2f2-2f6396defd8f")
-	@JacksonXmlProperty(isAttribute=false, localName = "SpreadAngle")
-	private double spreadAngle; //IfcPositivePlaneAngleMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "spreadAngle")
+	private IfcPositivePlaneAngleMeasure spreadAngle;
 
 	@Description("Definition from VRML97 - ISO/IEC 14772-1:1997: The beamWidth field specifies an inner solid angle in which the light source emits light at uniform full intensity. The light source's emission intensity drops off from the inner solid angle (beamWidthAngle) to the outer solid angle (spreadAngle).")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("d1bbe032-d2ef-436a-98fa-1380e580ff1c")
-	@JacksonXmlProperty(isAttribute=false, localName = "BeamWidthAngle")
-	private double beamWidthAngle; //IfcPositivePlaneAngleMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "beamWidthAngle")
+	private IfcPositivePlaneAngleMeasure beamWidthAngle;
 
 
 	public IfcLightSourceSpot()
 	{
 	}
 
-	public IfcLightSourceSpot(IfcColourRgb lightColour, IfcCartesianPoint position, double radius, double constantAttenuation, double distanceAttenuation, double quadricAttenuation, IfcDirection orientation, double spreadAngle, double beamWidthAngle)
+	public IfcLightSourceSpot(IfcColourRgb lightColour, IfcCartesianPoint position, IfcPositiveLengthMeasure radius, IfcReal constantAttenuation,
+							  IfcReal distanceAttenuation, IfcReal quadricAttenuation, IfcDirection orientation,
+							  IfcPositivePlaneAngleMeasure spreadAngle, IfcPositivePlaneAngleMeasure beamWidthAngle)
 	{
 		super(lightColour, position, radius, constantAttenuation, distanceAttenuation, quadricAttenuation);
 		this.orientation = orientation;
@@ -67,27 +72,27 @@ public class IfcLightSourceSpot extends IfcLightSourcePositional
 		this.orientation = orientation;
 	}
 
-	public double getConcentrationExponent() {
+	public IfcReal getConcentrationExponent() {
 		return this.concentrationExponent;
 	}
 
-	public void setConcentrationExponent(double concentrationExponent) {
+	public void setConcentrationExponent(IfcReal concentrationExponent) {
 		this.concentrationExponent = concentrationExponent;
 	}
 
-	public double getSpreadAngle() {
+	public IfcPositivePlaneAngleMeasure getSpreadAngle() {
 		return this.spreadAngle;
 	}
 
-	public void setSpreadAngle(double spreadAngle) {
+	public void setSpreadAngle(IfcPositivePlaneAngleMeasure spreadAngle) {
 		this.spreadAngle = spreadAngle;
 	}
 
-	public double getBeamWidthAngle() {
+	public IfcPositivePlaneAngleMeasure getBeamWidthAngle() {
 		return this.beamWidthAngle;
 	}
 
-	public void setBeamWidthAngle(double beamWidthAngle) {
+	public void setBeamWidthAngle(IfcPositivePlaneAngleMeasure beamWidthAngle) {
 		this.beamWidthAngle = beamWidthAngle;
 	}
 

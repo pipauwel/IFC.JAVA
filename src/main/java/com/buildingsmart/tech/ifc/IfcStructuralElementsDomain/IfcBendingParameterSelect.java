@@ -6,8 +6,17 @@
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPlaneAngleMeasure;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("045dfa0b-a673-4c92-9d56-c410b7aef8df")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcLengthMeasure.class, name = "IfcLengthMeasure"),
+        @JsonSubTypes.Type(value = IfcPlaneAngleMeasure.class, name = "IfcPlaneAngleMeasure")})
 public interface IfcBendingParameterSelect {
 
 }

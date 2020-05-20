@@ -5,27 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.InverseProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralConnection;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralMember;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
+import java.util.Set;
 
 @Guid("a309fabc-b0bd-4c8d-a1e7-0a91f255ecce")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,10 +23,10 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
 public abstract class IfcStructuralItem extends com.buildingsmart.tech.ifc.IfcKernel.IfcProduct implements IfcStructuralActivityAssignmentSelect
 {
 	@Description("Inverse relationship to all structural activities (i.e. to actions or reactions) which are assigned to this structural member.")
-	@InverseProperty(InverseProp = "RelatingElement", Range = "IfcRelConnectsStructuralActivity")
+	@InverseProperty(InverseProp = "relatingElement", Range = "IfcRelConnectsStructuralActivity")
 	@Guid("ee8db982-5c72-477c-b54a-fed63d0326fd")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelConnectsStructuralActivity")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "AssignedStructuralActivity")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "assignedStructuralActivity")
 	private Set<IfcRelConnectsStructuralActivity> assignedStructuralActivity;
 
 

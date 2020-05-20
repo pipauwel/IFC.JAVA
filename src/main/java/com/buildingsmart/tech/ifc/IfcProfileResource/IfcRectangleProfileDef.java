@@ -9,6 +9,7 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -24,41 +25,41 @@ public class IfcRectangleProfileDef extends IfcParameterizedProfileDef
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("cc30f80d-efff-497d-a442-14ef5a82594e")
-	@JacksonXmlProperty(isAttribute=false, localName = "XDim")
-	private double xDim; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "xDim")
+	private IfcPositiveLengthMeasure xDim;
 
 	@Description("The extent of the rectangle in the direction of the y-axis.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("8675ebcb-7de8-4598-8952-7776657d7a52")
-	@JacksonXmlProperty(isAttribute=false, localName = "YDim")
-	private double yDim; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "yDim")
+	private IfcPositiveLengthMeasure yDim;
 
 
 	public IfcRectangleProfileDef()
 	{
 	}
 
-	public IfcRectangleProfileDef(IfcProfileTypeEnum profileType, double xDim, double yDim)
+	public IfcRectangleProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure xDim, IfcPositiveLengthMeasure yDim)
 	{
 		super(profileType);
 		this.xDim = xDim;
 		this.yDim = yDim;
 	}
 
-	public double getXDim() {
+	public IfcPositiveLengthMeasure getxDim() {
 		return this.xDim;
 	}
 
-	public void setXDim(double xDim) {
+	public void setxDim(IfcPositiveLengthMeasure xDim) {
 		this.xDim = xDim;
 	}
 
-	public double getYDim() {
+	public IfcPositiveLengthMeasure getyDim() {
 		return this.yDim;
 	}
 
-	public void setYDim(double yDim) {
+	public void setyDim(IfcPositiveLengthMeasure yDim) {
 		this.yDim = yDim;
 	}
 

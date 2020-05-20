@@ -8,6 +8,7 @@ package com.buildingsmart.tech.ifc.IfcStructuralLoadResource;
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -22,19 +23,19 @@ public abstract class IfcBoundaryCondition
 	@Description("Optionally defines a name for this boundary condition.")
 	@DataMember(Order = 0)
 	@Guid("80e193a9-cfc3-4d5e-ba4a-f2e6dd418ac8")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 
 	public IfcBoundaryCondition()
 	{
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 

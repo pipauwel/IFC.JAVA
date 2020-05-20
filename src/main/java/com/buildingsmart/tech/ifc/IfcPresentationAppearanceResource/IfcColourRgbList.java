@@ -6,6 +6,7 @@
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -24,20 +25,20 @@ public class IfcColourRgbList extends com.buildingsmart.tech.ifc.IfcPresentation
 	@Guid("711ff0f4-b696-4f47-8b2d-4c5df0a1d1fb")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcNormalisedRatioMeasure")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "ColourList")
-	private List<Double> colourList; //IfcNormalisedRatioMeasure
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "colourList")
+	private List<IfcNormalisedRatioMeasure> colourList;
 
 
 	public IfcColourRgbList()
 	{
 	}
 
-	public IfcColourRgbList(Double[] colourList)
+	public IfcColourRgbList(IfcNormalisedRatioMeasure[] colourList)
 	{
 		this.colourList = new ArrayList<>(Arrays.asList(colourList));
 	}
 
-	public List<Double> getColourList() {
+	public List<IfcNormalisedRatioMeasure> getColourList() {
 		return this.colourList;
 	}
 

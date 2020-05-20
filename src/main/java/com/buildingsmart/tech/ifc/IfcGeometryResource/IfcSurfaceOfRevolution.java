@@ -5,27 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSweptSurface;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis1Placement;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("89fd5813-f37e-4602-a4ad-8cdb9bf8869c")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,7 +22,7 @@ public class IfcSurfaceOfRevolution extends IfcSweptSurface
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("f5ca3d78-4e7d-4f00-8f91-e7bad20ebeb5")
-	@JacksonXmlProperty(isAttribute=false, localName = "AxisPosition")
+	@JacksonXmlProperty(isAttribute=false, localName = "axisPosition")
 	private IfcAxis1Placement axisPosition;
 
 
@@ -58,7 +45,8 @@ public class IfcSurfaceOfRevolution extends IfcSweptSurface
 	}
 
 	public IfcLine getAxisLine() {
-		return null;
+		//	AxisLine:=IfcRepresentationItem() || IfcGeometricRepresentationItem () || IfcCurve() || IfcLine(AxisPosition.Location, IfcRepresentationItem() || IfcGeometricRepresentationItem () || IfcVector(AxisPosition.Z,1.0))
+		return new IfcLine(axisPosition.getLocation(),new IfcVector(axisPosition.getZ(),new IfcLengthMeasure(1.0)));
 	}
 
 

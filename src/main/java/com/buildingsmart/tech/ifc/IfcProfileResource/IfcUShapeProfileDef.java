@@ -9,6 +9,9 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPlaneAngleMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -20,54 +23,55 @@ public class IfcUShapeProfileDef extends IfcParameterizedProfileDef
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("1e0ba4ff-53cd-4583-9e64-78f718fc1f17")
-	@JacksonXmlProperty(isAttribute=false, localName = "Depth")
-	private double depth; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "depth")
+	private IfcPositiveLengthMeasure depth;
 
 	@Description("Flange lengths, see illustration above (= b).")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("952d016a-ead8-4d08-9f8a-8a5e3a9381ad")
-	@JacksonXmlProperty(isAttribute=false, localName = "FlangeWidth")
-	private double flangeWidth; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "flangeWidth")
+	private IfcPositiveLengthMeasure flangeWidth;
 
 	@Description("Constant wall thickness of web (= ts).")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("edd0c5a2-f668-4d28-90d9-527adbc2892b")
-	@JacksonXmlProperty(isAttribute=false, localName = "WebThickness")
-	private double webThickness; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "webThickness")
+	private IfcPositiveLengthMeasure webThickness;
 
 	@Description("Constant wall thickness of flange (= tg).")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("7dc76e01-ba86-4fc0-aefa-12cbd9de4354")
-	@JacksonXmlProperty(isAttribute=false, localName = "FlangeThickness")
-	private double flangeThickness; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "flangeThickness")
+	private IfcPositiveLengthMeasure flangeThickness;
 
 	@Description("Fillet radius according the above illustration (= r1).")
 	@DataMember(Order = 4)
 	@Guid("5aaea55d-d089-4885-b7ff-6c89cc0fdb81")
-	@JacksonXmlProperty(isAttribute=false, localName = "FilletRadius")
-	private double filletRadius; //IfcNonNegativeLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "filletRadius")
+	private IfcNonNegativeLengthMeasure filletRadius;
 
 	@Description("Edge radius according the above illustration (= r2).")
 	@DataMember(Order = 5)
 	@Guid("64a763ed-7fde-46d2-90ef-4e8189de7711")
-	@JacksonXmlProperty(isAttribute=false, localName = "EdgeRadius")
-	private double edgeRadius; //IfcNonNegativeLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "edgeRadius")
+	private IfcNonNegativeLengthMeasure edgeRadius;
 
 	@Description("Slope of flange of the profile.")
 	@DataMember(Order = 6)
 	@Guid("4b17d3b3-4476-485a-9aeb-b436e9bd7444")
-	@JacksonXmlProperty(isAttribute=true, localName = "FlangeSlope")
-	private double flangeSlope;
+	@JacksonXmlProperty(isAttribute=false, localName = "flangeSlope")
+	private IfcPlaneAngleMeasure flangeSlope;
 
 
 	public IfcUShapeProfileDef()
 	{
 	}
 
-	public IfcUShapeProfileDef(IfcProfileTypeEnum profileType, double depth, double flangeWidth, double webThickness, double flangeThickness)
+	public IfcUShapeProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure depth, IfcPositiveLengthMeasure flangeWidth,
+							   IfcPositiveLengthMeasure webThickness, IfcPositiveLengthMeasure flangeThickness)
 	{
 		super(profileType);
 		this.depth = depth;
@@ -76,59 +80,59 @@ public class IfcUShapeProfileDef extends IfcParameterizedProfileDef
 		this.flangeThickness = flangeThickness;
 	}
 
-	public double getDepth() {
+	public IfcPositiveLengthMeasure getDepth() {
 		return this.depth;
 	}
 
-	public void setDepth(double depth) {
+	public void setDepth(IfcPositiveLengthMeasure depth) {
 		this.depth = depth;
 	}
 
-	public double getFlangeWidth() {
+	public IfcPositiveLengthMeasure getFlangeWidth() {
 		return this.flangeWidth;
 	}
 
-	public void setFlangeWidth(double flangeWidth) {
+	public void setFlangeWidth(IfcPositiveLengthMeasure flangeWidth) {
 		this.flangeWidth = flangeWidth;
 	}
 
-	public double getWebThickness() {
+	public IfcPositiveLengthMeasure getWebThickness() {
 		return this.webThickness;
 	}
 
-	public void setWebThickness(double webThickness) {
+	public void setWebThickness(IfcPositiveLengthMeasure webThickness) {
 		this.webThickness = webThickness;
 	}
 
-	public double getFlangeThickness() {
+	public IfcPositiveLengthMeasure getFlangeThickness() {
 		return this.flangeThickness;
 	}
 
-	public void setFlangeThickness(double flangeThickness) {
+	public void setFlangeThickness(IfcPositiveLengthMeasure flangeThickness) {
 		this.flangeThickness = flangeThickness;
 	}
 
-	public double getFilletRadius() {
+	public IfcNonNegativeLengthMeasure getFilletRadius() {
 		return this.filletRadius;
 	}
 
-	public void setFilletRadius(double filletRadius) {
+	public void setFilletRadius(IfcNonNegativeLengthMeasure filletRadius) {
 		this.filletRadius = filletRadius;
 	}
 
-	public double getEdgeRadius() {
+	public IfcNonNegativeLengthMeasure getEdgeRadius() {
 		return this.edgeRadius;
 	}
 
-	public void setEdgeRadius(double edgeRadius) {
+	public void setEdgeRadius(IfcNonNegativeLengthMeasure edgeRadius) {
 		this.edgeRadius = edgeRadius;
 	}
 
-	public double getFlangeSlope() {
+	public IfcPlaneAngleMeasure getFlangeSlope() {
 		return this.flangeSlope;
 	}
 
-	public void setFlangeSlope(double flangeSlope) {
+	public void setFlangeSlope(IfcPlaneAngleMeasure flangeSlope) {
 		this.flangeSlope = flangeSlope;
 	}
 

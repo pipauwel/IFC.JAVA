@@ -6,8 +6,17 @@
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBoundedCurve;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdgeCurve;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("36ccfa6b-979b-4044-985f-15545c0738d7")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcBoundedCurve.class, name = "IfcBoundedCurve"),
+        @JsonSubTypes.Type(value = IfcEdgeCurve.class, name = "IfcEdgeCurve")})
 public interface IfcCurveOrEdgeCurve {
 
 }

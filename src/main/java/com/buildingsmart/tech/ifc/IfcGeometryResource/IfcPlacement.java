@@ -5,29 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis1Placement;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement2D;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 
 @Guid("1313c1ee-f455-43d1-99a2-89dea63a0fca")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -39,7 +25,7 @@ public abstract class IfcPlacement extends IfcGeometricRepresentationItem
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("23629b11-592b-4e99-bb5e-62ab0cfc52c2")
-	@JacksonXmlProperty(isAttribute=false, localName = "Location")
+	@JacksonXmlProperty(isAttribute=false, localName = "location")
 	private IfcCartesianPoint location;
 
 
@@ -60,8 +46,9 @@ public abstract class IfcPlacement extends IfcGeometricRepresentationItem
 		this.location = location;
 	}
 
+	@JsonIgnore
 	public int getDim() {
-		return 0;
+		return location.getDim();
 	}
 
 

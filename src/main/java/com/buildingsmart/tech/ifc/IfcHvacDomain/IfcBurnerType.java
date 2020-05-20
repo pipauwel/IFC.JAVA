@@ -5,26 +5,11 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDeviceType;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcBurnerTypeEnum;
 
 @Guid("4a137418-8fa9-4459-8470-7b7ef512ad4d")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,7 +18,7 @@ public class IfcBurnerType extends com.buildingsmart.tech.ifc.IfcSharedBldgServi
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("fd7f286c-7e6e-487c-b148-304c94e2263e")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcBurnerTypeEnum predefinedType;
 
 

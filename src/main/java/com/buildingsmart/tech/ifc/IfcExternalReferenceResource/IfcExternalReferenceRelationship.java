@@ -5,27 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReference;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("d82462fa-c9f8-472b-a7e9-0f1f7136fdfa")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,7 +22,7 @@ public class IfcExternalReferenceRelationship extends IfcResourceLevelRelationsh
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("d01def8d-ec4f-4bb4-b0d4-15ab85764b7a")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingReference")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatingReference")
 	private IfcExternalReference relatingReference;
 
 	@Description("Objects within the list of <em>IfcResourceObjectSelect</em> that can be tagged by an external reference to a dictionary, library, catalogue, classification or documentation.")
@@ -43,8 +30,9 @@ public class IfcExternalReferenceRelationship extends IfcResourceLevelRelationsh
 	@Required()
 	@Guid("bf374582-c84f-44fd-adb8-bb8df33a5f01")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcResourceObjectSelect")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedResourceObjects")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcResourceObjectSelect")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedResourceObjects")*/
+	@JsonIgnore
 	private Set<IfcResourceObjectSelect> relatedResourceObjects;
 
 

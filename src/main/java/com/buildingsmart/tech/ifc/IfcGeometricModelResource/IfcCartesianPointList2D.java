@@ -5,24 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCartesianPointList;
+import java.util.List;
 
 @Guid("14ee71bc-ac06-4564-9ce3-0b8651e89195")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,24 +23,28 @@ public class IfcCartesianPointList2D extends IfcCartesianPointList
 	@Required()
 	@Guid("a3773106-857a-4020-a6b4-6b914b9fbac1")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "Double")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "CoordList")
-	private List<Double> coordList;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcCartesianPoint")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "coordList")
+	private List<IfcCartesianPoint> coordList;  //This used to be a List<List<IfcLengthMeasure>>
 
 
 	public IfcCartesianPointList2D()
 	{
 	}
 
-	public IfcCartesianPointList2D(Double[] coordList)
+	public IfcCartesianPointList2D(List<IfcCartesianPoint> coordList)
 	{
-		this.coordList = new ArrayList<>(Arrays.asList(coordList));
+		this.coordList = coordList;
 	}
 
-	public List<Double> getCoordList() {
+	public List<IfcCartesianPoint> getCoordList() {
 		return this.coordList;
 	}
 
+	@JsonIgnore
+	public int getDim() {
+		return 2;
+	}
 
 }
 

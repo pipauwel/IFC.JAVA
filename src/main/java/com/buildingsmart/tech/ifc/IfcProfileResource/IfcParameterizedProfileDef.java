@@ -5,37 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement2D;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcAsymmetricIShapeProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcCircleProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcCShapeProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcEllipseProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcIShapeProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcLShapeProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcRectangleProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcTrapeziumProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcTShapeProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcUShapeProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcZShapeProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
 
 @Guid("eddbf896-fef4-49ba-b5c8-5315a44af82c")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -46,7 +23,7 @@ public abstract class IfcParameterizedProfileDef extends IfcProfileDef
 	@Description("Position coordinate system of the parameterized profile definition. If unspecified, no translation and no rotation is applied.")
 	@DataMember(Order = 0)
 	@Guid("b7f101fa-76d8-4290-ac63-aa0b786f3592")
-	@JacksonXmlProperty(isAttribute=false, localName = "Position")
+	@JacksonXmlProperty(isAttribute=false, localName = "position")
 	private IfcAxis2Placement2D position;
 
 

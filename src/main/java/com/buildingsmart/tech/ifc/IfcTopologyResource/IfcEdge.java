@@ -5,29 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcEdgeCurve;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcOrientedEdge;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcSubedge;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcTopologicalRepresentationItem;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcVertex;
 
 @Guid("47c088c9-be86-473f-a8d3-cfc2f822e52d")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -39,14 +24,14 @@ public class IfcEdge extends IfcTopologicalRepresentationItem
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("80c0d5f0-b497-4154-978f-adf7ca3ada45")
-	@JacksonXmlProperty(isAttribute=false, localName = "EdgeStart")
+	@JacksonXmlProperty(isAttribute=false, localName = "edgeStart")
 	private IfcVertex edgeStart;
 
 	@Description("End point (vertex) of the edge. The same vertex can be used for both EdgeStart and EdgeEnd.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("e751fb52-dd63-46a8-8e2f-9f1b44e78f86")
-	@JacksonXmlProperty(isAttribute=false, localName = "EdgeEnd")
+	@JacksonXmlProperty(isAttribute=false, localName = "edgeEnd")
 	private IfcVertex edgeEnd;
 
 

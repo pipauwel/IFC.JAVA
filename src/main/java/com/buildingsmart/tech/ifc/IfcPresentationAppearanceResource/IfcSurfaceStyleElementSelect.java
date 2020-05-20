@@ -6,8 +6,18 @@
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("fc2c7f30-6c0c-4fd2-8b10-75c158637472")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcSurfaceStyleShading.class, name = "IfcSurfaceStyleShading"),
+        @JsonSubTypes.Type(value = IfcSurfaceStyleLighting.class, name = "IfcSurfaceStyleLighting"),
+        @JsonSubTypes.Type(value = IfcSurfaceStyleWithTextures.class, name = "IfcSurfaceStyleWithTextures"),
+        @JsonSubTypes.Type(value = IfcExternallyDefinedSurfaceStyle.class, name = "IfcExternallyDefinedSurfaceStyle"),
+        @JsonSubTypes.Type(value = IfcSurfaceStyleRefraction.class, name = "IfcSurfaceStyleRefraction")})
 public interface IfcSurfaceStyleElementSelect {
 
 }

@@ -5,28 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcBoolean;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcReparametrisedCompositeCurveSegment;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcTransitionCode;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
+import java.util.Set;
 
 @Guid("baf231ed-97be-4368-a9f9-10ae70bad78e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,29 +25,30 @@ public class IfcCompositeCurveSegment extends IfcGeometricRepresentationItem
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("67cb0bf1-ea16-4e1b-b20a-aed69f9f06fe")
-	@JacksonXmlProperty(isAttribute=true, localName = "Transition")
+	@JacksonXmlProperty(isAttribute=true, localName = "transition")
 	private IfcTransitionCode transition;
 
 	@Description("An indicator of whether or not the sense of the segment agrees with, or opposes, that of the parent curve. If <em>SameSense</em> is false, the point with highest parameter value is taken as the first point of the segment.  <blockquote class=\"note\">NOTE&nbsp; If the datatype of <em>ParentCurve</em> is <em>IfcTrimmedCurve</em>, the value of <em>SameSense</em> overrides the value of <em>IfcTrimmedCurve.SenseAgreement</em></blockquote>")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("5fada968-7c27-4344-9a3a-39128e5d33e9")
-	@JacksonXmlProperty(isAttribute=true, localName = "SameSense")
-	private Boolean sameSense;
+	@JacksonXmlProperty(isAttribute=false, localName = "sameSense")
+	private IfcBoolean sameSense;
 
 	@Description("The bounded curve which defines the geometry of the segment.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("88a9a6ec-70af-43d3-a2cc-d43758ecd898")
-	@JacksonXmlProperty(isAttribute=false, localName = "ParentCurve")
+	@JacksonXmlProperty(isAttribute=false, localName = "parentCurve")
 	private IfcCurve parentCurve;
 
 	@Description("The set of composite curves which use this composite curve segment as a segment. This set shall not be empty.")
-	@InverseProperty(InverseProp = "Segments", Range = "IfcCompositeCurve")
+	@InverseProperty(InverseProp = "segments", Range = "IfcCompositeCurve")
 	@Guid("1cede6f4-cc66-4b43-8893-d6a8a6afe94a")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcCompositeCurve")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "UsingCurves")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcCompositeCurve")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "usingCurves")*/
+	@JsonIgnore
 	private Set<IfcCompositeCurve> usingCurves;
 
 
@@ -68,7 +56,7 @@ public class IfcCompositeCurveSegment extends IfcGeometricRepresentationItem
 	{
 	}
 
-	public IfcCompositeCurveSegment(IfcTransitionCode transition, Boolean sameSense, IfcCurve parentCurve)
+	public IfcCompositeCurveSegment(IfcTransitionCode transition, IfcBoolean sameSense, IfcCurve parentCurve)
 	{
 		this.transition = transition;
 		this.sameSense = sameSense;
@@ -83,11 +71,11 @@ public class IfcCompositeCurveSegment extends IfcGeometricRepresentationItem
 		this.transition = transition;
 	}
 
-	public Boolean getSameSense() {
+	public IfcBoolean getSameSense() {
 		return this.sameSense;
 	}
 
-	public void setSameSense(Boolean sameSense) {
+	public void setSameSense(IfcBoolean sameSense) {
 		this.sameSense = sameSense;
 	}
 
@@ -99,14 +87,15 @@ public class IfcCompositeCurveSegment extends IfcGeometricRepresentationItem
 		this.parentCurve = parentCurve;
 	}
 
-	public int getDim() {
-		return 0;
-	}
-
 	public Set<IfcCompositeCurve> getUsingCurves() {
 		return this.usingCurves;
 	}
 
+	@JsonIgnore
+	public int getDim() {
+		//Dim:=ParentCurve.Dim
+		return parentCurve.getDim();
+	}
 
 }
 

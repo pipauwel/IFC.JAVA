@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcElectricalDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTerminalType;
-import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcAudioVisualApplianceTypeEnum;
 
 @Guid("2e0e9b45-760d-49af-bb15-c4011d0a4e76")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,7 +20,7 @@ public class IfcAudioVisualApplianceType extends com.buildingsmart.tech.ifc.IfcS
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("5174e2c3-82a6-43e1-a485-103834820e30")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcAudioVisualApplianceTypeEnum predefinedType;
 
 

@@ -6,6 +6,9 @@
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
 import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcInteger;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLogical;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -28,22 +31,22 @@ public class IfcCompositeCurve extends IfcBoundedCurve
 	@Guid("b32453c8-8375-4bc7-8758-86e6097c7709")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcCompositeCurveSegment")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "Segments")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "segments")
 	private List<IfcCompositeCurveSegment> segments;
 
 	@Description("Indication of whether the curve intersects itself or not; this is for information only.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("8e53369e-bae8-4a7e-81e4-370b1cb785b8")
-	@JacksonXmlProperty(isAttribute=true, localName = "SelfIntersect")
-	private Boolean selfIntersect;
+	@JacksonXmlProperty(isAttribute=false, localName = "selfIntersect")
+	private IfcLogical selfIntersect;
 
 
 	public IfcCompositeCurve()
 	{
 	}
 
-	public IfcCompositeCurve(IfcCompositeCurveSegment[] segments, Boolean selfIntersect)
+	public IfcCompositeCurve(IfcCompositeCurveSegment[] segments, IfcLogical selfIntersect)
 	{
 		this.segments = new ArrayList<>(Arrays.asList(segments));
 		this.selfIntersect = selfIntersect;
@@ -53,22 +56,27 @@ public class IfcCompositeCurve extends IfcBoundedCurve
 		return this.segments;
 	}
 
-	public Boolean getSelfIntersect() {
+	public IfcLogical getSelfIntersect() {
 		return this.selfIntersect;
 	}
 
-	public void setSelfIntersect(Boolean selfIntersect) {
+	public void setSelfIntersect(IfcLogical selfIntersect) {
 		this.selfIntersect = selfIntersect;
 	}
 
-	public int getNSegments() {
-		return 0;
+	@JsonIgnore
+	public IfcInteger getNSegments() {
+		//NSegments:=SIZEOF(Segments)
+		return new IfcInteger(segments.size());
 	}
 
-	public Boolean getClosedCurve() {
-		return null;
+	@JsonIgnore
+	public IfcLogical getClosedCurve() {
+		//ClosedCurve:=Segments[NSegments].Transition <> Discontinuous
+		if(segments.get(getNSegments().getValue()-1).getTransition() == IfcTransitionCode.DISCONTINUOUS)
+			return new IfcLogical(false);
+		else
+			return new IfcLogical(true);
 	}
-
-
 }
 

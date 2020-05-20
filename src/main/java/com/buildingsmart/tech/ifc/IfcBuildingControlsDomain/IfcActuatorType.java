@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcBuildingControlsDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionControlElementType;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcActuatorTypeEnum;
 
 @Guid("c5566ffc-0c41-4c04-8976-47ec60b36fda")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,7 +20,7 @@ public class IfcActuatorType extends com.buildingsmart.tech.ifc.IfcSharedBldgSer
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("0e4f0d49-2432-4458-b687-8429bcd48735")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcActuatorTypeEnum predefinedType;
 
 

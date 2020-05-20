@@ -10,6 +10,8 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcReal;
 import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColourRgb;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -26,43 +28,44 @@ public class IfcLightSourcePositional extends IfcLightSource
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("b14f2740-7faa-41bf-b16f-b3811cd24338")
-	@JacksonXmlProperty(isAttribute=false, localName = "Position")
+	@JacksonXmlProperty(isAttribute=false, localName = "position")
 	private IfcCartesianPoint position;
 
 	@Description("The maximum distance from the light source for a surface still to be illuminated.  Definition from VRML97 - ISO/IEC 14772-1:1997: A Point light node illuminates geometry within radius of its location.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("e32ed7f9-1e64-44f1-890b-6a5b3397c943")
-	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private double radius; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "radius")
+	private IfcPositiveLengthMeasure radius;
 
 	@Description("Definition from ISO/CD 10303-46:1992: This real indicates the value of the attenuation in the lighting equation that is constant.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("2effff58-264e-4ab4-9648-ba2409c15b7c")
-	@JacksonXmlProperty(isAttribute=true, localName = "ConstantAttenuation")
-	private double constantAttenuation;
+	@JacksonXmlProperty(isAttribute=false, localName = "constantAttenuation")
+	private IfcReal constantAttenuation;
 
 	@Description("Definition from ISO/CD 10303-46:1992: This real indicates the value of the attenuation in the lighting equation that proportional to the distance from the light source.")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("04cd93af-8e0e-4e24-bfeb-14b008f4908c")
-	@JacksonXmlProperty(isAttribute=true, localName = "DistanceAttenuation")
-	private double distanceAttenuation;
+	@JacksonXmlProperty(isAttribute=false, localName = "distanceAttenuation")
+	private IfcReal distanceAttenuation;
 
 	@Description("This real indicates the value of the attenuation in the lighting equation that proportional to the square value of the distance from the light source.")
 	@DataMember(Order = 4)
 	@Required()
 	@Guid("1cda05dc-8988-4938-babb-95a4caa843f7")
-	@JacksonXmlProperty(isAttribute=true, localName = "QuadricAttenuation")
-	private double quadricAttenuation;
+	@JacksonXmlProperty(isAttribute=false, localName = "quadricAttenuation")
+	private IfcReal quadricAttenuation;
 
 
 	public IfcLightSourcePositional()
 	{
 	}
 
-	public IfcLightSourcePositional(IfcColourRgb lightColour, IfcCartesianPoint position, double radius, double constantAttenuation, double distanceAttenuation, double quadricAttenuation)
+	public IfcLightSourcePositional(IfcColourRgb lightColour, IfcCartesianPoint position, IfcPositiveLengthMeasure radius,
+									IfcReal constantAttenuation, IfcReal distanceAttenuation, IfcReal quadricAttenuation)
 	{
 		super(lightColour);
 		this.position = position;
@@ -80,35 +83,35 @@ public class IfcLightSourcePositional extends IfcLightSource
 		this.position = position;
 	}
 
-	public double getRadius() {
+	public IfcPositiveLengthMeasure getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(double radius) {
+	public void setRadius(IfcPositiveLengthMeasure radius) {
 		this.radius = radius;
 	}
 
-	public double getConstantAttenuation() {
+	public IfcReal getConstantAttenuation() {
 		return this.constantAttenuation;
 	}
 
-	public void setConstantAttenuation(double constantAttenuation) {
+	public void setConstantAttenuation(IfcReal constantAttenuation) {
 		this.constantAttenuation = constantAttenuation;
 	}
 
-	public double getDistanceAttenuation() {
+	public IfcReal getDistanceAttenuation() {
 		return this.distanceAttenuation;
 	}
 
-	public void setDistanceAttenuation(double distanceAttenuation) {
+	public void setDistanceAttenuation(IfcReal distanceAttenuation) {
 		this.distanceAttenuation = distanceAttenuation;
 	}
 
-	public double getQuadricAttenuation() {
+	public IfcReal getQuadricAttenuation() {
 		return this.quadricAttenuation;
 	}
 
-	public void setQuadricAttenuation(double quadricAttenuation) {
+	public void setQuadricAttenuation(IfcReal quadricAttenuation) {
 		this.quadricAttenuation = quadricAttenuation;
 	}
 

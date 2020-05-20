@@ -5,26 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcReal;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPlacement;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 
 @Guid("c8b3d74c-f4b5-470f-9869-a0abb477b699")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,7 +20,7 @@ public class IfcAxis1Placement extends IfcPlacement
 	@Description("The direction of the local Z axis.")
 	@DataMember(Order = 0)
 	@Guid("c014a489-c24c-47b9-980e-1ccb8510c66b")
-	@JacksonXmlProperty(isAttribute=false, localName = "Axis")
+	@JacksonXmlProperty(isAttribute=false, localName = "axis")
 	private IfcDirection axis;
 
 
@@ -54,8 +41,15 @@ public class IfcAxis1Placement extends IfcPlacement
 		this.axis = axis;
 	}
 
+	@JsonIgnore
 	public IfcDirection getZ() {
-		return null;
+		//Z :=NVL (IfcNormalise(Axis), IfcRepresentationItem() || IfcGeometricRepresentationItem () || IfcDirection([0.0,0.0,1.0]))
+		if (axis != null)
+			return axis;
+		else{
+			IfcReal[] d = {new IfcReal(0.0),new IfcReal(0.0),new IfcReal(1.0)};
+			return new IfcDirection(d);
+		}
 	}
 
 

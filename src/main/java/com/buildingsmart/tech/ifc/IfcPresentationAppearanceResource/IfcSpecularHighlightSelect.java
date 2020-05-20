@@ -6,8 +6,15 @@
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("aff9661b-7950-4765-9ea1-bc32952e6da5")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcSpecularExponent.class, name = "IfcSpecularExponent"),
+        @JsonSubTypes.Type(value = IfcSpecularRoughness.class, name = "IfcSpecularRoughness")})
 public interface IfcSpecularHighlightSelect {
 
 }

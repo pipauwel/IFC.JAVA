@@ -5,31 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcBlock;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcRectangularPyramid;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcRightCircularCone;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcRightCircularCylinder;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSphere;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
 
 @Guid("538f2550-e0fc-4704-97f7-66d555de1ae4")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -41,7 +26,7 @@ public abstract class IfcCsgPrimitive3D extends com.buildingsmart.tech.ifc.IfcGe
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("623bbeab-dc08-4cb6-83ef-232501104ec3")
-	@JacksonXmlProperty(isAttribute=false, localName = "Position")
+	@JacksonXmlProperty(isAttribute=false, localName = "position")
 	private IfcAxis2Placement3D position;
 
 
@@ -62,8 +47,9 @@ public abstract class IfcCsgPrimitive3D extends com.buildingsmart.tech.ifc.IfcGe
 		this.position = position;
 	}
 
+	@JsonIgnore
 	public int getDim() {
-		return 0;
+		return 3;
 	}
 
 

@@ -25,10 +25,10 @@ import java.util.Set;
 public class IfcDistributionElement extends IfcElement
 {
 	@Description("Reference to the element to port connection relationship. The relationship then refers to the port which is contained in this element.    <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; The inverse attribute is deprecated. Relationship to ports, contained within the <em>IfcDistributionElement</em> is now realized by the inverse relationship <em>NestedBy</em> referencing <em>IfcRelNests</em>.  </blockquote>")
-	@InverseProperty(InverseProp = "RelatedElement", Range = "IfcRelConnectsPortToElement")
+	@InverseProperty(InverseProp = "relatedElement", Range = "IfcRelConnectsPortToElement")
 	@Guid("da8a54e0-2b6b-4b7e-91fb-2087561bccf5")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelConnectsPortToElement")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasPorts")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "hasPorts")
 	private Set<IfcRelConnectsPortToElement> hasPorts;
 
 

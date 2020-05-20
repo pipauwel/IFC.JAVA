@@ -5,28 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcClosedShell;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcOpenShell;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcTopologicalRepresentationItem;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("00739840-0188-4605-bb14-19851c954616")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,7 +28,7 @@ public class IfcConnectedFaceSet extends IfcTopologicalRepresentationItem
 	@Guid("1fabb589-8fee-4286-8be7-1f8643ec33b7")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcFace")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "CfsFaces")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "cfsFaces")
 	private Set<IfcFace> cfsFaces;
 
 

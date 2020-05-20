@@ -5,55 +5,43 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcTextLiteralWithExtent;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcTextPath;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPresentableText;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("fff1fb35-13c2-4e24-92f4-c2bfd5a9ba17")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcTextLiteralWithExtent.class, name = "IfcTextLiteralWithExtent"))
-public class IfcTextLiteral extends com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem
+public class IfcTextLiteral extends IfcGeometricRepresentationItem
 {
 	@Description("The text literal to be presented.")
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("55eb2d39-e680-4ba3-9d6a-8daf9dde4691")
-	@JacksonXmlProperty(isAttribute=true, localName = "Literal")
-	private String literal;
+	@JacksonXmlProperty(isAttribute=false, localName = "literal")
+	private IfcPresentableText literal;
 
 	@Description("An <em>IfcAxis2Placement</em> that determines the placement and orientation of the presented string.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("eaf62d6a-c033-4077-8aa5-7a11008ec5c5")
-	@JacksonXmlProperty(isAttribute=true, localName = "Placement")
+	@JacksonXmlProperty(isAttribute=true, localName = "placement")
 	private IfcAxis2Placement placement;
 
 	@Description("The writing direction of the text literal.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("5d004ead-6e33-418a-b7b0-5e97200cc4b0")
-	@JacksonXmlProperty(isAttribute=true, localName = "Path")
+	@JacksonXmlProperty(isAttribute=true, localName = "path")
 	private IfcTextPath path;
 
 
@@ -61,18 +49,18 @@ public class IfcTextLiteral extends com.buildingsmart.tech.ifc.IfcGeometryResour
 	{
 	}
 
-	public IfcTextLiteral(String literal, IfcAxis2Placement placement, IfcTextPath path)
+	public IfcTextLiteral(IfcPresentableText literal, IfcAxis2Placement placement, IfcTextPath path)
 	{
 		this.literal = literal;
 		this.placement = placement;
 		this.path = path;
 	}
 
-	public String getLiteral() {
+	public IfcPresentableText getLiteral() {
 		return this.literal;
 	}
 
-	public void setLiteral(String literal) {
+	public void setLiteral(IfcPresentableText literal) {
 		this.literal = literal;
 	}
 

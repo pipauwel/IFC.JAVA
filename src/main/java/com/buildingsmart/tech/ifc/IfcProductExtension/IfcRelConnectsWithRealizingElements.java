@@ -5,26 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelConnectsElements;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("006b5d7c-0365-48b1-85a4-b7cc46bfe68e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,14 +25,14 @@ public class IfcRelConnectsWithRealizingElements extends IfcRelConnectsElements
 	@Guid("d81eeca1-759e-48b4-9c08-b45f1385450f")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcElement")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RealizingElements")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "realizingElements")
 	private Set<IfcElement> realizingElements;
 
 	@Description("The type of the connection given for informal purposes, it may include labels, like 'joint', 'rigid joint', 'flexible joint', etc.")
 	@DataMember(Order = 1)
 	@Guid("cd071293-ee93-4630-9dc7-8272188f95f5")
-	@JacksonXmlProperty(isAttribute=true, localName = "ConnectionType")
-	private String connectionType;
+	@JacksonXmlProperty(isAttribute=false, localName = "connectionType")
+	private IfcLabel connectionType;
 
 
 	public IfcRelConnectsWithRealizingElements()
@@ -60,11 +49,11 @@ public class IfcRelConnectsWithRealizingElements extends IfcRelConnectsElements
 		return this.realizingElements;
 	}
 
-	public String getConnectionType() {
+	public IfcLabel getConnectionType() {
 		return this.connectionType;
 	}
 
-	public void setConnectionType(String connectionType) {
+	public void setConnectionType(IfcLabel connectionType) {
 		this.connectionType = connectionType;
 	}
 

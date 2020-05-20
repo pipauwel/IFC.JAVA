@@ -5,31 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralAction;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralReaction;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGlobalOrLocalEnum;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Set;
 
 @Guid("367339a3-2c53-452e-880f-d16b0575c0c3")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -41,22 +26,22 @@ public abstract class IfcStructuralActivity extends com.buildingsmart.tech.ifc.I
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("8a68177b-4c60-4eb6-8903-ae9366cb2ac7")
-	@JacksonXmlProperty(isAttribute=false, localName = "AppliedLoad")
+	@JacksonXmlProperty(isAttribute=false, localName = "appliedLoad")
 	private IfcStructuralLoad appliedLoad;
 
 	@Description("Indicates whether the load directions refer to the global coordinate system (global to  the analysis model, i.e. as established by <em>IfcStructuralAnalysisModel.SharedPlacement</em>)  or to the local coordinate system (local to the activity or connected item, as established by  an explicit or implied representation and its parameter space).    <blockquote class=\"note\">NOTE, the informal definition of  <em>IfcRepresentationResource.IfcGlobalOrLocalEnum</em> doe s not distinguish between  &quot;global coordinate system&quot; and &quot;world coordinate system&quot;.  On the other hand, this distinction is necessary in the <em>IfcStructuralAnalysisDomain</em>  where the shared &quot;global&quot; coordinate system of an analysis model may very well  not be the same as the project-wide world coordinate system.</blockquote>    <blockquote class=\"note\">NOTE&nbsp; In the scope of <em>IfcStructuralActivity.GlobalOrLocal</em>,  the meaning of GLOBAL_COORDS is therefore not to be taken as world coordinate system  but as the analysis model specific shared coordinate system.  In contrast, LOCAL_COORDS  is to be taken as coordinates which are local to individual structural items and activities,  as established by subclass-specific geometry use definitions.</blockquote>")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("830a06f0-c7f3-4922-adc8-1ae743e63028")
-	@JacksonXmlProperty(isAttribute=true, localName = "GlobalOrLocal")
+	@JacksonXmlProperty(isAttribute=true, localName = "globalOrLocal")
 	private IfcGlobalOrLocalEnum globalOrLocal;
 
 	@Description("Reference to the <em>IfcRelConnectsStructuralActivity</em> relationship by which activities are connected with structural items.")
-	@InverseProperty(InverseProp = "RelatedStructuralActivity", Range = "IfcRelConnectsStructuralActivity")
+	@InverseProperty(InverseProp = "relatedStructuralActivity", Range = "IfcRelConnectsStructuralActivity")
 	@Guid("972e6dd1-44d3-4eae-8b18-92babea8b77f")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelConnectsStructuralActivity")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "AssignedToStructuralItem")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "assignedToStructuralItem")
 	private Set<IfcRelConnectsStructuralActivity> assignedToStructuralItem;
 
 

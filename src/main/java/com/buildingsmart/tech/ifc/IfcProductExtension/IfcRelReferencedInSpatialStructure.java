@@ -5,28 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialElement;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("6efcded0-4fa6-4c52-82e9-d250dbb9bcb0")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,7 +26,7 @@ public class IfcRelReferencedInSpatialStructure extends com.buildingsmart.tech.i
 	@Guid("435af73c-0c42-4a56-8312-c9b5ddf240fa")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcProduct")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedElements")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedElements")
 	private Set<IfcProduct> relatedElements;
 
 	@Description("Spatial structure element, within which the element is referenced. Any element can be contained within zero, one or many elements of the project spatial and zoning structure.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute <em>RelatingStructure</em> as been promoted to the new supertype <em>IfcSpatialElement</em> with upward compatibility for file based exchange.</blockquote>")

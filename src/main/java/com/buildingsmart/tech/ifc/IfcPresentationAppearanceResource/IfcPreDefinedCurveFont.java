@@ -5,25 +5,11 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcDraughtingPreDefinedCurveFont;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPreDefinedItem;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("9d0506f4-1626-4bd0-8b81-426609d1f6c0")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,7 +22,7 @@ public abstract class IfcPreDefinedCurveFont extends IfcPreDefinedItem implement
 	{
 	}
 
-	public IfcPreDefinedCurveFont(String name)
+	public IfcPreDefinedCurveFont(IfcLabel name)
 	{
 		super(name);
 	}

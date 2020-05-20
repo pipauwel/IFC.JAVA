@@ -5,25 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralLoadResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPlaneAngleMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoadSingleDisplacementDistortion;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoadStatic;
 
 @Guid("2563c310-58af-4669-8c17-3e479f918c14")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,89 +24,89 @@ public class IfcStructuralLoadSingleDisplacement extends IfcStructuralLoadStatic
 	@Description("Displacement in x-direction.")
 	@DataMember(Order = 0)
 	@Guid("df3a3c84-1b7c-4918-a57b-8d5a6f316d13")
-	@JacksonXmlProperty(isAttribute=true, localName = "DisplacementX")
-	private double displacementX;
+	@JacksonXmlProperty(isAttribute=false, localName = "displacementX")
+	private IfcLengthMeasure displacementX;
 
 	@Description("Displacement in y-direction.")
 	@DataMember(Order = 1)
 	@Guid("627b03c9-8288-40d9-9e83-9c39d873dd0f")
-	@JacksonXmlProperty(isAttribute=true, localName = "DisplacementY")
-	private double displacementY;
+	@JacksonXmlProperty(isAttribute=false, localName = "displacementY")
+	private IfcLengthMeasure displacementY;
 
 	@Description("Displacement in z-direction.")
 	@DataMember(Order = 2)
 	@Guid("30b31ff2-b478-470d-8f9c-d0fd2edfef07")
-	@JacksonXmlProperty(isAttribute=true, localName = "DisplacementZ")
-	private double displacementZ;
+	@JacksonXmlProperty(isAttribute=false, localName = "displacementZ")
+	private IfcLengthMeasure displacementZ;
 
 	@Description("Rotation about the x-axis.")
 	@DataMember(Order = 3)
 	@Guid("030d51da-0844-48f4-8408-2f787a1ee54e")
-	@JacksonXmlProperty(isAttribute=true, localName = "RotationalDisplacementRX")
-	private double rotationalDisplacementRX;
+	@JacksonXmlProperty(isAttribute=false, localName = "rotationalDisplacementRX")
+	private IfcPlaneAngleMeasure rotationalDisplacementRX;
 
 	@Description("Rotation about the y-axis.")
 	@DataMember(Order = 4)
 	@Guid("5ec6bded-673f-4bec-a1c6-6dc845ff6ae0")
-	@JacksonXmlProperty(isAttribute=true, localName = "RotationalDisplacementRY")
-	private double rotationalDisplacementRY;
+	@JacksonXmlProperty(isAttribute=false, localName = "rotationalDisplacementRY")
+	private IfcPlaneAngleMeasure rotationalDisplacementRY;
 
 	@Description("Rotation about the z-axis.")
 	@DataMember(Order = 5)
 	@Guid("f2cb9b0e-9aff-4e09-ac97-30d2e2abd624")
-	@JacksonXmlProperty(isAttribute=true, localName = "RotationalDisplacementRZ")
-	private double rotationalDisplacementRZ;
+	@JacksonXmlProperty(isAttribute=false, localName = "rotationalDisplacementRZ")
+	private IfcPlaneAngleMeasure rotationalDisplacementRZ;
 
 
 	public IfcStructuralLoadSingleDisplacement()
 	{
 	}
 
-	public double getDisplacementX() {
+	public IfcLengthMeasure getDisplacementX() {
 		return this.displacementX;
 	}
 
-	public void setDisplacementX(double displacementX) {
+	public void setDisplacementX(IfcLengthMeasure displacementX) {
 		this.displacementX = displacementX;
 	}
 
-	public double getDisplacementY() {
+	public IfcLengthMeasure getDisplacementY() {
 		return this.displacementY;
 	}
 
-	public void setDisplacementY(double displacementY) {
+	public void setDisplacementY(IfcLengthMeasure displacementY) {
 		this.displacementY = displacementY;
 	}
 
-	public double getDisplacementZ() {
+	public IfcLengthMeasure getDisplacementZ() {
 		return this.displacementZ;
 	}
 
-	public void setDisplacementZ(double displacementZ) {
+	public void setDisplacementZ(IfcLengthMeasure displacementZ) {
 		this.displacementZ = displacementZ;
 	}
 
-	public double getRotationalDisplacementRX() {
+	public IfcPlaneAngleMeasure getRotationalDisplacementRX() {
 		return this.rotationalDisplacementRX;
 	}
 
-	public void setRotationalDisplacementRX(double rotationalDisplacementRX) {
+	public void setRotationalDisplacementRX(IfcPlaneAngleMeasure rotationalDisplacementRX) {
 		this.rotationalDisplacementRX = rotationalDisplacementRX;
 	}
 
-	public double getRotationalDisplacementRY() {
+	public IfcPlaneAngleMeasure getRotationalDisplacementRY() {
 		return this.rotationalDisplacementRY;
 	}
 
-	public void setRotationalDisplacementRY(double rotationalDisplacementRY) {
+	public void setRotationalDisplacementRY(IfcPlaneAngleMeasure rotationalDisplacementRY) {
 		this.rotationalDisplacementRY = rotationalDisplacementRY;
 	}
 
-	public double getRotationalDisplacementRZ() {
+	public IfcPlaneAngleMeasure getRotationalDisplacementRZ() {
 		return this.rotationalDisplacementRZ;
 	}
 
-	public void setRotationalDisplacementRZ(double rotationalDisplacementRZ) {
+	public void setRotationalDisplacementRZ(IfcPlaneAngleMeasure rotationalDisplacementRZ) {
 		this.rotationalDisplacementRZ = rotationalDisplacementRZ;
 	}
 

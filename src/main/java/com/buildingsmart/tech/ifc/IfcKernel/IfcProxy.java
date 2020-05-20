@@ -5,26 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProduct;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectTypeEnum;
 
 @Guid("71ecd3f4-0c37-4779-a722-9dddefe6a6bf")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,14 +21,14 @@ public class IfcProxy extends IfcProduct
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("7c83d5c4-1b38-400e-8d64-cbbcb8893211")
-	@JacksonXmlProperty(isAttribute=true, localName = "ProxyType")
+	@JacksonXmlProperty(isAttribute=true, localName = "proxyType")
 	private IfcObjectTypeEnum proxyType;
 
 	@Description("The tag (or label) identifier at the particular instance of a product, e.g. the serial number, or the position number. It is the identifier at the occurrence level.")
 	@DataMember(Order = 1)
 	@Guid("d45cbd31-dd92-4820-9238-63d0fd345dc6")
-	@JacksonXmlProperty(isAttribute=true, localName = "Tag")
-	private String tag;
+	@JacksonXmlProperty(isAttribute=false, localName = "tag")
+	private IfcLabel tag;
 
 
 	public IfcProxy()
@@ -62,11 +49,11 @@ public class IfcProxy extends IfcProduct
 		this.proxyType = proxyType;
 	}
 
-	public String getTag() {
+	public IfcLabel getTag() {
 		return this.tag;
 	}
 
-	public void setTag(String tag) {
+	public void setTag(IfcLabel tag) {
 		this.tag = tag;
 	}
 

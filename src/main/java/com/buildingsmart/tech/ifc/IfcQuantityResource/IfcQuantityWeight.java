@@ -5,24 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcQuantityResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcMassMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcQuantityResource.IfcPhysicalSimpleQuantity;
 
 @Guid("b2c313f2-5299-4b30-b6d0-a7ea6fbf1b83")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,39 +22,39 @@ public class IfcQuantityWeight extends IfcPhysicalSimpleQuantity
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("7e543a81-ddf5-4f31-b2dc-5a8af9e5a77d")
-	@JacksonXmlProperty(isAttribute=true, localName = "WeightValue")
-	private double weightValue;
+	@JacksonXmlProperty(isAttribute=false, localName = "weightValue")
+	private IfcMassMeasure weightValue;
 
 	@Description("A formula by which the quantity has been calculated. It can be assigned in addition to the actual value of the quantity. Formulas could be mathematic calculations (like width x height), database links, or a combination. The formula is for informational purposes only.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  Attribute added to the end of the attribute list.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("a1fad3f8-8a38-45db-9ab4-754238b3e2ca")
-	@JacksonXmlProperty(isAttribute=true, localName = "Formula")
-	private String formula;
+	@JacksonXmlProperty(isAttribute=false, localName = "formula")
+	private IfcLabel formula;
 
 
 	public IfcQuantityWeight()
 	{
 	}
 
-	public IfcQuantityWeight(String name, double weightValue)
+	public IfcQuantityWeight(IfcLabel name, IfcMassMeasure weightValue)
 	{
 		super(name);
 		this.weightValue = weightValue;
 	}
 
-	public double getWeightValue() {
+	public IfcMassMeasure getWeightValue() {
 		return this.weightValue;
 	}
 
-	public void setWeightValue(double weightValue) {
+	public void setWeightValue(IfcMassMeasure weightValue) {
 		this.weightValue = weightValue;
 	}
 
-	public String getFormula() {
+	public IfcLabel getFormula() {
 		return this.formula;
 	}
 
-	public void setFormula(String formula) {
+	public void setFormula(IfcLabel formula) {
 		this.formula = formula;
 	}
 

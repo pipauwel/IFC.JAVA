@@ -5,27 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelDefines;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcTypeObject;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("92a2c20b-4c2f-4ed2-a2f1-5d0591fa26b2")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -42,7 +29,7 @@ public class IfcRelDefinesByType extends IfcRelDefines
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("4e3abe9a-b836-4453-bf32-432fd0f9e654")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingType")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatingType")
 	private IfcTypeObject relatingType;
 
 

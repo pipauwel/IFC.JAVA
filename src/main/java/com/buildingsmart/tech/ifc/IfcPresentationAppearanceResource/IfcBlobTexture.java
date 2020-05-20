@@ -5,24 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcBinary;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcBoolean;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcIdentifier;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceTexture;
 
 @Guid("6f3625b4-6b27-4ac2-8c49-34b2079baf0c")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,41 +23,41 @@ public class IfcBlobTexture extends IfcSurfaceTexture
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("cc5e35b1-16ee-455a-aece-ce1cd7148396")
-	@JacksonXmlProperty(isAttribute=true, localName = "RasterFormat")
-	private String rasterFormat;
+	@JacksonXmlProperty(isAttribute=true, localName = "rasterFormat")
+	private IfcIdentifier rasterFormat;
 
 	@Description("Blob, given as a single binary, to capture the texture within one popular file (compression) format. The file format is provided by the <em>RasterFormat</em> attribute.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("d73b45d5-03ef-42a4-80f8-40956c1ed197")
-	@JacksonXmlProperty(isAttribute=true, localName = "RasterCode")
-	private Byte[] rasterCode;
+	@JacksonXmlProperty(isAttribute=true, localName = "rasterCode")
+	private IfcBinary rasterCode;
 
 
 	public IfcBlobTexture()
 	{
 	}
 
-	public IfcBlobTexture(Boolean repeatS, Boolean repeatT, String rasterFormat, Byte[] rasterCode)
+	public IfcBlobTexture(IfcBoolean repeatS, IfcBoolean repeatT, IfcIdentifier rasterFormat, IfcBinary rasterCode)
 	{
 		super(repeatS, repeatT);
 		this.rasterFormat = rasterFormat;
 		this.rasterCode = rasterCode;
 	}
 
-	public String getRasterFormat() {
+	public IfcIdentifier getRasterFormat() {
 		return this.rasterFormat;
 	}
 
-	public void setRasterFormat(String rasterFormat) {
+	public void setRasterFormat(IfcIdentifier rasterFormat) {
 		this.rasterFormat = rasterFormat;
 	}
 
-	public Byte[] getRasterCode() {
+	public IfcBinary getRasterCode() {
 		return this.rasterCode;
 	}
 
-	public void setRasterCode(Byte[] rasterCode) {
+	public void setRasterCode(IfcBinary rasterCode) {
 		this.rasterCode = rasterCode;
 	}
 

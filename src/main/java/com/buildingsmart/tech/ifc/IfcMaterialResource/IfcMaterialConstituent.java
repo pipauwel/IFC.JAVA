@@ -6,6 +6,10 @@
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
 import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcText;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -16,38 +20,39 @@ public class IfcMaterialConstituent extends IfcMaterialDefinition
 	@Description("The name by which the material constituent is known.")
 	@DataMember(Order = 0)
 	@Guid("cd111960-1bdc-4bb1-82cf-eb8857fc7dae")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 	@Description("Definition of the material constituent in descriptive terms.")
 	@DataMember(Order = 1)
 	@Guid("ebe9ac22-8c7f-4eb2-a71e-4fd081367dcf")
-	@JacksonXmlProperty(isAttribute=true, localName = "Description")
-	private String description;
+	@JacksonXmlProperty(isAttribute=false, localName = "description")
+	private IfcText description;
 
 	@Description("Reference to the material from which the constituent is constructed.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("8f4bb525-9e74-4e8e-bc69-8cd29d76032e")
-	@JacksonXmlProperty(isAttribute=false, localName = "Material")
+	@JacksonXmlProperty(isAttribute=false, localName = "material")
 	private IfcMaterial material;
 
 	@Description("Optional provision of a fraction of the total amount (volume or weight) that applies to the <em>IfcMaterialConstituentSet</em> that is contributed by this <em>IfcMaterialConstituent</em>.")
 	@DataMember(Order = 3)
 	@Guid("c7db76e7-d83a-421c-a53d-714aef504ca3")
-	@JacksonXmlProperty(isAttribute=false, localName = "Fraction")
-	private double fraction; //IfcNormalisedRatioMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "fraction")
+	private IfcNormalisedRatioMeasure fraction;
 
 	@Description("Category of the material constituent, e.g. the role it has in the constituent set it belongs to.")
 	@DataMember(Order = 4)
 	@Guid("e83b8380-8104-4922-8366-c2cda154c85c")
-	@JacksonXmlProperty(isAttribute=true, localName = "Category")
-	private String category;
+	@JacksonXmlProperty(isAttribute=false, localName = "category")
+	private IfcLabel category;
 
 	@Description("Material constituent set in which this material constituent is included.")
-	@InverseProperty(InverseProp = "MaterialConstituents", Range = "IfcMaterialConstituentSet")
+	@InverseProperty(InverseProp = "materialConstituents", Range = "IfcMaterialConstituentSet")
 	@Guid("209ecc93-41cf-491d-b4e8-7e22cada303e")
-	@JacksonXmlProperty(isAttribute=false, localName = "ToMaterialConstituentSet")
+	/*@JacksonXmlProperty(isAttribute=false, localName = "toMaterialConstituentSet")*/
+	@JsonIgnore
 	private IfcMaterialConstituentSet toMaterialConstituentSet;
 
 
@@ -60,19 +65,19 @@ public class IfcMaterialConstituent extends IfcMaterialDefinition
 		this.material = material;
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 
-	public String getDescription() {
+	public IfcText getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(IfcText description) {
 		this.description = description;
 	}
 
@@ -84,19 +89,19 @@ public class IfcMaterialConstituent extends IfcMaterialDefinition
 		this.material = material;
 	}
 
-	public double getFraction() {
+	public IfcNormalisedRatioMeasure getFraction() {
 		return this.fraction;
 	}
 
-	public void setFraction(double fraction) {
+	public void setFraction(IfcNormalisedRatioMeasure fraction) {
 		this.fraction = fraction;
 	}
 
-	public String getCategory() {
+	public IfcLabel getCategory() {
 		return this.category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(IfcLabel category) {
 		this.category = category;
 	}
 

@@ -5,25 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue;
 
 @Guid("d5d6da22-1509-418b-8dea-278c3dc7e2d8")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,8 +23,8 @@ public class IfcIrregularTimeSeriesValue
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("70b6fcf0-2c15-4753-ab4b-d93840eeffd5")
-	@JacksonXmlProperty(isAttribute=true, localName = "TimeStamp")
-	private String timeStamp;
+	@JacksonXmlProperty(isAttribute=false, localName = "timeStamp")
+	private IfcDateTime timeStamp;
 
 	@Description("A list of time-series values. At least one value is required.")
 	@DataMember(Order = 1)
@@ -42,7 +32,7 @@ public class IfcIrregularTimeSeriesValue
 	@Guid("5d205088-4f1b-4a4d-a27a-f36529a1c467")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcValue")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "ListValues")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "listValues")
 	private List<IfcValue> listValues;
 
 
@@ -50,17 +40,17 @@ public class IfcIrregularTimeSeriesValue
 	{
 	}
 
-	public IfcIrregularTimeSeriesValue(String timeStamp, IfcValue[] listValues)
+	public IfcIrregularTimeSeriesValue(IfcDateTime timeStamp, IfcValue[] listValues)
 	{
 		this.timeStamp = timeStamp;
 		this.listValues = new ArrayList<>(Arrays.asList(listValues));
 	}
 
-	public String getTimeStamp() {
+	public IfcDateTime getTimeStamp() {
 		return this.timeStamp;
 	}
 
-	public void setTimeStamp(String timeStamp) {
+	public void setTimeStamp(IfcDateTime timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 

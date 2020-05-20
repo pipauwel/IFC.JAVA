@@ -5,27 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcPresentationStyle;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceSide;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcSurfaceStyleElementSelect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("359b755a-e87c-418d-bb14-8b2fd007e3ba")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,7 +22,7 @@ public class IfcSurfaceStyle extends IfcPresentationStyle implements IfcPresenta
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("71fe440e-530e-4206-b288-06ae88a7976e")
-	@JacksonXmlProperty(isAttribute=true, localName = "Side")
+	@JacksonXmlProperty(isAttribute=true, localName = "side")
 	private IfcSurfaceSide side;
 
 	@Description("A collection of different surface styles.")
@@ -45,7 +32,7 @@ public class IfcSurfaceStyle extends IfcPresentationStyle implements IfcPresenta
 	@MinLength(1)
 	@MaxLength(5)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcSurfaceStyleElementSelect")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "Styles")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "styles")
 	private Set<IfcSurfaceStyleElementSelect> styles;
 
 

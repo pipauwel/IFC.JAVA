@@ -10,7 +10,9 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcLibraryInformation;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcDateTime;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcMonetaryUnit;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -22,33 +24,33 @@ public class IfcCurrencyRelationship extends com.buildingsmart.tech.ifc.IfcExter
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("8ad0cf1d-249d-446c-a3b0-d1a9aeda943d")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingMonetaryUnit")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatingMonetaryUnit")
 	private IfcMonetaryUnit relatingMonetaryUnit;
 
 	@Description("The monetary unit to which an exchange results. For instance, in the case of a conversion from GBP to USD, the related monetary unit is USD.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("2dd6b7a2-34a1-4238-b477-c09271f157aa")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatedMonetaryUnit")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatedMonetaryUnit")
 	private IfcMonetaryUnit relatedMonetaryUnit;
 
 	@Description("The currently agreed ratio of the amount of a related monetary unit that is equivalent to a unit amount of the relating monetary unit in a currency relationship. For instance, in the case of a conversion from GBP to USD, the value of the exchange rate may be 1.486 (USD) : 1 (GBP).")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("b0243b1e-6e24-414e-9b92-5ee782e1c2b7")
-	@JacksonXmlProperty(isAttribute=false, localName = "ExchangeRate")
-	private double exchangeRate; //IfcPositiveRatioMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "exchangeRate")
+	private IfcPositiveRatioMeasure exchangeRate;
 
 	@Description("The date and time at which an exchange rate applies.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE Type changed from IfcDateTimeSelect. Attribute made optional.</blockquote>")
 	@DataMember(Order = 3)
 	@Guid("ec65c0c7-e002-4f68-b956-b479d9fc4a25")
-	@JacksonXmlProperty(isAttribute=true, localName = "RateDateTime")
-	private String rateDateTime;
+	@JacksonXmlProperty(isAttribute=false, localName = "rateDateTime")
+	private IfcDateTime rateDateTime;
 
 	@Description("The source from which an exchange rate is obtained.")
 	@DataMember(Order = 4)
 	@Guid("89f1b6ce-2442-40b8-b9ab-6e4941cc5459")
-	@JacksonXmlProperty(isAttribute=false, localName = "RateSource")
+	@JacksonXmlProperty(isAttribute=false, localName = "rateSource")
 	private IfcLibraryInformation rateSource;
 
 
@@ -56,7 +58,7 @@ public class IfcCurrencyRelationship extends com.buildingsmart.tech.ifc.IfcExter
 	{
 	}
 
-	public IfcCurrencyRelationship(IfcMonetaryUnit relatingMonetaryUnit, IfcMonetaryUnit relatedMonetaryUnit, double exchangeRate)
+	public IfcCurrencyRelationship(IfcMonetaryUnit relatingMonetaryUnit, IfcMonetaryUnit relatedMonetaryUnit, IfcPositiveRatioMeasure exchangeRate)
 	{
 		this.relatingMonetaryUnit = relatingMonetaryUnit;
 		this.relatedMonetaryUnit = relatedMonetaryUnit;
@@ -79,19 +81,19 @@ public class IfcCurrencyRelationship extends com.buildingsmart.tech.ifc.IfcExter
 		this.relatedMonetaryUnit = relatedMonetaryUnit;
 	}
 
-	public double getExchangeRate() {
+	public IfcPositiveRatioMeasure getExchangeRate() {
 		return this.exchangeRate;
 	}
 
-	public void setExchangeRate(double exchangeRate) {
+	public void setExchangeRate(IfcPositiveRatioMeasure exchangeRate) {
 		this.exchangeRate = exchangeRate;
 	}
 
-	public String getRateDateTime() {
+	public IfcDateTime getRateDateTime() {
 		return this.rateDateTime;
 	}
 
-	public void setRateDateTime(String rateDateTime) {
+	public void setRateDateTime(IfcDateTime rateDateTime) {
 		this.rateDateTime = rateDateTime;
 	}
 

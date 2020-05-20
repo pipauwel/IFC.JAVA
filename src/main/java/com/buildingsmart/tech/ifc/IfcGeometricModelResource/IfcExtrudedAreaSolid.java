@@ -10,6 +10,7 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -26,22 +27,22 @@ public class IfcExtrudedAreaSolid extends IfcSweptAreaSolid
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("aef4b8f4-190c-4dbd-a5ef-4ad2bf1d00a3")
-	@JacksonXmlProperty(isAttribute=false, localName = "ExtrudedDirection")
+	@JacksonXmlProperty(isAttribute=false, localName = "extrudedDirection")
 	private IfcDirection extrudedDirection;
 
 	@Description("The distance the surface is to be swept along the <em>ExtrudedDirection</em>.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("a0e24ce6-15a3-49a4-827b-25a7987a23f7")
-	@JacksonXmlProperty(isAttribute=false, localName = "Depth")
-	private double depth; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "depth")
+	private IfcPositiveLengthMeasure depth;
 
 
 	public IfcExtrudedAreaSolid()
 	{
 	}
 
-	public IfcExtrudedAreaSolid(IfcProfileDef sweptArea, IfcDirection extrudedDirection, double depth)
+	public IfcExtrudedAreaSolid(IfcProfileDef sweptArea, IfcDirection extrudedDirection, IfcPositiveLengthMeasure depth)
 	{
 		super(sweptArea);
 		this.extrudedDirection = extrudedDirection;
@@ -56,11 +57,11 @@ public class IfcExtrudedAreaSolid extends IfcSweptAreaSolid
 		this.extrudedDirection = extrudedDirection;
 	}
 
-	public double getDepth() {
+	public IfcPositiveLengthMeasure getDepth() {
 		return this.depth;
 	}
 
-	public void setDepth(double depth) {
+	public void setDepth(IfcPositiveLengthMeasure depth) {
 		this.depth = depth;
 	}
 

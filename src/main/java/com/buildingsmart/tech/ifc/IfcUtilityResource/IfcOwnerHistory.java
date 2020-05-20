@@ -5,87 +5,90 @@
 
 package com.buildingsmart.tech.ifc.IfcUtilityResource;
 
-import java.util.*;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcActorResource.*;
-import com.buildingsmart.tech.ifc.IfcUtilityResource.*;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcActorResource.IfcPersonAndOrganization;
-import com.buildingsmart.tech.ifc.IfcUtilityResource.IfcApplication;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTimeStamp;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.UUID;
 
 @Guid("6ef8f949-8689-4582-bbae-9259e7c2d559")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "id")
+		property = "globalId")
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class IfcOwnerHistory
 {
 	@Description("Internal ID")
 	@Required()
-	@JacksonXmlProperty(isAttribute=false, localName = "Id")
-	private UUID id;
+	@JacksonXmlProperty(isAttribute=true, localName = "globalId")
+	private UUID globalId;
 
 	@Description("Direct reference to the end user who currently \"owns\" this object. Note that IFC includes the concept of ownership transfer from one user to another and therefore distinguishes between the Owning User and Creating User.")
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("6cfcdb94-5c37-4ad5-a156-a9253abf000b")
-	@JacksonXmlProperty(isAttribute=false, localName = "OwningUser")
+	@JacksonXmlProperty(isAttribute=false, localName = "owningUser")
 	private IfcPersonAndOrganization owningUser;
 
 	@Description("Direct reference to the application which currently \"owns\" this object on behalf of the owning user of the application. Note that IFC includes the concept of ownership transfer from one application to another and therefore distinguishes between the Owning Application and Creating Application.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("313e24f2-1770-4142-a154-4fa5a9f412a1")
-	@JacksonXmlProperty(isAttribute=false, localName = "OwningApplication")
+	@JacksonXmlProperty(isAttribute=false, localName = "owningApplication")
 	private IfcApplication owningApplication;
 
 	@Description("Enumeration that defines the current access state of the object.")
 	@DataMember(Order = 2)
 	@Guid("87eb8e3b-53d4-484e-96d0-6679f05c16a4")
-	@JacksonXmlProperty(isAttribute=true, localName = "State")
+	@JacksonXmlProperty(isAttribute=true, localName = "state")
 	private IfcStateEnum state;
 
 	@Description("Enumeration that defines the actions associated with changes made to the object.")
 	@DataMember(Order = 3)
 	@Guid("d7091627-4214-4138-a242-e352fecf5106")
-	@JacksonXmlProperty(isAttribute=true, localName = "ChangeAction")
+	@JacksonXmlProperty(isAttribute=true, localName = "changeAction")
 	private IfcChangeActionEnum changeAction;
 
 	@Description("Date and Time expressed in UTC (Universal Time Coordinated, formerly Greenwich Mean Time or GMT) at which the last modification was made by LastModifyingUser and LastModifyingApplication.")
 	@DataMember(Order = 4)
 	@Guid("baa5cff9-e806-4374-9847-36815a46c2bb")
-	@JacksonXmlProperty(isAttribute=true, localName = "LastModifiedDate")
-	private int lastModifiedDate;
+	@JacksonXmlProperty(isAttribute=false, localName = "lastModifiedDate")
+	private IfcTimeStamp lastModifiedDate;
 
 	@Description("User who carried out the last modification using LastModifyingApplication.")
 	@DataMember(Order = 5)
 	@Guid("496aebe5-e9a5-40c0-bd10-29750cbba3da")
-	@JacksonXmlProperty(isAttribute=false, localName = "LastModifyingUser")
+	@JacksonXmlProperty(isAttribute=false, localName = "lastModifyingUser")
 	private IfcPersonAndOrganization lastModifyingUser;
 
 	@Description("Application used to make the last modification.")
 	@DataMember(Order = 6)
 	@Guid("5f65c380-d809-4fa5-bd22-2e8ba56edfc8")
-	@JacksonXmlProperty(isAttribute=false, localName = "LastModifyingApplication")
+	@JacksonXmlProperty(isAttribute=false, localName = "lastModifyingApplication")
 	private IfcApplication lastModifyingApplication;
 
 	@Description("The date and time expressed in UTC (Universal Time Coordinated, formerly Greenwich Mean Time or GMT) when first created by the original OwningApplication. Once defined this value remains unchanged through the lifetime of the entity.")
 	@DataMember(Order = 7)
 	@Required()
 	@Guid("6797cdbc-3f8e-4e99-a976-fab71013a3bf")
-	@JacksonXmlProperty(isAttribute=true, localName = "CreationDate")
-	private int creationDate;
+	@JacksonXmlProperty(isAttribute=false, localName = "creationDate")
+	private IfcTimeStamp creationDate;
 
 
 	public IfcOwnerHistory()
 	{
-		this.id = UUID.randomUUID();
+		this.globalId = UUID.randomUUID();
 	}
 
-	public IfcOwnerHistory(IfcPersonAndOrganization owningUser, IfcApplication owningApplication, int creationDate)
+	public IfcOwnerHistory(IfcPersonAndOrganization owningUser, IfcApplication owningApplication, IfcTimeStamp creationDate)
 	{
 		this();
 		this.owningUser = owningUser;
@@ -93,12 +96,12 @@ public class IfcOwnerHistory
 		this.creationDate = creationDate;
 	}
 
-	public UUID getId() {
-		return this.id;
+	public UUID getGlobalId() {
+		return this.globalId;
 	}
 
-	public void setId(UUID id) {
-		this.id = id;
+	public void setGlobalId(UUID globalId) {
+		this.globalId = globalId;
 	}
 
 	public IfcPersonAndOrganization getOwningUser() {
@@ -133,11 +136,11 @@ public class IfcOwnerHistory
 		this.changeAction = changeAction;
 	}
 
-	public int getLastModifiedDate() {
+	public IfcTimeStamp getLastModifiedDate() {
 		return this.lastModifiedDate;
 	}
 
-	public void setLastModifiedDate(int lastModifiedDate) {
+	public void setLastModifiedDate(IfcTimeStamp lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 
@@ -157,11 +160,11 @@ public class IfcOwnerHistory
 		this.lastModifyingApplication = lastModifyingApplication;
 	}
 
-	public int getCreationDate() {
+	public IfcTimeStamp getCreationDate() {
 		return this.creationDate;
 	}
 
-	public void setCreationDate(int creationDate) {
+	public void setCreationDate(IfcTimeStamp creationDate) {
 		this.creationDate = creationDate;
 	}
 

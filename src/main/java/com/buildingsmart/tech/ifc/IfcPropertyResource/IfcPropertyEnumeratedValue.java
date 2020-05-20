@@ -5,26 +5,17 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcIdentifier;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcSimpleProperty;
+import java.util.List;
 
 @Guid("0d3d63a5-9a73-4f49-a809-6383082c2216")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,13 +26,13 @@ public class IfcPropertyEnumeratedValue extends IfcSimpleProperty
 	@Guid("7f2fce6a-1d45-497e-82f3-61ce510951fe")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcValue")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "EnumerationValues")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "enumerationValues")
 	private List<IfcValue> enumerationValues;
 
 	@Description("Enumeration from which a enumeration value has been selected. The referenced enumeration also establishes the unit of the enumeration value.")
 	@DataMember(Order = 1)
 	@Guid("5fbe4df2-d945-4c3c-8826-2a4f7ca6549e")
-	@JacksonXmlProperty(isAttribute=false, localName = "EnumerationReference")
+	@JacksonXmlProperty(isAttribute=false, localName = "enumerationReference")
 	private IfcPropertyEnumeration enumerationReference;
 
 
@@ -49,7 +40,7 @@ public class IfcPropertyEnumeratedValue extends IfcSimpleProperty
 	{
 	}
 
-	public IfcPropertyEnumeratedValue(String name)
+	public IfcPropertyEnumeratedValue(IfcIdentifier name)
 	{
 		super(name);
 	}

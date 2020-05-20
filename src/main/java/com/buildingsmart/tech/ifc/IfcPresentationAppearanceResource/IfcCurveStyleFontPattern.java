@@ -9,6 +9,8 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -20,40 +22,40 @@ public class IfcCurveStyleFontPattern extends com.buildingsmart.tech.ifc.IfcPres
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("bf5fb00d-16e8-4146-a8f3-e125fa492723")
-	@JacksonXmlProperty(isAttribute=true, localName = "VisibleSegmentLength")
-	private double visibleSegmentLength;
+	@JacksonXmlProperty(isAttribute=false, localName = "visibleSegmentLength")
+	private IfcLengthMeasure visibleSegmentLength;
 
 	@Description("The length of the invisible segment in the pattern definition.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("317e8bab-7743-45d9-bda6-e034d1b74450")
-	@JacksonXmlProperty(isAttribute=false, localName = "InvisibleSegmentLength")
-	private double invisibleSegmentLength; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "invisibleSegmentLength")
+	private IfcPositiveLengthMeasure invisibleSegmentLength;
 
 
 	public IfcCurveStyleFontPattern()
 	{
 	}
 
-	public IfcCurveStyleFontPattern(double visibleSegmentLength, double invisibleSegmentLength)
+	public IfcCurveStyleFontPattern(IfcLengthMeasure visibleSegmentLength, IfcPositiveLengthMeasure invisibleSegmentLength)
 	{
 		this.visibleSegmentLength = visibleSegmentLength;
 		this.invisibleSegmentLength = invisibleSegmentLength;
 	}
 
-	public double getVisibleSegmentLength() {
+	public IfcLengthMeasure getVisibleSegmentLength() {
 		return this.visibleSegmentLength;
 	}
 
-	public void setVisibleSegmentLength(double visibleSegmentLength) {
+	public void setVisibleSegmentLength(IfcLengthMeasure visibleSegmentLength) {
 		this.visibleSegmentLength = visibleSegmentLength;
 	}
 
-	public double getInvisibleSegmentLength() {
+	public IfcPositiveLengthMeasure getInvisibleSegmentLength() {
 		return this.invisibleSegmentLength;
 	}
 
-	public void setInvisibleSegmentLength(double invisibleSegmentLength) {
+	public void setInvisibleSegmentLength(IfcPositiveLengthMeasure invisibleSegmentLength) {
 		this.invisibleSegmentLength = invisibleSegmentLength;
 	}
 

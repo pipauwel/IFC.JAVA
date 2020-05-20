@@ -6,8 +6,18 @@
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSolidModel;
+import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcClosedShell;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("80219525-9195-4713-a4a6-72dff03ea606")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcSolidModel.class, name = "IfcSolidModel"),
+        @JsonSubTypes.Type(value = IfcClosedShell.class, name = "IfcClosedShell")})
 public interface IfcSolidOrShell {
+
 
 }

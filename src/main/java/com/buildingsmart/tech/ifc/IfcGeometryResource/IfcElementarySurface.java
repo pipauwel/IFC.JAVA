@@ -5,30 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCylindricalSurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPlane;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSphericalSurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcToroidalSurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
 
 @Guid("dab568ba-aad6-4d74-963d-d3f397cfcea1")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,7 +24,7 @@ public abstract class IfcElementarySurface extends IfcSurface
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("f91d2366-0868-4189-a462-5254202e97dc")
-	@JacksonXmlProperty(isAttribute=false, localName = "Position")
+	@JacksonXmlProperty(isAttribute=false, localName = "position")
 	private IfcAxis2Placement3D position;
 
 

@@ -9,6 +9,7 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -24,25 +25,25 @@ public class IfcCircleProfileDef extends IfcParameterizedProfileDef
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("e32b7f94-4b79-4078-93cc-014e7f4dcc2f")
-	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private double radius; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "radius")
+	private IfcPositiveLengthMeasure radius;
 
 
 	public IfcCircleProfileDef()
 	{
 	}
 
-	public IfcCircleProfileDef(IfcProfileTypeEnum profileType, double radius)
+	public IfcCircleProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure radius)
 	{
 		super(profileType);
 		this.radius = radius;
 	}
 
-	public double getRadius() {
+	public IfcPositiveLengthMeasure getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(double radius) {
+	public void setRadius(IfcPositiveLengthMeasure radius) {
 		this.radius = radius;
 	}
 

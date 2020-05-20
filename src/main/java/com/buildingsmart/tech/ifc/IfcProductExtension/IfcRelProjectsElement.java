@@ -5,27 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelDecomposes;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementAddition;
 
 @Guid("3a589d07-713f-4a7d-90a7-1b9c3b668e2b")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -42,7 +28,7 @@ public class IfcRelProjectsElement extends com.buildingsmart.tech.ifc.IfcKernel.
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("c95715df-11cc-4fae-8d0b-2e578e90f0ab")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatedFeatureElement")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatedFeatureElement")
 	private IfcFeatureElementAddition relatedFeatureElement;
 
 

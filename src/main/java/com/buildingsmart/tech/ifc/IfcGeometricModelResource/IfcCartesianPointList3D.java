@@ -5,52 +5,64 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCartesianPointList;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.List;
+import java.util.UUID;
 
 @Guid("18fe3405-d1b4-4632-b93d-b36e1cdf00c1")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "globalId")
 public class IfcCartesianPointList3D extends IfcCartesianPointList
 {
+	@Description("Internal ID")
+	@Required()
+	@JacksonXmlProperty(isAttribute=true, localName = "globalId")
+	private UUID globalId;
+
 	@Description("Two-dimensional list of Cartesian points provided by three coordinates.")
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("eda33e5f-5fc8-41a1-bd3a-470744cb85ff")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "Double")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "CoordList")
-	private List<Double> coordList;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcCartesianPoint")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "coordList")
+	private List<IfcCartesianPoint> coordList; //This used to be a List<List<IfcLengthMeasure>>
 
 
 	public IfcCartesianPointList3D()
 	{
+		this.globalId = UUID.randomUUID();
 	}
 
-	public IfcCartesianPointList3D(Double[] coordList)
+	public IfcCartesianPointList3D(List<IfcCartesianPoint> coordList)
 	{
-		this.coordList = new ArrayList<>(Arrays.asList(coordList));
+		this();
+		this.coordList = coordList;
 	}
 
-	public List<Double> getCoordList() {
+	public UUID getGlobalId() {
+		return this.globalId;
+	}
+
+	public void setGlobalId(UUID globalId) {
+		this.globalId = globalId;
+	}
+
+	public List<IfcCartesianPoint> getCoordList() {
 		return this.coordList;
 	}
 
+	@JsonIgnore
+	public int getDim() {
+		return 3;
+	}
 
 }
 

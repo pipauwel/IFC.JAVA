@@ -5,26 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.buildingsmart.tech.ifc.IfcProfileResource.IfcSectionReinforcementProperties;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcPreDefinedPropertySet;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcSectionReinforcementProperties;
 
 @Guid("1e012790-9138-46ab-b075-8f853dffbdf8")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,8 +23,8 @@ public class IfcReinforcementDefinitionProperties extends com.buildingsmart.tech
 	@Description("Descriptive type name applied to reinforcement definition properties.")
 	@DataMember(Order = 0)
 	@Guid("77446882-b749-4123-99cb-a09d014508a9")
-	@JacksonXmlProperty(isAttribute=true, localName = "DefinitionType")
-	private String definitionType;
+	@JacksonXmlProperty(isAttribute=false, localName = "definitionType")
+	private IfcLabel definitionType;
 
 	@Description("The list of section reinforcement properties attached to the reinforcement definition properties.")
 	@DataMember(Order = 1)
@@ -42,7 +32,7 @@ public class IfcReinforcementDefinitionProperties extends com.buildingsmart.tech
 	@Guid("19ef4829-4f78-41bc-8ab5-0fcf0641ab61")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcSectionReinforcementProperties")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "ReinforcementSectionDefinitions")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "reinforcementSectionDefinitions")
 	private List<IfcSectionReinforcementProperties> reinforcementSectionDefinitions;
 
 
@@ -56,11 +46,11 @@ public class IfcReinforcementDefinitionProperties extends com.buildingsmart.tech
 		this.reinforcementSectionDefinitions = new ArrayList<>(Arrays.asList(reinforcementSectionDefinitions));
 	}
 
-	public String getDefinitionType() {
+	public IfcLabel getDefinitionType() {
 		return this.definitionType;
 	}
 
-	public void setDefinitionType(String definitionType) {
+	public void setDefinitionType(IfcLabel definitionType) {
 		this.definitionType = definitionType;
 	}
 

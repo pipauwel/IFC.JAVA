@@ -5,26 +5,11 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCartesianPointList2D;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcCartesianPointList3D;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("300d59f2-14b1-4472-b5a4-8cf798c02341")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -37,7 +22,10 @@ public abstract class IfcCartesianPointList extends com.buildingsmart.tech.ifc.I
 	{
 	}
 
+	@JsonIgnore
 	public int getDim() {
+		//	Dim
+		//:=IfcPointListDim(SELF)
 		return 0;
 	}
 

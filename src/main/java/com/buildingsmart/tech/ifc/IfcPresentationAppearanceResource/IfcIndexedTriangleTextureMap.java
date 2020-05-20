@@ -10,6 +10,7 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.MinLength;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedFaceSet;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -25,8 +26,8 @@ public class IfcIndexedTriangleTextureMap extends IfcIndexedTextureMap
 	@Guid("d5e9ea70-6d42-4103-afbe-45a940d87c3d")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "TexCoordIndex")
-	private List<Double> texCoordIndex; //IfcPositiveInteger
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "texCoordIndex")
+	private List<IfcPositiveInteger> texCoordIndex;
 
 
 	public IfcIndexedTriangleTextureMap()
@@ -38,7 +39,7 @@ public class IfcIndexedTriangleTextureMap extends IfcIndexedTextureMap
 		super(maps, mappedTo, texCoords);
 	}
 
-	public List<Double> getTexCoordIndex() {
+	public List<IfcPositiveInteger> getTexCoordIndex() {
 		return this.texCoordIndex;
 	}
 

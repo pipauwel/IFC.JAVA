@@ -5,30 +5,21 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.InverseProperty;
+import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSystem;
 import com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements.IfcAsset;
 import com.buildingsmart.tech.ifc.IfcSharedFacilitiesElements.IfcInventory;
 import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralLoadGroup;
 import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralResultGroup;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSystem;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Set;
 
 @Guid("e991a118-741e-4598-a023-d9ad58f0f717")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -37,10 +28,10 @@ import com.buildingsmart.tech.ifc.IfcKernel.IfcObject;
 public class IfcGroup extends IfcObject
 {
 	@Description("Reference to the relationship <em>IfcRelAssignsToGroup</em> that assigns the one to many group members to the <em>IfcGroup</em> object.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The cardinality has been changed from 1..1 to 0..? in order to allow the exchange of a group concept without having already group members assigned. It now also allows the use of many instances of <em>IfcRelAssignsToGroup</em> to assign the group members. The change has been done with upward compatibility for file based exchange.</blockquote>")
-	@InverseProperty(InverseProp = "RelatingGroup", Range = "IfcRelAssignsToGroup")
+	@InverseProperty(InverseProp = "relatingGroup", Range = "IfcRelAssignsToGroup")
 	@Guid("d62fb122-4977-4bdd-9663-ff15e288c506")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelAssignsToGroup")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "IsGroupedBy")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "isGroupedBy")
 	private Set<IfcRelAssignsToGroup> isGroupedBy;
 
 

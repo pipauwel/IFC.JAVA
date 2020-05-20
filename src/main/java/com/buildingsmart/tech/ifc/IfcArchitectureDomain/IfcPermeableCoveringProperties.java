@@ -9,6 +9,7 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -21,32 +22,32 @@ public class IfcPermeableCoveringProperties extends com.buildingsmart.tech.ifc.I
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("d25e0b5d-75ea-46c6-be93-b62ae8176148")
-	@JacksonXmlProperty(isAttribute=true, localName = "OperationType")
+	@JacksonXmlProperty(isAttribute=true, localName = "operationType")
 	private IfcPermeableCoveringOperationEnum operationType;
 
 	@Description("Position of this permeable covering panel within the overall window or door type.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("5a9b407a-77e2-4226-997d-13494bdf88da")
-	@JacksonXmlProperty(isAttribute=true, localName = "PanelPosition")
+	@JacksonXmlProperty(isAttribute=true, localName = "panelPosition")
 	private IfcWindowPanelPositionEnum panelPosition;
 
 	@Description("Depth of panel frame (used to include the permeable covering), measured from front face to back face horizontally (i.e. perpendicular to the window or door (elevation) plane.")
 	@DataMember(Order = 2)
 	@Guid("5c7ce082-5be9-41a8-8db7-aebe3981c7f7")
-	@JacksonXmlProperty(isAttribute=false, localName = "FrameDepth")
-	private double frameDepth; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "frameDepth")
+	private IfcPositiveLengthMeasure frameDepth;
 
 	@Description("Width of panel frame (used to include the permeable covering), measured from inside of panel (at permeable covering) to outside of panel (at lining), i.e. parallel to the window or door (elevation) plane.")
 	@DataMember(Order = 3)
 	@Guid("007a1b22-400e-417c-bd21-04defdf8d6a2")
-	@JacksonXmlProperty(isAttribute=false, localName = "FrameThickness")
-	private double frameThickness; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "frameThickness")
+	private IfcPositiveLengthMeasure frameThickness;
 
 	@Description("Optional link to a shape aspect definition, which points to the part of the geometric representation of the window style, which is used to represent the permeable covering.")
 	@DataMember(Order = 4)
 	@Guid("3abd4ff6-1434-4858-abfe-4011d23b9dd9")
-	@JacksonXmlProperty(isAttribute=false, localName = "ShapeAspectStyle")
+	@JacksonXmlProperty(isAttribute=false, localName = "shapeAspectStyle")
 	private IfcShapeAspect shapeAspectStyle;
 
 
@@ -77,19 +78,19 @@ public class IfcPermeableCoveringProperties extends com.buildingsmart.tech.ifc.I
 		this.panelPosition = panelPosition;
 	}
 
-	public double getFrameDepth() {
+	public IfcPositiveLengthMeasure getFrameDepth() {
 		return this.frameDepth;
 	}
 
-	public void setFrameDepth(double frameDepth) {
+	public void setFrameDepth(IfcPositiveLengthMeasure frameDepth) {
 		this.frameDepth = frameDepth;
 	}
 
-	public double getFrameThickness() {
+	public IfcPositiveLengthMeasure getFrameThickness() {
 		return this.frameThickness;
 	}
 
-	public void setFrameThickness(double frameThickness) {
+	public void setFrameThickness(IfcPositiveLengthMeasure frameThickness) {
 		this.frameThickness = frameThickness;
 	}
 

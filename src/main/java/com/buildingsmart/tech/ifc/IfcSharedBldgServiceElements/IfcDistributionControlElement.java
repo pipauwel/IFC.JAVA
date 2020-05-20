@@ -5,32 +5,19 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.*;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcActuator;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcAlarm;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcController;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcFlowInstrument;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.InverseProperty;
+import com.buildingsmart.tech.annotations.MaxLength;
+import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.*;
 import com.buildingsmart.tech.ifc.IfcElectricalDomain.IfcProtectiveDeviceTrippingUnit;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcSensor;
-import com.buildingsmart.tech.ifc.IfcBuildingControlsDomain.IfcUnitaryControlElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcDistributionElement;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Set;
 
 @Guid("f29818b8-d9e0-49fc-a593-993420817803")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -39,11 +26,11 @@ import com.buildingsmart.tech.ifc.IfcProductExtension.IfcDistributionElement;
 public class IfcDistributionControlElement extends com.buildingsmart.tech.ifc.IfcProductExtension.IfcDistributionElement
 {
 	@Description("Reference through the relationship object to related distribution flow elements.")
-	@InverseProperty(InverseProp = "RelatedControlElements", Range = "IfcRelFlowControlElements")
+	@InverseProperty(InverseProp = "relatedControlElements", Range = "IfcRelFlowControlElements")
 	@Guid("27a6ae84-a0f5-4f78-b04e-96fb34fe6869")
 	@MaxLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelFlowControlElements")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "AssignedToFlowElement")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "assignedToFlowElement")
 	private Set<IfcRelFlowControlElements> assignedToFlowElement;
 
 

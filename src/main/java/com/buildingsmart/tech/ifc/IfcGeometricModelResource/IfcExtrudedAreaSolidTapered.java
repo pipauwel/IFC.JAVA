@@ -10,6 +10,7 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcDirection;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -22,7 +23,7 @@ public class IfcExtrudedAreaSolidTapered extends IfcExtrudedAreaSolid
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("d3450da0-8a2e-42a2-b61c-1c7a2edddf1f")
-	@JacksonXmlProperty(isAttribute=false, localName = "EndSweptArea")
+	@JacksonXmlProperty(isAttribute=false, localName = "endSweptArea")
 	private IfcProfileDef endSweptArea;
 
 
@@ -30,7 +31,7 @@ public class IfcExtrudedAreaSolidTapered extends IfcExtrudedAreaSolid
 	{
 	}
 
-	public IfcExtrudedAreaSolidTapered(IfcProfileDef sweptArea, IfcDirection extrudedDirection, double depth, IfcProfileDef endSweptArea)
+	public IfcExtrudedAreaSolidTapered(IfcProfileDef sweptArea, IfcDirection extrudedDirection, IfcPositiveLengthMeasure depth, IfcProfileDef endSweptArea)
 	{
 		super(sweptArea, extrudedDirection, depth);
 		this.endSweptArea = endSweptArea;

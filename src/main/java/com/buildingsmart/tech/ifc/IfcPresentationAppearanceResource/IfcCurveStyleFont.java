@@ -5,26 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcCurveStyleFontPattern;
 
 @Guid("69ad77b0-c3d0-4a22-bdb8-a46a12871aa3")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,8 +22,8 @@ public class IfcCurveStyleFont extends com.buildingsmart.tech.ifc.IfcPresentatio
 	@Description("Name that may be assigned with the curve font.")
 	@DataMember(Order = 0)
 	@Guid("f3035910-9ab1-4acd-b0f1-6741b0b648b1")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 	@Description("A list of curve font pattern entities, that contains the simple patterns used for drawing curves. The patterns are applied in the order they occur in the list.")
 	@DataMember(Order = 1)
@@ -42,7 +31,7 @@ public class IfcCurveStyleFont extends com.buildingsmart.tech.ifc.IfcPresentatio
 	@Guid("785fa854-1775-4850-a22b-d63225b3b864")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcCurveStyleFontPattern")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "PatternList")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "patternList")
 	private List<IfcCurveStyleFontPattern> patternList;
 
 
@@ -55,11 +44,11 @@ public class IfcCurveStyleFont extends com.buildingsmart.tech.ifc.IfcPresentatio
 		this.patternList = new ArrayList<>(Arrays.asList(patternList));
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 
