@@ -11,9 +11,7 @@ import com.buildingsmart.tech.ifc.IfcHelperDomain.IfcParameterValueList;
 import com.buildingsmart.tech.ifc.IfcHelperDomain.IfcPositiveIntegerList;
 import com.buildingsmart.tech.ifc.IfcKernel.IfcProject;
 import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySetDefinitionSet;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAggregates;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSite;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGeometricRepresentationSubContext;
 import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcOrientedEdge;
 import com.buildingsmart.tech.ifcowl.vo.IFCVO;
@@ -56,8 +54,8 @@ public class IfcParser {
 	// CONSTRUCTOR
 	public IfcParser(String inputFile, String outputFormat) {
 		this.inputFile = inputFile;
-		this.outputFile = inputFile.substring(0, inputFile.length() - 4) + "." + outputFormat;
-		this.filePath = inputFile.substring(0, inputFile.length() - 4);
+		this.outputFile = inputFile.substring(0, inputFile.lastIndexOf('.')) + "." + outputFormat;
+		this.filePath = inputFile.substring(0, inputFile.lastIndexOf('.'));
 	}
 
 	public static void main(String[] args) {
@@ -103,9 +101,16 @@ public class IfcParser {
             parser.loadTypeNames();
             parser.parseModelFromSPF();
         }
-		else{
-		    //TODO other formats
+		else if(inputFormat.equalsIgnoreCase("json")){
+			parser.parseModelFromJSON();
         }
+		else if(inputFormat.equalsIgnoreCase("xml")){
+			parser.parseModelFromXML();
+		}
+		else{
+			LOG.info("Input file format unknown. Only able to handle spf, json, and xml. \n");
+			return;
+		}
 
 		LOG.info("exporting to file...");
 		if(outputFormat.equalsIgnoreCase("json")) {
@@ -1277,6 +1282,50 @@ public class IfcParser {
 		return supers;
 	}
 
+	private void parseModelFromJSON(){
+		try {
+			String fp = filePath;
+			InputStream inputStream = new FileInputStream(fp+".json");
+
+			ObjectMapper m = new ObjectMapper();
+			m.configure(SerializationFeature.INDENT_OUTPUT, true);
+			m.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+			m.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+
+			try {
+				proj = m.readValue(inputStream, IfcProject.class);
+				/*IfcRelAggregates ira = proj.getIsDecomposedBy();
+				//while(iter.hasNext()){
+				//	IfcRelAggregates ira = iter.next();
+				if(ira.getRelatedObjects().size() == 0){
+					LOG.warn("did not find IfcSite");
+					ira.getRelatedObjects().add(new IfcSite());
+					IfcSite s = new IfcSite();
+					s.setName(new IfcLabel("testName"));
+				}*/
+				//}
+
+				LOG.info("completed");
+
+			} catch (JsonParseException e) {
+				LOG.error("Cannot parse input JSON file.");
+				e.printStackTrace();
+			} catch (JsonMappingException e) {
+				LOG.error("Cannot map input JSON file to class structure.");
+				e.printStackTrace();
+			} catch (IOException e) {
+				LOG.error("Input location of XML file not found: can't read file.");
+				e.printStackTrace();
+			}
+		} catch (FileNotFoundException e) {
+			LOG.error("File not found.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			LOG.error("Input location of JSON file not found: can't read file.");
+			e.printStackTrace();
+		}
+	}
+
 	private void parseModelFromXML() {
 		try {
 			String fp = filePath;
@@ -1289,7 +1338,7 @@ public class IfcParser {
 			
 			try {
 				proj = m.readValue(inputStream, IfcProject.class);
-				IfcRelAggregates ira = proj.getIsDecomposedBy();
+				/*IfcRelAggregates ira = proj.getIsDecomposedBy();
 				//while(iter.hasNext()){
 				//	IfcRelAggregates ira = iter.next();
 					if(ira.getRelatedObjects().size() == 0){
@@ -1298,18 +1347,18 @@ public class IfcParser {
 						IfcSite s = new IfcSite();
 						s.setName(new IfcLabel("testName"));
 					}				
-				//}
+				//}*/
 	
 				LOG.info("completed");
 	
 			} catch (JsonParseException e) {
-				// TODO Auto-generated catch block
+				LOG.error("Cannot parse input XML file.");
 				e.printStackTrace();
 			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
+				LOG.error("Cannot map input XML file to class structure.");
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				LOG.error("Input location of XML file not found: can't read file.");
 				e.printStackTrace();
 			}
 		} catch (FileNotFoundException e) {
@@ -1344,10 +1393,10 @@ public class IfcParser {
 			fileWriter.write(xmlString);
 			fileWriter.close();
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
+			LOG.error("Could not process XML file while exporting.");
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			LOG.error("Output location not found: can't write file.");
 			e.printStackTrace();
 		}
 	}
@@ -1368,10 +1417,10 @@ public class IfcParser {
 			fileWriter.write(jsonString);
 			fileWriter.close();
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
+			LOG.error("Could not process JSON file while exporting.");
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			LOG.error("Output location not found: can't write file.");
 			e.printStackTrace();
 		}
 	}

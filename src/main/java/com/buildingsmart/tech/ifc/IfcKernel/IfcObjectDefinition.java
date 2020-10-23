@@ -57,8 +57,8 @@ public abstract class IfcObjectDefinition extends IfcRoot implements IfcDefiniti
 	@InverseProperty(InverseProp = "relatingObject", Range = "IfcRelAggregates")
 	@Guid("090a480e-fb85-4fdd-b904-d720ea0009c9")
 	@JacksonXmlProperty(isAttribute = false, localName = "isDecomposedBy")
-	//@JacksonXmlElementWrapper(useWrapping = false, localName = "isDecomposedBy")
-	private IfcRelAggregates isDecomposedBy;
+	@JacksonXmlElementWrapper(useWrapping = false, localName = "isDecomposedBy")
+	private Set<IfcRelAggregates> isDecomposedBy;
 
 	@Description("References to the decomposition relationship being an aggregation. It determines that this object definition is a part within an unordered whole/part decomposition relationship. An object definitions can only be part of a single decomposition (to allow hierarchical strutures only).    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The inverse attribute datatype has been changed from the supertype <em>IfcRelDecomposes</em> to subtype <em>IfcRelAggregates</em>.</blockquote>")
 	@InverseProperty(InverseProp = "relatedObjects", Range = "IfcRelAggregates")
@@ -100,7 +100,7 @@ public abstract class IfcObjectDefinition extends IfcRoot implements IfcDefiniti
 		return this.hasContext;
 	}
 
-	public IfcRelAggregates getIsDecomposedBy() {
+	public Set<IfcRelAggregates> getIsDecomposedBy() {
 		return this.isDecomposedBy;
 	}
 

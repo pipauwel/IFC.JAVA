@@ -6,8 +6,8 @@
 package com.buildingsmart.tech.ifc.IfcApprovalResource;
 
 import com.buildingsmart.tech.annotations.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 import java.util.Arrays;
@@ -30,8 +30,9 @@ public class IfcApprovalRelationship extends com.buildingsmart.tech.ifc.IfcExter
 	@Required()
 	@Guid("027066b0-22f2-4641-858b-796e3ab8d77b")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcApproval")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedApprovals")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcApproval")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedApprovals")*/
+	@JsonIgnore
 	private Set<IfcApproval> relatedApprovals;
 
 

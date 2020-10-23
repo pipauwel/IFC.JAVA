@@ -16,6 +16,7 @@ import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcDateTime;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcIdentifier;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcText;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -111,8 +112,9 @@ public class IfcApproval implements com.buildingsmart.tech.ifc.IfcExternalRefere
 	@Description("The set of relationships by which other approvals are related to this one.")
 	@InverseProperty(InverseProp = "relatingApproval", Range = "IfcApprovalRelationship")
 	@Guid("65d560d3-2883-4606-a81c-802b6c633550")
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcApprovalRelationship")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "relates")
+	//@JacksonXmlProperty(isAttribute = false, localName = "IfcApprovalRelationship")
+	//@JacksonXmlElementWrapper(useWrapping = true, localName = "relates")
+	@JsonIgnore
 	private Set<IfcApprovalRelationship> relates;
 
 
