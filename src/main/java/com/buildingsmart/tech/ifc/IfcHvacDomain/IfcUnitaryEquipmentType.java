@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcHvacDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcEnergyConversionDeviceType;
-import com.buildingsmart.tech.ifc.IfcHvacDomain.IfcUnitaryEquipmentTypeEnum;
 
 @Guid("9ad0a30e-c8f8-4b10-a580-7fe63adeee83")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,7 +20,7 @@ public class IfcUnitaryEquipmentType extends com.buildingsmart.tech.ifc.IfcShare
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("72298c6a-62aa-4795-8440-09510e987809")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcUnitaryEquipmentTypeEnum predefinedType;
 
 

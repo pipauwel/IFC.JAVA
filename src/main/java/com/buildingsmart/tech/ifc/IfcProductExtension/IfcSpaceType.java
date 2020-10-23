@@ -5,26 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialStructureElementType;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpaceTypeEnum;
 
 @Guid("e7fcbf9c-f9a1-43ab-b15f-56f0e33af740")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,14 +21,14 @@ public class IfcSpaceType extends IfcSpatialStructureElementType
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("d5abf58d-e70d-4140-b4e1-4023bd04e61d")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcSpaceTypeEnum predefinedType;
 
 	@Description("Long name for a space type, used for informal purposes. It should be used, if available, in conjunction with the inherited <em>Name</em> attribute.  <blockquote class=\"note\">    NOTE&nbsp; In many scenarios the <em>Name</em> attribute refers to the short name or number of a space type, and the <em>LongName</em> refers to the full descriptive name.  </blockquote>  <blockquote class=\"change-ifc2x4\">    IFC4 CHANGE&nbsp; New attribute added at the end of entity definition.  </blockquote>")
 	@DataMember(Order = 1)
 	@Guid("a280afe4-0acf-4989-8898-22cb92b4b93c")
-	@JacksonXmlProperty(isAttribute=true, localName = "LongName")
-	private String longName;
+	@JacksonXmlProperty(isAttribute=false, localName = "longName")
+	private IfcLabel longName;
 
 
 	public IfcSpaceType()
@@ -62,11 +49,11 @@ public class IfcSpaceType extends IfcSpatialStructureElementType
 		this.predefinedType = predefinedType;
 	}
 
-	public String getLongName() {
+	public IfcLabel getLongName() {
 		return this.longName;
 	}
 
-	public void setLongName(String longName) {
+	public void setLongName(IfcLabel longName) {
 		this.longName = longName;
 	}
 

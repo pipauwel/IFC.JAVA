@@ -5,30 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcIrregularTimeSeries;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcRegularTimeSeries;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcTimeSeriesDataTypeEnum;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcDataOriginEnum;
+import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcExternalReferenceRelationship;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcText;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcUnit;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Set;
 
 @Guid("4aa23b8c-0acf-4202-9d27-29abd09009e1")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,61 +28,61 @@ public abstract class IfcTimeSeries implements com.buildingsmart.tech.ifc.IfcCon
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("a8259487-25da-4b34-a81c-5e5f921f8b44")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 	@Description("A text description of the data that the series represents.")
 	@DataMember(Order = 1)
 	@Guid("35b2fdcb-dd9d-4659-9a9f-88ed103cc7e3")
-	@JacksonXmlProperty(isAttribute=true, localName = "Description")
-	private String description;
+	@JacksonXmlProperty(isAttribute=false, localName = "description")
+	private IfcText description;
 
 	@Description("The start time of a time series.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("40888137-c7f3-46ce-b025-d7d141d70954")
-	@JacksonXmlProperty(isAttribute=true, localName = "StartTime")
-	private String startTime;
+	@JacksonXmlProperty(isAttribute=false, localName = "startTime")
+	private IfcDateTime startTime;
 
 	@Description("The end time of a time series.")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("a0c55cac-3a6b-4188-b40e-86a1b8d8551e")
-	@JacksonXmlProperty(isAttribute=true, localName = "EndTime")
-	private String endTime;
+	@JacksonXmlProperty(isAttribute=false, localName = "endTime")
+	private IfcDateTime endTime;
 
 	@Description("The time series data type.")
 	@DataMember(Order = 4)
 	@Required()
 	@Guid("fe4ee506-c00b-4343-867f-0bfe2de83742")
-	@JacksonXmlProperty(isAttribute=true, localName = "TimeSeriesDataType")
+	@JacksonXmlProperty(isAttribute=true, localName = "timeSeriesDataType")
 	private IfcTimeSeriesDataTypeEnum timeSeriesDataType;
 
 	@Description("The origin of a time series data.")
 	@DataMember(Order = 5)
 	@Required()
 	@Guid("a066d6e2-e023-4c82-b13b-62af49f161e6")
-	@JacksonXmlProperty(isAttribute=true, localName = "DataOrigin")
+	@JacksonXmlProperty(isAttribute=true, localName = "dataOrigin")
 	private IfcDataOriginEnum dataOrigin;
 
 	@Description("Value of the data origin if DataOrigin attribute is USERDEFINED.")
 	@DataMember(Order = 6)
 	@Guid("0be8d17c-c445-42b4-9a22-47e1c851745e")
-	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedDataOrigin")
-	private String userDefinedDataOrigin;
+	@JacksonXmlProperty(isAttribute=false, localName = "userDefinedDataOrigin")
+	private IfcLabel userDefinedDataOrigin;
 
 	@Description("The unit to be assigned to all values within the time series. Note that mixing units is not allowed. If the value is not given, the global unit for the type of <em>IfcValue</em>, as defined at <em>IfcProject.UnitsInContext</em> is used.")
 	@DataMember(Order = 7)
 	@Guid("4cef5985-267c-417d-82ae-8c303b8c59e2")
-	@JacksonXmlProperty(isAttribute=true, localName = "Unit")
+	@JacksonXmlProperty(isAttribute=true, localName = "unit")
 	private IfcUnit unit;
 
 	@Description("Reference to an external reference, e.g. library, classification, or document information, that is associated to the IfcTimeSeries.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE New inverse attribute.</blockquote>")
-	@InverseProperty(InverseProp = "RelatedResourceObjects", Range = "IfcExternalReferenceRelationship")
+	@InverseProperty(InverseProp = "relatedResourceObjects", Range = "IfcExternalReferenceRelationship")
 	@Guid("65b0ae8e-3556-403a-86d8-6f15485a4e36")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcExternalReferenceRelationship")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasExternalReference")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "hasExternalReference")
 	private Set<IfcExternalReferenceRelationship> hasExternalReference;
 
 
@@ -102,7 +90,7 @@ public abstract class IfcTimeSeries implements com.buildingsmart.tech.ifc.IfcCon
 	{
 	}
 
-	public IfcTimeSeries(String name, String startTime, String endTime, IfcTimeSeriesDataTypeEnum timeSeriesDataType, IfcDataOriginEnum dataOrigin)
+	public IfcTimeSeries(IfcLabel name, IfcDateTime startTime, IfcDateTime endTime, IfcTimeSeriesDataTypeEnum timeSeriesDataType, IfcDataOriginEnum dataOrigin)
 	{
 		this.name = name;
 		this.startTime = startTime;
@@ -111,35 +99,35 @@ public abstract class IfcTimeSeries implements com.buildingsmart.tech.ifc.IfcCon
 		this.dataOrigin = dataOrigin;
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 
-	public String getDescription() {
+	public IfcText getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(IfcText description) {
 		this.description = description;
 	}
 
-	public String getStartTime() {
+	public IfcDateTime getStartTime() {
 		return this.startTime;
 	}
 
-	public void setStartTime(String startTime) {
+	public void setStartTime(IfcDateTime startTime) {
 		this.startTime = startTime;
 	}
 
-	public String getEndTime() {
+	public IfcDateTime getEndTime() {
 		return this.endTime;
 	}
 
-	public void setEndTime(String endTime) {
+	public void setEndTime(IfcDateTime endTime) {
 		this.endTime = endTime;
 	}
 
@@ -159,11 +147,11 @@ public abstract class IfcTimeSeries implements com.buildingsmart.tech.ifc.IfcCon
 		this.dataOrigin = dataOrigin;
 	}
 
-	public String getUserDefinedDataOrigin() {
+	public IfcLabel getUserDefinedDataOrigin() {
 		return this.userDefinedDataOrigin;
 	}
 
-	public void setUserDefinedDataOrigin(String userDefinedDataOrigin) {
+	public void setUserDefinedDataOrigin(IfcLabel userDefinedDataOrigin) {
 		this.userDefinedDataOrigin = userDefinedDataOrigin;
 	}
 

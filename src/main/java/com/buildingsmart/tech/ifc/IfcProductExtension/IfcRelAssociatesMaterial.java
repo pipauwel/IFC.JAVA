@@ -5,27 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMaterialResource.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssociates;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcKernel.IfcDefinitionSelect;
 import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialSelect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("68083c6e-1181-46f4-84da-7cd237846083")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,7 +22,7 @@ public class IfcRelAssociatesMaterial extends com.buildingsmart.tech.ifc.IfcKern
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("463ce87e-d144-4166-8fe4-c3c46fd0dd1d")
-	@JacksonXmlProperty(isAttribute=true, localName = "RelatingMaterial")
+	@JacksonXmlProperty(isAttribute=true, localName = "relatingMaterial")
 	private IfcMaterialSelect relatingMaterial;
 
 

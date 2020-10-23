@@ -9,6 +9,7 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -20,25 +21,25 @@ public class IfcRoundedRectangleProfileDef extends IfcRectangleProfileDef
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("afc5aaa4-0bee-4503-bf30-a7540e19281c")
-	@JacksonXmlProperty(isAttribute=false, localName = "RoundingRadius")
-	private double roundingRadius; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "roundingRadius")
+	private IfcPositiveLengthMeasure roundingRadius;
 
 
 	public IfcRoundedRectangleProfileDef()
 	{
 	}
 
-	public IfcRoundedRectangleProfileDef(IfcProfileTypeEnum profileType, double xDim, double yDim, double roundingRadius)
+	public IfcRoundedRectangleProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure xDim, IfcPositiveLengthMeasure yDim, IfcPositiveLengthMeasure roundingRadius)
 	{
 		super(profileType, xDim, yDim);
 		this.roundingRadius = roundingRadius;
 	}
 
-	public double getRoundingRadius() {
+	public IfcPositiveLengthMeasure getRoundingRadius() {
 		return this.roundingRadius;
 	}
 
-	public void setRoundingRadius(double roundingRadius) {
+	public void setRoundingRadius(IfcPositiveLengthMeasure roundingRadius) {
 		this.roundingRadius = roundingRadius;
 	}
 

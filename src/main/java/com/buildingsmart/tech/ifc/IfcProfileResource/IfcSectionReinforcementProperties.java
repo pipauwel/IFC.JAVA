@@ -5,28 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPreDefinedProperties;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcReinforcingBarRoleEnum;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcSectionProperties;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcReinforcementBarProperties;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLengthMeasure;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("1a1fbaec-082a-40cf-b33c-8bd3fe79b8e5")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,34 +23,34 @@ public class IfcSectionReinforcementProperties extends com.buildingsmart.tech.if
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("bca4994a-8c29-49d3-98b5-1020732acfe8")
-	@JacksonXmlProperty(isAttribute=true, localName = "LongitudinalStartPosition")
-	private double longitudinalStartPosition;
+	@JacksonXmlProperty(isAttribute=false, localName = "longitudinalStartPosition")
+	private IfcLengthMeasure longitudinalStartPosition;
 
 	@Description("The end position in longitudinal direction for the section reinforcement properties.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("2a03291a-7edc-4bdd-a393-13751700cd3c")
-	@JacksonXmlProperty(isAttribute=true, localName = "LongitudinalEndPosition")
-	private double longitudinalEndPosition;
+	@JacksonXmlProperty(isAttribute=false, localName = "longitudinalEndPosition")
+	private IfcLengthMeasure longitudinalEndPosition;
 
 	@Description("The position for the section reinforcement properties in transverse direction.")
 	@DataMember(Order = 2)
 	@Guid("589f3281-5c3c-44ad-98fd-491fcdcadce2")
-	@JacksonXmlProperty(isAttribute=true, localName = "TransversePosition")
-	private double transversePosition;
+	@JacksonXmlProperty(isAttribute=false, localName = "transversePosition")
+	private IfcLengthMeasure transversePosition;
 
 	@Description("The role, purpose or usage of the reinforcement, i.e. the kind of loads and stresses it is intended to carry, defined for the section reinforcement properties.")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("4dad372f-bc97-4103-b68d-2bfd2f650b68")
-	@JacksonXmlProperty(isAttribute=true, localName = "ReinforcementRole")
+	@JacksonXmlProperty(isAttribute=true, localName = "reinforcementRole")
 	private IfcReinforcingBarRoleEnum reinforcementRole;
 
 	@Description("Definition of the cross section profile and longitudinal section type.")
 	@DataMember(Order = 4)
 	@Required()
 	@Guid("79631f01-30ec-44b1-a579-ff40a0af46c4")
-	@JacksonXmlProperty(isAttribute=false, localName = "SectionDefinition")
+	@JacksonXmlProperty(isAttribute=false, localName = "sectionDefinition")
 	private IfcSectionProperties sectionDefinition;
 
 	@Description("The set of reinforcment properties attached to a section reinforcement properties definition.")
@@ -72,7 +59,7 @@ public class IfcSectionReinforcementProperties extends com.buildingsmart.tech.if
 	@Guid("122ebe19-91ac-4bee-8b58-fa8a8e0f26f8")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcReinforcementBarProperties")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "CrossSectionReinforcementDefinitions")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "crossSectionReinforcementDefinitions")
 	private Set<IfcReinforcementBarProperties> crossSectionReinforcementDefinitions;
 
 
@@ -80,7 +67,7 @@ public class IfcSectionReinforcementProperties extends com.buildingsmart.tech.if
 	{
 	}
 
-	public IfcSectionReinforcementProperties(double longitudinalStartPosition, double longitudinalEndPosition, IfcReinforcingBarRoleEnum reinforcementRole, IfcSectionProperties sectionDefinition, IfcReinforcementBarProperties[] crossSectionReinforcementDefinitions)
+	public IfcSectionReinforcementProperties(IfcLengthMeasure longitudinalStartPosition, IfcLengthMeasure longitudinalEndPosition, IfcReinforcingBarRoleEnum reinforcementRole, IfcSectionProperties sectionDefinition, IfcReinforcementBarProperties[] crossSectionReinforcementDefinitions)
 	{
 		this.longitudinalStartPosition = longitudinalStartPosition;
 		this.longitudinalEndPosition = longitudinalEndPosition;
@@ -89,27 +76,27 @@ public class IfcSectionReinforcementProperties extends com.buildingsmart.tech.if
 		this.crossSectionReinforcementDefinitions = new HashSet<>(Arrays.asList(crossSectionReinforcementDefinitions));
 	}
 
-	public double getLongitudinalStartPosition() {
+	public IfcLengthMeasure getLongitudinalStartPosition() {
 		return this.longitudinalStartPosition;
 	}
 
-	public void setLongitudinalStartPosition(double longitudinalStartPosition) {
+	public void setLongitudinalStartPosition(IfcLengthMeasure longitudinalStartPosition) {
 		this.longitudinalStartPosition = longitudinalStartPosition;
 	}
 
-	public double getLongitudinalEndPosition() {
+	public IfcLengthMeasure getLongitudinalEndPosition() {
 		return this.longitudinalEndPosition;
 	}
 
-	public void setLongitudinalEndPosition(double longitudinalEndPosition) {
+	public void setLongitudinalEndPosition(IfcLengthMeasure longitudinalEndPosition) {
 		this.longitudinalEndPosition = longitudinalEndPosition;
 	}
 
-	public double getTransversePosition() {
+	public IfcLengthMeasure getTransversePosition() {
 		return this.transversePosition;
 	}
 
-	public void setTransversePosition(double transversePosition) {
+	public void setTransversePosition(IfcLengthMeasure transversePosition) {
 		this.transversePosition = transversePosition;
 	}
 

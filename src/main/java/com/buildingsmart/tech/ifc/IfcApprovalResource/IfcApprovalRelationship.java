@@ -5,26 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcApprovalResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcApprovalResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
-import com.buildingsmart.tech.ifc.IfcApprovalResource.IfcApproval;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("a303f452-ac6e-4cf8-aec2-92da14dd6675")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,7 +22,7 @@ public class IfcApprovalRelationship extends com.buildingsmart.tech.ifc.IfcExter
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("087ff43e-9086-44f3-b2a4-d3d0f0d65c92")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingApproval")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatingApproval")
 	private IfcApproval relatingApproval;
 
 	@Description("The approvals that are related to another (relating) approval.<blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The cardinality of this attribute has been changed to SET.</blockquote>")
@@ -42,8 +30,9 @@ public class IfcApprovalRelationship extends com.buildingsmart.tech.ifc.IfcExter
 	@Required()
 	@Guid("027066b0-22f2-4641-858b-796e3ab8d77b")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcApproval")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedApprovals")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcApproval")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedApprovals")*/
+	@JsonIgnore
 	private Set<IfcApproval> relatedApprovals;
 
 

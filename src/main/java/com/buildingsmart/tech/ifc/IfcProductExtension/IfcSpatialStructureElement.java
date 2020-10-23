@@ -5,29 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuilding;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcBuildingStorey;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSite;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpace;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpatialElement;
 
 @Guid("061ba193-076d-4292-a0ce-c96d7aba692e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,7 +22,7 @@ public abstract class IfcSpatialStructureElement extends IfcSpatialElement
 	@Description("Denotes, whether the predefined spatial structure element represents itself, or an aggregate (complex) or a part (part). The interpretation is given separately for each subtype of spatial structure element. If no <em>CompositionType</em> is asserted, the dafault value 'ELEMENT' applies.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; Attribute made optional.</blockquote>")
 	@DataMember(Order = 0)
 	@Guid("726de67f-b56e-4031-b779-84330e1d0483")
-	@JacksonXmlProperty(isAttribute=true, localName = "CompositionType")
+	@JacksonXmlProperty(isAttribute=true, localName = "compositionType")
 	private IfcElementCompositionEnum compositionType;
 
 

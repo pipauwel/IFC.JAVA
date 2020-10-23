@@ -5,25 +5,10 @@
 
 package com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPlumbingFireProtectionDomain.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcFlowTreatmentDevice;
 
 @Guid("e3d3bfe0-c86d-4073-9f99-8d5705ca829c")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -31,7 +16,7 @@ public class IfcInterceptor extends com.buildingsmart.tech.ifc.IfcSharedBldgServ
 {
 	@DataMember(Order = 0)
 	@Guid("56e98bc5-d9b1-41ef-ac13-f9517c351b31")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcInterceptorTypeEnum predefinedType;
 
 

@@ -5,25 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcIdentifier;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("c8722acc-8737-44f1-b24d-0eb804a9a4da")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,8 +23,8 @@ public class IfcComplexProperty extends IfcProperty
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("f21a5e51-7581-416f-943f-25398d2e3c4d")
-	@JacksonXmlProperty(isAttribute=true, localName = "UsageName")
-	private String usageName;
+	@JacksonXmlProperty(isAttribute=false, localName = "usageName")
+	private IfcIdentifier usageName;
 
 	@Description("Set of properties that can be used within this complex property (may include other complex properties).")
 	@DataMember(Order = 1)
@@ -42,7 +32,7 @@ public class IfcComplexProperty extends IfcProperty
 	@Guid("6321203a-4666-4064-aa58-167b85c5935f")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcProperty")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasProperties")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "hasProperties")
 	private Set<IfcProperty> hasProperties;
 
 
@@ -50,18 +40,18 @@ public class IfcComplexProperty extends IfcProperty
 	{
 	}
 
-	public IfcComplexProperty(String name, String usageName, IfcProperty[] hasProperties)
+	public IfcComplexProperty(IfcIdentifier name, IfcIdentifier usageName, IfcProperty[] hasProperties)
 	{
 		super(name);
 		this.usageName = usageName;
 		this.hasProperties = new HashSet<>(Arrays.asList(hasProperties));
 	}
 
-	public String getUsageName() {
+	public IfcIdentifier getUsageName() {
 		return this.usageName;
 	}
 
-	public void setUsageName(String usageName) {
+	public void setUsageName(IfcIdentifier usageName) {
 		this.usageName = usageName;
 	}
 

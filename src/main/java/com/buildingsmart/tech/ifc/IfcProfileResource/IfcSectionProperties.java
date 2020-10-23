@@ -5,27 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPreDefinedProperties;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcSectionTypeEnum;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
 
 @Guid("88f4e944-e940-4485-bd81-77b90b8076a4")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,20 +20,20 @@ public class IfcSectionProperties extends com.buildingsmart.tech.ifc.IfcProperty
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("cc454ee2-b89a-4f3c-aaa7-9165bdb8fc51")
-	@JacksonXmlProperty(isAttribute=true, localName = "SectionType")
+	@JacksonXmlProperty(isAttribute=true, localName = "sectionType")
 	private IfcSectionTypeEnum sectionType;
 
 	@Description("The cross section profile at the start point of the longitudinal section.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("805a8e86-a781-43fd-948f-70de4614c75e")
-	@JacksonXmlProperty(isAttribute=false, localName = "StartProfile")
+	@JacksonXmlProperty(isAttribute=false, localName = "startProfile")
 	private IfcProfileDef startProfile;
 
 	@Description("The cross section profile at the end point of the longitudinal section.")
 	@DataMember(Order = 2)
 	@Guid("fcdf8b3f-90a8-4932-b4a8-576c91bf66e8")
-	@JacksonXmlProperty(isAttribute=false, localName = "EndProfile")
+	@JacksonXmlProperty(isAttribute=false, localName = "endProfile")
 	private IfcProfileDef endProfile;
 
 

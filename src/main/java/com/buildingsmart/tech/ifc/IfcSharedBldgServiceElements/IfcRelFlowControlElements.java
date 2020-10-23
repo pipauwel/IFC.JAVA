@@ -5,27 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionControlElement;
-import com.buildingsmart.tech.ifc.IfcSharedBldgServiceElements.IfcDistributionFlowElement;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("e5a4f246-e6c4-40b9-85b6-af71acb30b68")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -37,14 +24,14 @@ public class IfcRelFlowControlElements extends com.buildingsmart.tech.ifc.IfcKer
 	@Guid("ee7741ae-f207-410e-a37d-fca605de1cfa")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcDistributionControlElement")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedControlElements")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedControlElements")
 	private Set<IfcDistributionControlElement> relatedControlElements;
 
 	@Description("Relationship to a distribution flow element")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("7dccb4a5-b41e-4572-9f90-7a9b7a5f6f94")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingFlowElement")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatingFlowElement")
 	private IfcDistributionFlowElement relatingFlowElement;
 
 

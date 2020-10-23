@@ -6,8 +6,16 @@
 package com.buildingsmart.tech.ifc.IfcExternalReferenceResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("076db041-50fb-449c-b4d9-37b4deba9ede")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcLibraryReference.class, name = "IfcLibraryReference"),
+        @JsonSubTypes.Type(value = IfcLibraryInformation.class, name = "IfcLibraryInformation")})
 public interface IfcLibrarySelect {
+
 
 }

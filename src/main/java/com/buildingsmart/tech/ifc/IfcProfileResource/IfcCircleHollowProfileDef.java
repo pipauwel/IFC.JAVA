@@ -9,6 +9,7 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -20,25 +21,25 @@ public class IfcCircleHollowProfileDef extends IfcCircleProfileDef
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("718ae842-2e58-4ad8-a068-918cd5a794e8")
-	@JacksonXmlProperty(isAttribute=false, localName = "WallThickness")
-	private double wallThickness; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "wallThickness")
+	private IfcPositiveLengthMeasure wallThickness;
 
 
 	public IfcCircleHollowProfileDef()
 	{
 	}
 
-	public IfcCircleHollowProfileDef(IfcProfileTypeEnum profileType, double radius, double wallThickness)
+	public IfcCircleHollowProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure radius, IfcPositiveLengthMeasure wallThickness)
 	{
 		super(profileType, radius);
 		this.wallThickness = wallThickness;
 	}
 
-	public double getWallThickness() {
+	public IfcPositiveLengthMeasure getWallThickness() {
 		return this.wallThickness;
 	}
 
-	public void setWallThickness(double wallThickness) {
+	public void setWallThickness(IfcPositiveLengthMeasure wallThickness) {
 		this.wallThickness = wallThickness;
 	}
 

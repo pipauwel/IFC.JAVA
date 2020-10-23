@@ -9,6 +9,8 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -20,36 +22,37 @@ public class IfcTrapeziumProfileDef extends IfcParameterizedProfileDef
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("06671d06-7136-4a10-9e6d-0074885e3d3d")
-	@JacksonXmlProperty(isAttribute=false, localName = "BottomXDim")
-	private double bottomXDim; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "bottomXDim")
+	private IfcPositiveLengthMeasure bottomXDim;
 
 	@Description("The extent of the top line measured along the implicit x-axis.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("f95d733f-0777-4572-911e-2d21de75244e")
-	@JacksonXmlProperty(isAttribute=false, localName = "TopXDim")
-	private double topXDim; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "topXDim")
+	private IfcPositiveLengthMeasure topXDim;
 
 	@Description("The extent of the distance between the parallel bottom and top lines measured along the implicit y-axis.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("9834941e-4f3b-4ab2-b863-4ffde5ecf1db")
-	@JacksonXmlProperty(isAttribute=false, localName = "YDim")
-	private double yDim; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "yDim")
+	private IfcPositiveLengthMeasure yDim;
 
 	@Description("Offset from the beginning of the top line to the bottom line, measured along the implicit x-axis.")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("f08d6341-732e-4061-ad6f-2c819465aa62")
-	@JacksonXmlProperty(isAttribute=true, localName = "TopXOffset")
-	private double topXOffset;
+	@JacksonXmlProperty(isAttribute=false, localName = "topXOffset")
+	private IfcLengthMeasure topXOffset;
 
 
 	public IfcTrapeziumProfileDef()
 	{
 	}
 
-	public IfcTrapeziumProfileDef(IfcProfileTypeEnum profileType, double bottomXDim, double topXDim, double yDim, double topXOffset)
+	public IfcTrapeziumProfileDef(IfcProfileTypeEnum profileType, IfcPositiveLengthMeasure bottomXDim, IfcPositiveLengthMeasure topXDim,
+								  IfcPositiveLengthMeasure yDim, IfcLengthMeasure topXOffset)
 	{
 		super(profileType);
 		this.bottomXDim = bottomXDim;
@@ -58,35 +61,35 @@ public class IfcTrapeziumProfileDef extends IfcParameterizedProfileDef
 		this.topXOffset = topXOffset;
 	}
 
-	public double getBottomXDim() {
+	public IfcPositiveLengthMeasure getBottomXDim() {
 		return this.bottomXDim;
 	}
 
-	public void setBottomXDim(double bottomXDim) {
+	public void setBottomXDim(IfcPositiveLengthMeasure bottomXDim) {
 		this.bottomXDim = bottomXDim;
 	}
 
-	public double getTopXDim() {
+	public IfcPositiveLengthMeasure getTopXDim() {
 		return this.topXDim;
 	}
 
-	public void setTopXDim(double topXDim) {
+	public void setTopXDim(IfcPositiveLengthMeasure topXDim) {
 		this.topXDim = topXDim;
 	}
 
-	public double getYDim() {
+	public IfcPositiveLengthMeasure getYDim() {
 		return this.yDim;
 	}
 
-	public void setYDim(double yDim) {
+	public void setYDim(IfcPositiveLengthMeasure yDim) {
 		this.yDim = yDim;
 	}
 
-	public double getTopXOffset() {
+	public IfcLengthMeasure getTopXOffset() {
 		return this.topXOffset;
 	}
 
-	public void setTopXOffset(double topXOffset) {
+	public void setTopXOffset(IfcLengthMeasure topXOffset) {
 		this.topXOffset = topXOffset;
 	}
 

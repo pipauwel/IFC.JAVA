@@ -7,6 +7,8 @@ package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
 import com.buildingsmart.tech.annotations.*;
 import com.buildingsmart.tech.ifc.IfcMaterialResource.IfcMaterialProperties;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcIdentifier;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcText;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileProperties;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
@@ -27,14 +29,14 @@ public abstract class IfcExtendedProperties extends IfcPropertyAbstraction
 	@Description("The name given to the set of properties.")
 	@DataMember(Order = 0)
 	@Guid("35758c6c-417b-4785-ac0b-fd61a613f9db")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcIdentifier name;
 
 	@Description("Description for the set of properties.")
 	@DataMember(Order = 1)
 	@Guid("ca07af86-dd02-4eae-98a1-854664b54a87")
-	@JacksonXmlProperty(isAttribute=true, localName = "Description")
-	private String description;
+	@JacksonXmlProperty(isAttribute=false, localName = "description")
+	private IfcText description;
 
 	@Description("The set of properties provided for this extended property collection.")
 	@DataMember(Order = 2)
@@ -42,7 +44,7 @@ public abstract class IfcExtendedProperties extends IfcPropertyAbstraction
 	@Guid("1ed043fe-54d5-4e63-bd45-c1cb8c066dd3")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcProperty")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "Properties")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "properties")
 	private Set<IfcProperty> properties;
 
 
@@ -55,19 +57,19 @@ public abstract class IfcExtendedProperties extends IfcPropertyAbstraction
 		this.properties = new HashSet<>(Arrays.asList(properties));
 	}
 
-	public String getName() {
+	public IfcIdentifier getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcIdentifier name) {
 		this.name = name;
 	}
 
-	public String getDescription() {
+	public IfcText getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(IfcText description) {
 		this.description = description;
 	}
 

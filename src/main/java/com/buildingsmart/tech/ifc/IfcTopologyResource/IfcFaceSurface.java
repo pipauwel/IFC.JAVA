@@ -5,28 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcAdvancedFace;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFace;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcFaceBound;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSurface;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcBoolean;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("d6ead809-0b4d-450c-af17-45d526239263")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,22 +26,22 @@ public class IfcFaceSurface extends IfcFace implements com.buildingsmart.tech.if
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("7626166a-83c4-45cd-aaeb-d26d2f7279a4")
-	@JacksonXmlProperty(isAttribute=false, localName = "FaceSurface")
+	@JacksonXmlProperty(isAttribute=false, localName = "faceSurface")
 	private IfcSurface faceSurface;
 
 	@Description("This flag indicates whether the sense of the surface normal agrees with (TRUE), or opposes (FALSE), the sense of the topological normal to the face.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("330e740a-dd30-4ff0-ad4a-713fed936b0b")
-	@JacksonXmlProperty(isAttribute=true, localName = "SameSense")
-	private Boolean sameSense;
+	@JacksonXmlProperty(isAttribute=false, localName = "sameSense")
+	private IfcBoolean sameSense;
 
 
 	public IfcFaceSurface()
 	{
 	}
 
-	public IfcFaceSurface(IfcFaceBound[] bounds, IfcSurface faceSurface, Boolean sameSense)
+	public IfcFaceSurface(IfcFaceBound[] bounds, IfcSurface faceSurface, IfcBoolean sameSense)
 	{
 		super(bounds);
 		this.faceSurface = faceSurface;
@@ -68,11 +56,11 @@ public class IfcFaceSurface extends IfcFace implements com.buildingsmart.tech.if
 		this.faceSurface = faceSurface;
 	}
 
-	public Boolean getSameSense() {
+	public IfcBoolean getSameSense() {
 		return this.sameSense;
 	}
 
-	public void setSameSense(Boolean sameSense) {
+	public void setSameSense(IfcBoolean sameSense) {
 		this.sameSense = sameSense;
 	}
 

@@ -8,6 +8,7 @@ package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -18,50 +19,50 @@ public class IfcTendon extends IfcReinforcingElement
 	@Description("Predefined generic types for a tendon.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; Attribute made optional.</blockquote>")
 	@DataMember(Order = 0)
 	@Guid("8bf9e3ad-01c9-436e-a415-02119d9e681e")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcTendonTypeEnum predefinedType;
 
 	@Description("The nominal diameter defining the cross-section size of the tendon.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; Attribute made optional and deprecated.  Use respective attribute at <em>IfcTendonType</em> instead.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("769d5dcc-353b-448a-a5f9-3ff7b462d814")
-	@JacksonXmlProperty(isAttribute=false, localName = "NominalDiameter")
-	private double nominalDiameter; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "nominalDiameter")
+	private IfcPositiveLengthMeasure nominalDiameter;
 
 	@Description("The effective cross-section area of the tendon.    <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; Attribute made optional and deprecated.  Use respective attribute at <em>IfcTendonType</em> instead.</blockquote>")
 	@DataMember(Order = 2)
 	@Guid("f2710ff8-a1a9-46f2-bbc1-5b12b313be27")
-	@JacksonXmlProperty(isAttribute=true, localName = "CrossSectionArea")
-	private double crossSectionArea;
+	@JacksonXmlProperty(isAttribute=false, localName = "crossSectionArea")
+	private IfcAreaMeasure crossSectionArea;
 
 	@Description("The maximum allowed tension force that can be applied on the tendon.")
 	@DataMember(Order = 3)
 	@Guid("361cb1c1-156f-4fd7-b742-88f20ba76a5d")
-	@JacksonXmlProperty(isAttribute=true, localName = "TensionForce")
-	private double tensionForce;
+	@JacksonXmlProperty(isAttribute=false, localName = "tensionForce")
+	private IfcForceMeasure tensionForce;
 
 	@Description("The prestress to be applied on the tendon.")
 	@DataMember(Order = 4)
 	@Guid("c7b0f979-558e-49ac-bf39-9fd037774d51")
-	@JacksonXmlProperty(isAttribute=true, localName = "PreStress")
-	private double preStress;
+	@JacksonXmlProperty(isAttribute=false, localName = "preStress")
+	private IfcPressureMeasure preStress;
 
 	@Description("The friction coefficient between tendon and tendon sheet while the tendon is unbonded.")
 	@DataMember(Order = 5)
 	@Guid("8b3dbb92-6ef8-4fa8-bce3-8fe156c01557")
-	@JacksonXmlProperty(isAttribute=false, localName = "FrictionCoefficient")
-	private double frictionCoefficient; //IfcNormalisedRatioMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "frictionCoefficient")
+	private IfcNormalisedRatioMeasure frictionCoefficient;
 
 	@Description("The deformation of an anchor or slippage of tendons when the prestressing device is released.")
 	@DataMember(Order = 6)
 	@Guid("723e9da1-873b-41c5-8865-674d57ab2356")
-	@JacksonXmlProperty(isAttribute=false, localName = "AnchorageSlip")
-	private double anchorageSlip; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "anchorageSlip")
+	private IfcPositiveLengthMeasure anchorageSlip;
 
 	@Description("The smallest curvature radius calculated on the whole effective length of the tendon where the tension properties are still valid.")
 	@DataMember(Order = 7)
 	@Guid("b99f7bfe-1105-4b52-b367-038790040da0")
-	@JacksonXmlProperty(isAttribute=false, localName = "MinCurvatureRadius")
-	private double minCurvatureRadius; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "minCurvatureRadius")
+	private IfcPositiveLengthMeasure minCurvatureRadius;
 
 
 	public IfcTendon()
@@ -81,59 +82,59 @@ public class IfcTendon extends IfcReinforcingElement
 		this.predefinedType = predefinedType;
 	}
 
-	public double getNominalDiameter() {
+	public IfcPositiveLengthMeasure getNominalDiameter() {
 		return this.nominalDiameter;
 	}
 
-	public void setNominalDiameter(double nominalDiameter) {
+	public void setNominalDiameter(IfcPositiveLengthMeasure nominalDiameter) {
 		this.nominalDiameter = nominalDiameter;
 	}
 
-	public double getCrossSectionArea() {
+	public IfcAreaMeasure getCrossSectionArea() {
 		return this.crossSectionArea;
 	}
 
-	public void setCrossSectionArea(double crossSectionArea) {
+	public void setCrossSectionArea(IfcAreaMeasure crossSectionArea) {
 		this.crossSectionArea = crossSectionArea;
 	}
 
-	public double getTensionForce() {
+	public IfcForceMeasure getTensionForce() {
 		return this.tensionForce;
 	}
 
-	public void setTensionForce(double tensionForce) {
+	public void setTensionForce(IfcForceMeasure tensionForce) {
 		this.tensionForce = tensionForce;
 	}
 
-	public double getPreStress() {
+	public IfcPressureMeasure getPreStress() {
 		return this.preStress;
 	}
 
-	public void setPreStress(double preStress) {
+	public void setPreStress(IfcPressureMeasure preStress) {
 		this.preStress = preStress;
 	}
 
-	public double getFrictionCoefficient() {
+	public IfcNormalisedRatioMeasure getFrictionCoefficient() {
 		return this.frictionCoefficient;
 	}
 
-	public void setFrictionCoefficient(double frictionCoefficient) {
+	public void setFrictionCoefficient(IfcNormalisedRatioMeasure frictionCoefficient) {
 		this.frictionCoefficient = frictionCoefficient;
 	}
 
-	public double getAnchorageSlip() {
+	public IfcPositiveLengthMeasure getAnchorageSlip() {
 		return this.anchorageSlip;
 	}
 
-	public void setAnchorageSlip(double anchorageSlip) {
+	public void setAnchorageSlip(IfcPositiveLengthMeasure anchorageSlip) {
 		this.anchorageSlip = anchorageSlip;
 	}
 
-	public double getMinCurvatureRadius() {
+	public IfcPositiveLengthMeasure getMinCurvatureRadius() {
 		return this.minCurvatureRadius;
 	}
 
-	public void setMinCurvatureRadius(double minCurvatureRadius) {
+	public void setMinCurvatureRadius(IfcPositiveLengthMeasure minCurvatureRadius) {
 		this.minCurvatureRadius = minCurvatureRadius;
 	}
 

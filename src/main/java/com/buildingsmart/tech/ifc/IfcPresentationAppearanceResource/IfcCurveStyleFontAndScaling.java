@@ -9,6 +9,8 @@ import com.buildingsmart.tech.annotations.DataMember;
 import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveRatioMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
@@ -19,39 +21,39 @@ public class IfcCurveStyleFontAndScaling extends com.buildingsmart.tech.ifc.IfcP
 	@Description("Name that may be assigned with the scaling of a curve font.")
 	@DataMember(Order = 0)
 	@Guid("102deb25-5be7-4b30-87d6-7d766394da0f")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 	@Description("The curve font to be scaled.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("387b5a7f-e66e-460e-bbdb-7aef07475f14")
-	@JacksonXmlProperty(isAttribute=true, localName = "CurveFont")
+	@JacksonXmlProperty(isAttribute=true, localName = "curveFont")
 	private IfcCurveStyleFontSelect curveFont;
 
 	@Description("The scale factor.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("4b64232e-b6ee-4e8f-b6e2-925e172f2dcf")
-	@JacksonXmlProperty(isAttribute=false, localName = "CurveFontScaling")
-	private double curveFontScaling; //IfcPositiveRatioMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "curveFontScaling")
+	private IfcPositiveRatioMeasure curveFontScaling;
 
 
 	public IfcCurveStyleFontAndScaling()
 	{
 	}
 
-	public IfcCurveStyleFontAndScaling(IfcCurveStyleFontSelect curveFont, double curveFontScaling)
+	public IfcCurveStyleFontAndScaling(IfcCurveStyleFontSelect curveFont, IfcPositiveRatioMeasure curveFontScaling)
 	{
 		this.curveFont = curveFont;
 		this.curveFontScaling = curveFontScaling;
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 
@@ -63,11 +65,11 @@ public class IfcCurveStyleFontAndScaling extends com.buildingsmart.tech.ifc.IfcP
 		this.curveFont = curveFont;
 	}
 
-	public double getCurveFontScaling() {
+	public IfcPositiveRatioMeasure getCurveFontScaling() {
 		return this.curveFontScaling;
 	}
 
-	public void setCurveFontScaling(double curveFontScaling) {
+	public void setCurveFontScaling(IfcPositiveRatioMeasure curveFontScaling) {
 		this.curveFontScaling = curveFontScaling;
 	}
 

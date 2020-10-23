@@ -10,6 +10,8 @@ import com.buildingsmart.tech.annotations.Description;
 import com.buildingsmart.tech.annotations.Guid;
 import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcParameterValue;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -25,40 +27,40 @@ public class IfcSweptDiskSolid extends IfcSolidModel
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("3e93ea11-2d9f-4011-8826-4222ac737696")
-	@JacksonXmlProperty(isAttribute=false, localName = "Directrix")
+	@JacksonXmlProperty(isAttribute=false, localName = "directrix")
 	private IfcCurve directrix;
 
 	@Description("The <em>Radius</em> of the circular disk to be swept along the <em>directrix</em>. Denotes the outer radius, if an <em>InnerRadius</em> is applied.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("b6637ef9-cdaa-47f9-820d-37b6666212c5")
-	@JacksonXmlProperty(isAttribute=false, localName = "Radius")
-	private double radius; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "radius")
+	private IfcPositiveLengthMeasure radius;
 
 	@Description("This attribute is optional, if present it defines the radius of a circular hole in the centre of the disk.")
 	@DataMember(Order = 2)
 	@Guid("1c03cb39-4ce4-40cb-8e6d-61b748f473f6")
-	@JacksonXmlProperty(isAttribute=false, localName = "InnerRadius")
-	private double innerRadius; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "innerRadius")
+	private IfcPositiveLengthMeasure innerRadius;
 
 	@Description("The parameter value on the <em>Directrix</em> at which the sweeping operation commences. <font color=\"#0000ff\">If no value is provided the start of the sweeping operation is at the start of the <em>Directrix</em>.</font>.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been changed to OPTIONAL with upward compatibility for file-based exchange.</blockquote>")
 	@DataMember(Order = 3)
 	@Guid("1e37f4af-9aa9-4fd7-9f75-1fa5b3af2a7b")
-	@JacksonXmlProperty(isAttribute=true, localName = "StartParam")
-	private double startParam;
+	@JacksonXmlProperty(isAttribute=true, localName = "startParam")
+	private IfcParameterValue startParam;
 
 	@Description("The parameter value on the <em>Directrix</em> at which the sweeping operation ends. <font color=\"#0000ff\">If no value is provided the end of the sweeping operation is at the end of the <em>Directrix</em>.</font>.   <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been changed to OPTIONAL with upward compatibility for file-based exchange.</blockquote>")
 	@DataMember(Order = 4)
 	@Guid("c33ba8e5-28f6-4a8b-a2a1-7020ac0ff4f1")
-	@JacksonXmlProperty(isAttribute=true, localName = "EndParam")
-	private double endParam;
+	@JacksonXmlProperty(isAttribute=true, localName = "endParam")
+	private IfcParameterValue endParam;
 
 
 	public IfcSweptDiskSolid()
 	{
 	}
 
-	public IfcSweptDiskSolid(IfcCurve directrix, double radius)
+	public IfcSweptDiskSolid(IfcCurve directrix, IfcPositiveLengthMeasure radius)
 	{
 		this.directrix = directrix;
 		this.radius = radius;
@@ -72,35 +74,35 @@ public class IfcSweptDiskSolid extends IfcSolidModel
 		this.directrix = directrix;
 	}
 
-	public double getRadius() {
+	public IfcPositiveLengthMeasure getRadius() {
 		return this.radius;
 	}
 
-	public void setRadius(double radius) {
+	public void setRadius(IfcPositiveLengthMeasure radius) {
 		this.radius = radius;
 	}
 
-	public double getInnerRadius() {
+	public IfcPositiveLengthMeasure getInnerRadius() {
 		return this.innerRadius;
 	}
 
-	public void setInnerRadius(double innerRadius) {
+	public void setInnerRadius(IfcPositiveLengthMeasure innerRadius) {
 		this.innerRadius = innerRadius;
 	}
 
-	public double getStartParam() {
+	public IfcParameterValue getStartParam() {
 		return this.startParam;
 	}
 
-	public void setStartParam(double startParam) {
+	public void setStartParam(IfcParameterValue startParam) {
 		this.startParam = startParam;
 	}
 
-	public double getEndParam() {
+	public IfcParameterValue getEndParam() {
 		return this.endParam;
 	}
 
-	public void setEndParam(double endParam) {
+	public void setEndParam(IfcParameterValue endParam) {
 		this.endParam = endParam;
 	}
 

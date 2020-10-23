@@ -5,27 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator3DnonUniform;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
+import java.util.List;
 
 @Guid("137f3407-b6b9-4752-b668-e9e574a1b3fd")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,7 +25,7 @@ public class IfcCartesianTransformationOperator3D extends IfcCartesianTransforma
 	@Description("The exact direction of U[3], the derived Z axis direction.")
 	@DataMember(Order = 0)
 	@Guid("42759c76-3cfb-44fb-9a58-78c6f7c1c245")
-	@JacksonXmlProperty(isAttribute=false, localName = "Axis3")
+	@JacksonXmlProperty(isAttribute=false, localName = "axis3")
 	private IfcDirection axis3;
 
 
@@ -57,7 +46,10 @@ public class IfcCartesianTransformationOperator3D extends IfcCartesianTransforma
 		this.axis3 = axis3;
 	}
 
+	@JsonIgnore
 	public List<IfcDirection> getU() {
+		//TODO
+		// U:=IfcBaseAxis(3,SELF\IfcCartesianTransformationOperator.Axis1, SELF\IfcCartesianTransformationOperator.Axis2,Axis3)
 		return null;
 	}
 

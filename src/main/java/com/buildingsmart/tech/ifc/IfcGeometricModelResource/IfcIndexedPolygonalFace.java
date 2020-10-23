@@ -6,6 +6,8 @@
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
 import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -29,15 +31,16 @@ public class IfcIndexedPolygonalFace extends IfcTessellatedItem
 	@Guid("e98eb6ec-1d91-49a2-848d-43f835c2b769")
 	@MinLength(3)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "CoordIndex")
-	private List<Double> coordIndex; //IfcPositiveInteger
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "coordIndex")
+	private List<IfcPositiveInteger> coordIndex;
 
 	@Description("Reference to the <em>IfcPolygonalFaceSet</em> for which this face is associated.")
-	@InverseProperty(InverseProp = "Faces", Range = "IfcPolygonalFaceSet")
+	@InverseProperty(InverseProp = "faces", Range = "IfcPolygonalFaceSet")
 	@Guid("539ffe91-454c-4cc6-a6ee-03a20eaf9166")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcPolygonalFaceSet")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "ToFaceSet")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcPolygonalFaceSet")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "toFaceSet")*/
+	@JsonIgnore
 	private Set<IfcPolygonalFaceSet> toFaceSet;
 
 
@@ -45,12 +48,12 @@ public class IfcIndexedPolygonalFace extends IfcTessellatedItem
 	{
 	}
 
-	public IfcIndexedPolygonalFace(Double[] coordIndex)
+	public IfcIndexedPolygonalFace(IfcPositiveInteger[] coordIndex)
 	{
 		this.coordIndex = new ArrayList<>(Arrays.asList(coordIndex));
 	}
 
-	public List<Double> getCoordIndex() {
+	public List<IfcPositiveInteger> getCoordIndex() {
 		return this.coordIndex;
 	}
 

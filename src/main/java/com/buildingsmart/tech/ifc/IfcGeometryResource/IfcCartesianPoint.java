@@ -5,24 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("2ddee6ae-615d-41ff-baa2-ba51d50e78c2")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,26 +26,30 @@ public class IfcCartesianPoint extends IfcPoint implements IfcTrimmingSelect
 	@Guid("4a8b21fa-0aa6-4d2a-b0ce-55d5777e3b0f")
 	@MinLength(1)
 	@MaxLength(3)
-	@JacksonXmlProperty(isAttribute = false, localName = "Double")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "Coordinates")
-	private List<Double> coordinates;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcLengthMeasure")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "coordinates")
+	private List<IfcLengthMeasure> coordinates;
 
 
 	public IfcCartesianPoint()
 	{
+		coordinates = new ArrayList<IfcLengthMeasure>();
 	}
 
-	public IfcCartesianPoint(Double[] coordinates)
+	public IfcCartesianPoint(IfcLengthMeasure[] coordinates)
 	{
 		this.coordinates = new ArrayList<>(Arrays.asList(coordinates));
 	}
 
-	public List<Double> getCoordinates() {
+	public List<IfcLengthMeasure> getCoordinates() {
 		return this.coordinates;
 	}
 
+	@JsonIgnore
 	public int getDim() {
-		return 0;
+		//Dim
+		//:=HIINDEX(Coordinates)
+		return coordinates.size();
 	}
 
 

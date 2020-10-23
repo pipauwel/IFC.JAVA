@@ -5,25 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralLoadResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoadConfiguration;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoadOrResult;
 
 @Guid("9f70562a-7269-4def-b7a9-f818ed6ce0cb")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,19 +23,19 @@ public abstract class IfcStructuralLoad
 	@Description("Optionally defines a name for this load.")
 	@DataMember(Order = 0)
 	@Guid("01e55eb4-7ae4-4ce0-8763-839611198171")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 
 	public IfcStructuralLoad()
 	{
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 

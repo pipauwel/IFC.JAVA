@@ -5,27 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelDecomposes;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementSubtraction;
 
 @Guid("5307e7a4-2270-4ad7-9e3c-ba76198cc09e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -42,7 +28,7 @@ public class IfcRelVoidsElement extends com.buildingsmart.tech.ifc.IfcKernel.Ifc
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("edbe00f6-c081-41e2-a32e-32ab51af7a0a")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatedOpeningElement")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatedOpeningElement")
 	private IfcFeatureElementSubtraction relatedOpeningElement;
 
 

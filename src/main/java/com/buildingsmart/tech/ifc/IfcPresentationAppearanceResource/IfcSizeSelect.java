@@ -6,8 +6,21 @@
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("09895874-48ae-4872-a788-8c4e2d089281")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcValue.class, name = "IfcValue"),
+        @JsonSubTypes.Type(value = IfcNormalisedRatioMeasure.class, name = "IfcNormalisedRatioMeasure"),
+        @JsonSubTypes.Type(value = IfcRatioMeasure.class, name = "IfcRatioMeasure"),
+        @JsonSubTypes.Type(value = IfcLengthMeasure.class, name = "IfcLengthMeasure"),
+        @JsonSubTypes.Type(value = IfcDescriptiveMeasure.class, name = "IfcDescriptiveMeasure"),
+        @JsonSubTypes.Type(value = IfcPositiveLengthMeasure.class, name = "IfcPositiveLengthMeasure"),
+        @JsonSubTypes.Type(value = IfcPositiveRatioMeasure.class, name = "IfcPositiveRatioMeasure")})
 public interface IfcSizeSelect {
 
 }

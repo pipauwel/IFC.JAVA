@@ -5,24 +5,17 @@
 
 package com.buildingsmart.tech.ifc.IfcUtilityResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.MinLength;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcBoolean;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
+import java.util.List;
 
 @Guid("dcf395ca-c227-4340-a8db-8f53ebd905d5")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,14 +26,14 @@ public class IfcTableRow
 	@Guid("7ed2c99d-404d-4ff3-8b17-ba94de77e474")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcValue")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RowCells")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "rowCells")
 	private List<IfcValue> rowCells;
 
 	@Description("Flag which identifies if the row is a heading row or a row which contains row values. <blockquote class=\"note\">NOTE - If the row is a heading, the flag takes the value = TRUE.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("ee01b240-9331-4036-9859-66837096adae")
-	@JacksonXmlProperty(isAttribute=true, localName = "IsHeading")
-	private Boolean isHeading;
+	@JacksonXmlProperty(isAttribute=false, localName = "isHeading")
+	private IfcBoolean isHeading;
 
 
 	public IfcTableRow()
@@ -51,11 +44,11 @@ public class IfcTableRow
 		return this.rowCells;
 	}
 
-	public Boolean getIsHeading() {
+	public IfcBoolean getIsHeading() {
 		return this.isHeading;
 	}
 
-	public void setIsHeading(Boolean isHeading) {
+	public void setIsHeading(IfcBoolean isHeading) {
 		this.isHeading = isHeading;
 	}
 

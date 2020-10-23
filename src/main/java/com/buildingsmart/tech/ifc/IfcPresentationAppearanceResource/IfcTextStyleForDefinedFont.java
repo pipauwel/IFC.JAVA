@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.*;
-import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem;
-import com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource.IfcColour;
 
 @Guid("33ffc6a1-31d2-441f-99ed-c8775cef5eb5")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,13 +20,13 @@ public class IfcTextStyleForDefinedFont extends com.buildingsmart.tech.ifc.IfcPr
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("a201eed1-7939-427c-994a-c80f97e60526")
-	@JacksonXmlProperty(isAttribute=true, localName = "Colour")
+	@JacksonXmlProperty(isAttribute=true, localName = "colour")
 	private IfcColour colour;
 
 	@Description("This property sets the background color of an element.")
 	@DataMember(Order = 1)
 	@Guid("dc717d7d-7060-4f0b-a16f-2d49b2dc6303")
-	@JacksonXmlProperty(isAttribute=true, localName = "BackgroundColour")
+	@JacksonXmlProperty(isAttribute=true, localName = "backgroundColour")
 	private IfcColour backgroundColour;
 
 

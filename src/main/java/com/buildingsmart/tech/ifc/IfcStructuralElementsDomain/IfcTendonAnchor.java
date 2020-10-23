@@ -5,25 +5,11 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.*;
-import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcReinforcingElement;
 
 @Guid("55cbca4f-814f-47b4-890b-000cd85993b7")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,7 +18,7 @@ public class IfcTendonAnchor extends IfcReinforcingElement
 	@Description("Kind of tendon anchor.")
 	@DataMember(Order = 0)
 	@Guid("a8c7ef8a-9db8-4a89-9908-adcec769bb8f")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcTendonAnchorTypeEnum predefinedType;
 
 

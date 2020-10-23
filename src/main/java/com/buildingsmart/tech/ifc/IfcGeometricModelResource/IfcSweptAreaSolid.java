@@ -5,31 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricModelResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcExtrudedAreaSolid;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcFixedReferenceSweptAreaSolid;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcRevolvedAreaSolid;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSurfaceCurveSweptAreaSolid;
-import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcSolidModel;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement3D;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("1bfb8302-5211-4de4-a3b9-20e200cf1097")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -41,13 +26,13 @@ public abstract class IfcSweptAreaSolid extends IfcSolidModel
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("1c1cfe35-c525-4b8e-967a-78258ff390f3")
-	@JacksonXmlProperty(isAttribute=false, localName = "SweptArea")
+	@JacksonXmlProperty(isAttribute=false, localName = "sweptArea")
 	private IfcProfileDef sweptArea;
 
 	@Description("Position coordinate system for the resulting swept solid of the sweeping operation. The position coordinate system allows for re-positioning of the swept solid. If not provided, the swept solid remains within the position as determined by the cross section or by the directrix used for the sweeping operation.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute has been changed to OPTIONAL with upward compatibility for file-based exchange.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("fccab43b-72fa-486a-b491-6d2133f1474b")
-	@JacksonXmlProperty(isAttribute=false, localName = "Position")
+	@JacksonXmlProperty(isAttribute=false, localName = "position")
 	private IfcAxis2Placement3D position;
 
 

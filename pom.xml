@@ -50,7 +50,7 @@
     <developer>
       <id>pipauwel</id>
       <name>Pieter Pauwels</name>
-      <email>pipauwel [dot] pauwels [at] ugent [dot] be</email>
+      <email>p [dot] pauwels [at] tue [dot] nl</email>
     </developer>
   </developers>
 
@@ -319,7 +319,7 @@
     <dependency>
       <groupId>com.github.pipauwel</groupId>
       <artifactId>IFCtoRDF</artifactId>
-      <version>0.4-SNAPSHOT</version>
+      <version>0.4</version>
     </dependency>
 
 

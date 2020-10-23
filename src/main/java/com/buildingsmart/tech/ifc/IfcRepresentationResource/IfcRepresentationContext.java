@@ -5,69 +5,74 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGeometricRepresentationContext;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Set;
+import java.util.UUID;
 
 @Guid("38217e82-b534-4baa-87a6-49402ed0a52c")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "globalId")
 @JsonIgnoreProperties(ignoreUnknown=true)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes(@JsonSubTypes.Type(value = IfcGeometricRepresentationContext.class, name = "IfcGeometricRepresentationContext"))
 public abstract class IfcRepresentationContext
 {
+	@Description("Internal ID")
+	@Required()
+	@JacksonXmlProperty(isAttribute=true, localName = "globalId")
+	private UUID globalId;
+
 	@Description("The optional identifier of the representation context as used within a project.")
 	@DataMember(Order = 0)
 	@Guid("98c7faf4-7709-4f0a-9ab4-c1e8c7d0f012")
-	@JacksonXmlProperty(isAttribute=true, localName = "ContextIdentifier")
-	private String contextIdentifier;
+	@JacksonXmlProperty(isAttribute=false, localName = "contextIdentifier")
+	private IfcLabel contextIdentifier;
 
 	@Description("The description of the type of a representation context. The supported values for context type are to be specified by implementers agreements.")
 	@DataMember(Order = 1)
 	@Guid("60350fff-c598-4635-a106-9b50ce5ec88c")
-	@JacksonXmlProperty(isAttribute=true, localName = "ContextType")
-	private String contextType;
+	@JacksonXmlProperty(isAttribute=false, localName = "contextType")
+	private IfcLabel contextType;
 
 	@Description("All shape representations that are defined in the same representation context.")
-	@InverseProperty(InverseProp = "ContextOfItems", Range = "IfcRepresentation")
+	@InverseProperty(InverseProp = "contextOfItems", Range = "IfcRepresentation")
 	@Guid("1e0f4b5c-3ad8-4ee7-8998-0a6b915be556")
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcRepresentation")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RepresentationsInContext")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcRepresentation")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "representationsInContext")*/
+	@JsonIgnore
 	private Set<IfcRepresentation> representationsInContext;
 
 
 	public IfcRepresentationContext()
 	{
+		this.globalId = UUID.randomUUID();
 	}
 
-	public String getContextIdentifier() {
+	public UUID getGlobalId() {
+		return this.globalId;
+	}
+
+	public void setGlobalId(UUID id) {
+		this.globalId = globalId;
+	}
+
+	public IfcLabel getContextIdentifier() {
 		return this.contextIdentifier;
 	}
 
-	public void setContextIdentifier(String contextIdentifier) {
+	public void setContextIdentifier(IfcLabel contextIdentifier) {
 		this.contextIdentifier = contextIdentifier;
 	}
 
-	public String getContextType() {
+	public IfcLabel getContextType() {
 		return this.contextType;
 	}
 
-	public void setContextType(String contextType) {
+	public void setContextType(IfcLabel contextType) {
 		this.contextType = contextType;
 	}
 

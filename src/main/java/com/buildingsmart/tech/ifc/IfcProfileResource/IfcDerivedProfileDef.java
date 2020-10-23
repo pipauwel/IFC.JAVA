@@ -5,29 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcProfileResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcMirroredProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileDef;
-import com.buildingsmart.tech.ifc.IfcProfileResource.IfcProfileTypeEnum;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator2D;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("bce6c9f4-6d2e-4d7b-8d7e-5174db9b4051")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -39,21 +26,21 @@ public class IfcDerivedProfileDef extends IfcProfileDef
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("a965069b-b250-483b-bca0-761cd8940d02")
-	@JacksonXmlProperty(isAttribute=false, localName = "ParentProfile")
+	@JacksonXmlProperty(isAttribute=false, localName = "parentProfile")
 	private IfcProfileDef parentProfile;
 
 	@Description("Transformation operator applied to the parent profile.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("00ccc2f6-4a36-4cf8-990a-50ae7863bf91")
-	@JacksonXmlProperty(isAttribute=false, localName = "Operator")
+	@JacksonXmlProperty(isAttribute=false, localName = "operator")
 	private IfcCartesianTransformationOperator2D operator;
 
 	@Description("The name by which the transformation may be referred to. The actual meaning of the name has to be defined in the context of applications.")
 	@DataMember(Order = 2)
 	@Guid("22457022-a959-4537-a5dd-0f712caa528f")
-	@JacksonXmlProperty(isAttribute=true, localName = "Label")
-	private String label;
+	@JacksonXmlProperty(isAttribute=false, localName = "label")
+	private IfcLabel label;
 
 
 	public IfcDerivedProfileDef()
@@ -83,11 +70,11 @@ public class IfcDerivedProfileDef extends IfcProfileDef
 		this.operator = operator;
 	}
 
-	public String getLabel() {
+	public IfcLabel getLabel() {
 		return this.label;
 	}
 
-	public void setLabel(String label) {
+	public void setLabel(IfcLabel label) {
 		this.label = label;
 	}
 

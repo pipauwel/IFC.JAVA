@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.*;
-import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionResourceType;
-import com.buildingsmart.tech.ifc.IfcConstructionMgmtDomain.IfcConstructionEquipmentResourceTypeEnum;
 
 @Guid("0183b4f6-26f5-49bc-be00-a887d350340e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,7 +20,7 @@ public class IfcConstructionEquipmentResourceType extends IfcConstructionResourc
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("99d4b03f-35f6-42c2-92ff-4620180871f2")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcConstructionEquipmentResourceTypeEnum predefinedType;
 
 

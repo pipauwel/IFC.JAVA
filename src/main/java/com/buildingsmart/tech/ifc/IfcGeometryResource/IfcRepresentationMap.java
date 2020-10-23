@@ -5,68 +5,75 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcAxis2Placement;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentation;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeAspect;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Set;
+import java.util.UUID;
 
 @Guid("3968ca44-8f3e-43f2-ab19-855d7709487b")
 @JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,
+		property = "globalId")
 public class IfcRepresentationMap implements com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcProductRepresentationSelect
 {
+	@Description("Internal ID")
+	@Required()
+	@JacksonXmlProperty(isAttribute=true, localName = "globalId")
+	private UUID globalId;
+
 	@Description("An axis2 placement that defines the position about which the mapped  representation is mapped.")
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("ccc26f1c-a4ae-4b02-8980-7af9a9680d54")
-	@JacksonXmlProperty(isAttribute=true, localName = "MappingOrigin")
+	@JacksonXmlProperty(isAttribute=true, localName = "mappingOrigin")
 	private IfcAxis2Placement mappingOrigin;
 
 	@Description("A representation that is mapped to at least one mapped item.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("66c50edd-89c8-4bf7-9312-05facd806895")
-	@JacksonXmlProperty(isAttribute=false, localName = "MappedRepresentation")
+	@JacksonXmlProperty(isAttribute=false, localName = "mappedRepresentation")
 	private IfcRepresentation mappedRepresentation;
 
 	@Description("Reference to the shape aspect that represents part of the shape or its feature distinctively.  <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; Inverse attribute added.  </blockquote>")
-	@InverseProperty(InverseProp = "PartOfProductDefinitionShape", Range = "IfcShapeAspect")
+	@InverseProperty(InverseProp = "partOfProductDefinitionShape", Range = "IfcShapeAspect")
 	@Guid("706e409b-b397-4d89-af8c-f070939b0668")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcShapeAspect")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasShapeAspects")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "hasShapeAspects")
 	private Set<IfcShapeAspect> hasShapeAspects;
 
-	@InverseProperty(InverseProp = "MappingSource", Range = "IfcMappedItem")
+	@InverseProperty(InverseProp = "mappingSource", Range = "IfcMappedItem")
 	@Guid("10781165-90b6-4b8f-bb3e-340053c55543")
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcMappedItem")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "MapUsage")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcMappedItem")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "MapUsage")*/
+	@JsonIgnore
 	private Set<IfcMappedItem> mapUsage;
 
 
 	public IfcRepresentationMap()
 	{
+		this.globalId = UUID.randomUUID();
 	}
 
 	public IfcRepresentationMap(IfcAxis2Placement mappingOrigin, IfcRepresentation mappedRepresentation)
 	{
+		this();
 		this.mappingOrigin = mappingOrigin;
 		this.mappedRepresentation = mappedRepresentation;
+	}
+
+	public UUID getGlobalId() {
+		return this.globalId;
+	}
+
+	public void setGlobalId(UUID globalId) {
+		this.globalId = globalId;
 	}
 
 	public IfcAxis2Placement getMappingOrigin() {

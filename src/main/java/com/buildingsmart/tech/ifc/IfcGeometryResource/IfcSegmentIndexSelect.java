@@ -6,8 +6,15 @@
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("95457733-4fd2-4225-8c32-742ac142e674")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcLineIndex.class, name = "IfcLineIndex"),
+        @JsonSubTypes.Type(value = IfcArcIndex.class, name = "IfcArcIndex")})
 public interface IfcSegmentIndexSelect {
 
 }

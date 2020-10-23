@@ -5,26 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcTopologyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcTopologyResource.IfcVertex;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPoint;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("77f373d7-e77d-410a-a47e-47b03b73fc39")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,7 +21,7 @@ public class IfcVertexPoint extends IfcVertex implements com.buildingsmart.tech.
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("908edc85-594d-4aa2-bec6-a352ddd90a08")
-	@JacksonXmlProperty(isAttribute=false, localName = "VertexGeometry")
+	@JacksonXmlProperty(isAttribute=false, localName = "vertexGeometry")
 	private IfcPoint vertexGeometry;
 
 

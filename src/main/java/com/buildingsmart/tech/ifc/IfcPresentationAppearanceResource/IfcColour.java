@@ -6,8 +6,16 @@
 package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("f0696427-0f79-462a-b56a-9f403f1f9c71")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcColourSpecification.class, name = "IfcColourSpecification"),
+        @JsonSubTypes.Type(value = IfcPreDefinedColour.class, name = "IfcPreDefinedColour")})
 public interface IfcColour extends IfcFillStyleSelect {
+
 
 }

@@ -5,28 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcInteger;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLogical;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineCurveWithKnots;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBoundedCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineCurveForm;
 
 @Guid("b9435164-1687-4e0f-8afc-85feadf601cd")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,8 +28,8 @@ public abstract class IfcBSplineCurve extends IfcBoundedCurve
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("9215ef5b-0c61-4dd2-97ed-6c70dc669532")
-	@JacksonXmlProperty(isAttribute=true, localName = "Degree")
-	private int degree;
+	@JacksonXmlProperty(isAttribute=false, localName = "degree")
+	private IfcInteger degree;
 
 	@Description("The list of control points for the curve.")
 	@DataMember(Order = 1)
@@ -47,36 +37,36 @@ public abstract class IfcBSplineCurve extends IfcBoundedCurve
 	@Guid("49ee485c-b8e8-460a-877e-a0df0214a5b9")
 	@MinLength(2)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcCartesianPoint")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "ControlPointsList")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "controlPointsList")
 	private List<IfcCartesianPoint> controlPointsList;
 
 	@Description("Used to identify particular types of curve; it is for information only.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("533eaddc-7020-4be6-bd8d-f8f6c4d72442")
-	@JacksonXmlProperty(isAttribute=true, localName = "CurveForm")
+	@JacksonXmlProperty(isAttribute=true, localName = "curveForm")
 	private IfcBSplineCurveForm curveForm;
 
 	@Description("Indication of whether the curve is closed; it is for information only.")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("01035261-65db-467b-ad2b-1c4d21786723")
-	@JacksonXmlProperty(isAttribute=true, localName = "ClosedCurve")
-	private Boolean closedCurve;
+	@JacksonXmlProperty(isAttribute=true, localName = "closedCurve")
+	private IfcLogical closedCurve;
 
 	@Description("Indication whether the curve self-intersects or not; it is for information only.")
 	@DataMember(Order = 4)
 	@Required()
 	@Guid("35b37f03-d9bc-4662-8c51-80a08918556a")
-	@JacksonXmlProperty(isAttribute=true, localName = "SelfIntersect")
-	private Boolean selfIntersect;
+	@JacksonXmlProperty(isAttribute=true, localName = "selfIntersect")
+	private IfcLogical selfIntersect;
 
 
 	public IfcBSplineCurve()
 	{
 	}
 
-	public IfcBSplineCurve(int degree, IfcCartesianPoint[] controlPointsList, IfcBSplineCurveForm curveForm, Boolean closedCurve, Boolean selfIntersect)
+	public IfcBSplineCurve(IfcInteger degree, IfcCartesianPoint[] controlPointsList, IfcBSplineCurveForm curveForm, IfcLogical closedCurve, IfcLogical selfIntersect)
 	{
 		this.degree = degree;
 		this.controlPointsList = new ArrayList<>(Arrays.asList(controlPointsList));
@@ -85,11 +75,11 @@ public abstract class IfcBSplineCurve extends IfcBoundedCurve
 		this.selfIntersect = selfIntersect;
 	}
 
-	public int getDegree() {
+	public IfcInteger getDegree() {
 		return this.degree;
 	}
 
-	public void setDegree(int degree) {
+	public void setDegree(IfcInteger degree) {
 		this.degree = degree;
 	}
 
@@ -105,19 +95,19 @@ public abstract class IfcBSplineCurve extends IfcBoundedCurve
 		this.curveForm = curveForm;
 	}
 
-	public Boolean getClosedCurve() {
+	public IfcLogical getClosedCurve() {
 		return this.closedCurve;
 	}
 
-	public void setClosedCurve(Boolean closedCurve) {
+	public void setClosedCurve(IfcLogical closedCurve) {
 		this.closedCurve = closedCurve;
 	}
 
-	public Boolean getSelfIntersect() {
+	public IfcLogical getSelfIntersect() {
 		return this.selfIntersect;
 	}
 
-	public void setSelfIntersect(Boolean selfIntersect) {
+	public void setSelfIntersect(IfcLogical selfIntersect) {
 		this.selfIntersect = selfIntersect;
 	}
 

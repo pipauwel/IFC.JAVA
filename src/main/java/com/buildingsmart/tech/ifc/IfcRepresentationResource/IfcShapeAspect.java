@@ -5,25 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcRepresentationResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLogical;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcText;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.*;
-import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcShapeModel;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("d0b09671-0848-4353-9710-4312d56ffea7")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,27 +28,27 @@ public class IfcShapeAspect
 	@Guid("db755f10-d8c8-4854-b571-b705ca239039")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcShapeModel")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "ShapeRepresentations")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "shapeRepresentations")
 	private List<IfcShapeModel> shapeRepresentations;
 
 	@Description("The word or group of words by which the shape aspect is known. It is a tag to indicate the particular semantic of a component within the product definition shape, used to provide meaning. Example: use the tag \"Glazing\" to define which component of a window shape defines the glazing area.")
 	@DataMember(Order = 1)
 	@Guid("112f0471-a832-43b6-afd9-1fea94b60438")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcLabel name;
 
 	@Description("The word or group of words that characterize the shape aspect. It can be used to add additional meaning to the name of the aspect.")
 	@DataMember(Order = 2)
 	@Guid("efe2ecf9-35ff-4806-aad2-4ed933ead852")
-	@JacksonXmlProperty(isAttribute=true, localName = "Description")
-	private String description;
+	@JacksonXmlProperty(isAttribute=false, localName = "description")
+	private IfcText description;
 
 	@Description("An indication that the shape aspect is on the physical boundary of the product definition shape. If the value of this attribute is TRUE, it shall be asserted that the shape aspect being identified is on such a boundary. If the value is FALSE, it shall be asserted that the shape aspect being identified is not on such a boundary. If the value is UNKNOWN, it shall be asserted that it is not known whether or not the shape aspect being identified is on such a boundary.   ---  EXAMPLE: Would be FALSE for a center line, identified as shape aspect; would be TRUE for a cantilever.  ---")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("05efefab-4927-4846-a3f1-e28bff9478de")
-	@JacksonXmlProperty(isAttribute=true, localName = "ProductDefinitional")
-	private Boolean productDefinitional;
+	@JacksonXmlProperty(isAttribute=false, localName = "productDefinitional")
+	private IfcLogical productDefinitional;
 
 	@Description("Reference to the <em>IfcProductDefinitionShape</em> or the <em>IfcRepresentationMap</em> of which this shape is an aspect.  <blockquote class=\"change-ifc2x4\">  IFC4 CHANGE&nbsp; Data type modified to be <em>IfcProductRepresentationSelect</em> allowing the assignment also to <em>IfcRepresentationMap</em>.  </blockquote>")
 	@DataMember(Order = 4)
@@ -68,7 +61,7 @@ public class IfcShapeAspect
 	{
 	}
 
-	public IfcShapeAspect(IfcShapeModel[] shapeRepresentations, Boolean productDefinitional)
+	public IfcShapeAspect(IfcShapeModel[] shapeRepresentations, IfcLogical productDefinitional)
 	{
 		this.shapeRepresentations = new ArrayList<>(Arrays.asList(shapeRepresentations));
 		this.productDefinitional = productDefinitional;
@@ -78,27 +71,27 @@ public class IfcShapeAspect
 		return this.shapeRepresentations;
 	}
 
-	public String getName() {
+	public IfcLabel getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcLabel name) {
 		this.name = name;
 	}
 
-	public String getDescription() {
+	public IfcText getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(IfcText description) {
 		this.description = description;
 	}
 
-	public Boolean getProductDefinitional() {
+	public IfcLogical getProductDefinitional() {
 		return this.productDefinitional;
 	}
 
-	public void setProductDefinitional(Boolean productDefinitional) {
+	public void setProductDefinitional(IfcLogical productDefinitional) {
 		this.productDefinitional = productDefinitional;
 	}
 

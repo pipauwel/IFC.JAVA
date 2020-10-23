@@ -6,8 +6,17 @@
 package com.buildingsmart.tech.ifc.IfcPresentationOrganizationResource;
 
 import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRepresentationItem;
+import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcRepresentation;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("7a44aac9-ee46-4337-bd0d-ea5aafd03640")
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes({@JsonSubTypes.Type(value = IfcRepresentationItem.class, name = "IfcRepresentationItem"),
+        @JsonSubTypes.Type(value = IfcRepresentation.class, name = "IfcRepresentation")})
 public interface IfcLayeredItem {
 
 }

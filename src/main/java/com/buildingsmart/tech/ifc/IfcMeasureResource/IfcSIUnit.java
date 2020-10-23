@@ -19,14 +19,14 @@ public class IfcSIUnit extends IfcNamedUnit
 	@Description("The SI Prefix for defining decimal multiples and submultiples of the unit.")
 	@DataMember(Order = 0)
 	@Guid("c6aeb01b-30d3-4137-9930-4aceeb9c4a67")
-	@JacksonXmlProperty(isAttribute=true, localName = "Prefix")
+	@JacksonXmlProperty(isAttribute=true, localName = "prefix")
 	private IfcSIPrefix prefix;
 
 	@Description("The word, or group of words, by which the SI unit is referred to.    <blockquote class=\"note\">NOTE&nbsp; Even though the SI system's base unit for mass is kilogram, the <em>IfcSIUnit</em> for mass is gram if no <em>Prefix</em> is asserted.</blockquote>")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("9bd1e5c7-5ab3-4539-b399-fadb389a68f6")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
+	@JacksonXmlProperty(isAttribute=true, localName = "name")
 	private IfcSIUnitName name;
 
 

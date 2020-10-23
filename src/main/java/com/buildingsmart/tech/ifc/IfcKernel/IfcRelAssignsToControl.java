@@ -5,27 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssigns;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcControl;
 
 @Guid("142af641-3046-4e25-8652-dbf0d05c61da")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,7 +20,7 @@ public class IfcRelAssignsToControl extends IfcRelAssigns
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("e7033623-d7b9-406d-8aae-46c7501560e6")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingControl")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatingControl")
 	private IfcControl relatingControl;
 
 

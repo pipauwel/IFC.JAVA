@@ -5,29 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.*;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralLinearAction;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralAction;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.buildingsmart.tech.ifc.IfcRepresentationResource.IfcGlobalOrLocalEnum;
-import com.buildingsmart.tech.ifc.IfcStructuralAnalysisDomain.IfcStructuralCurveActivityTypeEnum;
+import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcStructuralLoad;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 @Guid("948541ee-3298-408e-a404-6fd5b84b81e9")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -38,14 +25,14 @@ public class IfcStructuralCurveAction extends IfcStructuralAction
 	@Description("Defines whether load values are given per true length of the curve on which they act, or per length of the projection of the curve in load direction.  The latter is only applicable to loads which act in global coordinate directions.")
 	@DataMember(Order = 0)
 	@Guid("de505213-6b85-43ed-83d1-cdf5251aec7b")
-	@JacksonXmlProperty(isAttribute=true, localName = "ProjectedOrTrue")
+	@JacksonXmlProperty(isAttribute=true, localName = "projectedOrTrue")
 	private IfcProjectedOrTrueLengthEnum projectedOrTrue;
 
 	@Description("Type of action according to its distribution of load values.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("a0301c23-b88b-4a3c-bb49-e303eb4a0b69")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcStructuralCurveActivityTypeEnum predefinedType;
 
 

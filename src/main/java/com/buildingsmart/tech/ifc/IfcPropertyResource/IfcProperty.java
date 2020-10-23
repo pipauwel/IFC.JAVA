@@ -5,30 +5,20 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcApprovalResource.IfcResourceApprovalRelationship;
+import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcResourceConstraintRelationship;
+import com.buildingsmart.tech.ifc.IfcKernel.IfcPropertySet;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcIdentifier;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcText;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.*;
-import com.buildingsmart.tech.ifc.IfcConstraintResource.*;
-import com.buildingsmart.tech.ifc.IfcApprovalResource.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcComplexProperty;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcSimpleProperty;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcPropertyAbstraction;
+import java.util.Set;
 
 @Guid("911b51d0-e3e7-45db-a881-520360ded638")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,55 +30,57 @@ public abstract class IfcProperty extends IfcPropertyAbstraction
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("cec40e31-025d-4bcc-ae89-09d7916a8ee6")
-	@JacksonXmlProperty(isAttribute=true, localName = "Name")
-	private String name;
+	@JacksonXmlProperty(isAttribute=false, localName = "name")
+	private IfcIdentifier name;
 
 	@Description("Informative text to explain the property.")
 	@DataMember(Order = 1)
 	@Guid("563a5298-c546-435f-98d5-4d192815257f")
-	@JacksonXmlProperty(isAttribute=true, localName = "Description")
-	private String description;
+	@JacksonXmlProperty(isAttribute=false, localName = "description")
+	private IfcText description;
 
 	@Description("Reference to the <em>IfcPropertySet</em> by which the <em>IfcProperty</em> is referenced.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; New inverse attribute to navigate from <em>IfcProperty</em> to <em>IfcPropertySet</em> with upward compatibility for file based exchange.</blockquote>")
-	@InverseProperty(InverseProp = "HasProperties", Range = "IfcPropertySet")
+	@InverseProperty(InverseProp = "hasProperties", Range = "IfcPropertySet")
 	@Guid("79ce08ab-7c92-4db4-9325-4a08c1c70c38")
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcPropertySet")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "PartOfPset")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcPropertySet")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "partOfPset")*/
+	@JsonIgnore
 	private Set<IfcPropertySet> partOfPset;
 
 	@Description("The property on whose value that of another property depends.")
-	@InverseProperty(InverseProp = "DependingProperty", Range = "IfcPropertyDependencyRelationship")
+	@InverseProperty(InverseProp = "dependingProperty", Range = "IfcPropertyDependencyRelationship")
 	@Guid("386eb852-dc2b-4164-963e-1d2791e03caf")
-	@JacksonXmlProperty(isAttribute = false, localName = "IfcPropertyDependencyRelationship")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "PropertyForDependance")
+	/*@JacksonXmlProperty(isAttribute = false, localName = "IfcPropertyDependencyRelationship")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "propertyForDependance")*/
+	@JsonIgnore
 	private Set<IfcPropertyDependencyRelationship> propertyForDependance;
 
 	@Description("The relating property on which the value of the property depends.")
-	@InverseProperty(InverseProp = "DependantProperty", Range = "IfcPropertyDependencyRelationship")
+	@InverseProperty(InverseProp = "dependantProperty", Range = "IfcPropertyDependencyRelationship")
 	@Guid("a26503fc-f130-45bc-90c4-05998f9e5137")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPropertyDependencyRelationship")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "PropertyDependsOn")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "propertyDependsOn")
 	private Set<IfcPropertyDependencyRelationship> propertyDependsOn;
 
 	@Description("Reference to the <em>IfcComplexProperty</em> in which the <em>IfcProperty</em> is contained.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The cardinality has changed to 0..n to allow reuse of instances of <em>IfcProperty</em> in several <em>IfcComplexProperty</em> with upward compatibility for file based exchange.</blockquote>")
-	@InverseProperty(InverseProp = "HasProperties", Range = "IfcComplexProperty")
+	@InverseProperty(InverseProp = "hasProperties", Range = "IfcComplexProperty")
 	@Guid("be34513c-c6e4-4dd1-b6be-63ae5e66413f")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcComplexProperty")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "PartOfComplex")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "partOfComplex")
 	private Set<IfcComplexProperty> partOfComplex;
 
 	@Description("User-defined constraints for the property.")
-	@InverseProperty(InverseProp = "RelatedResourceObjects", Range = "IfcResourceConstraintRelationship")
+	@InverseProperty(InverseProp = "relatedResourceObjects", Range = "IfcResourceConstraintRelationship")
 	@Guid("33bd1930-a3a9-40cd-a3cc-6c31ed80b89f")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcResourceConstraintRelationship")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasConstraints")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "hasConstraints")
 	private Set<IfcResourceConstraintRelationship> hasConstraints;
 
 	@Description("User-defined approvals for the property.")
-	@InverseProperty(InverseProp = "RelatedResourceObjects", Range = "IfcResourceApprovalRelationship")
+	@InverseProperty(InverseProp = "relatedResourceObjects", Range = "IfcResourceApprovalRelationship")
 	@Guid("a25de802-e2fe-47f2-adcd-e56cdc287d21")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcResourceApprovalRelationship")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "HasApprovals")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "hasApprovals")
 	private Set<IfcResourceApprovalRelationship> hasApprovals;
 
 
@@ -96,24 +88,24 @@ public abstract class IfcProperty extends IfcPropertyAbstraction
 	{
 	}
 
-	public IfcProperty(String name)
+	public IfcProperty(IfcIdentifier name)
 	{
 		this.name = name;
 	}
 
-	public String getName() {
+	public IfcIdentifier getName() {
 		return this.name;
 	}
 
-	public void setName(String name) {
+	public void setName(IfcIdentifier name) {
 		this.name = name;
 	}
 
-	public String getDescription() {
+	public IfcText getDescription() {
 		return this.description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(IfcText description) {
 		this.description = description;
 	}
 

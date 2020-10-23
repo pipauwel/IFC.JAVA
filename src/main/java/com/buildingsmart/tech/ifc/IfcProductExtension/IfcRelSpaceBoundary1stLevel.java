@@ -5,30 +5,17 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.InverseProperty;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelSpaceBoundary2ndLevel;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcRelSpaceBoundary;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpaceBoundarySelect;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcElement;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcPhysicalOrVirtualEnum;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcInternalOrExternalEnum;
+import java.util.Set;
 
 @Guid("bae52a64-1034-464e-8c4d-a00aa45bafa0")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -39,14 +26,14 @@ public class IfcRelSpaceBoundary1stLevel extends IfcRelSpaceBoundary
 	@Description("Reference to the host, or parent, space boundary within which this inner boundary is defined.")
 	@DataMember(Order = 0)
 	@Guid("b82c885d-c05b-4881-9c67-820a0aa13e35")
-	@JacksonXmlProperty(isAttribute=false, localName = "ParentBoundary")
+	@JacksonXmlProperty(isAttribute=false, localName = "parentBoundary")
 	private IfcRelSpaceBoundary1stLevel parentBoundary;
 
 	@Description("Reference to the inner boundaries of the space boundary. Inner boundaries are defined by the space boundaries of openings, doors and windows.")
-	@InverseProperty(InverseProp = "ParentBoundary", Range = "IfcRelSpaceBoundary1stLevel")
+	@InverseProperty(InverseProp = "parentBoundary", Range = "IfcRelSpaceBoundary1stLevel")
 	@Guid("17fdcd0c-9332-432d-9933-30d0938105e8")
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcRelSpaceBoundary1stLevel")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "InnerBoundaries")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "innerBoundaries")
 	private Set<IfcRelSpaceBoundary1stLevel> innerBoundaries;
 
 

@@ -5,25 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcInteger;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.List;
 import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.*;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcRecurrenceTypeEnum;
 
 @Guid("258a0af9-321d-4e24-a6cc-be10c825e9f7")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,57 +22,57 @@ public class IfcRecurrencePattern
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("954775d8-cdf6-472f-86bb-c7b6f316a87e")
-	@JacksonXmlProperty(isAttribute=true, localName = "RecurrenceType")
+	@JacksonXmlProperty(isAttribute=true, localName = "recurrenceType")
 	private IfcRecurrenceTypeEnum recurrenceType;
 
 	@Description("The position of the specified day in a month.")
 	@DataMember(Order = 1)
 	@Guid("aa5983f3-4399-47f4-a4de-045d80528e17")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "Integer")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "DayComponent")
-	private Set<Integer> dayComponent;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcDayInMonthNumber")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "dayComponent")
+	private Set<IfcDayInMonthNumber> dayComponent;
 
 	@Description("The weekday name of the specified day in a week.")
 	@DataMember(Order = 2)
 	@Guid("8d1bab19-3977-4b22-84d4-451c88dd0969")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "Integer")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "WeekdayComponent")
-	private Set<Integer> weekdayComponent;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcDayInWeekNumber")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "weekdayComponent")
+	private Set<IfcDayInWeekNumber> weekdayComponent;
 
 	@Description("The position of the specified month in a year.")
 	@DataMember(Order = 3)
 	@Guid("1019c4ef-3322-48ef-a091-41faef01eb7f")
 	@MinLength(1)
-	@JacksonXmlProperty(isAttribute = false, localName = "Integer")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "MonthComponent")
-	private Set<Integer> monthComponent;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcMonthInYearNumber")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "monthComponent")
+	private Set<IfcMonthInYearNumber> monthComponent;
 
 	@Description("The position of the specified component, e.g. the 3rd      (position=3) Tuesday (weekday component) in a month. A      negative position value is used to define the last position       of the component (-1), the next to last position (-2) etc.")
 	@DataMember(Order = 4)
 	@Guid("ae3d57dd-01ef-4c24-a775-224bd6b6563d")
-	@JacksonXmlProperty(isAttribute=true, localName = "Position")
-	private int position;
+	@JacksonXmlProperty(isAttribute=false, localName = "position")
+	private IfcInteger position;
 
 	@Description("An interval can be given according to the pattern type. An      interval value of 2 can for instance every two days, weeks,      months, years. An empty interval value is regarded as 1. The      used interval values should be in a reasonable range, e.g.      not 0 or &lt;0.")
 	@DataMember(Order = 5)
 	@Guid("b3ad6127-b001-400c-868c-465054246938")
-	@JacksonXmlProperty(isAttribute=true, localName = "Interval")
-	private int interval;
+	@JacksonXmlProperty(isAttribute=false, localName = "interval")
+	private IfcInteger interval;
 
 	@Description("Defines the number of occurrences of this pattern, e.g. a weekly       event might be defined to occur 5 times before it stops.")
 	@DataMember(Order = 6)
 	@Guid("16cdd883-9b54-425d-a1f6-28166578e77b")
-	@JacksonXmlProperty(isAttribute=true, localName = "Occurrences")
-	private int occurrences;
+	@JacksonXmlProperty(isAttribute=false, localName = "occurrences")
+	private IfcInteger occurrences;
 
 	@Description("List of time periods that are defined by a start and end time      of the recurring element (day). The order of the list should      reflect the sequence of the time periods.")
 	@DataMember(Order = 7)
 	@Guid("0b43faa7-5e36-4cef-a0e7-e04c4030833f")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcTimePeriod")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "TimePeriods")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "timePeriods")
 	private List<IfcTimePeriod> timePeriods;
 
 
@@ -104,39 +93,39 @@ public class IfcRecurrencePattern
 		this.recurrenceType = recurrenceType;
 	}
 
-	public Set<Integer> getDayComponent() {
+	public Set<IfcDayInMonthNumber> getDayComponent() {
 		return this.dayComponent;
 	}
 
-	public Set<Integer> getWeekdayComponent() {
+	public Set<IfcDayInWeekNumber> getWeekdayComponent() {
 		return this.weekdayComponent;
 	}
 
-	public Set<Integer> getMonthComponent() {
+	public Set<IfcMonthInYearNumber> getMonthComponent() {
 		return this.monthComponent;
 	}
 
-	public int getPosition() {
+	public IfcInteger getPosition() {
 		return this.position;
 	}
 
-	public void setPosition(int position) {
+	public void setPosition(IfcInteger position) {
 		this.position = position;
 	}
 
-	public int getInterval() {
+	public IfcInteger getInterval() {
 		return this.interval;
 	}
 
-	public void setInterval(int interval) {
+	public void setInterval(IfcInteger interval) {
 		this.interval = interval;
 	}
 
-	public int getOccurrences() {
+	public IfcInteger getOccurrences() {
 		return this.occurrences;
 	}
 
-	public void setOccurrences(int occurrences) {
+	public void setOccurrences(IfcInteger occurrences) {
 		this.occurrences = occurrences;
 	}
 

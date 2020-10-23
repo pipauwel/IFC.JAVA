@@ -6,6 +6,8 @@
 package com.buildingsmart.tech.ifc.IfcMaterialResource;
 
 import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLengthMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNonNegativeLengthMeasure;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -18,7 +20,7 @@ public class IfcMaterialLayerWithOffsets extends IfcMaterialLayer
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("87429902-c8f3-4468-9d63-93f270258877")
-	@JacksonXmlProperty(isAttribute=true, localName = "OffsetDirection")
+	@JacksonXmlProperty(isAttribute=true, localName = "offsetDirection")
 	private IfcLayerSetDirectionEnum offsetDirection;
 
 	@Description("The numerical value of layer offset, in the direction of the axis assigned by the attribute <em>OffsetDirection</em>. The <em>OffsetValues[1]</em> identifies the offset from the lower position along the axis direction (normally the start of the standard extrusion), the <em>OffsetValues[2]</em> identifies the offset from the upper position along the axis direction (normally the end of the standard extrusion).")
@@ -27,16 +29,16 @@ public class IfcMaterialLayerWithOffsets extends IfcMaterialLayer
 	@Guid("2461922a-f119-43ed-a1ef-ca1607b59b2b")
 	@MinLength(1)
 	@MaxLength(2)
-	@JacksonXmlProperty(isAttribute = false, localName = "Double")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "OffsetValues")
-	private Double[] offsetValues;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcLengthMeasure")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "offsetValues")
+	private IfcLengthMeasure[] offsetValues;
 
 
 	public IfcMaterialLayerWithOffsets()
 	{
 	}
 
-	public IfcMaterialLayerWithOffsets(double layerThickness, IfcLayerSetDirectionEnum offsetDirection, Double[] offsetValues)
+	public IfcMaterialLayerWithOffsets(IfcNonNegativeLengthMeasure layerThickness, IfcLayerSetDirectionEnum offsetDirection, IfcLengthMeasure[] offsetValues)
 	{
 		super(layerThickness);
 		this.offsetDirection = offsetDirection;
@@ -51,7 +53,7 @@ public class IfcMaterialLayerWithOffsets extends IfcMaterialLayer
 		this.offsetDirection = offsetDirection;
 	}
 
-	public Double[] getOffsetValues() {
+	public IfcLengthMeasure[] getOffsetValues() {
 		return this.offsetValues;
 	}
 

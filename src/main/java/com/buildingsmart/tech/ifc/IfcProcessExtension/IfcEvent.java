@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcProcessExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcDateTimeResource.IfcEventTime;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProcessExtension.*;
-import com.buildingsmart.tech.ifc.IfcDateTimeResource.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcProcess;
 
 @Guid("2d5e432b-e7f0-4c0d-8a56-abea523cfc61")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,25 +19,25 @@ public class IfcEvent extends com.buildingsmart.tech.ifc.IfcKernel.IfcProcess
 	@Description("Identifies the predefined types of an event from which       the type required may be set.")
 	@DataMember(Order = 0)
 	@Guid("d38ae629-7960-4a14-beb5-e6d1a11097d4")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcEventTypeEnum predefinedType;
 
 	@Description("Identifies the predefined types of event trigger from which       the type required may be set.")
 	@DataMember(Order = 1)
 	@Guid("a6bffe9c-b7a3-46d8-a8a9-f5a4e77906dc")
-	@JacksonXmlProperty(isAttribute=true, localName = "EventTriggerType")
+	@JacksonXmlProperty(isAttribute=true, localName = "eventTriggerType")
 	private IfcEventTriggerTypeEnum eventTriggerType;
 
 	@Description("A user defined event trigger type, the value of which is       asserted when the value of an event trigger type is declared       as USERDEFINED.")
 	@DataMember(Order = 2)
 	@Guid("d670c1b3-96ee-4dbc-af96-eb6097871532")
-	@JacksonXmlProperty(isAttribute=true, localName = "UserDefinedEventTriggerType")
+	@JacksonXmlProperty(isAttribute=true, localName = "userDefinedEventTriggerType")
 	private String userDefinedEventTriggerType;
 
 	@Description("The date and/or time at which an event occurs.")
 	@DataMember(Order = 3)
 	@Guid("ba8ea655-c837-44ec-b7ce-e7e45f796e64")
-	@JacksonXmlProperty(isAttribute=false, localName = "EventOccurenceTime")
+	@JacksonXmlProperty(isAttribute=false, localName = "eventOccurenceTime")
 	private IfcEventTime eventOccurenceTime;
 
 

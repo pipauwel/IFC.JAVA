@@ -5,28 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcSharedBldgElements;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelConnects;
 import com.buildingsmart.tech.ifc.IfcProductExtension.IfcSpace;
-import com.buildingsmart.tech.ifc.IfcSharedBldgElements.IfcCovering;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("d7038275-a6b7-4293-86c1-f69337a29534")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,7 +23,7 @@ public class IfcRelCoversSpaces extends com.buildingsmart.tech.ifc.IfcKernel.Ifc
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("934695b7-b499-4d39-a698-18b232840eaf")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingSpace")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatingSpace")
 	private IfcSpace relatingSpace;
 
 	@Description("Relationship to the set of coverings covering that cover surfaces of this space.")
@@ -45,7 +32,7 @@ public class IfcRelCoversSpaces extends com.buildingsmart.tech.ifc.IfcKernel.Ifc
 	@Guid("18964ad6-f7f4-49e7-b15b-0b72b0b504e5")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcCovering")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedCoverings")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedCoverings")
 	private Set<IfcCovering> relatedCoverings;
 
 

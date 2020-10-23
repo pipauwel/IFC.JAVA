@@ -5,26 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcPropertyResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcText;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
-import com.buildingsmart.tech.ifc.IfcPropertyResource.IfcProperty;
 
 @Guid("0b79cf26-1901-47e3-beed-cf836b1c598d")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,21 +21,21 @@ public class IfcPropertyDependencyRelationship extends com.buildingsmart.tech.if
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("2bc09409-74fc-4627-963e-994929eb02e2")
-	@JacksonXmlProperty(isAttribute=false, localName = "DependingProperty")
+	@JacksonXmlProperty(isAttribute=false, localName = "dependingProperty")
 	private IfcProperty dependingProperty;
 
 	@Description("The dependant property.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("48c40222-f9f1-4e9a-a75d-645311ee5a5b")
-	@JacksonXmlProperty(isAttribute=false, localName = "DependantProperty")
+	@JacksonXmlProperty(isAttribute=false, localName = "dependantProperty")
 	private IfcProperty dependantProperty;
 
 	@Description("Expression that further describes the nature of the dependency relation.")
 	@DataMember(Order = 2)
 	@Guid("20552976-18c7-4fee-9e72-58d112b61432")
-	@JacksonXmlProperty(isAttribute=true, localName = "Expression")
-	private String expression;
+	@JacksonXmlProperty(isAttribute=false, localName = "expression")
+	private IfcText expression;
 
 
 	public IfcPropertyDependencyRelationship()
@@ -77,11 +64,11 @@ public class IfcPropertyDependencyRelationship extends com.buildingsmart.tech.if
 		this.dependantProperty = dependantProperty;
 	}
 
-	public String getExpression() {
+	public IfcText getExpression() {
 		return this.expression;
 	}
 
-	public void setExpression(String expression) {
+	public void setExpression(IfcText expression) {
 		this.expression = expression;
 	}
 

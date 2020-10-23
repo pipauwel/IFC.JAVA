@@ -5,27 +5,14 @@
 
 package com.buildingsmart.tech.ifc.IfcProductExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.InverseProperty;
+import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcVoidingFeature;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcOpeningElement;
-import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.IfcVoidingFeature;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElement;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Guid("c881faa0-78d9-40af-a83e-a4924a575869")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,9 +21,9 @@ import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElement;
 public abstract class IfcFeatureElementSubtraction extends IfcFeatureElement
 {
 	@Description("Reference to the Voids Relationship that uses this Opening Element to create a void within an Element. The Opening Element can only be used to create a single void within a single Element.")
-	@InverseProperty(InverseProp = "RelatedOpeningElement", Range = "IfcRelVoidsElement")
+	@InverseProperty(InverseProp = "relatedOpeningElement", Range = "IfcRelVoidsElement")
 	@Guid("094eb37f-0822-4b0d-9fcc-e87be21592b4")
-	@JacksonXmlProperty(isAttribute=false, localName = "VoidsElements")
+	/*@JacksonXmlProperty(isAttribute=false, localName = "voidsElements")*/
 	@JsonIgnore
 	private IfcRelVoidsElement voidsElements;
 

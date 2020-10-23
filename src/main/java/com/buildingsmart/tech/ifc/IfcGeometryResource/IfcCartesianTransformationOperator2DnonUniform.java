@@ -5,25 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcReal;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianTransformationOperator2D;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
 
 @Guid("f45b9882-e0fb-41eb-9b0a-805615a37351")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,8 +20,8 @@ public class IfcCartesianTransformationOperator2DnonUniform extends IfcCartesian
 	@Description("The scaling value specified for the transformation along the axis 2. This is normally the y scale factor.")
 	@DataMember(Order = 0)
 	@Guid("b428bab1-b9bc-4f46-abce-c63c47f01e4c")
-	@JacksonXmlProperty(isAttribute=true, localName = "Scale2")
-	private double scale2;
+	@JacksonXmlProperty(isAttribute=false, localName = "scale2")
+	private IfcReal scale2;
 
 
 	public IfcCartesianTransformationOperator2DnonUniform()
@@ -45,16 +33,21 @@ public class IfcCartesianTransformationOperator2DnonUniform extends IfcCartesian
 		super(localOrigin);
 	}
 
-	public double getScale2() {
+	public IfcReal getScale2() {
 		return this.scale2;
 	}
 
-	public void setScale2(double scale2) {
+	public void setScale2(IfcReal scale2) {
 		this.scale2 = scale2;
 	}
 
-	public double getScl2() {
-		return 0.0;
+	@JsonIgnore
+	public IfcReal getScl2() {
+		//Scl2 :=NVL(Scale2, SELF\IfcCartesianTransformationOperator.Scl)
+		if(scale2 != null)
+			return scale2;
+		else
+			return this.getScl();
 	}
 
 

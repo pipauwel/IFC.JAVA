@@ -5,25 +5,13 @@
 
 package com.buildingsmart.tech.ifc.IfcControlExtension;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcControlExtension.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcControl;
 
 @Guid("e8ca45f2-cf0b-4a93-84ca-ea3c10c7b27e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -33,13 +21,13 @@ public class IfcPerformanceHistory extends com.buildingsmart.tech.ifc.IfcKernel.
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("36401673-0cb0-4b02-8a3e-b30192a03438")
-	@JacksonXmlProperty(isAttribute=true, localName = "LifeCyclePhase")
-	private String lifeCyclePhase;
+	@JacksonXmlProperty(isAttribute=false, localName = "lifeCyclePhase")
+	private IfcLabel lifeCyclePhase;
 
 	@Description("Predefined generic type for a performace history that is specified in an enumeration.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE  The attribute has been added at the end of the entity definition.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("a19e5d1f-1c30-4199-b7a2-958bf89b7871")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcPerformanceHistoryTypeEnum predefinedType;
 
 
@@ -47,17 +35,17 @@ public class IfcPerformanceHistory extends com.buildingsmart.tech.ifc.IfcKernel.
 	{
 	}
 
-	public IfcPerformanceHistory(String globalId, String lifeCyclePhase)
+	public IfcPerformanceHistory(String globalId, IfcLabel lifeCyclePhase)
 	{
 		super(globalId);
 		this.lifeCyclePhase = lifeCyclePhase;
 	}
 
-	public String getLifeCyclePhase() {
+	public IfcLabel getLifeCyclePhase() {
 		return this.lifeCyclePhase;
 	}
 
-	public void setLifeCyclePhase(String lifeCyclePhase) {
+	public void setLifeCyclePhase(IfcLabel lifeCyclePhase) {
 		this.lifeCyclePhase = lifeCyclePhase;
 	}
 

@@ -5,25 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcDateTimeResource;
 
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.*;
-import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcValue;
 
 @Guid("44ca119b-b80f-48db-834e-51a7ccb0213b")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,7 +25,7 @@ public class IfcTimeSeriesValue
 	@Guid("05b6422d-b373-4182-83c9-0abf54079150")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcValue")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "ListValues")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "listValues")
 	private List<IfcValue> listValues;
 
 

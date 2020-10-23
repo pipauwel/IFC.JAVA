@@ -5,29 +5,20 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcInteger;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLogical;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcParameterValue;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcRationalBSplineSurfaceWithKnots;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineSurface;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcBSplineSurfaceForm;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcKnotType;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("8af578ab-a0d2-4d1e-b725-2f0d1ac24326")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -40,42 +31,42 @@ public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 	@Required()
 	@Guid("01cd7da3-0cd3-4aa6-9515-d7e7c7fd48e6")
 	@MinLength(2)
-	@JacksonXmlProperty(isAttribute = false, localName = "Integer")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "UMultiplicities")
-	private List<Integer> uMultiplicities;
+	@JacksonXmlProperty(isAttribute = false, localName = "uMultiplicity")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "uMultiplicities")
+	private List<IfcInteger> uMultiplicities;
 
 	@Description("The multiplicities of the knots in the <em>v</em> parameter direction.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("3afd3d0c-ad44-4c85-a9c9-4c1fafcca678")
 	@MinLength(2)
-	@JacksonXmlProperty(isAttribute = false, localName = "Integer")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "VMultiplicities")
-	private List<Integer> vMultiplicities;
+	@JacksonXmlProperty(isAttribute = false, localName = "vMultiplicity")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "vMultiplicities")
+	private List<IfcInteger> vMultiplicities;
 
 	@Description("The list of the distinct knots in the <em>u</em> parameter direction.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("20273f36-c1b4-45cd-a634-aaa034672ba4")
 	@MinLength(2)
-	@JacksonXmlProperty(isAttribute = false, localName = "Double")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "UKnots")
-	private List<Double> uKnots;
+	@JacksonXmlProperty(isAttribute = false, localName = "uKnot")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "uKnots")
+	private List<IfcParameterValue> uKnots;
 
 	@Description("The list of the distinct knots in the <em>v</em> parameter direction.")
 	@DataMember(Order = 3)
 	@Required()
 	@Guid("e5db2f6b-1239-462e-bf03-f805a9a9bf3c")
 	@MinLength(2)
-	@JacksonXmlProperty(isAttribute = false, localName = "Double")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "VKnots")
-	private List<Double> vKnots;
+	@JacksonXmlProperty(isAttribute = false, localName = "vKnot")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "vKnots")
+	private List<IfcParameterValue> vKnots;
 
 	@Description("The description of the knot type.")
 	@DataMember(Order = 4)
 	@Required()
 	@Guid("7b53cb7b-e60a-46de-9e6f-eecd7fc5c858")
-	@JacksonXmlProperty(isAttribute=true, localName = "KnotSpec")
+	@JacksonXmlProperty(isAttribute=true, localName = "knotSpec")
 	private IfcKnotType knotSpec;
 
 
@@ -83,7 +74,7 @@ public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 	{
 	}
 
-	public IfcBSplineSurfaceWithKnots(int uDegree, int vDegree, IfcCartesianPoint[] controlPointsList, IfcBSplineSurfaceForm surfaceForm, Boolean uClosed, Boolean vClosed, Boolean selfIntersect, Integer[] uMultiplicities, Integer[] vMultiplicities, Double[] uKnots, Double[] vKnots, IfcKnotType knotSpec)
+	public IfcBSplineSurfaceWithKnots(IfcInteger uDegree, IfcInteger vDegree, List<List<IfcCartesianPoint>> controlPointsList, IfcBSplineSurfaceForm surfaceForm, IfcLogical uClosed, IfcLogical vClosed, IfcLogical selfIntersect, IfcInteger[] uMultiplicities, IfcInteger[] vMultiplicities, IfcParameterValue[] uKnots, IfcParameterValue[] vKnots, IfcKnotType knotSpec)
 	{
 		super(uDegree, vDegree, controlPointsList, surfaceForm, uClosed, vClosed, selfIntersect);
 		this.uMultiplicities = new ArrayList<>(Arrays.asList(uMultiplicities));
@@ -93,19 +84,19 @@ public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 		this.knotSpec = knotSpec;
 	}
 
-	public List<Integer> getUMultiplicities() {
+	public List<IfcInteger> getUMultiplicities() {
 		return this.uMultiplicities;
 	}
 
-	public List<Integer> getVMultiplicities() {
+	public List<IfcInteger> getVMultiplicities() {
 		return this.vMultiplicities;
 	}
 
-	public List<Double> getUKnots() {
+	public List<IfcParameterValue> getUKnots() {
 		return this.uKnots;
 	}
 
-	public List<Double> getVKnots() {
+	public List<IfcParameterValue> getVKnots() {
 		return this.vKnots;
 	}
 
@@ -117,12 +108,18 @@ public class IfcBSplineSurfaceWithKnots extends IfcBSplineSurface
 		this.knotSpec = knotSpec;
 	}
 
+	@JsonIgnore
 	public int getKnotVUpper() {
-		return 0;
+		//KnotVUpper
+		//:=SIZEOF(VKnots)
+		return vKnots.size();
 	}
 
+	@JsonIgnore
 	public int getKnotUUpper() {
-		return 0;
+		//KnotUUpper
+		//:=SIZEOF(UKnots)
+		return uKnots.size();
 	}
 
 

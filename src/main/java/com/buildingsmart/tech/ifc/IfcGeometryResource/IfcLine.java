@@ -5,27 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCartesianPoint;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcVector;
 
 @Guid("28220f1d-2ef9-48f4-9aa6-198f7af996d8")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -35,14 +20,14 @@ public class IfcLine extends IfcCurve
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("efe6be19-11b9-4b75-9821-ae20d1d465ad")
-	@JacksonXmlProperty(isAttribute=false, localName = "Pnt")
+	@JacksonXmlProperty(isAttribute=false, localName = "pnt")
 	private IfcCartesianPoint pnt;
 
 	@Description("The direction of the <em>IfcLine</em>, the magnitude and units of <em>Dir</em> affect the parameterization of the line.")
 	@DataMember(Order = 1)
 	@Required()
 	@Guid("da76faa5-1c45-41b8-80ce-79d00d362cd1")
-	@JacksonXmlProperty(isAttribute=false, localName = "Dir")
+	@JacksonXmlProperty(isAttribute=false, localName = "dir")
 	private IfcVector dir;
 
 

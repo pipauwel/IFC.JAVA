@@ -5,28 +5,15 @@
 
 package com.buildingsmart.tech.ifc.IfcConstraintResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcConstraintResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.*;
-import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceLevelRelationship;
-import com.buildingsmart.tech.ifc.IfcConstraintResource.IfcConstraint;
 import com.buildingsmart.tech.ifc.IfcExternalReferenceResource.IfcResourceObjectSelect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("a14f1e2c-6b41-4740-8797-3a51d8f35cc5")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -36,7 +23,7 @@ public class IfcResourceConstraintRelationship extends com.buildingsmart.tech.if
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("e196ff69-9601-4f75-a1bf-5c093b548895")
-	@JacksonXmlProperty(isAttribute=false, localName = "RelatingConstraint")
+	@JacksonXmlProperty(isAttribute=false, localName = "relatingConstraint")
 	private IfcConstraint relatingConstraint;
 
 	@Description("The properties to which a constraint is to be related.")
@@ -45,7 +32,7 @@ public class IfcResourceConstraintRelationship extends com.buildingsmart.tech.if
 	@Guid("8f528729-9ae0-43e9-9cdc-6f2923e574f4")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcResourceObjectSelect")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedResourceObjects")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedResourceObjects")
 	private Set<IfcResourceObjectSelect> relatedResourceObjects;
 
 

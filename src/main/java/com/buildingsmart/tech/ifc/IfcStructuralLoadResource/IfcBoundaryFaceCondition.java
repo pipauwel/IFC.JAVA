@@ -5,25 +5,11 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralLoadResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.*;
-import com.buildingsmart.tech.ifc.IfcStructuralLoadResource.IfcBoundaryCondition;
 
 @Guid("fa24f0f1-91ba-46b3-a264-4ec1679a4bce")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,19 +18,19 @@ public class IfcBoundaryFaceCondition extends IfcBoundaryCondition
 	@Description("Translational stiffness value in x-direction of the coordinate system defined by the instance which uses this resource object.")
 	@DataMember(Order = 0)
 	@Guid("b7942964-9b3c-4b44-8aae-8d04af7422d0")
-	@JacksonXmlProperty(isAttribute=true, localName = "TranslationalStiffnessByAreaX")
+	@JacksonXmlProperty(isAttribute=true, localName = "translationalStiffnessByAreaX")
 	private IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaX;
 
 	@Description("Translational stiffness value in y-direction of the coordinate system defined by the instance which uses this resource object.")
 	@DataMember(Order = 1)
 	@Guid("3a0404bd-fe3b-4cc4-af92-314dbf0e7499")
-	@JacksonXmlProperty(isAttribute=true, localName = "TranslationalStiffnessByAreaY")
+	@JacksonXmlProperty(isAttribute=true, localName = "translationalStiffnessByAreaY")
 	private IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaY;
 
 	@Description("Translational stiffness value in z-direction of the coordinate system defined by the instance which uses this resource object.")
 	@DataMember(Order = 2)
 	@Guid("d13259d4-20ba-49b3-a4fa-a2d7071ac628")
-	@JacksonXmlProperty(isAttribute=true, localName = "TranslationalStiffnessByAreaZ")
+	@JacksonXmlProperty(isAttribute=true, localName = "translationalStiffnessByAreaZ")
 	private IfcModulusOfSubgradeReactionSelect translationalStiffnessByAreaZ;
 
 

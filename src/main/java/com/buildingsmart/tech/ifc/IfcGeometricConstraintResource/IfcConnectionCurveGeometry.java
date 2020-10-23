@@ -5,26 +5,12 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometricConstraintResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
+import com.buildingsmart.tech.annotations.Required;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcConnectionGeometry;
-import com.buildingsmart.tech.ifc.IfcGeometricConstraintResource.IfcCurveOrEdgeCurve;
 
 @Guid("6198c9e5-dc6e-47b1-8fe3-b9ea5bef370e")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,13 +20,13 @@ public class IfcConnectionCurveGeometry extends IfcConnectionGeometry
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("ea514121-8087-41a4-8660-224ebe01e3d3")
-	@JacksonXmlProperty(isAttribute=true, localName = "CurveOnRelatingElement")
+	@JacksonXmlProperty(isAttribute=true, localName = "curveOnRelatingElement")
 	private IfcCurveOrEdgeCurve curveOnRelatingElement;
 
 	@Description("The bounded curve at which the connected objects are aligned at the related element, given in the LCS of the related element. If the information is omitted, then the origin of the related element is used.")
 	@DataMember(Order = 1)
 	@Guid("98d94c3d-f003-4ea8-a3af-6435e36cf282")
-	@JacksonXmlProperty(isAttribute=true, localName = "CurveOnRelatedElement")
+	@JacksonXmlProperty(isAttribute=true, localName = "curveOnRelatedElement")
 	private IfcCurveOrEdgeCurve curveOnRelatedElement;
 
 

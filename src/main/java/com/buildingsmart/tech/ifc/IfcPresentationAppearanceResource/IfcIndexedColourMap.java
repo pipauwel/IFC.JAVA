@@ -7,6 +7,9 @@ package com.buildingsmart.tech.ifc.IfcPresentationAppearanceResource;
 
 import com.buildingsmart.tech.annotations.*;
 import com.buildingsmart.tech.ifc.IfcGeometricModelResource.IfcTessellatedFaceSet;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcNormalisedRatioMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveInteger;
+import com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
@@ -18,7 +21,7 @@ import java.util.List;
 
 @Guid("72a45e5a-521d-4b77-ba81-0938e73dffff")
 @JsonIgnoreProperties(ignoreUnknown=true)
-public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentationDefinitionResource.IfcPresentationItem
+public class IfcIndexedColourMap extends IfcPresentationItem
 {
 	@Description("Reference to the <em>IfcTessellatedFaceSet</em> to which it applies the colours and alpha channel.")
 	@DataMember(Order = 0)
@@ -30,14 +33,14 @@ public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentat
 	@Description("The the opacity value, that applies equaly to all faces of the tessellated face set. 1.0 means opaque, and 0.0 completely transparent. If not provided, 1.0 is assumed (all colours are opque).    <blockquote class=\"note\">NOTE&nbsp; The definition of the alpha channel component for opacity follows the new definitions in image processing, where 0.0 means full transparency and 1.0 (or 2<sup>bit depths</sup> -1) means fully opaque. This is contrary to the definition of transparency in <i>IfcSurfaceStyleShading</i>.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("95d4d17c-ac0b-4a8d-9c90-545c63064df1")
-	@JacksonXmlProperty(isAttribute=false, localName = "Opacity")
-	private double opacity; //IfcNormalisedRatioMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "opacity")
+	private IfcNormalisedRatioMeasure opacity;
 
 	@Description("Indexable list of lists of quadruples, representing RGB colours.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("9098328d-ff84-4d4a-a892-224c18ad3d85")
-	@JacksonXmlProperty(isAttribute=false, localName = "Colours")
+	@JacksonXmlProperty(isAttribute=false, localName = "colours")
 	private IfcColourRgbList colours;
 
 	@Description("Index into the <em>IfcColourRgbList</em> for each face of the <em>IfcTriangulatedFaceSet</em>. The colour is applied uniformly to the indexed face.")
@@ -46,15 +49,15 @@ public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentat
 	@Guid("f4863512-f7e4-43f8-8add-5f016ad7c46d")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPositiveInteger")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "ColourIndex")
-	private List<Double> colourIndex; //IfcPositiveInteger
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "colourIndex")
+	private List<IfcPositiveInteger> colourIndex;
 
 
 	public IfcIndexedColourMap()
 	{
 	}
 
-	public IfcIndexedColourMap(IfcTessellatedFaceSet mappedTo, IfcColourRgbList colours, Double[] colourIndex)
+	public IfcIndexedColourMap(IfcTessellatedFaceSet mappedTo, IfcColourRgbList colours, IfcPositiveInteger[] colourIndex)
 	{
 		this.mappedTo = mappedTo;
 		this.colours = colours;
@@ -69,11 +72,11 @@ public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentat
 		this.mappedTo = mappedTo;
 	}
 
-	public double getOpacity() {
+	public IfcNormalisedRatioMeasure getOpacity() {
 		return this.opacity;
 	}
 
-	public void setOpacity(double opacity) {
+	public void setOpacity(IfcNormalisedRatioMeasure opacity) {
 		this.opacity = opacity;
 	}
 
@@ -85,7 +88,7 @@ public class IfcIndexedColourMap extends com.buildingsmart.tech.ifc.IfcPresentat
 		this.colours = colours;
 	}
 
-	public List<Double> getColourIndex() {
+	public List<IfcPositiveInteger> getColourIndex() {
 		return this.colourIndex;
 	}
 

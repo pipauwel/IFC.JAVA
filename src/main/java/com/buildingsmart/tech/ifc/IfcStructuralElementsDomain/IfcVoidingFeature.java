@@ -5,25 +5,11 @@
 
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.buildingsmart.tech.annotations.DataMember;
+import com.buildingsmart.tech.annotations.Description;
+import com.buildingsmart.tech.annotations.Guid;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcStructuralElementsDomain.*;
-import com.buildingsmart.tech.ifc.IfcProductExtension.IfcFeatureElementSubtraction;
 
 @Guid("76ade710-1f8c-4677-9f36-a21e6d4c7476")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -32,7 +18,7 @@ public class IfcVoidingFeature extends com.buildingsmart.tech.ifc.IfcProductExte
 	@Description("Qualifies the feature regarding its shape and configuration relative to the voided element.")
 	@DataMember(Order = 0)
 	@Guid("fff2ddf2-413b-4847-8afd-9e3ed847b801")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcVoidingFeatureTypeEnum predefinedType;
 
 

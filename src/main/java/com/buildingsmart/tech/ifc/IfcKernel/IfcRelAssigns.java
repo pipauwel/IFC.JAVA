@@ -5,32 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcKernel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-
 import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcKernel.*;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToActor;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToControl;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToGroup;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToProcess;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToProduct;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelAssignsToResource;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcRelationship;
-import com.buildingsmart.tech.ifc.IfcKernel.IfcObjectDefinition;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @Guid("458cc135-db13-40d6-ab1b-64ba222632fe")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -44,13 +28,13 @@ public abstract class IfcRelAssigns extends IfcRelationship
 	@Guid("15095ee6-ca54-435a-ada1-6296bedeafc5")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcObjectDefinition")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "RelatedObjects")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "relatedObjects")
 	private Set<IfcObjectDefinition> relatedObjects;
 
 	@Description("Particular type of the assignment relationship. It can constrain the applicable object types, used within the role of <em>RelatedObjects</em>.  <blockquote class=\"change-ifc2x4\">IFC4 CHANGE&nbsp; The attribute is deprecated and shall no longer be used. A NIL value should always be assigned.</blockquote>")
 	@DataMember(Order = 1)
 	@Guid("7dd9a03b-e83d-4bde-a7cc-99502633620b")
-	@JacksonXmlProperty(isAttribute=true, localName = "RelatedObjectsType")
+	@JacksonXmlProperty(isAttribute=true, localName = "relatedObjectsType")
 	private IfcObjectTypeEnum relatedObjectsType;
 
 

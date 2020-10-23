@@ -6,6 +6,9 @@
 package com.buildingsmart.tech.ifc.IfcStructuralElementsDomain;
 
 import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcAreaMeasure;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcLabel;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcPositiveLengthMeasure;
 import com.buildingsmart.tech.ifc.IfcProfileResource.IfcReinforcingBarSurfaceEnum;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
@@ -21,45 +24,45 @@ public class IfcReinforcingBarType extends IfcReinforcingElementType
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("fca03e97-8ce9-4f5c-85ff-3dcf0977e521")
-	@JacksonXmlProperty(isAttribute=true, localName = "PredefinedType")
+	@JacksonXmlProperty(isAttribute=true, localName = "predefinedType")
 	private IfcReinforcingBarTypeEnum predefinedType;
 
 	@Description("The nominal diameter defining the cross-section size of the reinforcing bar.")
 	@DataMember(Order = 1)
 	@Guid("fde37eb2-b137-41aa-aed4-6316a725c799")
-	@JacksonXmlProperty(isAttribute=false, localName = "NominalDiameter")
-	private double nominalDiameter; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "nominalDiameter")
+	private IfcPositiveLengthMeasure nominalDiameter;
 
 	@Description("The effective cross-section area of the reinforcing bar.")
 	@DataMember(Order = 2)
 	@Guid("a1374397-c2d5-4f1f-8287-b2798ba3bdc9")
-	@JacksonXmlProperty(isAttribute=true, localName = "CrossSectionArea")
-	private double crossSectionArea;
+	@JacksonXmlProperty(isAttribute=false, localName = "crossSectionArea")
+	private IfcAreaMeasure crossSectionArea;
 
 	@Description("The total length of the reinforcing bar. The total length of bended bars are calculated according to local standards with corrections for the bends.")
 	@DataMember(Order = 3)
 	@Guid("daef2cc9-4032-40d9-96be-0106c845b10a")
-	@JacksonXmlProperty(isAttribute=false, localName = "BarLength")
-	private double barLength; //IfcPositiveLengthMeasure
+	@JacksonXmlProperty(isAttribute=false, localName = "barLength")
+	private IfcPositiveLengthMeasure barLength;
 
 	@Description("Indicator for whether the bar surface is plain or textured.")
 	@DataMember(Order = 4)
 	@Guid("523a6afb-4ec8-49fc-abf0-e285918fcb00")
-	@JacksonXmlProperty(isAttribute=true, localName = "BarSurface")
+	@JacksonXmlProperty(isAttribute=true, localName = "barSurface")
 	private IfcReinforcingBarSurfaceEnum barSurface;
 
 	@Description("Shape code per a standard like ACI 315, ISO 3766, or a similar standard.  It is presumed that a single standard for defining the bar bending is used throughout the project and that this standard is referenced from the <em>IfcProject</em> object through the <em>IfcDocumentReference</em> mechanism.")
 	@DataMember(Order = 5)
 	@Guid("0aba5d11-f542-4204-a111-a75ec36c13b0")
-	@JacksonXmlProperty(isAttribute=true, localName = "BendingShapeCode")
-	private String bendingShapeCode;
+	@JacksonXmlProperty(isAttribute=false, localName = "bendingShapeCode")
+	private IfcLabel bendingShapeCode;
 
 	@Description("Bending shape parameters.  Their meaning is defined by the bending shape code and the respective standard.")
 	@DataMember(Order = 6)
 	@Guid("2c1e05e0-9fb3-4478-90b7-8119e40734f3")
 	@MinLength(1)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcBendingParameterSelect")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "BendingParameters")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "bendingParameters")
 	private List<IfcBendingParameterSelect> bendingParameters;
 
 
@@ -81,27 +84,27 @@ public class IfcReinforcingBarType extends IfcReinforcingElementType
 		this.predefinedType = predefinedType;
 	}
 
-	public double getNominalDiameter() {
+	public IfcPositiveLengthMeasure getNominalDiameter() {
 		return this.nominalDiameter;
 	}
 
-	public void setNominalDiameter(double nominalDiameter) {
+	public void setNominalDiameter(IfcPositiveLengthMeasure nominalDiameter) {
 		this.nominalDiameter = nominalDiameter;
 	}
 
-	public double getCrossSectionArea() {
+	public IfcAreaMeasure getCrossSectionArea() {
 		return this.crossSectionArea;
 	}
 
-	public void setCrossSectionArea(double crossSectionArea) {
+	public void setCrossSectionArea(IfcAreaMeasure crossSectionArea) {
 		this.crossSectionArea = crossSectionArea;
 	}
 
-	public double getBarLength() {
+	public IfcPositiveLengthMeasure getBarLength() {
 		return this.barLength;
 	}
 
-	public void setBarLength(double barLength) {
+	public void setBarLength(IfcPositiveLengthMeasure barLength) {
 		this.barLength = barLength;
 	}
 
@@ -113,11 +116,11 @@ public class IfcReinforcingBarType extends IfcReinforcingElementType
 		this.barSurface = barSurface;
 	}
 
-	public String getBendingShapeCode() {
+	public IfcLabel getBendingShapeCode() {
 		return this.bendingShapeCode;
 	}
 
-	public void setBendingShapeCode(String bendingShapeCode) {
+	public void setBendingShapeCode(IfcLabel bendingShapeCode) {
 		this.bendingShapeCode = bendingShapeCode;
 	}
 

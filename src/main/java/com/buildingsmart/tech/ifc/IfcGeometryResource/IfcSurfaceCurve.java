@@ -5,29 +5,18 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcIntersectionCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcSeamCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcCurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPcurve;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcPreferredSurfaceCurveRepresentation;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 @Guid("2a55825b-2385-4b12-bba1-1672cb441a35")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -39,7 +28,7 @@ public class IfcSurfaceCurve extends IfcCurve implements IfcCurveOnSurface
 	@DataMember(Order = 0)
 	@Required()
 	@Guid("8094bc56-8107-47d2-9c32-8c2105aba5ae")
-	@JacksonXmlProperty(isAttribute=false, localName = "Curve3D")
+	@JacksonXmlProperty(isAttribute=false, localName = "curve3D")
 	private IfcCurve curve3D;
 
 	@Description("A list of one or two pcurves which define the surface or surfaces associated with the surface curve. Two elements in this list indicate that the curve has two surface associations which need not be two distinct surfaces. Being a pcurve, it also associates a basis curve in the parameter space of this surface as an alternative representation of the surface curve.")
@@ -49,14 +38,14 @@ public class IfcSurfaceCurve extends IfcCurve implements IfcCurveOnSurface
 	@MinLength(1)
 	@MaxLength(2)
 	@JacksonXmlProperty(isAttribute = false, localName = "IfcPcurve")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "AssociatedGeometry")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "associatedGeometry")
 	private List<IfcPcurve> associatedGeometry;
 
 	@Description("The <em<MasterRepresentation</em> defines the curve used to determine the unique parametrisation of the <em>IfcSurfaceCurve</em>.<br>   The master_representation takes one of the values <em>Curve3D</em>, <em>PCurve_S1</em> or <em>PCurve_S2</em> to indicate a preference for the 3D curve, or the first or second pcurve, in the associated geometry list, respectively. Multiple representations provide the ability to communicate data in more than one form, even though the data is expected to be geometrically identical.<br><br>  NOTE&nbsp; The master representation attribute acknowledges the impracticality of ensuring that multiple forms are indeed identical and allows the indication of a preferred form. This would probably be determined by the creator of the data. All characteristics, such as parametrisation, domain, and results of evaluation, for an entity having multiple representations, are derived from the master representation. Any use of the other representations is a compromise for practical considerations.")
 	@DataMember(Order = 2)
 	@Required()
 	@Guid("edc24e91-75ef-46cc-837b-e293ee7439bc")
-	@JacksonXmlProperty(isAttribute=true, localName = "MasterRepresentation")
+	@JacksonXmlProperty(isAttribute=true, localName = "masterRepresentation")
 	private IfcPreferredSurfaceCurveRepresentation masterRepresentation;
 
 
@@ -91,7 +80,10 @@ public class IfcSurfaceCurve extends IfcCurve implements IfcCurveOnSurface
 		this.masterRepresentation = masterRepresentation;
 	}
 
+	@JsonIgnore
 	public Set<IfcSurface> getBasisSurface() {
+		//TODO
+		//	BasisSurface:=IfcGetBasisSurface(SELF)
 		return null;
 	}
 

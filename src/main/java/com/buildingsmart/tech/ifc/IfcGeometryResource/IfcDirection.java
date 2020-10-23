@@ -5,24 +5,16 @@
 
 package com.buildingsmart.tech.ifc.IfcGeometryResource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
+import com.buildingsmart.tech.annotations.*;
+import com.buildingsmart.tech.ifc.IfcMeasureResource.IfcReal;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
-import com.buildingsmart.tech.annotations.*;
-import com.buildingsmart.tech.ifc.IfcGeometryResource.IfcGeometricRepresentationItem;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Guid("c9a6fe1f-b072-45ab-ba40-8c1f8c01e132")
 @JsonIgnoreProperties(ignoreUnknown=true)
@@ -34,26 +26,27 @@ public class IfcDirection extends IfcGeometricRepresentationItem implements com.
 	@Guid("c10df008-c6c7-4ceb-8a7b-e5696975a354")
 	@MinLength(2)
 	@MaxLength(3)
-	@JacksonXmlProperty(isAttribute = false, localName = "Double")
-	@JacksonXmlElementWrapper(useWrapping = true, localName = "DirectionRatios")
-	private List<Double> directionRatios;
+	@JacksonXmlProperty(isAttribute = false, localName = "IfcReal")
+	@JacksonXmlElementWrapper(useWrapping = true, localName = "directionRatios")
+	private List<IfcReal> directionRatios;
 
 
 	public IfcDirection()
 	{
 	}
 
-	public IfcDirection(Double[] directionRatios)
+	public IfcDirection(IfcReal[] directionRatios)
 	{
 		this.directionRatios = new ArrayList<>(Arrays.asList(directionRatios));
 	}
 
-	public List<Double> getDirectionRatios() {
+	public List<IfcReal> getDirectionRatios() {
 		return this.directionRatios;
 	}
 
+	@JsonIgnore
 	public int getDim() {
-		return 0;
+		return directionRatios.size();
 	}
 
 
